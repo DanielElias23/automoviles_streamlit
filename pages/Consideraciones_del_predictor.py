@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 #import seaborn as sns
-import matplotlib.galleries.tutorials.pyplot as plt #.pyplot as plt
+import matplotlib as matp #.pyplot as plt
 import streamlit as st
 
 data = pd.read_csv('https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-ML240EN-SkillsNetwork/labs/data/CarPrice_Assignment.csv')
@@ -47,12 +47,12 @@ st.write(f"El precio minimo de los vehiculos de los datos con :blue[{round(minim
 
 st.write("La distribución de los precios es la siguiente:")
 
-fig,ax=plt.subplots()
+fig,ax=matp.pyplot.subplots()
 ax.grid(axis="y", linewidth = 0.2)
 ax.hist(data3["price"], bins=30)
-plt.title("Distribución de precios de los datos")
-plt.xlabel("Precios de vehiculos")
-plt.ylabel("Cantidad de vehiculos")
+matp.pyplot.title("Distribución de precios de los datos")
+matp.pyplot.xlabel("Precios de vehiculos")
+matp.pyplot.ylabel("Cantidad de vehiculos")
 #data_gr.plot(kind="bar")
 st.pyplot(fig)
 #st.bar_chart(data3["price"])
