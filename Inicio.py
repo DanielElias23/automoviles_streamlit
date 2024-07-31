@@ -7,15 +7,18 @@ from PIL import Image
 
 st.set_page_config(page_title="Proyecto", page_icon="📈")
 
-st.title("Predicion de precios de automoviles")
+st.title("Proyectos de machine learning 🎈")
 
 #st.subheader("Problema")
 
 #st.subheader("Descripción del problema")
 
 st.write("""
-         Este proyecto tiene como fin mostrar habilidades de programación especificas del autor, el proyecto se divide en dos paginas, una pagina llamada consideraciones del modelo predictivo en ello considera cual es el uso del predictor, presentación de los datos, presentaciones de la distribución y algunas aclaraciones, la segunda pagina muestra el modelo predictor en cual se puede interactuar y hacer una prediccion para cierto modelo automovilistico.
+         Estos proyectos son con el fin de mostrar habilidades de programación enfocado al area de ciencia de datos, los datos utilizados tienen sus contextos propios por lo que los modelos de inteligencia artificial no se pueden ocupar para uso general. Cada proyecto pretende mostrar habilidades diferentes en el contexto de machine learning, usando modelos diferentes y de diferentes categorias. Estos proyecto ya han sido realizados en los ejemplos mostrados en mi pagina de GitHub, pero no fueron implementados para la visualización de pagina web. Los analisis de las datos y las decisiones como la eleccion de modelos de machine learning esta en el codigo en GitHub. 
          """)
+
+st.write("https://github.com/DanielElias23")
+         
 st.subheader("Objetivos")
 
 st.write("-Dar a conocer el conocimientos al respecto con machine learning")
