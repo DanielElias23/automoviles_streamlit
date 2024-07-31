@@ -1,6 +1,6 @@
-git+https://github.com/matplotlib
-numpy
-pandas
-PIL
-streamlit
-sckit-learn
+matplotlib==3.9.1
+numpy==2.0.1
+pandas==2.2.2
+PIL==5.1.0
+streamlit==1.37.0
+scikit-learn==1.5.1
