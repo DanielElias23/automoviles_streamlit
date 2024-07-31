@@ -7,9 +7,9 @@ import streamlit as st
 
 data = pd.read_csv('https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-ML240EN-SkillsNetwork/labs/data/CarPrice_Assignment.csv')
 
-st.subheader("Pagina :orange[1] ")
+st.subheader("Proyecto :orange[1] ")
 
-st.header("Predictor de precios de automoviles 🚗")
+st.title("Predictor de precios de automoviles 🚗")
 #st.write("Seleccione las caracteriticas del modelo de automovil que quiere predecir el precio estimado en el mercado, luego presione enviar.")
 
 st.write("Lo que hace el predictor, es que segun las caracterisitcas de cierto vehiculo puede predecir cual seria el precio en el mercado de ese vehiculo.")
