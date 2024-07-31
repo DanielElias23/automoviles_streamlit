@@ -20,11 +20,11 @@ st.subheader("Proyecto :orange[1] ")
 #with open('googlelogo.png', 'wb') as f: 
 #     f.write(alfa_romeo.content) 
 
-st.title("Predictor de precios de automoviles 🚗")
+st.title("Predictor de precios de automóviles 🚗")
 #st.write("Seleccione las caracteriticas del modelo de automovil que quiere predecir el precio estimado en el mercado, luego presione enviar.")
 
-st.write("Lo que hace el predictor, es que segun las caracterisitcas de cierto vehiculo puede predecir cual seria el precio en el mercado de ese vehiculo.")
-st.write("El predictor de precios de vehiculos se utiliza para saber si una empresa automotriz puede entrar a un nuevo mercado, ya que conocera el valor en el cual podra vender esos vehiculos. En el caso de ya contar con una empresa automotriz se puede utilizar para saber a cuanto se podria ofrecer un nuevo modelo de vehiculo segun sus caracterisitcas. Esto dado que los datos utilizados por el modelo de machine learning contiene los modelos de vehiculos que ofrece el mercado y sus respectivos precios.")
+st.write("Lo que hace el predictor, es que según las caracterísitcas de cierto vehículo puede predecir cual sería el precio en el mercado de ese vehículo.")
+st.write("El predictor de precios de vehículos se utiliza para saber si una empresa automotriz puede entrar a un nuevo mercado, ya que conocerá el valor en el cual podrá vender esos vehículos. En el caso de ya contar con una empresa automotriz se puede utilizar para saber a cuanto se podría ofrecer un nuevo modelo de vehículo según sus caracterísitcas. Esto dado que los datos utilizados por el modelo de machine learning contiene los modelos de vehículos que ofrece el mercado y sus respectivos precios.")
 #st.write("""
 #          Una empresa de automoviles pretender entrar al mercado de un pais, para ello necesita saber a cuanto podria vender sus automoviles
 #          para saber si es viable el negocio, entonces hace un estudio para saber el precio de los automoviles que ofrece el mercado con sus
@@ -63,9 +63,9 @@ nombre_col=data3.columns.tolist()
 
 Marca=data3["Brand"].unique()
 
-st.header("Selecciona un modelo de vehiculo:")
+st.header("Selecciona un modelo de vehículo:")
 with st.form("auto", clear_on_submit=False, border=True):           
-            marca_auto=st.selectbox("Marca del vehiculo", data3["Brand"].unique())
+            marca_auto=st.selectbox("Marca del vehículo", data3["Brand"].unique())
             left_column, right_column, three_column=st.columns(3)
             with left_column:
                           tipo_combustible=st.selectbox("Tipo de combustible", data3["fueltype"].unique())
@@ -77,10 +77,10 @@ with st.form("auto", clear_on_submit=False, border=True):
                           caballos_de_fuerza=st.select_slider("Caballos de fuerza", np.sort(data3["horsepower"].unique()))
                           highwaympg=st.select_slider("Rendimiento mpg en carretera", np.sort(data3["highwaympg"].unique()))
             with right_column:
-                          numero_puertas=st.selectbox("Numero de puertas", data3["doornumber"].unique())
+                          numero_puertas=st.selectbox("Número de puertas", data3["doornumber"].unique())
                           cuerpo_del_auto=st.selectbox("Cuerpo del auto", data3["carbody"].unique())
                           cilindrado=st.selectbox("Cilindrado", data3["cylindernumber"].unique())
-                          boreratio=st.select_slider("Relación diametro por carrera", np.sort(data3["boreratio"].unique()))
+                          boreratio=st.select_slider("Relación diámetro por carrera", np.sort(data3["boreratio"].unique()))
                           ancho_del_auto=st.select_slider("Ancho del auto", np.sort(data3["carwidth"].unique()))
                           Compressionratio=st.select_slider("Relación de compresión", np.sort(data3["compressionratio"].unique()))
                           peakrpm=st.select_slider("Peak rpm", np.sort(data3["peakrpm"].unique()))
@@ -160,7 +160,7 @@ if variable_input_sumit:
         
         
         y_pred_sol = pipe_en.predict(data_2)
-        st.header("El precio estimado para este vehiculo es:")
+        st.header("El precio estimado para este vehículo es:")
         st.title(f"{round(float(y_pred_sol),2)} $")
         
         

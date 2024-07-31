@@ -14,7 +14,7 @@ st.title("Proyectos de machine learning 🎈")
 #st.subheader("Descripción del problema")
 
 st.write("""
-         Estos proyectos son con el fin de mostrar habilidades de programación enfocado al area de ciencia de datos, los datos utilizados tienen sus contextos propios por lo que los modelos de inteligencia artificial no se pueden ocupar para uso general. Cada proyecto pretende mostrar habilidades diferentes en el contexto de machine learning, usando modelos diferentes y de diferentes categorias. Estos proyecto ya han sido realizados en los ejemplos mostrados en mi pagina de GitHub, pero no fueron implementados para la visualización de pagina web. Los analisis de las datos y las decisiones como la eleccion de modelos de machine learning esta en el codigo en GitHub. 
+         Estos proyectos son con el fin de mostrar habilidades de programación enfocado al área de ciencia de datos, los datos utilizados tienen sus contextos propios por lo que los modelos de inteligencia artificial no se pueden ocupar para uso general. Cada proyecto pretende mostrar habilidades diferentes en el contexto de machine learning, usando modelos diferentes y de diferentes categorías. Estos proyecto ya han sido realizados en los ejemplos mostrados en mí página de GitHub, pero no fueron implementados para la visualización de página web. Los análisis de los datos y las decisiones como la elección de modelos de machine learning está en el código en GitHub. 
          """)
 
 st.write("https://github.com/DanielElias23")
@@ -23,7 +23,7 @@ st.subheader("Objetivos")
 
 st.write("-Dar a conocer el conocimientos al respecto con machine learning")
 
-st.write("-Demostrar dominio de conocimiento para solucionar problemas a diferentes problematicas")
+st.write("-Demostrar dominio de conocimiento para solucionar problemas a diferentes problemáticas")
 
 st.write("-Mostrar habilidades de programación enfocado al contexto ciencia de datos en las empresas")
 
