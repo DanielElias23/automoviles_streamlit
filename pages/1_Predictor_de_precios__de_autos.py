@@ -14,6 +14,8 @@ audi=Image.open("audi.jpg")
 bmw=Image.open("bmw.jpg")
 chevrolet=Image.open("chevrolet.jpg")
 dodge=Image.open("dodge.jpg")
+honda=Image.open("honda.jpg")
+isuzu=Image.open("isuzu.jpg")
 st.subheader("Proyecto :orange[1] ")
 #with open('googlelogo.png', 'wb') as f: 
 #     f.write(alfa_romeo.content) 
@@ -198,20 +200,21 @@ if variable_input_sumit:
                 st.sidebar.write("Dodge es una marca de automóviles estadounidense, llamada originalmente Dodge Brothers Company (1900-1927),1​ actualmente propiedad de Stellantis. Chrysler adquirió la compañía Dodge en 1928 de la que seguía formando parte del FCA US LLC.")
                 st.sidebar.write(dodge)
 
-"""                
-         if marca_auto=="audi":
-         
-                st.sidebar.subheader(f":blue[Selecionaste ]")
-                st.sidebar.write("")
-                st.sidebar.write(alfa_romeo)
                 
-         if marca_auto=="audi":
+        if marca_auto=="honda":
          
-                st.sidebar.subheader(f":blue[Selecionaste ]")
-                st.sidebar.write("")
-                st.sidebar.write(alfa_romeo)
+                st.sidebar.subheader(f":blue[Selecionaste Honda]")
+                st.sidebar.write("Honda Motor Co., Ltd., es una empresa de capital abierto de origen japonés fabricante de automóviles, motores para vehículos terrestres, acuáticos y aéreos, motocicletas, robots y demás refacciones para la industria automotriz.")
+                st.sidebar.write(honda)
+
+                
+        if marca_auto=="isuzu":
+         
+                st.sidebar.subheader(f":blue[Selecionaste Isuzu]")
+                st.sidebar.write("Isuzu Motors Ltd. es un fabricante de vehículos industriales y comerciales, así como de motores diésel, con sede mundial en Tokio, Japón. Su actividad se concentra en el diseño, producción, ensamblaje, venta y distribución de vehículos comerciales. ")
+                st.sidebar.write(isuzu)
    
-"""               
+               
 #for col in data_name_col:
     
 #    data_le = le.fit_transform(X[col])
