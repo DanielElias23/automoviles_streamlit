@@ -145,7 +145,7 @@ if variable_input_sumit:
         
         y_pred_sol = pipe_en.predict(data_2)
         st.header("El precio estimado para este vehiculo es:")
-        st.title(f"{round(float(y_pred_sol),2)} $")
+        st.title(f"${round(float(y_pred_sol),2)} Dolares")
         
         
         """Modelo ML: 
