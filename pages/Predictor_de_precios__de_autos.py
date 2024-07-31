@@ -80,7 +80,7 @@ with st.form("auto", clear_on_submit=False, border=True):
 
 data4=data3
 
-#from sklearn.preprocessing import OneHotEncoder, LabelEncoder
+from sklearn.preprocessing import OneHotEncoder, LabelEncoder
 
 ohe = OneHotEncoder()
 le = LabelEncoder()
@@ -93,17 +93,17 @@ data_name_col2 = ["fueltype", "aspiration", "doornumber", "carbody", "drivewheel
 
 import sklearn
 
-#from sklearn.model_selection import train_test_split
-#from sklearn.linear_model import LinearRegression,Ridge,Lasso,ElasticNet
-#from sklearn.metrics import r2_score 
-#from sklearn.preprocessing import PolynomialFeatures
-#from sklearn.metrics import mean_squared_error
-#from sklearn.preprocessing import scale
-#from sklearn.preprocessing import StandardScaler
-#from sklearn.preprocessing import MinMaxScaler
-#from sklearn.feature_selection import SelectKBest, f_regression
-#from sklearn.pipeline import Pipeline
-#from sklearn.model_selection import GridSearchCV
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression,Ridge,Lasso,ElasticNet
+from sklearn.metrics import r2_score 
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.metrics import mean_squared_error
+from sklearn.preprocessing import scale
+from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.feature_selection import SelectKBest, f_regression
+from sklearn.pipeline import Pipeline
+from sklearn.model_selection import GridSearchCV
 
 X = data4.drop("price", axis=1)
 

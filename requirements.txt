@@ -1,0 +1,6 @@
+git+https://github.com/matplotlib
+numpy
+pandas
+PIL
+streamlit
+sckit-learn
