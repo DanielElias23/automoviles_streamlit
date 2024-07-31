@@ -91,8 +91,6 @@ data_name_col2 = ["fueltype", "aspiration", "doornumber", "carbody", "drivewheel
 #Para ocupar OneHotEncoder y ocupar ".categories_" se necesita que sean columnas tipo "category"
 
 
-import sklearn
-
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression,Ridge,Lasso,ElasticNet
 from sklearn.metrics import r2_score 
