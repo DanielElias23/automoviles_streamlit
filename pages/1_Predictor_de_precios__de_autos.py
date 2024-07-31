@@ -10,6 +10,8 @@ import urllib.request
 
 data = pd.read_csv('https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-ML240EN-SkillsNetwork/labs/data/CarPrice_Assignment.csv')
 alfa_romeo=Image.open("alfa-romeo.jpg")
+audi=Image.open("bwm.jpg")
+bwm=Image.open("audi.jpg")
 st.subheader("Proyecto :orange[1] ")
 #with open('googlelogo.png', 'wb') as f: 
 #     f.write(alfa_romeo.content) 
@@ -168,6 +170,45 @@ if variable_input_sumit:
                 st.sidebar.subheader(f":blue[Selecionaste Alfa Romeo]")
                 st.sidebar.write("Alfa Romeo Automobili S.p.A. es una marca italiana de automóviles de lujo, popularmente conocidos por elegante diseño y altas prestaciones. Fundada en 1910 en Milán, Italia; actualmente es propiedad del conglomerado de empresas Stellantis.")
                 st.sidebar.write(alfa_romeo)
+                
+         if marca_auto=="audi":
+         
+                st.sidebar.subheader(f":blue[Selecionaste Audi]")
+                st.sidebar.write('La compañía tiene su sede central en Ingolstadt, en el Estado Federado de Baviera en Alemania. En la actualidad, Audi sigue con su filosofía de "«a la vanguardia de la técnica»" e impulsa todo su conocimiento adquirido en sus coches.')
+                st.sidebar.write(audi)
+                
+         if marca_auto=="bwm":
+         
+                st.sidebar.subheader(f":blue[Selecionaste Bwm]")
+                st.sidebar.write("Es un fabricante alemán de automóviles y motocicletas de alta gama y lujo, cuya sede se encuentra en Múnich. Sus subsidiarias son Mini, Rolls-Royce, BMW i y BMW Bank. BMW es el líder mundial en ventas entre los fabricantes de gama alta; compite principalmente con Audi, Volvo, Lexus y Mercedes-Benz, entre otros vehículos de gama alta.")
+                st.sidebar.write(bwm)
+
+"""                
+         if marca_auto=="audi":
+         
+                st.sidebar.subheader(f":blue[Selecionaste ]")
+                st.sidebar.write("")
+                st.sidebar.write(alfa_romeo)
+                
+         if marca_auto=="audi":
+         
+                st.sidebar.subheader(f":blue[Selecionaste ]")
+                st.sidebar.write("")
+                st.sidebar.write(alfa_romeo)
+                
+         if marca_auto=="audi":
+         
+                st.sidebar.subheader(f":blue[Selecionaste ]")
+                st.sidebar.write("")
+                st.sidebar.write(alfa_romeo)
+                
+         if marca_auto=="audi":
+         
+                st.sidebar.subheader(f":blue[Selecionaste ]")
+                st.sidebar.write("")
+                st.sidebar.write(alfa_romeo)
+   
+"""               
 #for col in data_name_col:
     
 #    data_le = le.fit_transform(X[col])
