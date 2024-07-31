@@ -1,1 +1,1 @@
-git+https://github.com/matplotlib/matplotlib
+git+https://github.com/matplotlib
