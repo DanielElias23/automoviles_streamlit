@@ -189,8 +189,7 @@ if variable_input_sumit:
         if marca_auto=="chevrolet":
          
                 st.sidebar.subheader(f":blue[Selecionaste Chevrolet]")
-                st.sidebar.write("Chevrolet es un fabricante estadounidense de automóviles y camiones con sede en Detroit, perteneciente al grupo General Motors. Nació de la alianza de Louis Chevrolet y William Crapo Durant el 3 de noviembre de 1911.2​
-")
+                st.sidebar.write("Chevrolet es un fabricante estadounidense de automóviles y camiones con sede en Detroit, perteneciente al grupo General Motors. Nació de la alianza de Louis Chevrolet y William Crapo Durant el 3 de noviembre de 1911.2​")
                 st.sidebar.write(chevrolet)
                 
          if marca_auto=="dodge":
