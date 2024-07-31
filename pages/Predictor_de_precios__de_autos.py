@@ -11,7 +11,7 @@ st.header("Predictor de precios de automoviles")
 #st.write("Seleccione las caracteriticas del modelo de automovil que quiere predecir el precio estimado en el mercado, luego presione enviar.")
 
 st.write("Lo que hace el predictor, es que segun las caracterisitcas de cierto vehiculo puede predecir cual seria el precio en el mercado de ese vehiculo.")
-st.write("El predictor de precios de vehiculos se utiliza para saber si una empresa automotriz puede entrar a un nuevo mercado, ya conocera el valor a cuanto podria vender los vehiculos, en el caso de ya contar con una empresa automotriz se puede utilizar para saber a cuanto se podria ofrecer un nuevo modelo de vehiculo segun sus caracterisitcas.")
+st.write("El predictor de precios de vehiculos se utiliza para saber si una empresa automotriz puede entrar a un nuevo mercado, ya conocera el valor en el cual podra vender esos vehiculos, en el caso de ya contar con una empresa automotriz se puede utilizar para saber a cuanto se podria ofrecer un nuevo modelo de vehiculo segun sus caracterisitcas.")
 #st.write("""
 #          Una empresa de automoviles pretender entrar al mercado de un pais, para ello necesita saber a cuanto podria vender sus automoviles
 #          para saber si es viable el negocio, entonces hace un estudio para saber el precio de los automoviles que ofrece el mercado con sus
