@@ -192,7 +192,7 @@ if variable_input_sumit:
                 st.sidebar.write("Chevrolet es un fabricante estadounidense de automóviles y camiones con sede en Detroit, perteneciente al grupo General Motors. Nació de la alianza de Louis Chevrolet y William Crapo Durant el 3 de noviembre de 1911.2​")
                 st.sidebar.write(chevrolet)
                 
-         if marca_auto=="dodge":
+        if marca_auto=="dodge":
          
                 st.sidebar.subheader(f":blue[Selecionaste Dodge]")
                 st.sidebar.write("Dodge es una marca de automóviles estadounidense, llamada originalmente Dodge Brothers Company (1900-1927),1​ actualmente propiedad de Stellantis. Chrysler adquirió la compañía Dodge en 1928 de la que seguía formando parte del FCA US LLC.")
