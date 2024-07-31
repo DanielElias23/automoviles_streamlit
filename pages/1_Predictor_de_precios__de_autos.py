@@ -6,7 +6,7 @@ import streamlit as st
 from PIL import Image
 
 data = pd.read_csv('https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-ML240EN-SkillsNetwork/labs/data/CarPrice_Assignment.csv')
-alfa_romeo = Image.open("alfa-romeo.jpg")
+alfa_romeo = Image.open("https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.elmostrador.cl%2Fgeneracion-m%2F2020%2F03%2F04%2Fnuevo-giulia-gta-celebra-los-110-anos-de-alfa-romeo%2F&psig=AOvVaw32zcW2OipH-xKx7ZbsinEd&ust=1722527815928000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCNjM8afS0YcDFQAAAAAdAAAAABAE")
 st.subheader("Proyecto :orange[1] ")
 
 st.title("Predictor de precios de automoviles 🚗")
