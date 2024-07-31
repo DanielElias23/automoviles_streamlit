@@ -12,4 +12,4 @@ streamlit-lottie==0.0.5
 tensorflow==2.16.1
 tensorflow-hub==0.16.1
 tensorflow-io-gcs-filesystem==0.37.0
-
+pillow==10.3.0
