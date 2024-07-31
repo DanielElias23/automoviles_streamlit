@@ -3,17 +3,17 @@ import numpy as np
 #import seaborn as sns
 import matplotlib.pyplot as plt
 import streamlit as st
-
+from PIL import Image
 
 data = pd.read_csv('https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-ML240EN-SkillsNetwork/labs/data/CarPrice_Assignment.csv')
-
+alfa-romeo = Image.open("alfa-romeo.jpg")
 st.subheader("Proyecto :orange[1] ")
 
 st.title("Predictor de precios de automoviles 🚗")
 #st.write("Seleccione las caracteriticas del modelo de automovil que quiere predecir el precio estimado en el mercado, luego presione enviar.")
 
 st.write("Lo que hace el predictor, es que segun las caracterisitcas de cierto vehiculo puede predecir cual seria el precio en el mercado de ese vehiculo.")
-st.write("El predictor de precios de vehiculos se utiliza para saber si una empresa automotriz puede entrar a un nuevo mercado, ya conocera el valor en el cual podra vender esos vehiculos, en el caso de ya contar con una empresa automotriz se puede utilizar para saber a cuanto se podria ofrecer un nuevo modelo de vehiculo segun sus caracterisitcas. Esto dado que los datos utilizados por el modelo de machine learning contiene los modelos de vehiculos que ofrece el mercado y sus respectivos precios.")
+st.write("El predictor de precios de vehiculos se utiliza para saber si una empresa automotriz puede entrar a un nuevo mercado, ya que conocera el valor en el cual podra vender esos vehiculos. En el caso de ya contar con una empresa automotriz se puede utilizar para saber a cuanto se podria ofrecer un nuevo modelo de vehiculo segun sus caracterisitcas. Esto dado que los datos utilizados por el modelo de machine learning contiene los modelos de vehiculos que ofrece el mercado y sus respectivos precios.")
 #st.write("""
 #          Una empresa de automoviles pretender entrar al mercado de un pais, para ello necesita saber a cuanto podria vender sus automoviles
 #          para saber si es viable el negocio, entonces hace un estudio para saber el precio de los automoviles que ofrece el mercado con sus
@@ -157,6 +157,12 @@ if variable_input_sumit:
             :green[ElasticNet, alfa=10, L1=0.75]
         """
         st.write(f"Puntuación: :green[R^2: {round(r2_score(y_pred4,y_test),2)}, MSE: {round(mean_squared_error(y_pred4,y_test),2)}]")
+        
+        if marca_auto=="alfa-romeo":
+                
+                st.subheader("Alfa romeo")
+                st.write("Alfa Romeo Automobili S.p.A. es una marca italiana de automóviles de lujo, popularmente conocidos por elegante diseño y altas prestaciones. Fundada en 1910 en Milán, Italia; actualmente es propiedad del conglomerado de empresas Stellantis.")
+                st.write(alfa-romeo)
 #for col in data_name_col:
     
 #    data_le = le.fit_transform(X[col])
