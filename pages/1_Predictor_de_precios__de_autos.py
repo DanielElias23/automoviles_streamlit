@@ -3,11 +3,16 @@ import numpy as np
 #import seaborn as sns
 import matplotlib.pyplot as plt
 import streamlit as st
+import requests
 from PIL import Image
+import urllib.request
+
 
 data = pd.read_csv('https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-ML240EN-SkillsNetwork/labs/data/CarPrice_Assignment.csv')
-alfa_romeo = Image.open("https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.elmostrador.cl%2Fgeneracion-m%2F2020%2F03%2F04%2Fnuevo-giulia-gta-celebra-los-110-anos-de-alfa-romeo%2F&psig=AOvVaw32zcW2OipH-xKx7ZbsinEd&ust=1722527815928000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCNjM8afS0YcDFQAAAAAdAAAAABAE")
+alfa_romeo=Image.open("alfa-romeo.jpg")
 st.subheader("Proyecto :orange[1] ")
+#with open('googlelogo.png', 'wb') as f: 
+#     f.write(alfa_romeo.content) 
 
 st.title("Predictor de precios de automoviles 🚗")
 #st.write("Seleccione las caracteriticas del modelo de automovil que quiere predecir el precio estimado en el mercado, luego presione enviar.")
@@ -42,7 +47,7 @@ data2[["Brand", "Car_Name1", "Car_Name2", "Car_Name3", "Car_Name4"]]=data2["CarN
 
 data3 = data2.drop(["CarName","Car_Name1","Car_Name2","Car_Name3","Car_Name4"], axis=1)
 
-data3["Brand"] = data3["Brand"].replace({ "Nissan": "nissan", "toyouta": "toyota", "vokswagen": "volkswagen", "vw": "volkswagen", "porcshce":"porsche", "maxda":"mazda"})
+data3["Brand"] = data3["Brand"].replace({"alfa-romero":"alfa-romeo", "Nissan": "nissan", "toyouta": "toyota", "vokswagen": "volkswagen", "vw": "volkswagen", "porcshce":"porsche", "maxda":"mazda"})
 
 #st.write(data3.shape)
 
@@ -160,9 +165,9 @@ if variable_input_sumit:
         
         if marca_auto=="alfa-romeo":
                 
-                st.subheader("Alfa romeo")
-                st.write("Alfa Romeo Automobili S.p.A. es una marca italiana de automóviles de lujo, popularmente conocidos por elegante diseño y altas prestaciones. Fundada en 1910 en Milán, Italia; actualmente es propiedad del conglomerado de empresas Stellantis.")
-                st.write(alfa_romeo)
+                st.sidebar.subheader(f":blue[Selecionaste Alfa Romeo]")
+                st.sidebar.write("Alfa Romeo Automobili S.p.A. es una marca italiana de automóviles de lujo, popularmente conocidos por elegante diseño y altas prestaciones. Fundada en 1910 en Milán, Italia; actualmente es propiedad del conglomerado de empresas Stellantis.")
+                st.sidebar.write(alfa_romeo)
 #for col in data_name_col:
     
 #    data_le = le.fit_transform(X[col])
