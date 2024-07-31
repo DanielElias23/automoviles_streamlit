@@ -20,6 +20,8 @@ st.subheader("Proyecto :orange[1] ")
 #with open('googlelogo.png', 'wb') as f: 
 #     f.write(alfa_romeo.content) 
 
+st.write(":blue[Elige un modelo]")
+
 st.title("Predictor de precios de automóviles 🚗")
 #st.write("Seleccione las caracteriticas del modelo de automovil que quiere predecir el precio estimado en el mercado, luego presione enviar.")
 
@@ -44,6 +46,7 @@ st.write("El predictor de precios de vehículos se utiliza para saber si una emp
 
 #st.write("La data es limpiada y las variables categoricas se codifican a numeros para no causar malas interpretaciones del modelo")
 
+st.sidebar.write(":blue[Selecciona un vehículo con sus respectivas especificaciones]")
 
 data = pd.DataFrame(data)
 

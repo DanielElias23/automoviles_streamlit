@@ -7,7 +7,13 @@ from PIL import Image
 
 st.set_page_config(page_title="Proyecto", page_icon="📈")
 
-st.title("Proyectos de machine learning 🎈")
+st.subheader(":orange[Bienvenidos]")
+
+st.title("Proyectos de machine learning")
+
+st.subheader("Autor: Daniel C. S.")
+
+st.sidebar.subheader(":blue[Selecciona un proyecto]")
 
 #st.subheader("Problema")
 
@@ -27,7 +33,7 @@ st.write("-Demostrar dominio de conocimiento para solucionar problemas a diferen
 
 st.write("-Mostrar habilidades de programación enfocado al contexto ciencia de datos en las empresas")
 
-st.subheader("Autor: Daniel C. S.")
+
 
 #st.write("-Predecir el valor de diferentes automoviles segun sus caracterisitcas para que la empresa pueda definir un rango de precios para ofrecer")
 
