@@ -10,8 +10,8 @@ import urllib.request
 
 data = pd.read_csv('https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-ML240EN-SkillsNetwork/labs/data/CarPrice_Assignment.csv')
 alfa_romeo=Image.open("alfa-romeo.jpg")
-audi=Image.open("bwm.jpg")
-bwm=Image.open("audi.jpg")
+audi=Image.open("audi.jpg")
+bmw=Image.open("bmw.jpg")
 st.subheader("Proyecto :orange[1] ")
 #with open('googlelogo.png', 'wb') as f: 
 #     f.write(alfa_romeo.content) 
@@ -177,11 +177,11 @@ if variable_input_sumit:
                 st.sidebar.write('La compañía tiene su sede central en Ingolstadt, en el Estado Federado de Baviera en Alemania. En la actualidad, Audi sigue con su filosofía de "«a la vanguardia de la técnica»" e impulsa todo su conocimiento adquirido en sus coches.')
                 st.sidebar.write(audi)
                 
-        if marca_auto=="bwm":
+        if marca_auto=="bmw":
          
-                st.sidebar.subheader(f":blue[Selecionaste Bwm]")
+                st.sidebar.subheader(f":blue[Selecionaste Bmw]")
                 st.sidebar.write("Es un fabricante alemán de automóviles y motocicletas de alta gama y lujo, cuya sede se encuentra en Múnich. Sus subsidiarias son Mini, Rolls-Royce, BMW i y BMW Bank. BMW es el líder mundial en ventas entre los fabricantes de gama alta; compite principalmente con Audi, Volvo, Lexus y Mercedes-Benz, entre otros vehículos de gama alta.")
-                st.sidebar.write(bwm)
+                st.sidebar.write(bmw)
 
 """                
          if marca_auto=="audi":
