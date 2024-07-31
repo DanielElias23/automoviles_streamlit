@@ -80,7 +80,7 @@ with st.form("auto", clear_on_submit=False, border=True):
 
 data4=data3
 
-from sklearn.preprocessing import OneHotEncoder, LabelEncoder
+#from sklearn.preprocessing import OneHotEncoder, LabelEncoder
 
 ohe = OneHotEncoder()
 le = LabelEncoder()
