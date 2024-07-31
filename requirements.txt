@@ -1,26 +1,15 @@
-freeze-requirements==0.5.3
-ipython==8.17.2
 keras==3.3.3
-keras-nightly==3.3.3.dev2024052603
 matplotlib==3.7.2
 matplotlib-inline==0.1.6
 numpy==1.24.4
 pandas==1.5.3
-python-apt==2.4.0+ubuntu3
-python-dateutil==2.8.2
-python-debian==0.1.43+ubuntu1.1
-Python-IO==0.3
-python-utils==3.8.2
 scikeras==0.1.8
 scikit-image==0.23.2
 scikit-learn==1.5.0
-scipy==1.13.1
 seaborn==0.12.2
 streamlit==1.36.0
 streamlit-lottie==0.0.5
 tensorflow==2.16.1
 tensorflow-hub==0.16.1
 tensorflow-io-gcs-filesystem==0.37.0
-ubuntu-drivers-common==0.0.0
-ubuntu-pro-client==8001
 
