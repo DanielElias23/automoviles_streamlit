@@ -12,6 +12,8 @@ data = pd.read_csv('https://cf-courses-data.s3.us.cloud-object-storage.appdomain
 alfa_romeo=Image.open("alfa-romeo.jpg")
 audi=Image.open("audi.jpg")
 bmw=Image.open("bmw.jpg")
+chevrolet=Image.open("chevrolet.jpg")
+dodge=Image.open("dodge.jpg")
 st.subheader("Proyecto :orange[1] ")
 #with open('googlelogo.png', 'wb') as f: 
 #     f.write(alfa_romeo.content) 
@@ -183,19 +185,21 @@ if variable_input_sumit:
                 st.sidebar.write("Es un fabricante alemán de automóviles y motocicletas de alta gama y lujo, cuya sede se encuentra en Múnich. Sus subsidiarias son Mini, Rolls-Royce, BMW i y BMW Bank. BMW es el líder mundial en ventas entre los fabricantes de gama alta; compite principalmente con Audi, Volvo, Lexus y Mercedes-Benz, entre otros vehículos de gama alta.")
                 st.sidebar.write(bmw)
 
+                
+        if marca_auto=="chevrolet":
+         
+                st.sidebar.subheader(f":blue[Selecionaste Chevrolet]")
+                st.sidebar.write("Chevrolet es un fabricante estadounidense de automóviles y camiones con sede en Detroit, perteneciente al grupo General Motors. Nació de la alianza de Louis Chevrolet y William Crapo Durant el 3 de noviembre de 1911.2​
+")
+                st.sidebar.write(chevrolet)
+                
+         if marca_auto=="dodge":
+         
+                st.sidebar.subheader(f":blue[Selecionaste Dodge]")
+                st.sidebar.write("Dodge es una marca de automóviles estadounidense, llamada originalmente Dodge Brothers Company (1900-1927),1​ actualmente propiedad de Stellantis. Chrysler adquirió la compañía Dodge en 1928 de la que seguía formando parte del FCA US LLC.")
+                st.sidebar.write(dodge)
+
 """                
-         if marca_auto=="audi":
-         
-                st.sidebar.subheader(f":blue[Selecionaste ]")
-                st.sidebar.write("")
-                st.sidebar.write(alfa_romeo)
-                
-         if marca_auto=="audi":
-         
-                st.sidebar.subheader(f":blue[Selecionaste ]")
-                st.sidebar.write("")
-                st.sidebar.write(alfa_romeo)
-                
          if marca_auto=="audi":
          
                 st.sidebar.subheader(f":blue[Selecionaste ]")
