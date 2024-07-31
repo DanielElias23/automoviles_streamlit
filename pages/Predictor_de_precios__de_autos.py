@@ -3,7 +3,7 @@ import numpy as np
 #import seaborn as sns
 import matplotlib #.pyplot as plt
 import streamlit as st
-
+!mamba install -qy pandas numpy seaborn matplotlib scikit-learn
 
 data = pd.read_csv('https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-ML240EN-SkillsNetwork/labs/data/CarPrice_Assignment.csv')
 
