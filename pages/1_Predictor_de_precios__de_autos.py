@@ -6,7 +6,7 @@ import streamlit as st
 from PIL import Image
 
 data = pd.read_csv('https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-ML240EN-SkillsNetwork/labs/data/CarPrice_Assignment.csv')
-alfa-romeo = Image.open("alfa-romeo.jpg")
+alfa_romeo = Image.open("alfa-romeo.jpg")
 st.subheader("Proyecto :orange[1] ")
 
 st.title("Predictor de precios de automoviles 🚗")
@@ -162,7 +162,7 @@ if variable_input_sumit:
                 
                 st.subheader("Alfa romeo")
                 st.write("Alfa Romeo Automobili S.p.A. es una marca italiana de automóviles de lujo, popularmente conocidos por elegante diseño y altas prestaciones. Fundada en 1910 en Milán, Italia; actualmente es propiedad del conglomerado de empresas Stellantis.")
-                st.write(alfa-romeo)
+                st.write(alfa_romeo)
 #for col in data_name_col:
     
 #    data_le = le.fit_transform(X[col])
