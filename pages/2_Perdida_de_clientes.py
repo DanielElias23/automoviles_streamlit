@@ -75,7 +75,7 @@ with st.form("cliente", clear_on_submit=False, border=True):
                           
 
 #X = churn_df.drop("churn", axis=1)
-
+#sdfs
 
 #X=churn_df[['tenure', 'age', 'address', 'income', 'ed', 'employ', 'equip', "callcard", "wireless", "longmon", "tollmon", "equipmon", "cardmon", "wiremon", "longten", "tollten", "cardten", "voice", "pager", "internet", "callwait", "confer", "ebill", "custcat"]]
 
