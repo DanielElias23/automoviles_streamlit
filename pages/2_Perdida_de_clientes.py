@@ -130,7 +130,7 @@ st.write(f"Fscore is: {f_beta:.2f}")
 
 """
 
-st.write(":blue[Proyecto en proceso, terminado hoy]")
+st.write(":blue[Proyecto en proceso, será terminado hoy 1/08/2024]")
 
 
 
