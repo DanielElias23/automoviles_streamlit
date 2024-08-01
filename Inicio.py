@@ -7,7 +7,7 @@ from PIL import Image
 
 st.set_page_config(page_title="Proyecto", page_icon="📈")
 
-st.subheader(":orange[Bienvenidos..]")
+st.subheader(":orange[Bienvenidos]")
 
 st.title("Proyectos de machine learning")
 
