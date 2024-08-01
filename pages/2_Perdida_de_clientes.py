@@ -76,59 +76,59 @@ with st.form("cliente", clear_on_submit=False, border=True):
 
 #X = churn_df.drop("churn", axis=1)
 
-"""
-X=churn_df[['tenure', 'age', 'address', 'income', 'ed', 'employ', 'equip', "callcard", "wireless", "longmon", "tollmon", "equipmon", "cardmon", "wiremon", "longten", "tollten", "cardten", "voice", "pager", "internet", "callwait", "confer", "ebill", "custcat"]]
 
-y = churn_df['churn'].astype('int')
+#X=churn_df[['tenure', 'age', 'address', 'income', 'ed', 'employ', 'equip', "callcard", "wireless", "longmon", "tollmon", "equipmon", "cardmon", "wiremon", "longten", "tollten", "cardten", "voice", "pager", "internet", "callwait", "confer", "ebill", "custcat"]]
+
+#y = churn_df['churn'].astype('int')
 
 #callcard, wireless, employ son otras clasificaciones por ende no sirven, los otros son solo numeros
 #X=churn_df[['tenure', 'age', 'address', 'income', 'ed', 'employ', 'equip', "callcard", "wireless"]]
 
 
 #y = churn_df['churn']
-print(y.head())
+#print(y.head())
 
-from sklearn.preprocessing import MinMaxScaler
+#from sklearn.preprocessing import MinMaxScaler
 
-mm = MinMaxScaler()
+#mm = MinMaxScaler()
 
-X = mm.fit_transform(X)
+#X = mm.fit_transform(X)
 
-from sklearn.model_selection import train_test_split
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1)
+#from sklearn.model_selection import train_test_split
+#X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1)
 
-from sklearn.ensemble import AdaBoostClassifier
-from sklearn.metrics import classification_report, accuracy_score, precision_recall_fscore_support, confusion_matrix, ConfusionMatrixDisplay, precision_score, recall_score, roc_auc_score, f1_score
-from sklearn.preprocessing import label_binarize
-from sklearn.tree import DecisionTreeClassifier
-
-
-from sklearn.ensemble import ExtraTreesClassifier
+#from sklearn.ensemble import AdaBoostClassifier
+#from sklearn.metrics import classification_report, accuracy_score, precision_recall_fscore_support, confusion_matrix, ConfusionMatrixDisplay, precision_score, recall_score, roc_auc_score, f1_score
+#from sklearn.preprocessing import label_binarize
+#from sklearn.tree import DecisionTreeClassifier
 
 
-ETC2 = ExtraTreesClassifier(oob_score=True, 
-                          random_state=5, 
-                          warm_start=True,
-                          bootstrap=True,
-                          n_jobs=-1,
-                          n_estimators=30)
-ETC2.fit(X_train, y_train)
+#from sklearn.ensemble import ExtraTreesClassifier
 
-y_pred_ETC2 = ETC2.predict(X_test)
 
-precision, recall, f_beta, support = precision_recall_fscore_support(y_test, y_pred_ETC2, beta=5, pos_label=1, average='weighted')
-auc = roc_auc_score(y_test, y_pred_ETC2, average='weighted')
+#ETC2 = ExtraTreesClassifier(oob_score=True, 
+#                          random_state=5, 
+#                          warm_start=True,
+#                          bootstrap=True,
+#                          n_jobs=-1,
+#                          n_estimators=30)
+#ETC2.fit(X_train, y_train)
+
+#y_pred_ETC2 = ETC2.predict(X_test)
+
+#precision, recall, f_beta, support = precision_recall_fscore_support(y_test, y_pred_ETC2, beta=5, pos_label=1, average='weighted')
+#auc = roc_auc_score(y_test, y_pred_ETC2, average='weighted')
 #auc = roc_auc_score(label_binarize(y_test, classes=[1,2,3]), label_binarize(y_pred_ETC2,  classes=[1,2,3]), average='weighted')
-accuracy = accuracy_score(y_test, y_pred_ETC2)
-st.write("Extra Tree")
-st.write(f"Accuracy is: {accuracy:.2f}")
-st.write(f"Precision is: {precision:.2f}")
-st.write(f"Recall is: {recall:.2f}")
-st.write(f"Fscore is: {f_beta:.2f}")
+#accuracy = accuracy_score(y_test, y_pred_ETC2)
+#st.write("Extra Tree")
+#st.write(f"Accuracy is: {accuracy:.2f}")
+#st.write(f"Precision is: {precision:.2f}")
+#st.write(f"Recall is: {recall:.2f}")
+#st.write(f"Fscore is: {f_beta:.2f}")
 #st.write(f"AUC is: {auc:.2f}")
 #print(" ")
 
-"""
+
 
 st.write(":blue[Proyecto en proceso, será terminado hoy 1/08/2024]")
 
