@@ -51,7 +51,7 @@ with st.form("cliente", clear_on_submit=False, border=True):
             with right_column:
                           nivel_de_estudio=st.selectbox("Nivel de estudio", churn_df["ed"].unique(), index=True)                               
                           
-                          tenure=st.select_slider("Meses que el cliente ha permanecido en la empresa que presto el servicio", np.sort(churn_df["tenure"].unique()))
+                          tenure=st.select_slider("Meses que el cliente ha permanecido en la empresa del servicio", np.sort(churn_df["tenure"].unique()))
                           numero_años_en_residencia=st.select_slider("Años en su vivienda actual", churn_df["address"].unique()) 
             st.subheader("Datos del servicio del cliente:")
             left_column, right_column, three_column=st.columns(3)
