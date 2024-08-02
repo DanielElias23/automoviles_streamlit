@@ -16,9 +16,9 @@ st.write(":blue[Rellena el formulario]")
 
 st.title("Perdida de clientes")
 
-st.write("El formulario predice que tan probable es que el cliente deje la empresa que le esta prestando algún servcio.")
+st.write("El formulario predice que tan probable es que el cliente deje la empresa que le está prestando algún servicio.")
 
-st.write("Los datos presentados provienen de una empresa de telecomunicaciones, estos datos son de clientes y contienen informacion relevante para saber si el cliente permanecera o abandonara la empresa, los datos son antiguos por lo que el cliente ya tomo esta decision. Mediante estos datos se puede saber si otro cliente podria abandonar la empresa, ya que pueden cumplir perfiles parecidos. Esto es importante ya que permite a la empresa crear estrategias para que el cliente permanesca el mayor tiempo posible en la empresa.")
+st.write("Los datos presentados provienen de una empresa de telecomunicaciones, estos datos contienen información relevante para saber si el cliente permanecerá o abandonará la empresa, los datos son registros históricos de la empresa por lo que muchos clientes ya tomaron la decisión de abandonar la empresa. Mediante estos datos se puede saber si otro cliente podria abandonar la empresa, ya que pueden cumplir perfiles parecidos. Los resultados son importantes, ya que permite a la empresa saber con anticipación cuales clientes podrían abandonar la empresa y en base a esto crear estrategias para que el cliente permanezca el mayor tiempo posible en la empresa.")
 
 st.sidebar.write(":blue[Rellene el formularío y descubra si un cliente puede abandonar la empresa]")
 
@@ -37,7 +37,7 @@ with st.form("cliente", clear_on_submit=False, border=True):
             churn_df["callwait"] = churn_df["callwait"].replace({1:"Si", 0:"No"})
             churn_df["confer"] = churn_df["confer"].replace({1:"Si", 0:"No"})
             churn_df["ebill"] = churn_df["ebill"].replace({1:"Si", 0:"No"})
-            churn_df["ed"] = churn_df["ed"].replace({1:"Educación Basica", 2:"Educación Media", 3:"Educación Superior", 4:"Magistrado/a", 5:"Doctorado/a"})
+            churn_df["ed"] = churn_df["ed"].replace({1:"Educación Básica", 2:"Educación Media", 3:"Educación Superior", 4:"Magistrado/a", 5:"Doctorado/a"})
             st.subheader("Datos personales del cliente:")
             Nombre=st.text_input(label="Escriba el nombre del cliente")           
             #marca_auto=st.selectbox("Marca del vehículo", data3["Brand"].unique())   
@@ -65,21 +65,21 @@ with st.form("cliente", clear_on_submit=False, border=True):
                           tollten=st.select_slider("Gastos totales de peajes (toll charger)", np.sort(churn_df["tollten"]))
                           
             with right_column:
-                          servicio_inalambricos=st.selectbox("¿Contrato servicios inalambricos?", np.sort(churn_df["wireless"].unique()))
+                          servicio_inalambricos=st.selectbox("¿Contrato servicios inalámbricos?", np.sort(churn_df["wireless"].unique()))
                           
                           servicio_de_voz=st.selectbox("¿Contrato servicio de correo de voz?", np.sort(churn_df["voice"].unique()))
                           
                           confer=st.selectbox("¿Contrato servicio de conferencias?", np.sort(churn_df["confer"].unique()))
                           
                           tollmon=st.select_slider("Gastos mensuales en peajes (toll charger)", np.sort(churn_df["tollmon"].unique()))
-                          wiremon=st.select_slider("Gastos mensuales en servicios inalambricos", np.sort(churn_df["wiremon"].unique()))
+                          wiremon=st.select_slider("Gastos mensuales en servicios inalámbricos", np.sort(churn_df["wiremon"].unique()))
                           cardten=st.select_slider("Gastos totales en llamadas", np.sort(churn_df["cardten"].unique()))
             with three_column:
-                          servicio_telefonico=st.selectbox("¿Contrato servicios telefonicos?", np.sort(churn_df["callcard"].unique()))
+                          servicio_telefonico=st.selectbox("¿Contrato servicios telefónicos?", np.sort(churn_df["callcard"].unique()))
                           
                           servicio_localizador=st.selectbox("¿Tiene un localizador?", np.sort(churn_df["pager"].unique()))
                           
-                          ebill=st.selectbox("¿El cliente utiliza facturación electronica?", np.sort(churn_df["ebill"].unique()))
+                          ebill=st.selectbox("¿El cliente utiliza facturación electrónica?", np.sort(churn_df["ebill"].unique()))
                           
                           equipmon=st.select_slider("Gastos mensuales en alquiler de equipos", np.sort(churn_df["equipmon"].unique()))
                           longten=st.select_slider("Gastos totales de llamadas larga distancia", np.sort(churn_df["longten"].unique()))
@@ -142,7 +142,7 @@ if variable_input_sumit:
         st.write(f":blue[Los datos del cliente seleccionados son:]")                       
         st.write(data_3)
         
-        if  nivel_de_estudio=="Educación Basica":
+        if  nivel_de_estudio=="Educación Básica":
                      nivel_de_estudio=1
         if  nivel_de_estudio=="Educación Media":
                      nivel_de_estudio=2  
