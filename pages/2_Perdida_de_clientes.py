@@ -204,7 +204,7 @@ if variable_input_sumit:
         y_pred_ETC3 = ETC2.predict(data_2)
         
         if y_pred_ETC3==0:
-              y_pred_ETC3=f":green[se quede] en la empresa"
+              y_pred_ETC3=f":green[permanesca] en la empresa"
               mensaje=":blue[Felicitaciones estas entregando un buen servicio]"
         
         if y_pred_ETC3==1:
