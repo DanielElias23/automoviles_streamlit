@@ -46,17 +46,21 @@ with st.form("cliente", clear_on_submit=False, border=True):
             with left_column:
                           income=st.select_slider("Ingreso anual del cliente", np.sort(churn_df["income"].unique()))
                           años_trabajados=st.select_slider("Años trabajando", np.sort(churn_df["employ"].unique()))
-                          numero_años_en_residencia=st.select_slider("Años en su vivienda actual", churn_df["address"].unique())                    
+                          edad_del_cliente=st.select_slider("Edad del cliente", np.sort(churn_df["age"].unique()))
+                                             
             with right_column:
                           nivel_de_estudio=st.selectbox("Nivel de estudio", churn_df["ed"].unique(), index=True)                               
-                          edad_del_cliente=st.select_slider("Edad del cliente", np.sort(churn_df["age"].unique()))
-                          tenure=st.select_slider("Meses que el cliente ha permanecido en la empresa ergergergergergrggrgrregrgrer", np.sort(churn_df["tenure"].unique()))
+                          
+                          tenure=st.select_slider("Meses que el cliente ha permanecido en la empresa que presto el servicio", np.sort(churn_df["tenure"].unique()))
+                          numero_años_en_residencia=st.select_slider("Años en su vivienda actual", churn_df["address"].unique()) 
             st.subheader("Datos del servicio del cliente:")
             left_column, right_column, three_column=st.columns(3)
             with left_column:
                           servicio_de_internet=st.selectbox("¿Contrato servicios de internet?", np.sort(churn_df["internet"].unique()))
                           
                           equipo_de_empresa=st.selectbox("¿Tiene equipos de la empresa?", np.sort(churn_df["equip"].unique()))
+                          
+                          
                           
                           callwait=st.selectbox("¿Contrato servicio de llamada en espera?", np.sort(churn_df["callwait"].unique()))
                           
