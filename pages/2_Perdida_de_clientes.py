@@ -204,14 +204,14 @@ if variable_input_sumit:
         y_pred_ETC3 = ETC2.predict(data_2)
         
         if y_pred_ETC3==0:
-              y_pred_ETC3=f":green[permanesca] en la empresa"
-              mensaje=":blue[Felicitaciones estas entregando un buen servicio]"
+              y_pred_ETC3=f":green[permanezca] en la empresa"
+              mensaje=":blue[Felicitaciones estás entregando un buen servicio]"
         
         if y_pred_ETC3==1:
               y_pred_ETC3=":red[abandoné] la empresa"      
               mensaje=":blue[Recomendamos crear estrategias para mantener la permanencia del cliente]"    
         
-        st.header(f"Es probable que el cliente :blue[{Nombre}] {y_pred_ETC3}")
+        st.header(f"Es probable que el cliente {Nombre} {y_pred_ETC3}")
         
         st.write(mensaje)
         
