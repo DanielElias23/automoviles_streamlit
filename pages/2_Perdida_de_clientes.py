@@ -61,7 +61,7 @@ with st.form("cliente", clear_on_submit=False, border=True):
                           callwait=st.selectbox("¿Contrato servicio de llamada en espera?", np.sort(churn_df["callwait"].unique()))
                           
                           longmon=st.select_slider("Gastos mensuales en llamadas larga distancia", np.sort(churn_df["longmon"].unique()))
-                          cardmon=st.select_slider("Gastos mensuales en llamadas", np.sort(churn_df["cardmon"].unique()))
+                          cardmon=st.select_slider("Gastos mensuales en servicios de llamadas", np.sort(churn_df["cardmon"].unique()))
                           tollten=st.select_slider("Gastos totales de peajes (toll charger)", np.sort(churn_df["tollten"]))
                           
             with right_column:
@@ -71,7 +71,7 @@ with st.form("cliente", clear_on_submit=False, border=True):
                           
                           confer=st.selectbox("¿Contrato el servicio de conferencias?", np.sort(churn_df["confer"].unique()))
                           
-                          tollmon=st.select_slider("Gastos mensuales en peajes (toll charger)", np.sort(churn_df["tollmon"].unique()))
+                          tollmon=st.select_slider("Gastos mensuales en peajes", np.sort(churn_df["tollmon"].unique()))
                           wiremon=st.select_slider("Gastos mensuales en servicios inalámbricos", np.sort(churn_df["wiremon"].unique()))
                           cardten=st.select_slider("Gastos totales en llamadas", np.sort(churn_df["cardten"].unique()))
             with three_column:
