@@ -20,7 +20,7 @@ st.write("El formulario predice que tan probable es que el cliente deje la empre
 
 st.write("Los datos presentados provienen de una empresa de telecomunicaciones, estos datos contienen información relevante para saber si el cliente permanecerá o abandonará la empresa, los datos son registros históricos de la empresa por lo que muchos clientes ya tomaron la decisión de abandonar la empresa. Mediante estos datos se puede saber si otro cliente podria abandonar la empresa, ya que pueden cumplir perfiles parecidos. Los resultados son importantes, ya que permite a la empresa saber con anticipación cuales son los clientes que podrían abandonar la empresa y en base a esto crear estrategias para que esos clientes permanezcan el mayor tiempo posible en la empresa.")
 
-st.sidebar.write(":blue[Rellene el formularío y descubra si un cliente puede abandonar la empresa]")
+st.sidebar.write(":blue[Rellene el formulario y descubra si un cliente puede abandonar la empresa]")
 
 st.header("Formulario con los datos del cliente:")
 
@@ -69,7 +69,7 @@ with st.form("cliente", clear_on_submit=False, border=True):
                           
                           servicio_de_voz=st.selectbox("¿Contrato servicio de correo de voz?", np.sort(churn_df["voice"].unique()))
                           
-                          confer=st.selectbox("¿Contrato servicio de conferencias?", np.sort(churn_df["confer"].unique()))
+                          confer=st.selectbox("¿Contrato el servicio de conferencias?", np.sort(churn_df["confer"].unique()))
                           
                           tollmon=st.select_slider("Gastos mensuales en peajes (toll charger)", np.sort(churn_df["tollmon"].unique()))
                           wiremon=st.select_slider("Gastos mensuales en servicios inalámbricos", np.sort(churn_df["wiremon"].unique()))
