@@ -12,7 +12,7 @@ churn_df = pd.read_csv("https://cf-courses-data.s3.us.cloud-object-storage.appdo
 
 st.subheader("Proyecto :orange[2] ")
 
-st.write(":blue[Rellena el formulario]")
+st.write(":blue[Rellene el formulario]")
 
 st.title("Perdida de clientes")
 
