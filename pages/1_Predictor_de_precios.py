@@ -25,7 +25,7 @@ st.write(":blue[Elige un modelo]")
 st.title("Predictor de precios")
 #st.write("Seleccione las caracteriticas del modelo de automovil que quiere predecir el precio estimado en el mercado, luego presione enviar.")
 
-st.write("Lo que hace el predictor, es que según las caracterísitcas de cierto vehículo puede predecir cual sería el precio en el mercado de ese vehículo.")
+st.write("Lo que hace el predictor, es que según las caracterísitcas de cierto producto puede predecir cual sería el precio en el mercado.")
 st.write("El predictor de precios de vehículos se utiliza para saber si una empresa automotriz puede entrar a un nuevo mercado, ya que conocerá el valor en el cual podrá vender esos vehículos. En el caso de ya contar con una empresa automotriz se puede utilizar para saber a cuanto se podría ofrecer un nuevo modelo de vehículo según sus caracterísitcas. Esto dado que los datos utilizados por el modelo de machine learning contiene los modelos de vehículos que ofrece el mercado y sus respectivos precios.")
 #st.write("""
 #          Una empresa de automoviles pretender entrar al mercado de un pais, para ello necesita saber a cuanto podria vender sus automoviles
