@@ -22,7 +22,7 @@ st.subheader("Proyecto :orange[1] ")
 
 st.write(":blue[Elige un modelo]")
 
-st.title("Predictor de precios de automóviles 🚗")
+st.title("Predictor de precios")
 #st.write("Seleccione las caracteriticas del modelo de automovil que quiere predecir el precio estimado en el mercado, luego presione enviar.")
 
 st.write("Lo que hace el predictor, es que según las caracterísitcas de cierto vehículo puede predecir cual sería el precio en el mercado de ese vehículo.")
