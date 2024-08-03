@@ -245,7 +245,7 @@ with pagina2:
      
      st.write("-Puede contener algunas columnas adicionales como 'loglong', 'lninc', 'logtoll', 'Name', 'churn'")
      
-     st.write("-Puede descargar datos de prueba dando click [aquí](%s)" % "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-ML0101EN-SkillsNetwork/labs/Module%203/data/ChurnData.csv")
+     st.write("-Puede descargar datos de prueba dando click [aquí](%s)" % "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-ML0101EN-SkillsNetwork/labs/Module%203/data/ChurnData.csv" )
      
      with st.form("carga archivo", clear_on_submit=True):
      
