@@ -1,2 +1,5 @@
 [theme]
 base="dark"
+[Service]
+Environment="OLLAMA_HOST=private_ip"
+Environment="OLLAMA_ORIGINS=http://public_ip:11434"
