@@ -8,9 +8,9 @@ st.write(":blue[No implementado aun, se implementará los proximos días]")
 llm = Ollama(model="llama3")
 
 def main():
-       st.title("Chat con Llama 3")
+       st.title("Chat con Llama 3 ")
        bot_name = st.text_input("Nombre del asistente virtual:", value="Angela")
-       promp = f"""Eres un asistente virtual te llamas {bot_name}, responde preguntas"""
+       prompt = f"""Eres un asistente virtual te llamas {bot_name}, responde preguntas"""
        bot_description = st.text_area("Descripcion del asistente virtual:", value= prompt)
        if "chat_history" not in st.session_state:
            st.session_state["chat_history"] = []
