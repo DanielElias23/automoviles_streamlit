@@ -13,7 +13,7 @@ st.title("Proyectos de machine learning")
 
 st.subheader("Autor: Daniel C. S.")
 
-mention(label="DanielElias23", icon="github", url="https://github.com/DanielElias23" )
+mention(label="DanielElias23", icon="github", url="https://github.com/DanielElias23", )
 
 st.sidebar.subheader(":blue[Selecciona un proyecto]")
 
