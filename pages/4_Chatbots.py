@@ -1,11 +1,11 @@
 import streamlit as st
-from langchain_community.llms import 0llama
+from langchain_community.llms import Ollama
 from langchain_core.message import HumanMessage, AIMessage
 from langchain_core.prompts import ChatPromptTemplate, MEssagesPlaceholder
 st.write(":blue[No implementado aun, se implementará los proximos días]")
 
 
-llm = 0llama(model="llama3")
+llm = Ollama(model="llama3")
 
 def main():
        st.title("Chat con Llama 3")
