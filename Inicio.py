@@ -6,7 +6,11 @@ import streamlit as st
 from PIL import Image
 from streamlit_extras.mention import mention
 
+
 st.set_page_config(page_title="Proyecto", page_icon="📈")
+
+[theme]
+base="dark"
 
 st.subheader(":orange[Bienvenidos]")
 
@@ -14,7 +18,7 @@ st.title("Proyectos de machine learning")
 
 st.subheader("Autor: Daniel C. S.")
 
-mention(label="DanielElias23", icon="github", url="https://github.com/DanielElias23",)
+#mention(label="DanielElias23", icon="github", url="https://github.com/DanielElias23",)
 
 st.sidebar.subheader(":blue[Selecciona un proyecto]")
 
@@ -27,6 +31,8 @@ st.write("""
          """)
 
 st.write("https://github.com/DanielElias23")
+
+st.write("www.linkedin.com/in/danielchingasilva")
          
 st.subheader("Objetivos")
 
