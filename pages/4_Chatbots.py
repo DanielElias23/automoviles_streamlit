@@ -28,10 +28,10 @@ def main():
        user_input = st.text_input("Escribe tu pregunta")
        
        if st.button("Enviar"):
-            if user_input.lower()== "adios":
+            if user_input.lower() == "adios":
                st.stop()
             else:
-               responde = chain.invoke({"input": user_input, "chat_history": st.session_state["chat_history"]})
+               response = chain.invoke({"input": user_input, "chat_history": st.session_state["chat_history"]})
                st.session_state["chat_history"].append(HumanMessage(content=user_input))
                st.session_state["chat_history"].append(AIMessage(content=response))
                
