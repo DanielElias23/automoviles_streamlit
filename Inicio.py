@@ -9,8 +9,6 @@ from streamlit_extras.mention import mention
 
 st.set_page_config(page_title="Proyecto", page_icon="📈")
 
-[theme]
-base="dark"
 
 st.subheader(":orange[Bienvenidos]")
 
