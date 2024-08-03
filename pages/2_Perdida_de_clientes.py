@@ -12,22 +12,26 @@ churn_df = pd.read_csv("https://cf-courses-data.s3.us.cloud-object-storage.appdo
 
 st.subheader("Proyecto :orange[2] ")
 
-st.write(":blue[Rellene el formulario]")
+pagina1, pagina2 =st.tabs(["Indiviual","Multiple"])
 
-st.title("Perdida de clientes")
+with pagina1:
 
-st.write("El formulario predice que tan probable es que el cliente deje la empresa que le está prestando algún servicio.")
+     st.write(":blue[Rellene el formulario]")
 
-st.write("Los datos presentados provienen de una empresa de telecomunicaciones, estos datos contienen información relevante para saber si el cliente permanecerá o abandonará la empresa, los datos son registros históricos de la empresa por lo que muchos clientes ya tomaron la decisión de abandonar la empresa. Mediante estos datos se puede saber si otro cliente podria abandonar la empresa, ya que pueden cumplir perfiles parecidos. Los resultados son importantes, ya que permite a la empresa saber con anticipación cuales son los clientes que podrían abandonar la empresa y en base a esto crear estrategias para que esos clientes permanezcan el mayor tiempo posible en la empresa.")
+     st.title("Perdida de clientes")
 
-st.sidebar.write(":blue[Rellene el formulario y descubra si un cliente puede abandonar la empresa]")
+     st.write("El formulario predice que tan probable es que el cliente deje la empresa que le está prestando algún servicio.")
 
-st.header("Formulario con los datos del cliente:")
+     st.write("Los datos presentados provienen de una empresa de telecomunicaciones, estos datos contienen información relevante para saber si el cliente permanecerá o abandonará la empresa, los datos son registros históricos de la empresa por lo que muchos clientes ya tomaron la decisión de abandonar la empresa. Mediante estos datos se puede saber si otro cliente podria abandonar la empresa, ya que pueden cumplir perfiles parecidos. Los resultados son importantes, ya que permite a la empresa saber con anticipación cuales son los clientes que podrían abandonar la empresa y en base a esto crear estrategias para que esos clientes permanezcan el mayor tiempo posible en la empresa.")
 
-X = churn_df.drop(["churn", "loglong", "lninc", "logtoll"], axis=1)
-y = churn_df['churn'].astype('int')
+     st.sidebar.write(":blue[Rellene el formulario y descubra si un cliente puede abandonar la empresa]")
 
-with st.form("cliente", clear_on_submit=False, border=True):
+     st.header("Formulario con los datos del cliente:")
+
+     X = churn_df.drop(["churn", "loglong", "lninc", "logtoll"], axis=1)
+     y = churn_df['churn'].astype('int')
+
+     with st.form("cliente", clear_on_submit=False, border=True):
             churn_df["callcard"] = churn_df["callcard"].replace({1:"Si", 0:"No"})
             churn_df[["equip"]] = churn_df[["equip"]].replace({1:"Si", 0:"No"})
             churn_df["wireless"] = churn_df["wireless"].replace({1:"Si", 0:"No"})
@@ -107,32 +111,32 @@ with st.form("cliente", clear_on_submit=False, border=True):
 #print(y.head())
 
 
-from sklearn.model_selection import train_test_split
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1)
-
-from sklearn.ensemble import AdaBoostClassifier
-from sklearn.metrics import classification_report, accuracy_score, precision_recall_fscore_support, confusion_matrix, ConfusionMatrixDisplay, precision_score, recall_score, roc_auc_score, f1_score
-from sklearn.preprocessing import label_binarize
-from sklearn.tree import DecisionTreeClassifier
-
-
-from sklearn.ensemble import ExtraTreesClassifier
+     from sklearn.model_selection import train_test_split
+     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1)
+     #from sklearn.ensemble import AdaBoostClassifier     
+     from sklearn.metrics import classification_report, accuracy_score, precision_recall_fscore_support, confusion_matrix, ConfusionMatrixDisplay, precision_score, recall_score, roc_auc_score, f1_score
+     #from sklearn.preprocessing import label_binarize
+ 
+     from sklearn.tree import DecisionTreeClassifier
 
 
-ETC2 = ExtraTreesClassifier(oob_score=True, 
+     from sklearn.ensemble import ExtraTreesClassifier
+
+
+     ETC2 = ExtraTreesClassifier(oob_score=True, 
                           random_state=5, 
                           warm_start=True,
                           bootstrap=True,
                           n_jobs=-1,
                           n_estimators=30)
-ETC2.fit(X_train, y_train)
+     ETC2.fit(X_train, y_train)
 
-y_pred_ETC2 = ETC2.predict(X_test)
+     y_pred_ETC2 = ETC2.predict(X_test)
 
-precision, recall, f_beta, support = precision_recall_fscore_support(y_test, y_pred_ETC2, beta=5, pos_label=1, average='weighted')
-auc = roc_auc_score(y_test, y_pred_ETC2, average='weighted')
+     precision, recall, f_beta, support = precision_recall_fscore_support(y_test, y_pred_ETC2, beta=5, pos_label=1, average='weighted')
+     auc = roc_auc_score(y_test, y_pred_ETC2, average='weighted')
 #auc = roc_auc_score(label_binarize(y_test, classes=[1,2,3]), label_binarize(y_pred_ETC2,  classes=[1,2,3]), average='weighted')
-accuracy = accuracy_score(y_test, y_pred_ETC2)
+     accuracy = accuracy_score(y_test, y_pred_ETC2)
 #st.write("Extra Tree")
 #st.write(f"Accuracy is: {accuracy:.2f}")
 #st.write(f"Precision is: {precision:.2f}")
@@ -140,7 +144,7 @@ accuracy = accuracy_score(y_test, y_pred_ETC2)
 #st.write(f"Fscore is: {f_beta:.2f}")
 #st.write(f"AUC is: {auc:.2f}")
 
-if variable_input_sumit:
+     if variable_input_sumit:
         data_3=pd.DataFrame([Nombre, tenure, edad_del_cliente, numero_años_en_residencia, income, nivel_de_estudio, años_trabajados , equipo_de_empresa, servicio_telefonico, servicio_inalambricos, longmon, tollmon, equipmon, cardmon, wiremon, longten, tollten, cardten, servicio_de_voz, servicio_localizador, servicio_de_internet, callwait, confer, ebill, custcat]).T
         data_3=data_3.rename(columns={0:"Nombre del cliente", 1:"tiempo en la empresa", 2:"Edad", 3:"años en residencia", 4:"ingreso anual", 5:"nivel educativo", 6:"Años de trabajo", 7:"Posee equipos de la empresa", 8:"Posee servicios de llamadas", 9:"Posee servicios inalambricos", 10:"Gastos mensuales en llamadas larga distancias", 11:"Gastos mensuales de peaje", 12:"Gastos mensuales en equipos", 13:"Gastos mensules en llamadas", 14:"Gastos mensuales en servicios inalambricos", 15:"Gastos totales en llamadas larga distancias", 16:"Gastos totales en peajes", 17:"Gastos totales en llamadas", 18:"Servicio de buzon de voz", 19:"Servicio de localizador", 20:"Servicio de internet", 21:"Serivcio de llamadas en espera", 22:"Servicio de conferencias", 23:"Utiliza facturación electronica", 24:"Plan del cliente"})
         
@@ -225,7 +229,84 @@ if variable_input_sumit:
         st.write(f"Presición: :green[{round(precision,2)}]     Fscore: :green[{round(f_beta,2)}]")
                
         
-        
+with pagina2:
+
+     st.subheader("Instrucciones")
+     
+     st.write("-La tabla con los datos debe estar limpiada y debe contener solo datos numéricos")
+     
+     st.write("-Debe ser un archivo '.csv'")
+     
+     st.write("-La tabla debe contener todas estas columnas en el siguiente orden:")
+     
+     if st.checkbox("Mostrar columnas"):
+     
+                ''':green["tenure", "age", "address", "income", "ed", "employ", "equip", "callcard", "wireless", "longmon", "tollmon", "equipmon", "cardmon", "wiremon", "longten", "tollten", "cardten", "voice", "pager", "internet", "callwait", "confer", "ebill","custcat"]'''
+     
+     st.write("-Puede contener algunas columnas adicionales como 'loglong', 'lninc', 'logtoll', 'Name', 'churn'")
+     
+     st.write("-Puede descargar datos de prueba dando click [aquí](%s)" % "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-ML0101EN-SkillsNetwork/labs/Module%203/data/ChurnData.csv")
+     
+     with st.form("carga archivo", clear_on_submit=True):
+     
+                data_up = st.file_uploader("Inserte un archivo", type=["csv"])
+                
+                recibido=st.form_submit_button("Enviar")
+                
+                if recibido and data_up is not None:
+                      #ret = self.upload_file(data_up)
+                      
+                      #if ret is not False:
+                      
+                              data_up = pd.read_csv(data_up)
+                      
+                              data_up = pd.DataFrame(data_up)
+                              
+                              data_up = data_up.drop(["Name"], axis=1, errors="ignore")
+                              
+                              data_up = data_up.drop(["loglong"], axis=1, errors="ignore")
+                              
+                              data_up = data_up.drop(["lninc"], axis=1, errors="ignore")
+                              
+                              data_up = data_up.drop(["logtoll"], axis=1, errors="ignore")
+                              
+                              data_up = data_up.drop(["churn"], axis=1, errors="ignore")                     
+     
+                              y_pred_up = ETC2.predict(data_up)
+                              
+                              y_pred_up2 = pd.DataFrame(y_pred_up)
+                              
+                              mezcla = pd.DataFrame(pd.concat([data_up, y_pred_up2], axis=1))
+                              mezcla = mezcla.rename(columns={0:"churn"})
+                              
+                              #st.write(mezcla)
+                              
+                                                                                        
+                              
+                              abandonan = []
+                              permanecen = []     
+     
+                              for i in y_pred_up:
+                                    if i ==1:
+                                          abandonan.append(i)
+                                    if i ==0:
+                                          permanecen.append(i)
+                              
+                              #st.subheader("Pronostico:")
+                              st.write("") 
+                              st.subheader(f"- :red[{len(abandonan)}]/{len(abandonan)+len(permanecen)} clientes pueden ser perdidos")
+                              #st.subheader(f"- :green[{len(permanecen)}]/{len(abandonan)+len(permanecen)} clientes pueden quedarse")
+                             
+                              
+                              st.write(":blue[Los clientes que se pueden perder son: ]")
+                              
+                              st.write(mezcla[mezcla["churn"]==1])  
+                  
+                              st.write(":blue[(click arriba para descargar)]")
+              
+              
+     
+             
 
 
 
