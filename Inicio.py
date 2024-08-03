@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import streamlit as st
 from PIL import Image
+from streamlit_extras.mention import mention
 
 st.set_page_config(page_title="Proyecto", page_icon="📈")
 
