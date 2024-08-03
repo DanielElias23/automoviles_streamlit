@@ -48,7 +48,7 @@
 #if __name__ == "__main__":
 #         main() 
        
-                  
+st.write(":blue[No implementado aun, se implementará los proximos días]")                  
                   
                   
                   
