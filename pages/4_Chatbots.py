@@ -31,7 +31,7 @@ def get_ai_response(messages, numero):
       
 def chat():
       st.title("Chat con Llama 3.1")
-      st.write("¡Bienvenidos al chat con IA! Para refrescar la conversación actualiza la página")
+      st.write("¡Bienvenidos al chat con IA! Para refrescar la conversación actualiza la página.")
       if "messages" not in st.session_state:
             st.session_state["messages"]=[]
       
@@ -57,7 +57,7 @@ def chat():
             
             
       for message in st.session_state["messages"]:
-            role = "Tu" if message["role"] == "user" else "Bot"
+            role = " 👨 Tu" if message["role"] == "user" else " 🤖 Bot"
             st.write(f"**{role}:** {message['content']}")
             
       with st.form(key="chat_form", clear_on_submit=True):
