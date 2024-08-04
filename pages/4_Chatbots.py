@@ -76,13 +76,13 @@ with pagina2:
     numero2 = st.sidebar.select_slider("Ajuste de creatividad", ["Muy serio",0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, "Normal", 1.1, 1.2, 1.3,1.4,1.5,1.6,1.7, 1.8, 1.9, "Muy creativo"])
 
     if numero2 =="Muy serio":
-      numero=0
+      numero2=0
     if numero2 =="Normal":
-      numero=1
+      numero2=1
     if numero2 =="Muy creativo":
-      numero=2
+      numero2=2
 
-    def get_ai_response(messages, numero):
+    def get_ai_response(messages, numero2):
       completion = client2.chat.completions.create(
               model="gemma2-9b-it",
               messages=messages,
