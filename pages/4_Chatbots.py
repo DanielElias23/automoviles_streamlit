@@ -68,7 +68,7 @@ with pagina1:
       css="""
       <style>
             [data-testid="stForm"] {
-               background: Violet;
+               background: Purple;
             }
       </style>
       """
