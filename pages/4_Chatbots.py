@@ -82,10 +82,10 @@ with pagina2:
     #if numero2 =="Muy creativo":
     #  numero2=2
     cleint = Groq(api_key="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")
-    def get_ai_response(messages):
+    def get_ai_response(messages2):
       completion = client.chat.completions.create(
               model="gemma2-9b-it",
-              messages=messages,
+              messages=messages2,
               temperature=1,  #0.7,
               max_tokens=1024,
               stream=True,
@@ -99,8 +99,8 @@ with pagina2:
     def chat():
       st.title("Chat con Gemma 2")
       st.write("¡Bienvenidos al chat con IA! Para refrescar la conversación actualiza la página.")
-      if "messages" not in st.session_state:
-            st.session_state["messages"]=[]
+      if "messages2" not in st.session_state:
+            st.session_state["messages2"]=[]
       
       #if "numero" not in st.session_state:
       #      st.session_state["numero"]=0.7
@@ -114,18 +114,18 @@ with pagina2:
                   st.stop()
             #if i in numero:                  
             
-            st.session_state["messages"].append({"role": "user", "content": user_input})
+            st.session_state["messages2"].append({"role": "user", "content": user_input})
             
             with st.spinner("Obtieniendo respuesta..."):
-                 ai_response = get_ai_response(st.session_state["messages"])
-                 st.session_state["messages"].append({"role": "assistant", "content": ai_response})  
+                 ai_response = get_ai_response(st.session_state["messages2"])
+                 st.session_state["messages2"].append({"role": "assistant", "content": ai_response})  
                  
             st.session_state.user_input2 = ""
             
             
-      for message in st.session_state["messages"]:
-            role = "- 👨 **Tu** " if message["role"] == "user" else "- 🤖 **Bot**"
-            st.write(f"{role}: {message['content']}")
+      for message2 in st.session_state["messages2"]:
+            role = "- 👨 **Tu** " if message2["role"] == "user" else "- 🤖 **Bot**"
+            st.write(f"{role}: {message2['content']}")
             
       with st.form(key="chat_form2", clear_on_submit=True):
             st.text_input("Tu:", key="user_input")
