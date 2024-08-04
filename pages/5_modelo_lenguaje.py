@@ -17,7 +17,7 @@ def get_ai_response(messages):
       
 def chat():
       st.title("Chat con Llama 3.1")
-      st.write("¡Bienvenidos al chat con IA! Escribe 'exist' para terminar la conversación.")
+      st.write("¡Bienvenidos al chat con IA! Escribe 'exist' para terminar la conversación. ")
       if "messages" not in st.session_state:
             st.session_state["messages"]=[]
             
