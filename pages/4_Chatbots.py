@@ -2,7 +2,7 @@ from groq import Groq
 import streamlit as st
 
 client = Groq(api_key="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")
-cleint2 = Groq(api_key="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")
+
 pagina1, pagina2 =st.tabs(["Llama 3.1","Gemma 2"])
 
 with pagina1:
@@ -81,9 +81,9 @@ with pagina2:
     #  numero2=1
     #if numero2 =="Muy creativo":
     #  numero2=2
-
+    cleint = Groq(api_key="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")
     def get_ai_response2(messages2):
-      completion = client2.chat2.completions.create(
+      completion = client.chat.completions.create(
               model="gemma2-9b-it",
               messages=messages,
               temperature=1,  #0.7,
