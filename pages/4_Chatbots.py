@@ -124,7 +124,7 @@ with pagina2:
             
             
       for message2 in st.session_state["messages"]:
-            role2 = "- 👨 **Tu** " if message2["role"] == "user" else "- 🤖 **Bot**"
+            role = "- 👨 **Tu** " if message2["role"] == "user" else "- 🤖 **Bot**"
             st.write(f"{role}: {message2['content']}")
             
       with st.form(key="chat_form2", clear_on_submit=True):
