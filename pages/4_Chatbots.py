@@ -57,8 +57,8 @@ def chat():
             
             
       for message in st.session_state["messages"]:
-            role = " 👨 Tu" if message["role"] == "user" else " 🤖 Bot"
-            st.write(f"**{role}:** {message['content']}")
+            role = "- 👨 **Tu**" if message["role"] == "user" else "- 🤖 **Bot**"
+            st.write(f"{role}: {message['content']}")
             
       with st.form(key="chat_form", clear_on_submit=True):
             st.text_input("Tu:", key="user_input")
