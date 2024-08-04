@@ -128,7 +128,7 @@ with pagina2:
             st.write(f"{role}: {message2['content']}")
             
       with st.form(key="chat_form2", clear_on_submit=True):
-            st.text_input("Tu:", key="user_input")
+            st.text_input("Tu:", key="user_input2")
             submit_button2 = st.form_submit_button(label="Enviar", on_click=submit2)
             
       
