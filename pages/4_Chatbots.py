@@ -62,7 +62,7 @@ with pagina1:
             role = "- 👨 **Tu**" if message["role"] == "user" else "- 🤖 **Bot**"
             st.write(f"{role}: {message['content']}")
             
-      with st.form(key="chat_form", clear_on_submit=True):
+      with st.form(key="chat_form", clear_on_submit=True, border=True):
             st.text_input("Tu:", key="user_input")
             submit_button = st.form_submit_button(label="Enviar", on_click=submit)
             
@@ -127,7 +127,7 @@ with pagina2:
             role = "- 👨 **Tu** " if message2["role"] == "user" else "- 🤖 **Bot**"
             st.write(f"{role}: {message2['content']}")
             
-      with st.form(key="chat_form2", clear_on_submit=True):
+      with st.form(key="chat_form2", clear_on_submit=True, border=True):
             st.text_input("Tu:", key="user_input2")
             submit_button = st.form_submit_button(label="Enviar", on_click=submit)
             
