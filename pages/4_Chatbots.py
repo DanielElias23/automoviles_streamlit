@@ -114,18 +114,18 @@ with pagina2:
                   st.stop()
             #if i in numero:                  
             
-            st.session_state["messages"].append({"role": "user", "content": user_input2})
+            st.session_state["messages2"].append({"role2": "user2", "content2": user_input2})
             
             with st.spinner("Obtieniendo respuesta..."):
-                 ai_response2 = get_ai_response2(st.session_state["messages"])
-                 st.session_state["messages"].append({"role": "assistant", "content": ai_response2})  
+                 ai_response2 = get_ai_response2(st.session_state["messages2"])
+                 st.session_state["messages2"].append({"role2": "assistant2", "content2": ai_response2})  
                  
             st.session_state.user_input2 = ""
             
             
-      for message2 in st.session_state["messages"]:
-            role = "- 👨 **Tu** " if message2["role"] == "user" else "- 🤖 **Bot**"
-            st.write(f"{role}: {message2['content']}")
+      for message2 in st.session_state["messages2"]:
+            role = "- 👨 **Tu** " if message2["role2"] == "user2" else "- 🤖 **Bot**"
+            st.write(f"{role2}: {message2['content2']}")
             
       with st.form(key="chat_form2", clear_on_submit=True):
             st.text_input("Tu:", key="user_input2")
