@@ -73,20 +73,20 @@ with pagina1:
 with pagina2:
     st.sidebar.header("Opciones del chat")
        
-    numero = st.sidebar.select_slider("Ajuste de creatividad", ["Muy serio",0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, "Normal", 1.1, 1.2, 1.3,1.4,1.5,1.6,1.7, 1.8, 1.9, "Muy creativo"])
+    numero2 = st.sidebar.select_slider("Ajuste de creatividad", ["Muy serio",0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, "Normal", 1.1, 1.2, 1.3,1.4,1.5,1.6,1.7, 1.8, 1.9, "Muy creativo"])
 
-    if numero =="Muy serio":
+    if numero2 =="Muy serio":
       numero=0
-    if numero =="Normal":
+    if numero2 =="Normal":
       numero=1
-    if numero =="Muy creativo":
+    if numero2 =="Muy creativo":
       numero=2
 
     def get_ai_response(messages, numero):
       completion = client2.chat.completions.create(
               model="gemma2-9b-it",
               messages=messages,
-              temperature=numero,  #0.7,
+              temperature=numero2,  #0.7,
               max_tokens=1024,
               stream=True,
       )
