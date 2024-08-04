@@ -10,7 +10,7 @@ import urllib.request
 
 churn_df = pd.read_csv("https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-ML0101EN-SkillsNetwork/labs/Module%203/data/ChurnData.csv")
 
-st.subheader("Proyecto :orange[2] ")
+#st.subheader("Proyecto :orange[2] ")
 
 pagina1, pagina2 =st.tabs(["Indiviual","Multiple"])
 
