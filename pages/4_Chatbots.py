@@ -82,7 +82,7 @@ with pagina2:
     #if numero2 =="Muy creativo":
     #  numero2=2
 
-    def get_ai_response(messages):
+    def get_ai_response2(messages2):
       completion = client2.chat.completions.create(
               model="gemma2-9b-it",
               messages=messages,
@@ -91,12 +91,12 @@ with pagina2:
               stream=True,
       )
       
-      response = "".join(chunk.choices[0].delta.content or "" for chunk in completion)
-      return response
+      response2 = "".join(chunk.choices[0].delta.content or "" for chunk in completion)
+      return response2
       
 
       
-    def chat():
+    def chat2():
       st.title("Chat con Gemma 2")
       st.write("¡Bienvenidos al chat con IA! Para refrescar la conversación actualiza la página.")
       if "messages" not in st.session_state:
@@ -107,20 +107,20 @@ with pagina2:
       
       
       
-      def submit():
-            user_input = st.session_state.user_input
-            if user_input.lower() == "exit":
+      def submit2():
+            user_input2 = st.session_state.user_input2
+            if user_input2.lower() == "exit":
                   st.write("!Gracias por chatear! ¡Adios!")
                   st.stop()
             #if i in numero:                  
             
-            st.session_state["messages"].append({"role": "user", "content": user_input})
+            st.session_state["messages"].append({"role": "user", "content": user_input2})
             
             with st.spinner("Obtieniendo respuesta..."):
-                 ai_response = get_ai_response(st.session_state["messages"], numero)
-                 st.session_state["messages"].append({"role": "assistant", "content": ai_response})  
+                 ai_response2 = get_ai_response2(st.session_state["messages"])
+                 st.session_state["messages"].append({"role": "assistant", "content": ai_response2})  
                  
-            st.session_state.user_input = ""
+            st.session_state.user_input2 = ""
             
             
       for message in st.session_state["messages"]:
@@ -129,7 +129,7 @@ with pagina2:
             
       with st.form(key="chat_form2", clear_on_submit=True):
             st.text_input("Tu:", key="user_input")
-            submit_button = st.form_submit_button(label="Enviar", on_click=submit)
+            submit_button2 = st.form_submit_button(label="Enviar", on_click=submit2)
             
       
     if __name__ == "__main__":
