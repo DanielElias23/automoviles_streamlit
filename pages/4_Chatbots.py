@@ -65,7 +65,14 @@ with pagina1:
       with st.form(key="chat_form", clear_on_submit=True, border=True):
             st.text_input("Tu:", key="user_input")
             submit_button = st.form_submit_button(label="Enviar", on_click=submit)
-            
+      css="""
+      <style>
+            [data-testid="stForm"] {
+               background: Violet;
+            }
+      </style>
+      """
+      st.write(css, unsafe_allow_html=True)      
       
     if __name__ == "__main__":
       chat()
