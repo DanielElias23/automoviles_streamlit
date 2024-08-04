@@ -16,7 +16,7 @@ chevrolet=Image.open("chevrolet.jpg")
 dodge=Image.open("dodge.jpg")
 honda=Image.open("honda.jpg")
 isuzu=Image.open("isuzu.jpg")
-#st.subheader("Proyecto :orange[1] ")
+st.subheader("Modelo ML -  :orange[Regresión] ")
 #with open('googlelogo.png', 'wb') as f: 
 #     f.write(alfa_romeo.content) 
 
