@@ -6,7 +6,18 @@ import streamlit as st
 import requests
 from PIL import Image
 import urllib.request
-
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression,Ridge,Lasso,ElasticNet
+from sklearn.metrics import r2_score 
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.metrics import mean_squared_error
+from sklearn.preprocessing import scale
+from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.feature_selection import SelectKBest, f_regression
+from sklearn.pipeline import Pipeline
+from sklearn.model_selection import GridSearchCV
+from sklearn.preprocessing import OneHotEncoder, LabelEncoder
 
 data = pd.read_csv('https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-ML240EN-SkillsNetwork/labs/data/CarPrice_Assignment.csv')
 alfa_romeo=Image.open("alfa-romeo.jpg")
@@ -20,13 +31,17 @@ st.subheader("Modelo ML -  :orange[Regresión] ")
 #with open('googlelogo.png', 'wb') as f: 
 #     f.write(alfa_romeo.content) 
 
-st.write(":blue[Elige un modelo]")
+pagina1, pagina2 =st.tabs(["Individual","Multiple"])
 
-st.title("Predictor de precios")
+with pagina1:
+
+   st.write(":blue[Elige un modelo]")
+
+   st.title("Predictor de precios")
 #st.write("Seleccione las caracteriticas del modelo de automovil que quiere predecir el precio estimado en el mercado, luego presione enviar.")
 
-st.write("Lo que hace el predictor de precios, es que según las caracterísitcas de cierto producto puede predecir cual sería el precio en el mercado.")
-st.write("El predictor de precios de vehículos se utiliza para saber si una empresa automotriz puede entrar a un nuevo mercado, ya que conocerá el valor en el cual podrá vender esos vehículos. En el caso de ya contar con una empresa automotriz se puede utilizar para saber a cuanto se podría ofrecer un nuevo modelo de vehículo según sus caracterísitcas. Esto dado que los datos utilizados por el modelo de machine learning contiene los modelos de vehículos que ofrece el mercado y sus respectivos precios.")
+   st.write("Lo que hace el predictor de precios, es que según las caracterísitcas de cierto producto puede predecir cual sería el precio en el mercado.")
+   st.write("El predictor de precios de vehículos se utiliza para saber si una empresa automotriz puede entrar a un nuevo mercado, ya que conocerá el valor en el cual podrá vender esos vehículos. En el caso de ya contar con una empresa automotriz se puede utilizar para saber a cuanto se podría ofrecer un nuevo modelo de vehículo según sus caracterísitcas. Esto dado que los datos utilizados por el modelo de machine learning contiene los modelos de vehículos que ofrece el mercado y sus respectivos precios.")
 #st.write("""
 #          Una empresa de automoviles pretender entrar al mercado de un pais, para ello necesita saber a cuanto podria vender sus automoviles
 #          para saber si es viable el negocio, entonces hace un estudio para saber el precio de los automoviles que ofrece el mercado con sus
@@ -46,28 +61,28 @@ st.write("El predictor de precios de vehículos se utiliza para saber si una emp
 
 #st.write("La data es limpiada y las variables categoricas se codifican a numeros para no causar malas interpretaciones del modelo")
 
-st.sidebar.write(":blue[Selecciona un vehículo con sus respectivas especificaciones]")
+   st.sidebar.write(":blue[Selecciona un vehículo con sus respectivas especificaciones]")
 
-data = pd.DataFrame(data)
+   data = pd.DataFrame(data)
 
-data2 = data.drop(["car_ID", "symboling"], axis=1)
+   data2 = data.drop(["car_ID", "symboling"], axis=1)
 
-data2[["Brand", "Car_Name1", "Car_Name2", "Car_Name3", "Car_Name4"]]=data2["CarName"].str.split(" ",expand=True)
+   data2[["Brand", "Car_Name1", "Car_Name2", "Car_Name3", "Car_Name4"]]=data2["CarName"].str.split(" ",expand=True)
 
-data3 = data2.drop(["CarName","Car_Name1","Car_Name2","Car_Name3","Car_Name4"], axis=1)
+   data3 = data2.drop(["CarName","Car_Name1","Car_Name2","Car_Name3","Car_Name4"], axis=1)
 
-data3["Brand"] = data3["Brand"].replace({"alfa-romero":"alfa-romeo", "Nissan": "nissan", "toyouta": "toyota", "vokswagen": "volkswagen", "vw": "volkswagen", "porcshce":"porsche", "maxda":"mazda"})
+   data3["Brand"] = data3["Brand"].replace({"alfa-romero":"alfa-romeo", "Nissan": "nissan", "toyouta": "toyota", "vokswagen": "volkswagen", "vw": "volkswagen", "porcshce":"porsche", "maxda":"mazda"})
 
 #st.write(data3.shape)
 
-nombre_col=data3.columns.tolist()
+   nombre_col=data3.columns.tolist()
 
 #st.write(data3)
 
-Marca=data3["Brand"].unique()
+   Marca=data3["Brand"].unique()
 
-st.header("Selecciona un modelo de vehículo:")
-with st.form("auto", clear_on_submit=False, border=True):           
+   st.header("Selecciona un modelo de vehículo:")
+   with st.form("auto", clear_on_submit=False, border=True):           
             marca_auto=st.selectbox("Marca del vehículo", data3["Brand"].unique())
             left_column, right_column, three_column=st.columns(3)
             with left_column:
@@ -97,42 +112,32 @@ with st.form("auto", clear_on_submit=False, border=True):
                           citympg=st.select_slider("Rendimiento mpg en ciudad", np.sort(data3["citympg"].unique()))
             variable_input_sumit = st.form_submit_button("Enviar")
 
-data4=data3
+   data4=data3
 
-from sklearn.preprocessing import OneHotEncoder, LabelEncoder
+   
 
-ohe = OneHotEncoder()
-le = LabelEncoder()
+   ohe = OneHotEncoder()
+   le = LabelEncoder()
 
-data_name_col = ["fueltype", "aspiration", "doornumber", "carbody", "drivewheel", "enginelocation", "enginetype", "cylindernumber", "fuelsystem", "Brand"]
-data_name_col2 = ["fueltype", "aspiration", "doornumber", "carbody", "drivewheel", "enginelocation", "enginetype", "cylindernumber", "fuelsystem"]
+   data_name_col = ["fueltype", "aspiration", "doornumber", "carbody", "drivewheel", "enginelocation", "enginetype", "cylindernumber", "fuelsystem", "Brand"]
+   data_name_col2 = ["fueltype", "aspiration", "doornumber", "carbody", "drivewheel", "enginelocation", "enginetype", "cylindernumber", "fuelsystem"]
 
 #Para ocupar OneHotEncoder y ocupar ".categories_" se necesita que sean columnas tipo "category"
 
 
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression,Ridge,Lasso,ElasticNet
-from sklearn.metrics import r2_score 
-from sklearn.preprocessing import PolynomialFeatures
-from sklearn.metrics import mean_squared_error
-from sklearn.preprocessing import scale
-from sklearn.preprocessing import StandardScaler
-from sklearn.preprocessing import MinMaxScaler
-from sklearn.feature_selection import SelectKBest, f_regression
-from sklearn.pipeline import Pipeline
-from sklearn.model_selection import GridSearchCV
 
-X = data4.drop("price", axis=1)
 
-X[["fueltype", "aspiration", "doornumber", "carbody", "drivewheel", "enginelocation", "enginetype", "cylindernumber", "fuelsystem", "Brand"]]= X[["fueltype", "aspiration", "doornumber", "carbody", "drivewheel", "enginelocation", "enginetype", "cylindernumber", "fuelsystem", "Brand"]].astype("category")
+   X = data4.drop("price", axis=1)
+
+   X[["fueltype", "aspiration", "doornumber", "carbody", "drivewheel", "enginelocation", "enginetype", "cylindernumber", "fuelsystem", "Brand"]]= X[["fueltype", "aspiration", "doornumber", "carbody", "drivewheel", "enginelocation", "enginetype", "cylindernumber", "fuelsystem", "Brand"]].astype("category")
 
 
 
-y = data4["price"]
+   y = data4["price"]
 
 
 
-if variable_input_sumit:
+   if variable_input_sumit:
         st.write(f":blue[El modelo elegido es {marca_auto}]")
         data_2=pd.DataFrame([marca_auto, tipo_combustible, aspiracion, numero_puertas, cuerpo_del_auto, manubrio, ubicacion_motor, base_de_rueda, largo_del_auto,  ancho_del_auto, altura_del_auto, peso_del_auto, tipo_de_motor, cilindrado, tamaño_del_motor, sistema_de_combustible, boreratio,stoke, Compressionratio, caballos_de_fuerza, peakrpm, citympg, highwaympg]).T
         data_2=data_2.rename(columns={0:"Brand", 1:"fueltype", 2:"aspiration", 3:"doornumber", 4:"carbody", 5:"drivewheel", 6:"enginelocation", 7:"wheelbase", 8:"carlength", 9:"carwidth", 10:"carheight", 11:"curbwight", 12:"enginetype", 13:"cylindernumber", 14:"enginesize", 15:"fuelsystem", 16:"boreratio", 17:"stroke", 18:"compressionratio", 19:"horsepower", 20:"peakrpm", 21:"citympg", 22:"highwaympg"})        
@@ -217,6 +222,106 @@ if variable_input_sumit:
                 st.sidebar.write("Isuzu Motors Ltd. es un fabricante de vehículos industriales y comerciales, así como de motores diésel, con sede mundial en Tokio, Japón. Su actividad se concentra en el diseño, producción, ensamblaje, venta y distribución de vehículos comerciales. ")
                 st.sidebar.write(isuzu)
    
+
+with pagina2:
+
+     st.subheader("Instrucciones")
+     
+     st.write("-Sube un archivo con un dataset")
+     
+     st.write("-El dataset con los datos debe estar limpiado")
+     
+     st.write("-Debe ser un archivo '.csv'")
+     
+     st.write("-La tabla debe contener todas estas columnas en el siguiente orden:")
+     
+     if st.checkbox("Mostrar columnas"):
+     
+                ''':green["fueltype", "aspiration", "doornumber", "carbody", "drivewheel", "enginelocation", "wheelbase", "carlength", "carwidth", "carheight", "curbweight", "enginetype", "cylindernumber", "enginesize", "fuelsystem", "boreratio", "stroke", "compressionratio", "horsepower", "peakrpm", "citympg", "highwaympg", "Brand"]'''
+     
+     st.write("-Puede contener algunas columnas adicional 'price' como los datos de prueba")
+     
+     st.write("-Puede descargar datos de prueba dando click [aquí](%s)" % "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-ML240EN-SkillsNetwork/labs/data/CarPrice_Assignment.csv" )
+     
+     st.sidebar.write(":blue[Selecciona un vehículo con sus respectivas especificaciones]")
+
+
+
+#st.write(data3.shape)
+
+     #nombre_col=data3.columns.tolist()
+     
+     with st.form("carga archivo", clear_on_submit=True):
+     
+                data_up = st.file_uploader("Inserte un archivo", type=["csv"])
+                
+                recibido=st.form_submit_button("Enviar")
+                
+                if recibido and data_up is not None:
+                      #ret = self.upload_file(data_up)
+                      
+                      #if ret is not False:
+                      
+                              data_up = pd.read_csv(data_up)
+                      
+                              data_up = pd.DataFrame(data_up)
+                              
+                              data = pd.DataFrame(data)
+
+                              data_up = data.drop(["car_ID", "symboling"], axis=1)
+
+                              data_up[["Brand", "Car_Name1", "Car_Name2", "Car_Name3", "Car_Name4"]]=data_up["CarName"].str.split(" ",expand=True)
+
+                              data_up = data_up.drop(["CarName","Car_Name1","Car_Name2","Car_Name3","Car_Name4"], axis=1)
+
+                              data_up["Brand"] = data_up["Brand"].replace({"alfa-romero":"alfa-romeo", "Nissan": "nissan", "toyouta": "toyota", "vokswagen": "volkswagen", "vw": "volkswagen", "porcshce":"porsche", "maxda":"mazda"})
+                              
+                              data_up = data_up.drop(["price"], axis=1, errors="ignore")
+                              
+                              data_up2 = data_up
+                              
+                              for col in data_name_col:
+
+                                    data_ohe = ohe.fit_transform(data_up2[[col]].values.reshape(-1, 1)).toarray()
+                                    data_up2 = pd.concat([data_up2.drop(col, axis = 1), pd.DataFrame(data_ohe, columns = ohe.categories_[0])], axis = 1) 
+                                     
+                                     #X1=pd.concat([data_2, X], axis=0).reset_index()   
+
+                              #data = pd.DataFrame(data)
+
+                              data5 = data.drop(["car_ID", "symboling"], axis=1)
+
+                              data5[["Brand", "Car_Name1", "Car_Name2", "Car_Name3", "Car_Name4"]]=data5["CarName"].str.split(" ",expand=True)
+
+                              data5 = data5.drop(["CarName","Car_Name1","Car_Name2","Car_Name3","Car_Name4"], axis=1)
+
+                              data5["Brand"] = data5["Brand"].replace({"alfa-romero":"alfa-romeo", "Nissan": "nissan", "toyouta": "toyota", "vokswagen": "volkswagen", "vw": "volkswagen", "porcshce":"porsche", "maxda":"mazda"})    
+                              
+                              for col in data_name_col:
+
+                                    data_ohe = ohe.fit_transform(data5[[col]].values.reshape(-1, 1)).toarray()
+                                    data5 = pd.concat([data5.drop(col, axis = 1), pd.DataFrame(data_ohe, columns = ohe.categories_[0])], axis = 1) 
+                              
+                              X2 = data5.drop("price", axis=1)
+                              y2 = data5["price"]
+                              
+                              X_train, X_test, y_train, y_test = train_test_split(X2, y2, test_size=0.3, random_state=30)
+                              pipe_en2 = Pipeline([("polynomial", PolynomialFeatures(include_bias=False, degree=2)), ("ss", StandardScaler()), ("model", ElasticNet(tol=0.2, max_iter=5000, l1_ratio=0.75, alpha=10))]) 
+               
+                              pipe_en2.fit(X_train, y_train) 
+                              y_pred_up = pipe_en2.predict(data_up2)
+                              
+                              y_pred_up2 = pd.DataFrame(y_pred_up)
+                              
+                              mezcla = pd.DataFrame(pd.concat([data_up, y_pred_up2], axis=1))
+                              mezcla = mezcla.rename(columns={0:"price"})
+                              
+                   
+                              st.write(":blue[Los clientes que se pueden perder son: ]")
+                              
+                              st.write(mezcla)  
+                  
+                              st.write(":blue[(click arriba para descargar)]")
                
 #for col in data_name_col:
     
