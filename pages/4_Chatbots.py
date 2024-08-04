@@ -123,9 +123,9 @@ with pagina2:
             st.session_state.user_input2 = ""
             
             
-      for message in st.session_state["messages"]:
-            role = "- 👨 **Tu** " if message["role"] == "user" else "- 🤖 **Bot**"
-            st.write(f"{role}: {message['content']}")
+      for message2 in st.session_state["messages"]:
+            role = "- 👨 **Tu** " if message2["role"] == "user" else "- 🤖 **Bot**"
+            st.write(f"{role}: {message2['content']}")
             
       with st.form(key="chat_form2", clear_on_submit=True):
             st.text_input("Tu:", key="user_input")
