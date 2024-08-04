@@ -123,7 +123,7 @@ with pagina2:
             st.session_state.user_input2 = ""
             
             
-      for message2 in st.session_state["messages"]:
+      for message in st.session_state["messages"]:
             role = "- 👨 **Tu** " if message["role"] == "user" else "- 🤖 **Bot**"
             st.write(f"{role}: {message['content']}")
             
