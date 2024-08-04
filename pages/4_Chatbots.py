@@ -4,7 +4,7 @@ import streamlit as st
 client = Groq(api_key="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")
 
 pagina1, pagina2 =st.tabs(["Llama 3.1","Gemma 2"])
-
+"""
 with pagina1:
     st.sidebar.header("Opciones del chat")
        
@@ -69,7 +69,7 @@ with pagina1:
       
     if __name__ == "__main__":
       chat()
-      
+"""      
 with pagina2:
     st.sidebar.header("Opciones del chat")
        
