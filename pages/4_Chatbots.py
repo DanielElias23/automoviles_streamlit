@@ -83,7 +83,7 @@ with pagina2:
     #  numero2=2
 
     def get_ai_response2(messages2):
-      completion = client2.chat.completions.create(
+      completion = client2.chat2.completions.create(
               model="gemma2-9b-it",
               messages=messages,
               temperature=1,  #0.7,
