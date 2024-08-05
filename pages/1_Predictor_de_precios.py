@@ -37,7 +37,7 @@ pagina1, pagina2 =st.tabs(["Individual","Múltiple"])
 
 with pagina1:
 
-   st.write(":blue[Elige un modelo vehículo y haga su predicción]")
+   st.write(":blue[Rellene el formulario y haga su predicción]")
    
    #if st.checkbox("Mostrar explicación"):
 
