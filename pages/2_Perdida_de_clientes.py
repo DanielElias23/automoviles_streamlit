@@ -14,7 +14,7 @@ churn_df = pd.read_csv("https://cf-courses-data.s3.us.cloud-object-storage.appdo
 
 #st.subheader("Clasificación de Posible Abandono de Clientes de Telecomunicaciones")
 st.subheader("Predicción de Abandono de Clientes en el Rubro Telecomunicaciones")
-st.write(":green[Modelo ML - Clasificación] ")
+st.write(":green[*Modelo ML - Clasificación*] ")
 pagina1, pagina2 =st.tabs(["Individual","Múltiple"])
 
 with pagina1:
