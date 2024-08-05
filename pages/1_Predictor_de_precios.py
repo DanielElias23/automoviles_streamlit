@@ -37,7 +37,7 @@ pagina1, pagina2 =st.tabs(["Individual","Múltiple"])
 
 with pagina1:
 
-   st.write(":blue[Elige un modelo y haga la predicción]")
+   st.write(":blue[Elige un modelo vehículo y haga su predicción]")
    
    #if st.checkbox("Mostrar explicación"):
 
@@ -84,7 +84,7 @@ with pagina1:
 #st.write(data3)
 
    Marca=data3["Brand"].unique()
-
+   
    st.header("Selecciona un modelo de vehículo:")
    
    with st.form("auto", clear_on_submit=False, border=True):           

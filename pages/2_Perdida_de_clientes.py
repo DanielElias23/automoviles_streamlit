@@ -19,7 +19,7 @@ pagina1, pagina2 =st.tabs(["Individual","Múltiple"])
 
 with pagina1:
 
-     st.write(":blue[Rellene el formulario]")
+     st.write(":blue[Rellene el formulario y haga su predicción]")
 
      st.title("Perdida de clientes")
 
