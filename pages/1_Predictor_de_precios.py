@@ -38,10 +38,12 @@ pagina1, pagina2 =st.tabs(["Individual","Múltiple"])
 with pagina1:
 
    st.write(":blue[Elige un modelo]")
+   
+   #if st.checkbox("Mostrar explicación"):
 
-   st.title("Predictor de precios")
+        
 #st.write("Seleccione las caracteriticas del modelo de automovil que quiere predecir el precio estimado en el mercado, luego presione enviar.")
-
+   st.title("Predictor de precios")
    st.write("Lo que hace el predictor de precios, es que según las características de cierto producto puede predecir cual sería el precio en el mercado.")
    st.write("El predictor de precios de vehículos se utiliza para saber si una empresa automotriz puede entrar a un nuevo mercado, ya que conocerá el valor en el cual podrá vender esos vehículos. En el caso de ya contar con una empresa automotriz se puede utilizar para saber a cuanto se podría ofrecer un nuevo modelo de vehículo según sus características. Esto dado que los datos utilizados por el modelo de machine learning contiene los modelos de vehículos que ofrece el mercado y sus respectivos precios.")
 #st.write("""
@@ -245,7 +247,7 @@ with pagina2:
      
      st.write("-Puede descargar datos de prueba dando click [aquí](%s)" % "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-ML240EN-SkillsNetwork/labs/data/CarPrice_Assignment.csv" )
      
-     st.sidebar.write(":blue[Selecciona un vehículo con sus respectivas especificaciones]")
+     #st.sidebar.write(":blue[Selecciona un vehículo con sus respectivas especificaciones]")
 
 
 

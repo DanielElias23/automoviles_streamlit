@@ -3,6 +3,8 @@ import streamlit as st
 
 client = Groq(api_key="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")
 
+st.subheader("Elige un chat y conversa")
+
 pagina1, pagina2 =st.tabs(["Llama 3.1","Gemma 2"])
 
 with pagina1:
@@ -34,6 +36,7 @@ with pagina1:
     def chat():
       st.title("Chat con Llama 3.1")
       st.write("¡Bienvenidos al chat con IA! Para refrescar la conversación actualiza la página.")
+      st.write("Escribe un comentario o pregunta y mantiene una conversación con la IA.")
       if "messages" not in st.session_state:
             st.session_state["messages"]=[]
       
@@ -63,7 +66,7 @@ with pagina1:
             st.write(f"{role}: {message['content']}")
             
       with st.form(key="chat_form", clear_on_submit=True, border=True):
-            st.text_input("Tu:", key="user_input")
+            st.text_input("Tu:", key="user_input", placeholder="Escribe un mensaje")
             submit_button = st.form_submit_button(label="Enviar", on_click=submit)
       css="""
       <style>
@@ -106,6 +109,7 @@ with pagina2:
     def chat():
       st.title("Chat con Gemma 2")
       st.write("¡Bienvenidos al chat con IA! Para refrescar la conversación actualiza la página.")
+      st.write("Escribe un comentario o pregunta y mantiene una conversación con la IA.")
       if "messages2" not in st.session_state:
             st.session_state["messages2"]=[]
       
@@ -124,8 +128,8 @@ with pagina2:
             st.session_state["messages2"].append({"role": "user", "content": user_input2})
             
             with st.spinner("Obtieniendo respuesta..."):
-                 ai_response = get_ai_response2(st.session_state["messages2"], numero2)
-                 st.session_state["messages2"].append({"role": "assistant", "content": ai_response})  
+                 ai_response2 = get_ai_response2(st.session_state["messages2"], numero2)
+                 st.session_state["messages2"].append({"role": "assistant", "content": ai_response2})  
                  
             st.session_state.user_input2 = ""
             
@@ -135,7 +139,7 @@ with pagina2:
             st.write(f"{role}: {message2['content']}")
             
       with st.form(key="chat_form2", clear_on_submit=True, border=True):
-            st.text_input("Tu:", key="user_input2")
+            st.text_input("Tu:", key="user_input2", placeholder="Escribe un mensaje")
             submit_button = st.form_submit_button(label="Enviar", on_click=submit)
             
       
