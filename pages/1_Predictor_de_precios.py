@@ -29,6 +29,7 @@ honda=Image.open("honda.jpg")
 isuzu=Image.open("isuzu.jpg")
 #st.subheader("Modelo ML -  :orange[Regresión] ")
 st.subheader("Predicción de Precios de Automóviles en el Rubro Automotriz")
+st.write(":green[Modelo ML - Regresión]")
 #with open('googlelogo.png', 'wb') as f: 
 #     f.write(alfa_romeo.content) 
 
