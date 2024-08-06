@@ -29,12 +29,12 @@ honda=Image.open("honda.jpg")
 isuzu=Image.open("isuzu.jpg")
 
 #st.subheader("Predicción de Precios de Automóviles en el Rubro Automotriz")
-#st.write(":green[*Modelo ML - Regresión*]")
+
 #with open('googlelogo.png', 'wb') as f: 
 #     f.write(alfa_romeo.content) 
 
 st.title("Predictor de precios")
-st.subheader("Modelo ML -  :orange[Regresión] ")
+st.write(":green[*Modelo ML - Regresión*]")
 pagina1, pagina2 , pagina3=st.tabs(["Home", "Predicción individual","Predicción múltiple"])
 
 with pagina1:
