@@ -152,8 +152,10 @@ with pagina1:
    correlation_matrix = data__4.corr(numeric_only=True)
    fig, ax=plt.subplots()
    sns.heatmap(correlation_matrix, annot=False, cmap="coolwarm", ax=ax, linewidth=0.3,linecolor="black")
-   
+     
    st.pyplot(fig)
+
+   
 
 with pagina2:
 
