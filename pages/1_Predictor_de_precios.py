@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-#import seaborn as sns
+import seaborn as sns
 import matplotlib.pyplot as plt
 import streamlit as st
 import requests
@@ -28,14 +28,134 @@ dodge=Image.open("dodge.jpg")
 honda=Image.open("honda.jpg")
 isuzu=Image.open("isuzu.jpg")
 #st.subheader("Modelo ML -  :orange[Regresión] ")
-st.subheader("Predicción de Precios de Automóviles en el Rubro Automotriz")
-st.write(":green[*Modelo ML - Regresión*]")
+#st.subheader("Predicción de Precios de Automóviles en el Rubro Automotriz")
+#st.write(":green[*Modelo ML - Regresión*]")
 #with open('googlelogo.png', 'wb') as f: 
 #     f.write(alfa_romeo.content) 
 
-pagina1, pagina2 =st.tabs(["Individual","Múltiple"])
+st.title("Predictor de precios")
+
+pagina1, pagina2 , pagina3=st.tabs(["Home", "Predicción individual","Predicción múltiple"])
 
 with pagina1:
+
+   #st.write(":blue[Rellene el formulario y haga su predicción]")
+   st.subheader("Exploración y Análisis")
+   st.write("Lo que hace el predictor de precios, es que según las características de cierto producto puede predecir cual sería el precio en el mercado.")
+   st.write("El predictor de precios de vehículos se utiliza para saber si una empresa automotriz puede entrar a un nuevo mercado, ya que conocerá el valor en el cual podrá vender esos vehículos. En el caso de ya contar con una empresa automotriz se puede utilizar para saber a cuanto se podría ofrecer un nuevo modelo de vehículo según sus características. Esto dado que los datos utilizados por el modelo de machine learning contiene los modelos de vehículos que ofrece el mercado y sus respectivos precios.")
+
+
+   st.write("Los datos pertenecen a los vehiculos ofrecidos en el mercado automotriz y se presentan de la siguiente forma:")
+   st.code("data.head(5)")
+   st.table(data.head(5))
+
+   st.write("Se eliminar las columnas que no se ocuparan ya son car_ID, symboling.")
+   
+   st.code("data = data.drop(['car_ID', 'symboling'], axis=1)")
+   
+   st.write("Luego se elimina el nombre comercial del vehiculo para quedarnos solo con el nombre de la marca.")
+
+   st.code("""
+   data[["Brand", "Car_Name1", "Car_Name2", "Car_Name3", "Car_Name4"]]=data["CarName"].str.split(" ",expand=True)
+   data = data.drop(["CarName","Car_Name1","Car_Name2","Car_Name3","Car_Name4"], axis=1)
+   data["Brand"] = data["Brand"].replace({"alfa-romero":"alfa-romeo", "Nissan": "nissan", "toyouta": "toyota", "vokswagen": "volkswagen", "vw": "volkswagen", "porcshce":"porsche", "maxda":"mazda"})
+   data.head(5)
+""")
+
+   data__2 = pd.DataFrame(data)
+
+   data__3 = data__2.drop(["car_ID", "symboling"], axis=1)
+
+   data__3[["Brand", "Car_Name1", "Car_Name2", "Car_Name3", "Car_Name4"]]=data__3["CarName"].str.split(" ",expand=True)
+
+   data__4 = data__3.drop(["CarName","Car_Name1","Car_Name2","Car_Name3","Car_Name4"], axis=1)
+
+   data__4["Brand"] = data__4["Brand"].replace({"alfa-romero":"alfa-romeo", "Nissan": "nissan", "toyouta": "toyota", "vokswagen": "volkswagen", "vw": "volkswagen", "porcshce":"porsche", "maxda":"mazda"})
+
+   st.write("El nombre de la marca se queda al final al terminar el proceso. Tambien se arreglo algunos nombre de la marca que estaban mal escritos")
+
+   st.table(data__4.head(5))
+   
+   st.write("Cambiamos algunos datos que son palabras y podemos cambiarlas por numeros directamente, por que efectivamente tener mayor numero implicara mayor precio, para que el modelo lo entienda correctamente.")
+   
+   data__4["doornumber"] = data__4["doornumber"].replace({"two":2, "four": 4})
+   data__4["cylindernumber"] = data__4["cylindernumber"].replace({"two":2, "three":3, "four": 4, "five":5, "six":6, "seven":7, "eight":8, "twelve":12})
+   
+   st.code("""
+   data["doornumber"] = data["doornumber"].replace({"two":2, "four": 4})
+   data["cylindernumber"] = data["cylindernumber"].replace({"two":2, "three":3, "four": 4, "five":5, "six":6, "seven":7, "eight":8, "twelve":12})
+   data.head(5)
+""")
+   
+   st.table(data__4.head(5))  
+   
+   st.write("Realizamos alguna exploración respecto a los datos enfocado en las marcas")
+   
+   st.code("""
+         grupos=pd.DataFrame(data.groupby(["Brand"], as_index=False)["price"].agg("mean"))
+         fig, ax =plt.subplots()
+         ax.barh(grupos["Brand"], grupos["price"], color="red", edgecolor="black", linewidth=0.3)
+         ax.grid(alpha=0.2)
+         ax.set_title("Precio promedio de los vehículos por marca")
+         ax.set_xlabel("Precio promedio de los vehículos ($)")
+         ax.set_ylabel("Marcas")
+         plt.show()
+   """)
+   
+   st.write("Se muestra que hay ciertas marcas que tienen automoviles mas costosos en los datos, por ende al hacer el modelo de machine learning, reconocera que esas marcas tienen un precios adicional solo por ser de esa marca, independientemente de sus especificaciones.")
+   
+   grupos12=pd.DataFrame(data__4.groupby(["Brand"], as_index=False)["price"].agg("mean"))
+   fig, ax =plt.subplots()
+   ax.barh(grupos12["Brand"], grupos12["price"], color="red", edgecolor="black", linewidth=0.3)
+   ax.grid(alpha=0.2)
+   ax.set_title("Precio promedio de los vehículos por marca")
+   ax.set_xlabel("Precio promedio de los vehículos ($)")
+   ax.set_ylabel("Marcas")
+   st.pyplot(fig)
+   #grupos1.set_index("Brand")
+   #st.bar_chart(grupos1, x=grupos1["Brand"], y=grupos1["price"])
+   
+   st.write("Por otro lado podemos graficar como se distribuyen los precios.")
+   
+   st.code("""
+   fig, ax =plt.subplots()
+   ax.hist(data["price"], bins=35, edgecolor="black", linewidth=0.3)
+   ax.grid(alpha=0.2)
+   ax.set_title("Distribución de los precio de vehículos")
+   ax.set_xlabel("Precio de vehículos ($)")
+   ax.set_ylabel("Cantidad de vehículos")
+   plt.show()
+   """)
+   
+   
+   st.write("Se muestra que la mayoria de los vehículos estan en un rango de 5000\$ a 10000\$ dolares por lo que la mayoria de las predicciones se encontrar en ese rango, ademas por otro lado los vehículos en ese rango tendran mejores estimaciones que las otras que tienen menores cantidad de muestras.")
+   
+   fig, ax =plt.subplots()
+   ax.hist(data__4["price"], bins=35, edgecolor="black", linewidth=0.3)
+   ax.grid(alpha=0.2)
+   ax.set_title("Distribución de los precio de vehículos")
+   ax.set_xlabel("Precio de vehículos ($)")
+   ax.set_ylabel("Cantidad de vehículos")
+   st.pyplot(fig)
+   
+   st.write("Asi tambien es importante revisar las correlaciones para saber que columnas tienen mayor efecto en las predicciones")
+   
+   st.code("""
+   correlation_matrix = data__4.corr(numeric_only=True)
+   fig, ax=plt.subplots()
+   sns.heatmap(correlation_matrix, annot=False, cmap="coolwarm", ax=ax, linewidth=0.3,linecolor="black")
+   plt.show()
+   """)
+   
+   st.write("Si se mira en este caso lo que queremos predecir es el precio, si miramos su columna o fila, nos damos cuenta que la caracterisitca que mas aporta al precio por si sola es el :red[tamaño del motor] y de las que menos importante para el precio es la altura del vehículo.")
+   
+   correlation_matrix = data__4.corr(numeric_only=True)
+   fig, ax=plt.subplots()
+   sns.heatmap(correlation_matrix, annot=False, cmap="coolwarm", ax=ax, linewidth=0.3,linecolor="black")
+   
+   st.pyplot(fig)
+
+with pagina2:
 
    st.write(":blue[Rellene el formulario y haga su predicción]")
    
@@ -43,9 +163,7 @@ with pagina1:
 
         
 #st.write("Seleccione las caracteriticas del modelo de automovil que quiere predecir el precio estimado en el mercado, luego presione enviar.")
-   st.title("Predictor de precios")
-   st.write("Lo que hace el predictor de precios, es que según las características de cierto producto puede predecir cual sería el precio en el mercado.")
-   st.write("El predictor de precios de vehículos se utiliza para saber si una empresa automotriz puede entrar a un nuevo mercado, ya que conocerá el valor en el cual podrá vender esos vehículos. En el caso de ya contar con una empresa automotriz se puede utilizar para saber a cuanto se podría ofrecer un nuevo modelo de vehículo según sus características. Esto dado que los datos utilizados por el modelo de machine learning contiene los modelos de vehículos que ofrece el mercado y sus respectivos precios.")
+
 #st.write("""
 #          Una empresa de automoviles pretender entrar al mercado de un pais, para ello necesita saber a cuanto podria vender sus automoviles
 #          para saber si es viable el negocio, entonces hace un estudio para saber el precio de los automoviles que ofrece el mercado con sus
@@ -228,7 +346,7 @@ with pagina1:
                 st.sidebar.write(isuzu)
    
 
-with pagina2:
+with pagina3:
 
      st.subheader("Instrucciones")
      
