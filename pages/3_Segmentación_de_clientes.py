@@ -16,7 +16,7 @@ Dash1=Image.open("dashboard1.png")
 df = pd.read_csv('https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-ML0187EN-SkillsNetwork/labs/module%203/data/CustomerData.csv', index_col=0)
 
 st.title("Segmentación de clientes")
-
+st.write(":green[Modelo ML - Clustering]")
 st.write("Un clustering corresponde a un análisis para llevar a cabo una segmentación, al hacerse un análisis generalmente se da como resultado que una sola segmentación es la más óptima, por lo que no puede ser interactivo al ser solo un resultado, por esta razón esta sección será un análisis para lograr definir las diferentes agrupaciones de clientes.")
 #print(df)
 
