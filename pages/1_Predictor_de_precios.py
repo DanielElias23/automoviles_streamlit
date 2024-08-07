@@ -35,7 +35,7 @@ isuzu=Image.open("isuzu.jpg")
 
 st.title("Predictor de precios")
 st.write(":green[*Modelo ML - Regresión*]")
-pagina1, pagina2 , pagina3=st.tabs(["Exploración y análisis", "Predicción individual","Predicción múltiple"])
+pagina1, pagina2 , pagina3=st.tabs(["Home", "Predicción individual","Predicción múltiple"])
 
 with pagina1:
 
