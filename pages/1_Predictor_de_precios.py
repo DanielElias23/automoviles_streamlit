@@ -35,25 +35,34 @@ isuzu=Image.open("isuzu.jpg")
 
 st.title("Predictor de precios")
 st.write(":green[*Modelo ML - Regresión*]")
-pagina1, pagina2 , pagina3=st.tabs(["Home", "Predicción individual","Predicción múltiple"])
+pagina1, pagina2 , pagina3=st.tabs(["Exploración y análisis", "Predicción individual","Predicción múltiple"])
 
 with pagina1:
 
    #st.write(":blue[Rellene el formulario y haga su predicción]")
    st.subheader("Exploración y Análisis")
-   st.write("Lo que hace el predictor de precios, es que según las características de cierto producto puede predecir cual sería el precio en el mercado.")
-   st.write("El predictor de precios de vehículos se utiliza para saber si una empresa automotriz puede entrar a un nuevo mercado, ya que conocerá el valor en el cual podrá vender esos vehículos. En el caso de ya contar con una empresa automotriz se puede utilizar para saber a cuanto se podría ofrecer un nuevo modelo de vehículo según sus características. Esto dado que los datos utilizados por el modelo de machine learning contiene los modelos de vehículos que ofrece el mercado y sus respectivos precios.")
+   st.write("La predicción de precios se puede hacer a través de una modelo de machine learning con sus respectivos datos, en el cual según las características de cierto producto puede predecir cual sería su precio.")
+   st.write("En este caso los datos pertenecen a una empresa automotriz que quiere predecir el precio de los automóviles, en el caso de formar una empresa nueva se puede utilizar para saber si puede entrar a un nuevo mercado, ya que conocerá el valor en el cual podrá vender esos vehículos. En el caso de ya contar con una empresa automotriz se puede utilizar para saber a cuanto se podría ofrecer un nuevo modelo de vehículo según sus características. Esto dado que los datos utilizados por el modelo de machine learning contiene los modelos de vehículos que ofrece el mercado y sus respectivos precios.")
 
-
-   st.write("Los datos pertenecen a los vehiculos ofrecidos en el mercado automotriz y se presentan de la siguiente forma:")
-   st.code("data.head(5)")
+   st.subheader("-Manipulación y Limpieza")
+   
+   st.write("Los datos pertenecen a los vehículos ofrecidos en el mercado automotriz y se presentan de la siguiente forma:")
+   st.code("""
+      import pandas as pd
+      import matplotlib.pyplot as plt
+      import seaborn as sns
+      data.head(5)
+      data.shape
+      """)
+  
    st.table(data.head(5))
-
-   st.write("Se eliminar las columnas que no se ocuparan ya son car_ID, symboling.")
+   st.write(data.shape)
+   
+   st.write("Se eliminará las columnas que no se ocuparan, en este caso 'car_ID' y 'symboling'.")
    
    st.code("data = data.drop(['car_ID', 'symboling'], axis=1)")
    
-   st.write("Luego se elimina el nombre comercial del vehiculo para quedarnos solo con el nombre de la marca.")
+   st.write("Luego se elimina el nombre comercial del vehículo para quedarnos solo con el nombre de la marca.")
 
    st.code("""
    data[["Brand", "Car_Name1", "Car_Name2", "Car_Name3", "Car_Name4"]]=data["CarName"].str.split(" ",expand=True)
@@ -72,11 +81,11 @@ with pagina1:
 
    data__4["Brand"] = data__4["Brand"].replace({"alfa-romero":"alfa-romeo", "Nissan": "nissan", "toyouta": "toyota", "vokswagen": "volkswagen", "vw": "volkswagen", "porcshce":"porsche", "maxda":"mazda"})
 
-   st.write("El nombre de la marca se queda al final al terminar el proceso. Tambien se arreglo algunos nombre de la marca que estaban mal escritos")
+   st.write("El nombre de la marca se queda al final al terminar el proceso. También se arregló algunos nombre de la marca que estaban mal escritos")
 
    st.table(data__4.head(5))
    
-   st.write("Cambiamos algunos datos que son palabras y podemos cambiarlas por numeros directamente, por que efectivamente tener mayor numero implicara mayor precio, para que el modelo lo entienda correctamente.")
+   st.write("Cambiamos algunos datos que son palabras y podemos cambiarlas por números directamente, porque efectivamente tener mayor número implicara mayor precio, para que el modelo lo entienda correctamente.")
    
    data__4["doornumber"] = data__4["doornumber"].replace({"two":2, "four": 4})
    data__4["cylindernumber"] = data__4["cylindernumber"].replace({"two":2, "three":3, "four": 4, "five":5, "six":6, "seven":7, "eight":8, "twelve":12})
@@ -87,7 +96,9 @@ with pagina1:
    data.head(5)
 """)
    
-   st.table(data__4.head(5))  
+   st.table(data__4.head(5)) 
+   
+   st.subheader("-Ingeniería de características") 
    
    st.write("Realizamos alguna exploración respecto a los datos enfocado en las marcas")
    
@@ -102,7 +113,7 @@ with pagina1:
          plt.show()
    """)
    
-   st.write("Se muestra que hay ciertas marcas que tienen automoviles mas costosos en los datos, por ende al hacer el modelo de machine learning, reconocera que esas marcas tienen un precios adicional solo por ser de esa marca, independientemente de sus especificaciones.")
+   st.write("Se muestra que hay ciertas marcas que tienen automóviles más costosos en los datos, por ende al hacer el modelo de machine learning, reconocerá que esas marcas tienen un precios adicional solo por ser de esa marca, independientemente de sus especificaciones.")
    
    grupos12=pd.DataFrame(data__4.groupby(["Brand"], as_index=False)["price"].agg("mean"))
    fig, ax =plt.subplots()
@@ -128,7 +139,7 @@ with pagina1:
    """)
    
    
-   st.write("Se muestra que la mayoria de los vehículos estan en un rango de 5000\$ a 10000\$ dolares por lo que la mayoria de las predicciones se encontrar en ese rango, ademas por otro lado los vehículos en ese rango tendran mejores estimaciones que las otras que tienen menores cantidad de muestras.")
+   st.write("Se muestra que la mayoría de los vehículos están en un rango de 5000\$ a 10000\$ dólares por lo que la mayoria de las predicciones se encouentra en ese rango, además por otro lado los vehículos en ese rango tendrán mejores estimaciones que las otras que tienen menores cantidad de muestras.")
    
    fig, ax =plt.subplots()
    ax.hist(data__4["price"], bins=35, edgecolor="black", linewidth=0.3)
@@ -138,7 +149,7 @@ with pagina1:
    ax.set_ylabel("Cantidad de vehículos")
    st.pyplot(fig)
    
-   st.write("Asi tambien es importante revisar las correlaciones para saber que columnas tienen mayor efecto en las predicciones")
+   st.write("Así también es importante revisar las correlaciones para saber que columnas tienen mayor efecto en las predicciones.")
    
    st.code("""
    correlation_matrix = data__4.corr(numeric_only=True)
@@ -147,7 +158,7 @@ with pagina1:
    plt.show()
    """)
    
-   st.write("Si se mira en este caso lo que queremos predecir es el precio, si miramos su columna o fila, nos damos cuenta que la caracterisitca que mas aporta al precio por si sola es el :red[tamaño del motor] y de las que menos importante para el precio es la altura del vehículo.")
+   st.write("Si se mira en este caso lo que queremos predecir es el precio, si miramos su columna o fila, nos damos cuenta que la característica que más aporta al precio por si sola es el :red[tamaño del motor] y de las que menos importante para el precio es la altura del vehículo.")
    
    correlation_matrix = data__4.corr(numeric_only=True)
    fig, ax=plt.subplots()
@@ -155,7 +166,146 @@ with pagina1:
      
    st.pyplot(fig)
 
+   st.write("Codificamos las variables para poder ocupar el modelo solo con columnas con valores númericos.")
    
+   st.code("""
+        from sklearn.preprocessing import OneHotEncoder, LabelEncoder
+        data_name_col = ["fueltype", "aspiration", "carbody", "drivewheel", "enginelocation", "enginetype", "fuelsystem", "Brand"]
+        ohe = OneHotEncoder()
+        for col in data_name_col:
+
+              data_ohe = ohe.fit_transform(data[[col]].values.reshape(-1, 1)).toarray()
+              data = pd.concat([data.drop(col, axis = 1), pd.DataFrame(data_ohe, columns = ohe.categories_[0])], axis = 1)  
+   """)
+ 
+   data_name_col = ["fueltype", "aspiration", "carbody", "drivewheel", "enginelocation", "enginetype", "fuelsystem", "Brand"]
+   ohe = OneHotEncoder()
+   for col in data_name_col:
+
+              data_ohe = ohe.fit_transform(data__4[[col]].values.reshape(-1, 1)).toarray()
+              data__4 = pd.concat([data__4.drop(col, axis = 1), pd.DataFrame(data_ohe, columns = ohe.categories_[0])], axis = 1) 
+
+   st.table(data__4.head(5))
+   
+   
+   st.write("Separamos en 'feature' como las columnas excepto 'price' y 'label' como 'price', en 'X' e 'y', además separando en datos de entrenamiento y prueba.")
+   
+   st.code("""
+       from sklearn.model_selection import train_test_split
+       X = data.drop("price", axis=1)
+       y = data["price"]
+       X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=30
+   """)
+   
+   st.subheader("-Selección del modelo")
+   
+   st.write("Elegimos el modelo que mejor puntuación tenga, empezando probando ':red[**Regresión lineal**]'.")
+   
+   st.code("""
+       from sklearn.preprocessing import StandardScaler
+       from sklearn.linear_model import LinearRegression
+       from sklearn.pipeline import Pipeline
+       from sklearn.metrics import r2_score 
+       pipe_lm = Pipeline([("ss", StandardScaler()), ("model_lm", LinearRegression())]) 
+       pipe_lm.fit(X_train, y_train)
+       y_pred = pipe_lm.predict(X_test)
+       print("R^2 on training  data lm: ", pipe_lm.score(X_train, y_train))
+       print("R^2 on testing data lm: ", pipe_lm.score(X_test,y_test))
+       print("R^2 on predict data lm: ", r2_score(y_pred,y_test))
+   """)
+   R=1
+   st.write("R² en datos de entrenamiento: :green[0.96]") 
+   st.write("R² en datos de prueba: :green[-5.60e+21]")
+   st.write("R² en predicciones:  :green[-0.02]")
+   
+   st.write("El modelo no puede ser usado porque se sobreajusta, necesita un modelo con restricciones.")
+   
+   st.write("A continuación gracias a GridSearch encontramos los mejores parámetros para :red['**Ridge**'] y sacamos su puntuación.")
+   
+   st.code("""
+      from sklearn.linear_model import Ridge
+      from sklearn.preprocessing import PolynomialFeatures
+      from sklearn.model_selection import GridSearchCV
+      from sklearn.metrics import mean_squared_error
+      pipe_lr = Pipeline([("polynomial", PolynomialFeatures(include_bias=False, degree=2)),("ss", StandardScaler()), ("model", Ridge(alpha=10))]) 
+      param_grid = {"polynomial__degree": [ 1, 2,3],"model__alpha":[0.01, 0.1, 1, 10,100,1000]}
+      search = GridSearchCV(pipe_lr, param_grid, n_jobs=2)
+      search.fit(X_train, y_train)
+      best=search.best_estimator_ 
+      ###Encontro el mejor parametro grado polinomial=2, alfa=100
+      pipe_lr = Pipeline([("polynomial", PolynomialFeatures(include_bias=False, degree=2)),("ss", StandardScaler()), ("model", Ridge(alpha=100))])
+      pipe_lr.fit(X_train, y_train)
+      y_pred2 = pipe_lr.predict(X_test)
+      print("R^2 on training  data lr ", pipe_lr.score(X_train, y_train))
+      print("R^2 on testing data lr", pipe_lr.score(X_test,y_test))
+      print("R^2 on prediccion data lr", r2_score(y_pred2,y_test))
+      print("MSE: ", mean_squared_error(y_pred2,y_test))
+      """)
+   st.write("R² en datos de entrenamiento: :green[0.96]") 
+   st.write("R² en datos de prueba: :green[0.93]")
+   st.write("R² en predicciones:  :green[0.92]")
+   st.write("MSE: :green[3726794]")
+   
+   st.write("A continuación gracias a GridSearch encontramos los mejores parámetros para :red['**Lasso**'] y sacamos su puntuación.")
+   
+   st.code("""
+      from sklearn.linear_model import Lasso
+      pipe_ll = Pipeline([("polynomial", PolynomialFeatures(include_bias=False, degree=2)), ("ss", StandardScaler()), ("model", Lasso(alpha=100, max_iter=5000))]) 
+      param_grid = {"polynomial__degree": [ 1, 2,3],"model__alpha":[0.01, 0.1, 1, 10,100,1000]}
+      search = GridSearchCV(pipe_ll, param_grid, n_jobs=2)
+      search.fit(X_train, y_train)
+      best=search.best_estimator_
+      #Encontro mejor hiperparametros, grado polinomio=2, alfa=10
+      pipe_ll = Pipeline([("polynomial", PolynomialFeatures(include_bias=False, degree=2)), ("ss", StandardScaler()), ("model", Lasso(alpha=100, max_iter=5000))])
+      pipe_ll.fit(X_train, y_train)
+      y_pred3 = pipe_ll.predict(X_test)
+      print("R^2 on training  data ll ", pipe_ll.score(X_train, y_train))
+      print("R^2 on testing data ll", pipe_ll.score(X_test,y_test))
+      print("R^2 on testing data ll", r2_score(y_pred3,y_test))
+      print("MSE: ", mean_squared_error(y_pred3,y_test))
+   """)
+   
+   st.write("R²en datos de entrenamiento: :green[0.99]") 
+   st.write("R² en datos de prueba: :green[0.89]")
+   st.write("R² en predicciones:  :green[0.88]")
+   st.write("MSE: :green[5945238]")
+   
+   st.write("A continuación gracias a GridSearch encontramos los mejores parámetros para :red['**ElasticNet**'] y sacamos su puntuación.")
+   
+   st.code("""
+   from sklearn.linear_model import ElasticNet
+   pipe_en = Pipeline([("polynomial", PolynomialFeatures(include_bias=False, degree=2)), ("ss", StandardScaler()), ("model", ElasticNet(tol=0.2, max_iter=5000, l1_ratio=0.75, alpha=1))]) 
+   param_grid = {"polynomial__degree": [ 1, 2,3], "model__alpha":[0.001, 0.1,1,10,100], "model__l1_ratio":[0.5,0.75, 1]}
+   search = GridSearchCV(pipe_en, param_grid, n_jobs=2)
+   search.fit(X_train, y_train)
+   best=search.best_estimator_  
+   #Encontro como mejor parametros alfa=10, l1_ratio=0.75, grado polinomial=3 
+   pipe_en = Pipeline([("polynomial", PolynomialFeatures(include_bias=False, degree=3)), ("ss", StandardScaler()), ("model", ElasticNet(tol=0.2, max_iter=5000, l1_ratio=0.75, alpha=10))]) 
+   pipe_en.fit(X_train, y_train)
+   y_pred4 = pipe_en.predict(X_test)
+   print("R^2 on training  data EN ", pipe_en.score(X_train, y_train))
+   print("R^2 on testing data EN", pipe_en.score(X_test,y_test))
+   print("R^2 on predict data EN", r2_score(y_pred4,y_test))
+   print("MSE", mean_squared_error(y_pred4,y_test))   
+   """)
+
+   st.write("R² en datos de entrenamiento: :green[0.98]") 
+   st.write("R² en datos de prueba: :green[0.94]")
+   st.write("R² en predicciones:  :green[0.93]")
+   st.write("MSE: :green[3344621]")
+
+   st.subheader("Conclusión")
+
+   st.write("El modelo con mejor rendimiento es :red[**ElasticNet**] tuvo un mejor desempeño con los datos de pruebas y las predicciones, además de tener puntuaciones altas y parejas tanto en entrenamiento, prueba y predicciones que muestran que el modelo es sólido y aporta una mayor interpretación de los datos.")
+
+#Encontro como mejor parametros alfa=10, l1_ratio=0.75, grado polinomial=2
+
+
+#Obtuvo la puntuacion mas pareja
+
+#La mejor prediccion con 0.9281
+
+
 
 with pagina2:
 
@@ -205,7 +355,7 @@ with pagina2:
 
    Marca=data3["Brand"].unique()
    
-   st.header("Selecciona un modelo de vehículo:")
+   st.header("Selecciona un modelo de vehículo y realice su predicción:")
    
    with st.form("auto", clear_on_submit=False, border=True):           
             marca_auto=st.selectbox("Marca del vehículo", data3["Brand"].unique())
@@ -350,13 +500,15 @@ with pagina2:
 
 with pagina3:
 
+     st.header("Suba un archivo y realice su predicción:")
+
      st.subheader("Instrucciones")
      
-     st.write("-Sube un archivo con un dataset")
+     st.write("-Sube un archivo con un dataset en formato '.csv'")
      
-     st.write("-El dataset con los datos debe estar limpiado")
+     st.write("-El dataset con los datos debe estar limpiados")
      
-     st.write("-Debe ser un archivo '.csv'")
+     st.write("-Las columnas categóricas deben contener string, las demás solo números")    
      
      st.write("-La tabla debe contener todas estas columnas en el siguiente orden:")
      
@@ -364,7 +516,7 @@ with pagina3:
      
                 ''':green["fueltype", "aspiration", "doornumber", "carbody", "drivewheel", "enginelocation", "wheelbase", "carlength", "carwidth", "carheight", "curbweight", "enginetype", "cylindernumber", "enginesize", "fuelsystem", "boreratio", "stroke", "compressionratio", "horsepower", "peakrpm", "citympg", "highwaympg", "Brand"]'''
      
-     st.write("-Puede contener algunas columnas adicional 'price' como los datos de prueba")
+     st.write("-Puede contener la columna 'price' como los datos de prueba, pero será eliminada")
      
      st.write("-Puede descargar datos de prueba dando click [aquí](%s)" % "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-ML240EN-SkillsNetwork/labs/data/CarPrice_Assignment.csv" )
      
