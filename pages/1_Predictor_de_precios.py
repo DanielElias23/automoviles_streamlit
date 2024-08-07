@@ -355,7 +355,7 @@ with pagina2:
 
    Marca=data3["Brand"].unique()
    
-   st.write(":blue[Carge un archivo y haga su predicción]")
+   st.write(":blue[Carge un archivo y haga su predicción ]")
    
    st.header("Selecciona un modelo de vehículo y realice su predicción:")
    
