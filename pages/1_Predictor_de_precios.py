@@ -502,7 +502,7 @@ with pagina2:
 
 with pagina3:
 
-     st.write(":blue[Carge un archivo y haga su predicción ]")
+     st.write(":blue[Suba un archivo y haga su predicción ]")
      st.header("Suba un archivo y realice su predicción:")
 
      st.subheader("Instrucciones")
