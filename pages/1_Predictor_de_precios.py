@@ -59,7 +59,7 @@ background-attachment: local;
 
 [data-testid="stSidebar"] > div:first-child {{
 background-image: url("https://wallpapers.com/images/hd/dark-blue-plain-thxhzarho60j4alk.jpg");
-background-size: 30%;
+background-size: 80%;
 background-position: top left; 
 background-repeat: no-repeat;
 background-attachment: fixed;
