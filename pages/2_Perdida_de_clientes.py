@@ -430,7 +430,7 @@ with pagina1:
      """)
      
      st.write("-Accuracy es: :green[0.82] -Recall es: :green[0.82] -AUC es: :green[0.72]") 
-     st.write("-Precision es: :green[0.81] -Fscore es: :green[0.82]")
+     st.write("-Precision es: :green[0.81] -Fscore es: :green[0.82] ")
      
      st.subheader("Conclusión")
      
