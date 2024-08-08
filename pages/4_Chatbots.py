@@ -61,6 +61,8 @@ st.markdown(page_bg_img, unsafe_allow_html=True)
 
 client = Groq(api_key="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")
 
+
+
 st.subheader("Elige un chat y conversa")
 
 pagina1, pagina2 =st.tabs(["**Llama 3.1**","Gemma 2"])
@@ -203,6 +205,72 @@ with pagina2:
       
     if __name__ == "__main__":
       chat()      
+ 
+with pagina3:
+    #st.sidebar.header("Opciones del chat")
+       
+    numero3 = st.sidebar.select_slider("Ajuste de creatividad mixtral", ["Muy serio",0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, "Normal", 1.1, 1.2, 1.3,1.4,1.5,1.6,1.7, 1.8, 1.9, "Muy creativo"])
+
+    if numero3 =="Muy serio":
+      numero3=0
+    if numero3 =="Normal":
+      numero3=1
+    if numero3 =="Muy creativo":
+      numero3=2
+    client = Groq(api_key="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")
+    def get_ai_response3(messages3, numero3):
+      completion = client.chat.completions.create(
+              model="mixtral-8x7b-32768",
+              messages=messages3,
+              temperature=numero3,  #0.7,
+              max_tokens=1024,
+              stream=True,
+      )
+      
+      response = "".join(chunk.choices[0].delta.content or "" for chunk in completion)
+      return response
+      
+
+      
+    def chat():
+      st.title("Chat con Mixtral")
+      st.write("¡Bienvenidos al chat con IA! Para refrescar la conversación actualiza la página.")
+      st.write("Escribe un comentario o pregunta y mantiene una conversación con la IA.")
+      if "messages3" not in st.session_state:
+            st.session_state["messages3"]=[]
+      
+      #if "numero" not in st.session_state:
+      #      st.session_state["numero"]=0.7
+      
+      
+      
+      def submit():
+            user_input3 = st.session_state.user_input3
+            if user_input3.lower() == "exit":
+                  st.write("!Gracias por chatear! ¡Adios!")
+                  st.stop()
+            #if i in numero:                  
+            
+            st.session_state["messages3"].append({"role": "user", "content": user_input3})
+            
+            with st.spinner("Obtieniendo respuesta..."):
+                 ai_response3 = get_ai_response3(st.session_state["messages2"], numero3)
+                 st.session_state["messages3"].append({"role": "assistant", "content": ai_response3})  
+                 
+            st.session_state.user_input3 = ""
+            
+            
+      for message3 in st.session_state["messages3"]:
+            role = "- 👨 **Tu** " if message3["role"] == "user" else "- 🤖 **Bot**"
+            st.write(f"{role}: {message3['content']}")
+            
+      with st.form(key="chat_form3", clear_on_submit=True, border=True):
+            st.text_input("Tu:", key="user_input3", placeholder="Escribe un mensaje")
+            submit_button = st.form_submit_button(label="Enviar", on_click=submit)
+            
+      
+    if __name__ == "__main__":
+      chat() 
       
       
       
