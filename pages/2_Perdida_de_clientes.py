@@ -22,7 +22,7 @@ with pagina1:
 
      st.subheader("Exploración y Análisis")
 
-     st.write("La predicción de perdida de clientes se hace por medio de una modelo de machine learning que permite hace clasificaciones, en este caso a un cliente según sus caracterisitcas podria definirlo como posible cliente que abandonara la empresa.")
+     st.write("La predicción de perdida de clientes se hace por medio de una modelo de machine learning que permite hacer clasificaciones, en este caso a los clientes se les clasifica según sus características que podrían definirlo como posible cliente que abandonara la empresa.")
 
      st.write("Los datos presentados son de una empresa de telecomunicaciones, los cuales contienen información relevante para saber si el cliente podría permanecer o abandonar la empresa, los datos son registros históricos de la empresa con las decisiones de los clientes. Mediante estos datos se puede saber si un cliente podría abandonar la empresa, ya que pueden cumplir perfiles parecidos. Los resultados son importantes, ya que permite a la empresa saber con anticipación cuales son los clientes que podrían abandonar la empresa, en base en esto se pueden crear estrategias para que esos clientes permanezcan el mayor tiempo posible en la empresa.")
      
@@ -36,7 +36,7 @@ with pagina1:
      st.table(churn_df.head(5))
      st.write(churn_df.shape)
 
-     st.write("Los datos contienen columnas información de datos personales de los clientes y de los servicios que contrato, en los datos personales se ve información tanto de sus ingresos, nivel de estudio, edad, etc. Mientras que en los de servicios muestran información si es que contrato ciertos servicios de internet, llamadas, además de cuanto dinero pago por esos serviciós. Al final de la tabla se encuentra la información 'churn', que significa si es que ese cliente abandono la empresa, (0) no la abandono y (1) si la abandono.")
+     st.write("Los datos contienen columnas información de datos personales de los clientes y de los servicios que contrato, en los datos personales se ve información tanto de sus ingresos, nivel de estudio, edad, etc. Mientras que en los de servicios muestran información si es que contrato ciertos servicios de internet, llamadas, además de cuanto dinero pago por esos servicios. Al final de la tabla se encuentra la información 'churn', que significa si es que ese cliente abandono la empresa, (0) no la abandono y (1) si la abandono.")
      
      st.write("Se eliminan las columnas que no se usaran que son 'loglong', 'logtoll', 'lninc' porque son información repetidas de  otras columnas, son simplemente los logaritmos de aquellas columnas.")
  
@@ -44,11 +44,11 @@ with pagina1:
        churn_df = churn_df.drop(["loglong", "lninc", "logtoll"], axis=1)
      """)
      
-     st.write("En este caso los datos estan limpiados y codificados por lo que no hay que hacer mas limpieza.")
+     st.write("En este caso los datos están limpiados y codificados por lo que no hay que hacer más limpieza.")
       
      st.subheader("Ingeniería de características")
      
-     st.write("Lo mas importante es ver como se comportan las características con respecto a la etiqueta en este caso 'churn' y algunas relaciones muy resumidas")
+     st.write("Lo más importante es ver como se comportan las características con respecto a la etiqueta en este caso 'churn' y algunas relaciones muy resumidas")
      
      st.write("Empezando por mostrar cual es la proporción de clientes que abandonan respecto a los que permanecen.")
      
@@ -78,9 +78,9 @@ with pagina1:
      ax.set_ylabel("Cantidad de clientes")
      st.pyplot(fig)
      
-     st.write("Esto muestra que la mayoria de los clientes permanecen con la empresa, la relación no siempre es igual en todas las empresas, esto provocara una mejor predicción para los clientes que se que se quedan en la empresa, puesto que hay mas cantidad de perfiles para comparar versus a los que abandonan.")
+     st.write("Esto muestra que la mayoría de los clientes permanecen con la empresa, la relación no siempre es igual en todas las empresas, esto provocara una mejor predicción para los clientes que se quedan en la empresa, puesto que hay más cantidad de perfiles para comparar versus a los que abandonan.")
      
-     st.write("Por otro lado existe un valor anormal en los ingresos 'income' que casi cuatriplicaba a su antecesor, esto podria provocar que el modelo no haga buenas interpretaciones de los datos y por lo tanto no tan buenas predicciones. Por lo tanto este dato anormal es eliminado.")     
+     st.write("Por otro lado existe un valor anormal en los ingresos 'income' que casi cuadriplicaba a su antecesor, esto podría provocar que el modelo no haga buenas interpretaciones de los datos y por lo tanto no tan buenas predicciones. Por lo tanto este dato anormal es eliminado.")     
      
      st.code("""
          fig, ax =plt.subplots()
@@ -138,7 +138,7 @@ with pagina1:
      ax.set_ylabel("Cantidad de clientes")
      st.pyplot(fig)    
      
-     st.write("Existe otro dato que es anormal, se encuentra muy alejado de los demas por lo que es preferible eliminarlo para una mejor interpretación del modelo, el dato corresponde a la columna 'cardten', el dato es eliminado.")
+     st.write("Existe otro dato que es anormal, se encuentra muy alejado de los demás por lo que es preferible eliminarlo para una mejor interpretación del modelo, el dato corresponde a la columna 'cardten', el dato es eliminado.")
      
      churn_df_mod2=churn_df_mod[churn_df_mod["cardten"]<6000]
      
@@ -162,9 +162,9 @@ with pagina1:
      
      st.subheader("-Selección de modelo")
 
-     st.write("En esta sección se probaran todos los modelos para saber cual es el que da mejor resultado justo a la elección de mejores parametros gracias a GridSearch.")
+     st.write("En esta sección se probarán todos los modelos para saber cual es el que da mejor resultado justo a la elección de mejores parámetros gracias a GridSearch.")
      
-     st.write("Empezando por el rendimiento de :red[**Arból de decisión**]:")
+     st.write("Empezando por el rendimiento de :red[**Árbol de decisión**]:")
 
      st.code("""
      from sklearn.metrics import accuracy_score, precision_recall_fscore_support, precision_score, recall_score, roc_auc_score, f1_score
@@ -193,7 +193,7 @@ with pagina1:
      st.write("-Accuracy es: :green[0.65] -Recall es: :green[0.65] -AUC es: :green[0.63]") 
      st.write("-Precision es: :green[0.72] -Fscore es: :green[0.65]")
 
-     st.write("Mostrando el rendimiento ahora de :red[**Regresión logistica**], en este caso no se puede ocupar GridSearch puesto que los parámetros que contiene son mas bien diferentes formas de calculo, entre parámetros no son todos son compatibles.")
+     st.write("Mostrando el rendimiento ahora de :red[**Regresión logística**], en este caso no se puede ocupar GridSearch, puesto que los parámetros que contiene son más bien diferentes formas de cálculo, entre parámetros no son todos son compatibles.")
 
      st.code("""
          from sklearn.linear_model import LogisticRegression
@@ -213,7 +213,7 @@ with pagina1:
      st.write("-Accuracy es: :green[0.75] -Recall es: :green[0.75] -AUC es: :green[0.50]") 
      st.write("-Precision es: :green[0.56] -Fscore es: :green[0.74]")
      
-     st.write("Mostrando ahora el rendimiento de :red[**KNN**] o :red[**K vecinos cercanos**], este caso es un poco diferentes puesto que se podria elegir el mejor K según cierta puntuación, pero eso no siempre coincide con el que tiene menos error, por eso se debe ver de manera grafica.")
+     st.write("Mostrando ahora el rendimiento de :red[**KNN**] o :red[**K vecinos cercanos**], este caso es un poco diferentes, puesto que se podría elegir el mejor K según cierta puntuación, pero eso no siempre coincide con el que tiene menos error, por eso se debe ver de manera gráfica.")
      
      left, right = st.columns(2)
      
@@ -222,7 +222,7 @@ with pagina1:
      with right:
          st.write(error_knn)
      
-     st.write("El grafico de la izquierda muestra que el K que tiene la mejor puntuación hay 5 valores que tienen la puntuación maxima en f1, esos valores de K son 8, 9, 27,35,36. En la grafica derecha vemos que los codos de error se producen en este caso en los mismos valores, pero no siempre es así por ello se debe verificar. Nos quemos con el valor mas bajo que es 8.")
+     st.write("El gráfico de la izquierda muestra que el K que tiene la mejor puntuación hay 5 valores que tienen la puntuación máxima en f1, esos valores de K son 8, 9, 27,35,36. En la gráfica derecha vemos que los codos de error se producen en este caso en los mismos valores, pero no siempre es así por ello se debe verificar. Nos quedamos con el valor más bajo que es 8.")
      
      st.code("""
          knn = KNeighborsClassifier(n_neighbors=8, weights='distance')
@@ -241,7 +241,7 @@ with pagina1:
      st.write("-Accuracy es: :green[0.62] -Recall es: :green[0.62] -AUC es: :green[0.58]") 
      st.write("-Precision es: :green[0.68] -Fscore es: :green[0.63]")
      
-     st.write("Seguimos con :red[SVC] para saber que rendimiento con los datos, en este caso si se puede ocuapr GridSearch.")
+     st.write("Seguimos con :red[SVC] para saber que rendimiento con los datos, en este caso si se puede ocupar GridSearch.")
      
      st.code("""
          from sklearn.svm import SVC
@@ -293,7 +293,7 @@ with pagina1:
      st.write("-Accuracy es: :green[0.78] -Recall es: :green[0.78] -AUC es: :green[0.65]") 
      st.write("-Precision es: :green[0.76] -Fscore es: :green[0.77]")
      
-     st.write("Ahora seleccionando el modelo :red[**ExtraTrees**] que en este caso debemos ver los errores que tienen las diferentes candidades de arboles primero, el que tenga menos error, será el mejor.")
+     st.write("Ahora seleccionando el modelo :red[**ExtraTrees**] que en este caso debemos ver los errores que tienen las diferentes cantidades de árboles primero, el que tenga menos error, será el mejor.")
      
      st.code("""
         from sklearn.ensemble import ExtraTreesClassifier
@@ -386,7 +386,7 @@ with pagina1:
      st.write("-Accuracy es: :green[0.75] -Recall es: :green[0.75] -AUC es: :green[0.67]") 
      st.write("-Precision es: :green[0.75] -Fscore es: :green[0.75]")
      
-     st.write("Ahora con :red[**BaggingClassifier**] con el estimador Arbol de decisión:")
+     st.write("Ahora con :red[**BaggingClassifier**] con el estimador árbol de decisión:")
      
      st.code("""
         from sklearn.ensemble import BaggingClassifier
@@ -411,7 +411,7 @@ with pagina1:
      st.write("-Accuracy es: :green[0.62] -Recall es: :green[0.62] -AUC es: :green[0.62]") 
      st.write("-Precision es: :green[0.71] -Fscore es: :green[0.63]")
      
-     st.write("Mostrando ahora :red[**StackingClassifier**], en este caso se mezclaran tres estimadores ExtraTrees, RandomForest, DecisionTree con las mismas configuraciones anteriores encontradas por GridSearch.")
+     st.write("Mostrando ahora :red[**StackingClassifier**], en este caso se mezclarán tres estimadores ExtraTrees, RandomForest, DecisionTree con las mismas configuraciones anteriores encontradas por GridSearch.")
      
      st.code("""
         from sklearn.ensemble import StackingClassifier
@@ -434,7 +434,7 @@ with pagina1:
      
      st.subheader("Conclusión")
      
-     st.write("En conclusión es posible que los datos no sean la cantidad suficiente para sacar puntuaciones altas, en general las puntuaciones fueron bajas, excepto dos modelos que lograron sacar puntuaciones aceptables, como es :red[ExtraTrees] y :red[Stacking], que sacaron puntuaciones identicas, por ello la selección final es elegir :red[ExtraTrees] solo por simplicidad.")
+     st.write("En conclusión es posible que los datos no sean la cantidad suficiente para sacar puntuaciones altas, en general las puntuaciones fueron bajas, excepto dos modelos que lograron sacar puntuaciones aceptables, como es :red[ExtraTrees] y :red[Stacking], que sacaron puntuaciones idénticas, por ello la selección final es elegir :red[ExtraTrees] solo por simplicidad.")
      
 with pagina2:
 
