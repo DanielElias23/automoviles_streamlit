@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-#import seaborn as sns
+import seaborn as sns
 import matplotlib.pyplot as plt
 import streamlit as st
 import requests
@@ -9,23 +9,436 @@ import urllib.request
 
 
 churn_df = pd.read_csv("https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-ML0101EN-SkillsNetwork/labs/Module%203/data/ChurnData.csv")
-
+f1_knn=Image.open("f1_knn.png")
+error_knn=Image.open("error_knn.png")
 
 
 #st.subheader("Clasificación de Posible Abandono de Clientes de Telecomunicaciones")
-st.subheader("Predicción de Abandono de Clientes en el Rubro Telecomunicaciones")
+st.title("Perdida de clientes")
 st.write(":green[*Modelo ML - Clasificación*] ")
-pagina1, pagina2 =st.tabs(["Individual","Múltiple"])
+pagina1, pagina2, pagina3 =st.tabs(["Home","Predicción individual","Predicción múltiple"])
 
 with pagina1:
 
-     st.write(":blue[Rellene el formulario y haga su predicción]")
+     st.subheader("Exploración y Análisis")
 
-     st.title("Perdida de clientes")
+     st.write("La predicción de perdida de clientes se hace por medio de una modelo de machine learning que permite hace clasificaciones, en este caso a un cliente según sus caracterisitcas podria definirlo como posible cliente que abandonara la empresa.")
 
-     st.write("El predictor en este caso clasifica a clientes con ciertas características que podrían hacerlo tomar la decisión de abandonar la empresa que le esté prestando algún servicio.")
+     st.write("Los datos presentados son de una empresa de telecomunicaciones, los cuales contienen información relevante para saber si el cliente podría permanecer o abandonar la empresa, los datos son registros históricos de la empresa con las decisiones de los clientes. Mediante estos datos se puede saber si un cliente podría abandonar la empresa, ya que pueden cumplir perfiles parecidos. Los resultados son importantes, ya que permite a la empresa saber con anticipación cuales son los clientes que podrían abandonar la empresa, en base en esto se pueden crear estrategias para que esos clientes permanezcan el mayor tiempo posible en la empresa.")
+     
+     st.write("Los datos se presentan a continuación:")
+     
+     st.code("""
+        churn_df.head(5)
+        churn_df.shape     
+     """)
+     
+     st.table(churn_df.head(5))
+     st.write(churn_df.shape)
 
-     st.write("En este caso son clientes de alguna empresa de telecomunicaciones, la cual tiene datos que contienen información relevante para saber si el cliente permanecerá o abandonará la empresa, los datos son registros históricos de la empresa por lo que muchos clientes ya tomaron la decisión de abandonar la empresa. Mediante estos datos se puede saber si un cliente podría abandonar la empresa, ya que pueden cumplir perfiles parecidos. Los resultados son importantes, ya que permite a la empresa saber con anticipación cuales son los clientes que podrían abandonar la empresa y en base a esto crear estrategias para que esos clientes permanezcan el mayor tiempo posible en la empresa.")
+     st.write("Los datos contienen columnas información de datos personales de los clientes y de los servicios que contrato, en los datos personales se ve información tanto de sus ingresos, nivel de estudio, edad, etc. Mientras que en los de servicios muestran información si es que contrato ciertos servicios de internet, llamadas, además de cuanto dinero pago por esos serviciós. Al final de la tabla se encuentra la información 'churn', que significa si es que ese cliente abandono la empresa, (0) no la abandono y (1) si la abandono.")
+     
+     st.write("Se eliminan las columnas que no se usaran que son 'loglong', 'logtoll', 'lninc' porque son información repetidas de  otras columnas, son simplemente los logaritmos de aquellas columnas.")
+ 
+     st.code("""
+       churn_df = churn_df.drop(["loglong", "lninc", "logtoll"], axis=1)
+     """)
+     
+     st.write("En este caso los datos estan limpiados y codificados por lo que no hay que hacer mas limpieza.")
+      
+     st.subheader("Ingeniería de características")
+     
+     st.write("Lo mas importante es ver como se comportan las características con respecto a la etiqueta en este caso 'churn' y algunas relaciones muy resumidas")
+     
+     st.write("Empezando por mostrar cual es la proporción de clientes que abandonan respecto a los que permanecen.")
+     
+     st.code("""
+         churn_df["churn"] = churn_df["churn"].replace({1:"abandona", 0:"permanece"})
+         grupo = pd.DataFrame(churn_df.groupby(["churn"], as_index=False)["income"].agg("count"))
+     
+         fig, ax =plt.subplots()
+         ax.bar(grupo["churn"], grupo["income"], width=0.5, edgecolor="black", linewidth=0.3)
+         ax.grid(alpha=0.2)
+         ax.set_title("Perdida de clientes")
+         ax.set_xlabel("Permanecia del cliente")
+         ax.set_ylabel("Cantidad de clientes")
+         plt.show()
+     
+     """)     
+          
+     
+     churn_df["churn"] = churn_df["churn"].replace({1:"abandona", 0:"permanece"})
+     agrupado = pd.DataFrame(churn_df.groupby(["churn"], as_index=False)["income"].agg("count"))
+     
+     fig, ax =plt.subplots()
+     ax.bar(agrupado["churn"], agrupado["income"], width=0.5, edgecolor="black", linewidth=0.3)
+     ax.grid(alpha=0.2)
+     ax.set_title("Perdida de clientes")
+     ax.set_xlabel("Permanecia del cliente")
+     ax.set_ylabel("Cantidad de clientes")
+     st.pyplot(fig)
+     
+     st.write("Esto muestra que la mayoria de los clientes permanecen con la empresa, la relación no siempre es igual en todas las empresas, esto provocara una mejor predicción para los clientes que se que se quedan en la empresa, puesto que hay mas cantidad de perfiles para comparar versus a los que abandonan.")
+     
+     st.write("Por otro lado existe un valor anormal en los ingresos 'income' que casi cuatriplicaba a su antecesor, esto podria provocar que el modelo no haga buenas interpretaciones de los datos y por lo tanto no tan buenas predicciones. Por lo tanto este dato anormal es eliminado.")     
+     
+     st.code("""
+         fig, ax =plt.subplots()
+         ax.hist(churn_df["income"], bins=20, edgecolor="black", linewidth=0.3)
+         ax.grid(alpha=0.2)
+         ax.set_title("Distribución de ingresos de los clientes")
+         ax.set_xlabel("Ingresos de los clientes ($)")
+         ax.set_ylabel("Cantidad de clientes")
+         plt.show()
+     """)
+     
+     left, right = st.columns(2)
+     
+     with left:
+        fig, ax =plt.subplots(figsize=(8,8.35))
+        ax.hist(churn_df["income"], bins=20, edgecolor="black", linewidth=0.3)
+        ax.grid(alpha=0.2)
+        ax.set_title("Distribución de ingresos de los clientes")
+        ax.set_xlabel("Ingresos de los clientes ($)")
+        ax.set_ylabel("Cantidad de clientes")
+        st.pyplot(fig)
+        
+     
+     churn_df_mod=churn_df[churn_df["income"]<500]
+     
+     with right:
+        fig, ax =plt.subplots(figsize=(8,8))
+        ax.hist(churn_df_mod["income"], bins=25, edgecolor="black", linewidth=0.3)
+        ax.grid(alpha=0.2)
+        ax.set_title("Distribución de ingresos de los clientes")
+        ax.set_xlabel("Ingresos de los clientes")
+        ax.set_ylabel("Cantidad de clientes")
+        st.pyplot(fig)
+     
+     churn_df["churn"] = churn_df["churn"].replace({"abandona":1, "permanece":0})
+     churn_df_mod["churn"] = churn_df_mod["churn"].replace({"abandona":1, "permanece":0})
+     
+     st.write("Nos aseguramos que las columnas no tengan otro dato anormal, para que no afecte las predicciones.")
+     
+     st.code("""
+        fig, ax =plt.subplots(figsize=(8,8))
+        ax.boxplot(churn_df)
+        ax.grid(alpha=0.2)
+        ax.set_title("Distribución de ingresos de los clientes")
+        ax.set_xlabel("Ingresos de los clientes")
+        ax.set_ylabel("Cantidad de clientes")
+        plt.show() 
+     """)
+     churn_df_mod = churn_df_mod.drop(["loglong", "lninc", "logtoll"], axis=1)  
+     fig, ax =plt.subplots(figsize=(8,8))
+     ax.boxplot(churn_df_mod)
+     ax.grid(alpha=0.2)
+     ax.set_title("Distribución de ingresos de los clientes")
+     ax.set_xlabel("Ingresos de los clientes")
+     ax.set_ylabel("Cantidad de clientes")
+     st.pyplot(fig)    
+     
+     st.write("Existe otro dato que es anormal, se encuentra muy alejado de los demas por lo que es preferible eliminarlo para una mejor interpretación del modelo, el dato corresponde a la columna 'cardten', el dato es eliminado.")
+     
+     churn_df_mod2=churn_df_mod[churn_df_mod["cardten"]<6000]
+     
+     st.write("Nos queda una tabla con los siguientes valores")
+     
+     st.table(churn_df_mod2.head(5))
+     st.write(churn_df_mod2.shape)
+     
+     st.write("Separamos en 'feature' como todos las columnas excepto 'churn' y 'label' como 'churn', definidos como 'X' e 'y' respectivamente, además hacemos la separación entre datos de entrenamiento y prueba.")
+     
+     st.code("""
+     from sklearn.model_selection import train_test_split
+     X = churn_df.drop(["churn"], axis=1)
+     y = churn_df['churn'].astype('int')    
+     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1)
+     """)
+     from sklearn.model_selection import train_test_split
+     X_mod = churn_df_mod2.drop(["churn"], axis=1)
+     y_mod = churn_df_mod2['churn'].astype('int')    
+     X_train, X_test, y_train, y_test = train_test_split(X_mod, y_mod, test_size=0.2, random_state=1)
+     
+     st.subheader("-Selección de modelo")
+
+     st.write("En esta sección se probaran todos los modelos para saber cual es el que da mejor resultado justo a la elección de mejores parametros gracias a GridSearch.")
+     
+     st.write("Empezando por el rendimiento de :red[**Arból de decisión**]:")
+
+     st.code("""
+     from sklearn.metrics import accuracy_score, precision_recall_fscore_support, precision_score, recall_score, roc_auc_score, f1_score
+     from sklearn.tree import DecisionTreeClassifier
+     params_grid = {'criterion': ['gini', 'entropy'], 'max_depth': [5, 10, 15, 20],'min_samples_leaf': [1, 2, 5]}
+     dt = DecisionTreeClassifier(random_state=123)
+     grid_search = GridSearchCV(dt, param_grid = params_grid, scoring='accuracy', cv = 5, verbose = False)
+     grid_search.fit(X_train, y_train)
+     best_params = grid_search.best_params_
+     print(best_params)
+     #Mejores parametros {'criterion': 'entropy', 'max_depth': 5, 'min_samples_leaf': 1}
+     dt2 = DecisionTreeClassifier(criterion="gini", max_depth=5, min_samples_leaf=1,random_state=123)
+     dt2.fit(X_train, y_train)
+     y_pred_dt = dt2.predict(X_test)
+     precision, recall, f_beta, support = precision_recall_fscore_support(y_test, y_pred_dt, beta=5, pos_label=1, average='weighted')
+     auc = roc_auc_score(y_test, y_pred_dt, average='weighted')
+     accuracy = accuracy_score(y_test, y_pred_dt)
+     print("Modelo Arbol de decision")
+     print(f"Accuracy is: {accuracy:.2f}")
+     print(f"Precision is: {precision:.2f}")
+     print(f"Recall is: {recall:.2f}")
+     print(f"Fscore is: {f_beta:.2f}")
+     print(f"AUC is: {auc:.2f}")
+     """)
+
+     st.write("-Accuracy es: :green[0.65] -Recall es: :green[0.65] -AUC es: :green[0.63]") 
+     st.write("-Precision es: :green[0.72] -Fscore es: :green[0.65]")
+
+     st.write("Mostrando el rendimiento ahora de :red[**Regresión logistica**], en este caso no se puede ocupar GridSearch puesto que los parámetros que contiene son mas bien diferentes formas de calculo, entre parámetros no son todos son compatibles.")
+
+     st.code("""
+         from sklearn.linear_model import LogisticRegression
+         logR2 = LogisticRegression(random_state=123, solver="liblinear", penalty="l2", C=0.00001)
+         logR2.fit(X_train, y_train)
+         y_pred_logR2 = logR2.predict(X_test)
+         precision, recall, f_beta, support = precision_recall_fscore_support(y_test, y_pred_logR2, beta=5, pos_label=1, average='weighted')
+         auc = roc_auc_score(y_test, y_pred_logR2, average='weighted')
+         accuracy = accuracy_score(y_test, y_pred_logR2)
+         print(f"Accuracy is: {accuracy:.2f}")
+         print(f"Precision is: {precision:.2f}")
+         print(f"Recall is: {recall:.2f}")
+         print(f"Fscore is: {f_beta:.2f}")
+         print(f"AUC is: {auc:.2f}")
+     """)
+      
+     st.write("-Accuracy es: :green[0.75] -Recall es: :green[0.75] -AUC es: :green[0.50]") 
+     st.write("-Precision es: :green[0.56] -Fscore es: :green[0.74]")
+     
+     st.write("Mostrando ahora el rendimiento de :red[**KNN**] o :red[**K vecinos cercanos**], este caso es un poco diferentes puesto que se podria elegir el mejor K según cierta puntuación, pero eso no siempre coincide con el que tiene menos error, por eso se debe ver de manera grafica.")
+     
+     left, right = st.columns(2)
+     
+     with left:
+         st.write(f1_knn)
+     with right:
+         st.write(error_knn)
+     
+     st.write("El grafico de la izquierda muestra que el K que tiene la mejor puntuación hay 5 valores que tienen la puntuación maxima en f1, esos valores de K son 8, 9, 27,35,36. En la grafica derecha vemos que los codos de error se producen en este caso en los mismos valores, pero no siempre es así por ello se debe verificar. Nos quemos con el valor mas bajo que es 8.")
+     
+     st.code("""
+         knn = KNeighborsClassifier(n_neighbors=8, weights='distance')
+         knn.fit(X_train, y_train)
+         y_pred_knn = knn.predict(X_test)
+         precision, recall, f_beta, support = precision_recall_fscore_support(y_test, y_pred_knn, beta=5, pos_label=1,  average='weighted')
+         auc = roc_auc_score(y_test, y_pred_knn, average='weighted')
+         accuracy = accuracy_score(y_test, y_pred_knn)
+         print(f"Accuracy is: {accuracy:.2f}")
+         print(f"Precision is: {precision:.2f}")
+         print(f"Recall is: {recall:.2f}")
+         print(f"Fscore is: {f_beta:.2f}")
+         print(f"AUC is: {auc:.2f}")
+     """)
+     
+     st.write("-Accuracy es: :green[0.62] -Recall es: :green[0.62] -AUC es: :green[0.58]") 
+     st.write("-Precision es: :green[0.68] -Fscore es: :green[0.63]")
+     
+     st.write("Seguimos con :red[SVC] para saber que rendimiento con los datos, en este caso si se puede ocuapr GridSearch.")
+     
+     st.code("""
+         from sklearn.svm import SVC
+         params_grid = {'C': [0.00001, 0.001,0.01,1, 10, 100], 'kernel': ['poly', 'rbf', 'sigmoid']}
+         svc = SVC()
+         grid_search = GridSearchCV(estimator = svc, param_grid = params_grid, scoring='f1', cv = 5, verbose = 1)
+         grid_search.fit(X_train, y_train)
+         best_params = grid_search.best_params_
+         print(best_params)
+         #Mostrando como mejor parámetros C=10 y kernel='rbf'
+         svc2= SVC(kernel="rbf", C=10)
+         svc2.fit(X_train, y_train)
+         y_pred_svc = svc2.predict(X_test)
+         precision, recall, f_beta, support = precision_recall_fscore_support(y_test, y_pred_svc, beta=5, pos_label=1, average='weighted')
+         auc = roc_auc_score(label_binarize(y_test, classes=[1,2,3]), label_binarize(y_pred_svc,  classes=[1,2,3]), average='weighted')
+         accuracy = accuracy_score(y_test, y_pred_svc)
+         print(f"Accuracy is: {accuracy:.2f}")
+         print(f"Precision is: {precision:.2f}")
+         print(f"Recall is: {recall:.2f}")
+         print(f"Fscore is: {f_beta:.2f}")
+         print(f"AUC is: {auc:.2f}")
+     """)
+     
+     st.write("-Accuracy es: :green[0.55] -Recall es: :green[0.55] -AUC es: :green[0.50]") 
+     st.write("-Precision es: :green[0.62] -Fscore es: :green[0.55]")
+     
+     st.write("Continuando con :red[**Random Forest**]:")
+     
+     st.code("""
+         from sklearn.ensemble import RandomForestClassifier
+         param_grid = {'n_estimators': [2*n+1 for n in range(20)], 'max_depth' : [2*n+1 for n in range(10) ], 'max_features':["auto", "sqrt", "log2"]}
+         RFC = RandomForestClassifier()
+         search = GridSearchCV(estimator=RFC, param_grid=param_grid,scoring='accuracy', cv=5)
+         search.fit(X_train, y_train)
+         print(search.best_params_)
+         #Como resultado da: {'max_depth': 9, 'max_features': 'sqrt', 'n_estimators': 11}
+         RFC2 = RandomForestClassifier(max_depth=9, max_features="sqrt" , n_estimators=11, random_state=123)
+         RFC2.fit(X_train,y_train)
+         y_pred_RFC2 = RFC2.predict(X_test)
+         precision, recall, f_beta, support = precision_recall_fscore_support(y_test, y_pred_RFC2, beta=5, pos_label=1, average='weighted')
+         auc = roc_auc_score(y_test, y_pred_RFC2, average='weighted')
+         accuracy = accuracy_score(y_test, y_pred_RFC2)
+         print(f"Accuracy is: {accuracy:.2f}")
+         print(f"Precision is: {precision:.2f}")
+         print(f"Recall is: {recall:.2f}")
+         print(f"Fscore is: {f_beta:.2f}")
+         print(f"AUC is: {auc:.2f}") 
+     """)
+     st.write("-Accuracy es: :green[0.78] -Recall es: :green[0.78] -AUC es: :green[0.65]") 
+     st.write("-Precision es: :green[0.76] -Fscore es: :green[0.77]")
+     
+     st.write("Ahora seleccionando el modelo :red[**ExtraTrees**] que en este caso debemos ver los errores que tienen las diferentes candidades de arboles primero, el que tenga menos error, será el mejor.")
+     
+     st.code("""
+        from sklearn.ensemble import ExtraTreesClassifier
+        EF = ExtraTreesClassifier(oob_score=True, random_state=20, warm_start=True, bootstrap=True, n_jobs=-1)
+        oob_list = list()
+        for n_trees in [15, 20, 30, 40, 50, 100, 150, 200, 300, 400]:
+                   EF.set_params(n_estimators=n_trees)
+                   EF.fit(X_train, y_train)
+        #oob error
+        oob_error = 1 - EF.oob_score_
+        oob_list.append(pd.Series({'n_trees': n_trees, 'oob': oob_error}))
+        et_oob_df = pd.concat(oob_list, axis=1).T.set_index('n_trees')
+        #Muestra los errores para extra tree
+        print(et_oob_df)
+        #La cantidad de arboles que obtien menos error es 100 y 300, pero 100 por ser menor será mas óptimo
+        ETC2 = ExtraTreesClassifier(oob_score=True, random_state=20, warm_start=True, bootstrap=True, n_jobs=-1, n_estimators=100)
+        ETC2.fit(X_train, y_train)
+        y_pred_ETC2 = ETC2.predict(X_test)
+        precision, recall, f_beta, support = precision_recall_fscore_support(y_test, y_pred_ETC2, beta=5, pos_label=1, average='weighted')
+        auc = roc_auc_score(y_test, y_pred_ETC2, average='weighted')
+        accuracy = accuracy_score(y_test, y_pred_ETC2)
+        print(f"Accuracy is: {accuracy:.2f}")
+        print(f"Precision is: {precision:.2f}")
+        print(f"Recall is: {recall:.2f}")
+        print(f"Fscore is: {f_beta:.2f}")
+        print(f"AUC is: {auc:.2f}")
+     """)
+     
+     st.write("-Accuracy es: :green[0.82] -Recall es: :green[0.82] -AUC es: :green[0.72]") 
+     st.write("-Precision es: :green[0.81] -Fscore es: :green[0.82]")
+     
+     st.write("Ahora ocupando :red[**GradientBoosting**]:")
+     
+     st.code("""
+        from sklearn.ensemble import GradientBoostingClassifier
+        #El menor error son 100 y menos arboles
+        error_list = list()
+        tree_list = [1,5,10,50,100,150,200,400]
+        for n_trees in tree_list:
+            GBC = GradientBoostingClassifier(n_estimators=n_trees, random_state=42)
+            GBC.fit(X_train, y_train)
+            y_pred = GBC.predict(X_test)
+            error = 1.0 - accuracy_score(y_test, y_pred)
+            error_list.append(pd.Series({'n_trees': n_trees, 'error': error}))
+        error_df = pd.concat(error_list, axis=1).T.set_index('n_trees')
+        print(error_df)
+        param_grid = {'n_estimators': tree_list, 'learning_rate': [0.1, 0.01, 0.001, 0.0001], 'subsample': [0.5], 'max_features': [4]}
+        GV_GBC = GridSearchCV(GradientBoostingClassifier(random_state=42), param_grid=param_grid, scoring='accuracy', n_jobs=-1)
+        GV_GBC = GV_GBC.fit(X_train, y_train)
+        print(GV_GBC.best_estimator_)
+        #Se obtuvieron los errores de los diferentes arboles, los mejores parametros son {max_features=4, n_estimators=10, random_state=42, subsample=0.5}
+        GBC1 = GradientBoostingClassifier(n_estimators=10, max_features=4, learning_rate=0.001, random_state=42, subsample=0.5)
+        GBC1.fit(X_train, y_train)
+        y_pred_GBC1 = GBC1.predict(X_test)
+        precision, recall, f_beta, support = precision_recall_fscore_support(y_test, y_pred_GBC1, beta=5, pos_label=1, average='weighted')
+        auc = roc_auc_score(y_test, y_pred_GBC1, average='weighted')
+        accuracy = accuracy_score(y_test, y_pred_GBC1)
+        print(f"Accuracy is: {accuracy:.2f}")
+        print(f"Precision is: {precision:.2f}")
+        print(f"Recall is: {recall:.2f}")
+        print(f"Fscore is: {f_beta:.2f}")
+        print(f"AUC is: {auc:.2f}")
+     """)
+     
+     st.write("-Accuracy es: :green[0.75] -Recall es: :green[0.75] -AUC es: :green[0.50]") 
+     st.write("-Precision es: :green[0.56] -Fscore es: :green[0.74]")
+     
+     st.write("Ahora con el optimizador :red[**AdaBoostClassifier**] en este caso ocupando con el mejor modelo hasta el momento ExtraTrees:")
+     
+     st.code("""
+        from sklearn.ensemble import AdaBoostClassifier
+        ABC = AdaBoostClassifier(ExtraTreesClassifier())
+        param_grid = {'n_estimators': [1,2,5,10,50,100,200], 'learning_rate': [0.0001,0.001,0.01,0.1, 1]}
+        GV_ABC = GridSearchCV(ABC, param_grid=param_grid, scoring='accuracy', n_jobs=-1)
+        GV_ABC = GV_ABC.fit(X_train, y_train)
+        print(GV_ABC.best_estimator_) 
+        #Obteniendo que el optimizador debe tener:  learning_rate=0.001, n_estimators=200
+        ABC1 = AdaBoostClassifier(ExtraTreesClassifier(oob_score=True, random_state=20, warm_start=True, bootstrap=True,n_jobs=-1,n_estimators=100), n_estimators=200, learning_rate=0.001)
+        ABC1.fit(X_train, y_train)
+        y_pred_ABC1 = ABC1.predict(X_test)
+        precision, recall, f_beta, support = precision_recall_fscore_support(y_test, y_pred_ABC1, beta=5, pos_label=1, average='weighted')
+        auc = roc_auc_score(y_test, y_pred_ABC1, average='weighted')
+        accuracy = accuracy_score(y_test, y_pred_ABC1)
+        print(f"Accuracy is: {accuracy:.2f}")
+        print(f"Precision is: {precision:.2f}")
+        print(f"Recall is: {recall:.2f}")
+        print(f"Fscore is: {f_beta:.2f}")
+        print(f"AUC is: {auc:.2f}")   
+     """)
+     st.write("-Accuracy es: :green[0.75] -Recall es: :green[0.75] -AUC es: :green[0.67]") 
+     st.write("-Precision es: :green[0.75] -Fscore es: :green[0.75]")
+     
+     st.write("Ahora con :red[**BaggingClassifier**] con el estimador Arbol de decisión:")
+     
+     st.code("""
+        from sklearn.ensemble import BaggingClassifier
+        param_grid = {'n_estimators': [2*n+1 for n in range(20)], 'estimator__max_depth' : [2*n+1 for n in range(10) ] }
+        Bag = BaggingClassifier(DecisionTreeClassifier(), random_state=20, bootstrap=True)
+        search = GridSearchCV(estimator=Bag, param_grid=param_grid, scoring='accuracy', cv=3)
+        search.fit(X_train, y_train)
+        print(search.best_params_)
+        #Encontro que los mejores parametros son n_estimators=35 y max_depth=7
+        Bag = BaggingClassifier(DecisionTreeClassifier(criterion="gini", max_depth=7, random_state=123), n_estimators=35, random_state=0, bootstrap=True)
+        Bag.fit(X_train, y_train)
+        y_pred_bag_dt = Bag.predict(X_test)
+        precision, recall, f_beta, support = precision_recall_fscore_support(y_test, y_pred_bag_dt, beta=5, pos_label=1, average='weighted')
+        auc = roc_auc_score(y_test, y_pred_bag_dt, average='weighted')
+        accuracy = accuracy_score(y_test, y_pred_bag_dt)
+        print(f"Accuracy is: {accuracy:.2f}")
+        print(f"Precision is: {precision:.2f}")
+        print(f"Recall is: {recall:.2f}")
+        print(f"Fscore is: {f_beta:.2f}")
+        print(f"AUC is: {auc:.2f}")     
+     """)
+     st.write("-Accuracy es: :green[0.62] -Recall es: :green[0.62] -AUC es: :green[0.62]") 
+     st.write("-Precision es: :green[0.71] -Fscore es: :green[0.63]")
+     
+     st.write("Mostrando ahora :red[**StackingClassifier**], en este caso se mezclaran tres estimadores ExtraTrees, RandomForest, DecisionTree con las mismas configuraciones anteriores encontradas por GridSearch.")
+     
+     st.code("""
+        from sklearn.ensemble import StackingClassifier
+        estimators = [('ETC',ExtraTreesClassifier(oob_score=True, random_state=20, warm_start=True, bootstrap=True,n_jobs=-1,n_estimators=100)),('RF',RandomForestClassifier(max_depth=7, max_features="sqrt" , n_estimators=9, random_state=20)), ('dt',DecisionTreeClassifier(criterion="gini", max_depth=5, min_samples_leaf=1,random_state=20))]
+        clf = StackingClassifier( estimators=estimators, final_estimator= LogisticRegression())
+        clf.fit(X_train, y_train)
+        y_pred_clf = clf.predict(X_test)
+        precision, recall, f_beta, support = precision_recall_fscore_support(y_test, y_pred_clf, beta=5, pos_label=1, average='weighted')
+        auc = roc_auc_score(y_test, y_pred_clf, average='weighted')
+        accuracy = accuracy_score(y_test, y_pred_clf)
+        print(f"Accuracy is: {accuracy:.2f}")
+        print(f"Precision is: {precision:.2f}")
+        print(f"Recall is: {recall:.2f}")
+        print(f"Fscore is: {f_beta:.2f}")
+        print(f"AUC is: {auc:.2f}")
+     """)
+     
+     st.write("-Accuracy es: :green[0.82] -Recall es: :green[0.82] -AUC es: :green[0.72]") 
+     st.write("-Precision es: :green[0.81] -Fscore es: :green[0.82]")
+     
+     st.subheader("Conclusión")
+     
+     st.write("En conclusión es posible que los datos no sean la cantidad suficiente para sacar puntuaciones altas, en general las puntuaciones fueron bajas, excepto dos modelos que lograron sacar puntuaciones aceptables, como es :red[ExtraTrees] y :red[Stacking], que sacaron puntuaciones identicas, por ello la selección final es elegir :red[ExtraTrees] solo por simplicidad.")
+     
+with pagina2:
+
+     st.write(":blue[Rellene el formulario y haga su predicción]")     
 
      st.sidebar.write(":blue[Rellene el formulario y descubra si un cliente puede abandonar la empresa]")
 
@@ -232,7 +645,7 @@ with pagina1:
         st.write(f"Presición: :green[{round(precision,2)}]     Fscore: :green[{round(f_beta,2)}]")
                
         
-with pagina2:
+with pagina3:
 
      st.subheader("Instrucciones")
      
