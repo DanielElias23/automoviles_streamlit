@@ -65,7 +65,7 @@ client = Groq(api_key="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"
 
 st.subheader("Elige un chat y conversa")
 
-pagina1, pagina2 =st.tabs(["**Llama 3.1**","Gemma 2"])
+pagina1, pagina2, pagina3 =st.tabs(["**Llama 3.1**","Gemma 2", "Mixtral"])
 
 with pagina1:
     st.sidebar.header("Opciones del chat")
