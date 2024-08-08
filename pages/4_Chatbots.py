@@ -254,7 +254,7 @@ with pagina3:
             st.session_state["messages3"].append({"role": "user", "content": user_input3})
             
             with st.spinner("Obtieniendo respuesta..."):
-                 ai_response3 = get_ai_response3(st.session_state["messages2"], numero3)
+                 ai_response3 = get_ai_response3(st.session_state["messages3"], numero3)
                  st.session_state["messages3"].append({"role": "assistant", "content": ai_response3})  
                  
             st.session_state.user_input3 = ""
