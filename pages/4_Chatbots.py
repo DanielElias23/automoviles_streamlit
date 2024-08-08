@@ -40,7 +40,7 @@ background-attachment: local;
 }}
 
 [data-testid="stSidebar"] > div:first-child {{
-background-image: url("https://i.pinimg.com/736x/db/b6/fd/dbb6fd0af09c84b074ef884c72309020.jpg");
+background-image: url("https://wallpapers.com/images/hd/dark-blue-plain-thxhzarho60j4alk.jpg");
 background-size: 80%;
 background-position: top left; 
 background-repeat: no-repeat;
