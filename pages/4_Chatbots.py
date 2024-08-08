@@ -78,7 +78,7 @@ with pagina1:
       numero=1
     if numero =="Muy creativo":
       numero=2
-
+    
     def get_ai_response(messages, numero):
       completion = client.chat.completions.create(
               model="llama-3.1-70b-versatile",
@@ -151,7 +151,7 @@ with pagina2:
       numero2=1
     if numero2 =="Muy creativo":
       numero2=2
-    cleint = Groq(api_key="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")
+    #client = Groq(api_key="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")
     def get_ai_response2(messages2, numero2):
       completion = client.chat.completions.create(
               model="gemma2-9b-it",
@@ -205,7 +205,7 @@ with pagina2:
       
     if __name__ == "__main__":
       chat()      
- 
+
 with pagina3:
     #st.sidebar.header("Opciones del chat")
        
@@ -217,7 +217,7 @@ with pagina3:
       numero3=1
     if numero3 =="Muy creativo":
       numero3=2
-    client = Groq(api_key="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")
+    #client = Groq(api_key="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")
     def get_ai_response3(messages3, numero3):
       completion = client.chat.completions.create(
               model="mixtral-8x7b-32768",
@@ -272,7 +272,7 @@ with pagina3:
     if __name__ == "__main__":
       chat() 
       
-      
+    
       
       
       
