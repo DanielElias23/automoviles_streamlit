@@ -61,7 +61,7 @@ background-attachment: local;
 background-image: url("https://wallpapers.com/images/hd/dark-blue-plain-thxhzarho60j4alk.jpg");
 background-size: 80%;
 background-position: top left; 
-background-repeat: no-repeat;
+background-repeat: repeat;
 background-attachment: fixed;
 }}
 
