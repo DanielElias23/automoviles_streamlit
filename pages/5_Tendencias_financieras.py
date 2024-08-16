@@ -76,11 +76,11 @@ st.write(":green[*Modelo ML - RNN - LSTM*]")
 
 st.subheader("Exploración y Análisis")
 
-st.write("Los datos presentados provienen de la Bolsa de Nueva York, por lo que contienen información financiera, es un set de datos en los cuales vienen 'Fundamentos' que contiene información como ingresos, ganancias, activos, deudas, entre otros, tambien esta 'prices-split-adjusted' que contiene los precios ajustados por split o dividendo de las acciones, que contiene la información para que se refleje el rendimiento real de las acciones, 'precios' contiene lo precios de las acciones sin splits, 'seguros' contiene informaciones variadas como información de la empresa, simbolo bursatil, el sector la industria, etc")
+st.write("Los datos presentados provienen de la Bolsa de Nueva York, por lo que contienen información financiera, es un set de datos en los cuales vienen 'Fundamentos' que contiene información como ingresos, ganancias, activos, deudas, entre otros, también esta 'prices-split-adjusted' que contiene los precios ajustados por split o dividendo de las acciones, que contiene la información para que se refleje el rendimiento real de las acciones, 'precios' contiene lo precios de las acciones sin splits, 'seguros' contiene informaciones variadas como información de la empresa, símbolo bursátil, el sector la industria, etc.")
 
 st.subheader("Manipulación y Limpieza")
 
-st.write("Se pueden mostrar las datas explicitamente y si tienen datos nulos:")
+st.write("Se pueden mostrar las datas explícitamente y si tienen datos nulos:")
 
 st.write("-Se muestra la tabla price.csv y sus datos nulos")
 
@@ -114,16 +114,16 @@ st.write(data_price_split.head(5))
 st.write(pd.DataFrame(data_price_split.isna().sum()).T)
 st.write(data_price_split.shape)
 
-st.write("Son pocos los datos nulos, en general esas columnas no se ocupan, asi que no hay necesidad de limpiar.")
+st.write("Son pocos los datos nulos, en general esas columnas no se ocupan, así que no hay necesidad de limpiar.")
 
-st.subheader("Ingenieria de caracterisitcas")
+st.subheader("Ingeniería de caracterísitcas")
 
 
-st.write("En este proyecto no se ocuparan las cuatro tablas sino que se ocupara solo 'prices-split-adjusted.csv', pero esta data se puede explicar con las demas tablas. En especifico veremos cuales son los valores en la bolsa con los ajustes a los split de 'APPL'")
+st.write("En este proyecto no se ocuparan las cuatro tablas sino que se ocupara solo 'prices-split-adjusted.csv', pero esta data se puede explicar con las demás tablas. En específico veremos cuales son los valores en la bolsa con los ajustes a los split de 'APPL'.")
 
 st.write(data_security[data_security["Ticker symbol"]=="AAPL"])
 
-st.write("El simbolo bursatil 'AAPL' corresponde a Apple Inc. se analizaran solo los datos de esta empresa tecnologica  y sus valores ajustados con splits.")
+st.write("El símbolo bursátil 'AAPL' corresponde a Apple Inc. se analizarán solo los datos de esta empresa tecnológica  y sus valores ajustados con splits.")
 
 st.code("""
    data_aapl = data_price_split[data_price_split.symbol == 'AAPL']
@@ -141,7 +141,7 @@ data_aapl.drop(['symbol'],1,inplace=True)
 st.write(data_aapl.head())
 st.write(data_aapl.shape)
 
-st.write("Visualizamos como se ven las funciones de 'close'")
+st.write("Visualizamos como se ven las funciones de 'close'.")
 
 st.code("""
     fig, ax=plt.subplots()
@@ -163,7 +163,7 @@ plt.xlabel("Dias")
 plt.title("Precio de cierre por día de Apple Inc.")
 st.pyplot(fig)
 
-st.write("Podemos ver como se comparan los cuatro valores en el tiempo")
+st.write("Podemos ver como se comparan los cuatro valores en el tiempo.")
 
 st.code("""
    fig, ax=plt.subplots()
@@ -189,11 +189,11 @@ plt.xlabel("Años")
 plt.title("Precios diarios de Apple Inc.")
 st.pyplot(fig)
 
-st.write("Se ve que tanto los valores de cierre, apertura, bajo y alto tienen valores bastantes similares, esto es muy util ya que las prediciones pueden ser mejores.")
+st.write("Se ve que tanto los valores de cierre, apertura, bajo y alto tienen valores bastantes similares, esto es muy util, ya que las predicciones pueden ser mejores.")
 
 st.subheader("-Creación y ajuste de red neuronal")
 
-st.write("Una red neuronal dedicada para pronotico de continuacion de funciones, es el caso de RNN con el modelo de memoria a largo plazo como LSTM.")
+st.write("Una red neuronal dedicada para pronóstico de continuación de funciones, es el caso de RNN con el modelo de memoria a largo plazo como LSTM.")
 
 st.write("El modelo LSTM es muy sensible a la escalabilidad de los datos, por lo que deben este todos en los escalados, también se le agrega una columna nueva con shift 1 para la secuencia de entrenamiento.")
 
@@ -217,7 +217,7 @@ print(data_df.head())
 min_max_scaler = preprocessing.MinMaxScaler(feature_range=(0, 1))
 dataset = min_max_scaler.fit_transform(data_df['close'].values.reshape(-1, 1))
 
-st.write("Ademas se debe separar manualmente los datos de entrenamiento y de prueba para conservar el orden especifico.")
+st.write("Además se debe separar manualmente los datos de entrenamiento y de prueba para conservar el orden especifico.")
 
 st.code("""
     train_size = int(len(dataset) * 0.7)
@@ -231,7 +231,7 @@ test_size = len(dataset) - train_size
 train, test = dataset[0:train_size,:], dataset[train_size:len(dataset),:]
 st.write(len(train), len(test))
 
-st.write("Se debe crear una secuencia para practicar un modelo LSTM, esta secuencia debe estar movida para funcionar, creara un nuevo array que contenga cantidad de secuencias que le especifiquemos. en este caso es 15, los datos los ira agrupando en listas, los datos 'datosX' seran para separarlos en datos de practica y datosY para separarlos en datos de prueba.")
+st.write("Se debe crear una secuencia para practicar un modelo LSTM, esta secuencia debe estar movida para funcionar, creará un nuevo array que contenga cantidad de secuencias que le especifiquemos. en este caso es 15, los datos los ira agrupando en listas, los datos 'datosX' serán para separarlos en datos de práctica y datosY para separarlos en datos de prueba.")
 
 st.code("""
     def create_dataset(dataset, secuencia=15):
@@ -267,7 +267,7 @@ look_back = 15
 
 st.subheader("-Modelo LSTM anidado")
 
-st.write("Se crear un modelo LSTM anidado, en este caso con una sola columna de salida, con error cuadratico medio y optimizador adam, con 20 neuronas por capa.")
+st.write("Se crear un modelo LSTM anidado, en este caso con una sola columna de salida, con error cuadrático medio y optimizador adam, con 20 neuronas por capa.")
 
 st.code("""
    model = Sequential()
@@ -351,7 +351,7 @@ st.write('Test Score: %.2f RMSE' % (testScore))
 
 st.subheader("-Rango de predicciones")
 
-st.write("Los datos entrenamientos son unicos por lo que siguen solo una secuencia, esto hace que se considere una posibilidad de predicciones de manera que puede ser inexacta, una forma correcta de tomar esta predicción es tomar un rango, este rango se puede tomar de las otras mediciones diarias del mismo rendimiento, esto hace que las predicciones consideren mas posibilidades, esto de mayor seguridad al tomar deciciones ya que considera el valor mas alto y el valor mas bajo.")
+st.write("Los datos entrenamientos son únicos por lo que siguen solo una secuencia, esto hace que se considere una posibilidad de predicciones de manera que puede ser inexacta, una forma correcta de tomar esta predicción es tomar un rango, este rango se puede tomar de las otras mediciones diarias del mismo rendimiento, esto hace que las predicciones consideren más posibilidades, esto de mayor seguridad al tomar decisiones, ya que considera el valor más alto y el valor más bajo.")
 
 data_df=data_aapl
 columna_objetivo = 'low'
