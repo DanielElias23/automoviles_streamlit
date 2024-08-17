@@ -21,6 +21,6 @@ from streamlit_webrtc import VideoTransformerBase, webrtc_streamer
 
 webrtc_streamer(key="example")
 
-results = model.predict(source="0", show=True)
+#results = model.predict(source="0", show=True)
 
-st.write(results)
+#st.write(results)
