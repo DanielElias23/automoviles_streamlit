@@ -7,34 +7,45 @@ import streamlit as st
 
 model= YOLO("yolov8s.pt")
 
+import streamlit as st
+import cv2
 import numpy as np
 
-# Crear un botón para activar la cámara en vivo
-if st.button("Activar cámara en vivo"):
-    # Encender la cámara
+# Función para capturar y mostrar el video en vivo
+def main():
+    st.title("Cámara en Vivo con Streamlit")
+
+    # Usa la cámara 0 (la cámara predeterminada)
     cap = cv2.VideoCapture(0)
 
-    # Crear un contenedor para mostrar el video en vivo
-    video_container = st.empty()
+    # Configura el marco de Streamlit
+    frame_window = st.image([])
 
     while True:
-        # Leer un frame de la cámara
+        # Captura un fotograma de la cámara
         ret, frame = cap.read()
-
-        # Convertir el frame a un formato compatible con Streamlit
-        frame = cv2.cvtColor(frame)
-        frame = np.array(frame)
-
-        # Mostrar el frame en el contenedor
-        video_container.image(frame, channels="RGB")
-
-        # Esperar un poco antes de leer el siguiente frame
-        if cv2.waitKey(1) & 0xFF == ord('q'):
+        
+        if not ret:
+            st.error("No se pudo capturar el video.")
+            break
+        
+        # Convierte el fotograma de BGR a RGB
+        frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        
+        # Muestra el fotograma en Streamlit
+        frame_window.image(frame_rgb, channels="RGB")
+        
+        # Si la ventana de Streamlit se cierra, rompe el bucle
+        if st.button("Detener"):
             break
 
-    # Liberar la cámara
+    # Libera la cámara y cierra cualquier ventana abierta
     cap.release()
     cv2.destroyAllWindows()
+
+if __name__ == "__main__":
+    main()
+
 
 results = model.predict(source="0", show=True)
 
