@@ -22,7 +22,7 @@ if st.button("Activar cámara en vivo"):
         ret, frame = cap.read()
 
         # Convertir el frame a un formato compatible con Streamlit
-        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        frame = cv2.cvtColor(frame)
         frame = np.array(frame)
 
         # Mostrar el frame en el contenedor
