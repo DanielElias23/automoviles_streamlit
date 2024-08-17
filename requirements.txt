@@ -19,6 +19,7 @@ streamlit-extras==0.4.3
 tensorflow==2.16.1
 tensorflow-hub==0.16.1
 tensorflow-io-gcs-filesystem==0.37.0
+ultralytics==8.2.78
 pillow==10.3.0
 
 
