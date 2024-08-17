@@ -11,7 +11,6 @@ import streamlit as st
 import cv2
 import numpy as np
 
-# Función para capturar y mostrar el video en vivo
 def main():
     st.title("Cámara en Vivo con Streamlit")
 
@@ -39,9 +38,8 @@ def main():
         if st.button("Detener"):
             break
 
-    # Libera la cámara y cierra cualquier ventana abierta
+    # Libera la cámara
     cap.release()
-    cv2.destroyAllWindows()
 
 if __name__ == "__main__":
     main()
