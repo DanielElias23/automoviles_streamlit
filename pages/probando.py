@@ -1,4 +1,4 @@
-#from ultralytics import YOLO
+from ultralytics import YOLO
 import cv2
 #from ultralytics.models.yolo.detect.predict import DetectionPredictor
 #import cv2
