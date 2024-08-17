@@ -13,7 +13,7 @@ model= YOLO("yolov8s.pt")
 
 from streamlit_webrtc import VideoTransformerBase, webrtc_streamer
 
-faceCascade = cv2.CascadeClassifier(cv2.haarcascades+'haarcascade_frontalface_default.xml')
+faceCascade = cv2.CascadeClassifier(cv2.data.haarcascades+'haarcascade_frontalface_default.xml')
 
 
 class VideoTransformer(VideoTransformerBase):
