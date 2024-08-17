@@ -19,6 +19,7 @@ seaborn==0.12.2
 streamlit==1.36.0
 streamlit-lottie==0.0.5
 streamlit-extras==0.4.3
+streamlit-webrtc==0.47.7
 tensorflow==2.16.1
 tensorflow-hub==0.16.1
 tensorflow-io-gcs-filesystem==0.37.0
