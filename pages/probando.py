@@ -11,6 +11,25 @@ import streamlit as st
 import cv2
 import numpy as np
 
+cap = cv2.VideoCapture(0)
+
+if not cap.isOpened():
+    print("No se pudo abrir la cámara.")
+else:
+    while True:
+        ret, frame = cap.read()
+        if not ret:
+            print("No se pudo capturar el video.")
+            break
+        
+        cv2.imshow('Video', frame)
+        
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+
+    cap.release()
+    cv2.destroyAllWindows()
+
 def main():
     st.title("Cámara en Vivo con Streamlit")
 
