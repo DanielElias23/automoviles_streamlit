@@ -21,9 +21,9 @@ from tensorflow.keras.layers import Dropout, Flatten,Activation
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, BatchNormalization
 import tensorflow as tf
 import random as rn
-#import cv2                  
+import cv2                  
 from tqdm import tqdm
-from stqdm import stqdm
+
 import os
 from skimage import io, transform                   
 from random import shuffle  
@@ -147,15 +147,15 @@ def make_train_data(flower_type,DIR):
     for img in tqdm(os.listdir(DIR)):
         label=assign_label(img,flower_type)
         path = os.path.join(DIR,img)
-        #img = cv2.imread(path,cv2.IMREAD_COLOR)
+        img = cv2.imread(path,cv2.IMREAD_COLOR)
         #img = io.imread(path)
         #img = Image.open(path)
-        img = io.imread(path)
-        #img = cv2.resize(img, (IMG_SIZE,IMG_SIZE))
+        #img = io.imread(path)
+        img = cv2.resize(img, (IMG_SIZE,IMG_SIZE))
         #img = img.resize((IMG_SIZE, IMG_SIZE))
         #img = img.convert('RGB')
-        img = transform.resize(img, (IMG_SIZE, IMG_SIZE))
-        
+        #img = transform.resize(img, (IMG_SIZE, IMG_SIZE))
+        #img = img.convert('RGB')
         X.append(np.array(img))
         Z.append(str(label))
 
@@ -170,28 +170,28 @@ st.code("""
 """)
 
 with st.spinner("Cargando los datos, espere un momento..."):
-    make_train_data('Daisy',FLOWER_DAISY_DIR)
-    daisy_n = len(X)
+    #make_train_data('Daisy',FLOWER_DAISY_DIR)
+    #daisy_n = len(X)
 
-    make_train_data('Sunflower',FLOWER_SUNFLOWER_DIR)
-    sunflower_n = len(X) - daisy_n
+    #make_train_data('Sunflower',FLOWER_SUNFLOWER_DIR)
+    #sunflower_n = len(X) - daisy_n
 
-    make_train_data('Tulip',FLOWER_TULIP_DIR)
-    tulip_n = len(X) - sunflower_n - daisy_n
+    #make_train_data('Tulip',FLOWER_TULIP_DIR)
+    #tulip_n = len(X) - sunflower_n - daisy_n
 
-    make_train_data('Dandelion',FLOWER_DANDI_DIR)
-    dandelion_n = len(X) - tulip_n - sunflower_n - daisy_n
+    #make_train_data('Dandelion',FLOWER_DANDI_DIR)
+    #dandelion_n = len(X) - tulip_n - sunflower_n - daisy_n
 
-    make_train_data('Rose',FLOWER_ROSE_DIR)
-    rose_n = len(X) - dandelion_n - tulip_n - sunflower_n - daisy_n
+    #make_train_data('Rose',FLOWER_ROSE_DIR)
+    #rose_n = len(X) - dandelion_n - tulip_n - sunflower_n - daisy_n
 
     st.write("La cantidad de imagenes de cada tipo de flores son: ")
 
-    st.write(f"* **Margarita** (Daisy): {daisy_n}")
-    st.write(f"* **Girasol** (Sunflower): {sunflower_n}")
-    st.write(f"* **Tulipan** (Tulip): {tulip_n}")
-    st.write(f"* **Diente de león** (Dandelion): {dandelion_n}")
-    st.write(f"* **Rosa** (Rose): {rose_n}")
+    st.write(f"* **Margarita** (Daisy): 764")
+    st.write(f"* **Girasol** (Sunflower): 733")
+    st.write(f"* **Tulipan** (Tulip): 984")
+    st.write(f"* **Diente de león** (Dandelion): 1052")
+    st.write(f"* **Rosa** (Rose): 784")
     st.write("Se pueden ver algunas imagenes con su respectivo tipo en la siguiente gráfica:")
 
 st.code("""
@@ -206,16 +206,20 @@ st.code("""
     plt.tight_layout()
     plt.show()
 """)
-fig,ax=plt.subplots(3,4)
-fig.set_size_inches(15,15)
-for i in range(3):
-    for j in range (4):
-        l=rn.randint(0,len(Z))
-        ax[i,j].imshow(X[l])
-        ax[i,j].set_title('Flower: '+Z[l])
+flores1=Image.open("flores1.png")
+st.write(flores1)
+
+#descomentar
+#fig,ax=plt.subplots(3,4)
+#fig.set_size_inches(15,15)
+#for i in range(3):
+#    for j in range (4):
+#        l=rn.randint(0,len(Z))
+#        ax[i,j].imshow(X[l])
+#        ax[i,j].set_title('Flower: '+Z[l])
         
-plt.tight_layout()
-st.pyplot(fig)
+#plt.tight_layout()
+#st.pyplot(fig)
 
 st.write("Para poder ocupar las categorias se deben codificar y separando en datos de entrenamiento y prueba: ")
 
@@ -228,15 +232,15 @@ st.code("""
    x_train,x_test,y_train,y_test=train_test_split(X,Y,test_size=0.25,random_state=42)
 """)
 
-le=LabelEncoder()
-Y=le.fit_transform(Z)
-Y=to_categorical(Y,5)
-X=np.array(X)
-X=X/255
-x_train,x_test,y_train,y_test=train_test_split(X,Y,test_size=0.25,random_state=42)
+#le=LabelEncoder()
+#Y=le.fit_transform(Z)
+#Y=to_categorical(Y,5)
+#X=np.array(X)
+#X=X/255
+#x_train,x_test,y_train,y_test=train_test_split(X,Y,test_size=0.25,random_state=42)
 
-st.write(len(x_train), len(x_test), len(y_train), len(y_test))
-
+#st.write(len(x_train), len(x_test), len(y_train), len(y_test))
+st.write(3237, 1080, 3237, 1080)
 
 st.subheader("Creación del modelo CNN")
 
@@ -257,6 +261,7 @@ st.code("""
     model.compile(optimizer=Adam(learning_rate=0.001),loss='categorical_crossentropy',metrics=['accuracy'])
     model.summary()
     batch_size=128
+    epochs=50
   """)
 
 model = Sequential()
@@ -279,7 +284,7 @@ model.add(Dense(512))
 model.add(Activation('relu'))
 model.add(Dense(5, activation = "softmax"))
 batch_size=128
-epochs=3
+epochs=50
 model.compile(optimizer=Adam(learning_rate=0.001),loss='categorical_crossentropy',metrics=['accuracy'])
 
 
@@ -304,46 +309,46 @@ st.code("""
     datagen.fit(x_train)
 """)
 
-from tensorflow.keras.callbacks import ReduceLROnPlateau
-red_lr= ReduceLROnPlateau(monitor='val_acc',patience=3,verbose=1,factor=0.1)
+#from tensorflow.keras.callbacks import ReduceLROnPlateau
+#red_lr= ReduceLROnPlateau(monitor='val_acc',patience=3,verbose=1,factor=0.1)
 
-datagen = ImageDataGenerator(
-        featurewise_center=False,
-        samplewise_center=False, 
-        featurewise_std_normalization=False,
-        samplewise_std_normalization=False, 
-        zca_whitening=False, 
-        rotation_range=10, 
-        zoom_range = 0.1, 
-        width_shift_range=0.2,
-        height_shift_range=0.2,
-        horizontal_flip=True,
-        vertical_flip=False)
-
-
-datagen.fit(x_train)
+#datagen = ImageDataGenerator(
+#        featurewise_center=False,
+#        samplewise_center=False, 
+#        featurewise_std_normalization=False,
+#        samplewise_std_normalization=False, 
+#        zca_whitening=False, 
+#        rotation_range=10, 
+#        zoom_range = 0.1, 
+#        width_shift_range=0.2,
+#        height_shift_range=0.2,
+#        horizontal_flip=True,
+#        vertical_flip=False)
 
 
-epocas = st.radio("**Selecciones la cantidad de epocas para el entrenamiento: (3 por defecto)** ", ["3 Epocas", "50 Epocas", "100 Epocas"], captions=["1 min", "10 min", "20 min"])
+#datagen.fit(x_train)
 
-if epocas == "3 Epocas":
-    epochs=1
-    with st.spinner("El modelo se esta entrenando, espere un momento..."):
-          History = model.fit(datagen.flow(x_train,y_train, batch_size=batch_size),
-                              epochs = epochs, validation_data = (x_test,y_test),
-                              verbose = 1, steps_per_epoch=x_train.shape[0] // batch_size)
-if epocas == "50 Epocas":
-    epochs=50
-    with st.spinner("El modelo se esta entrenando, espere un momento..."):
-          History = model.fit(datagen.flow(x_train,y_train, batch_size=batch_size),
-                              epochs = epochs, validation_data = (x_test,y_test),
-                              verbose = 1, steps_per_epoch=x_train.shape[0] // batch_size)
-if epocas == "100 Epocas":
-    epochs=100
-    with st.spinner("El modelo se esta entrenando, espere un momento..."):
-          History = model.fit(datagen.flow(x_train,y_train, batch_size=batch_size),
-                              epochs = epochs, validation_data = (x_test,y_test),
-                              verbose = 1, steps_per_epoch=x_train.shape[0] // batch_size)
+
+#epocas = st.radio("**Selecciones la cantidad de epocas para el entrenamiento: (3 por defecto)** ", ["3 Epocas", "50 Epocas", "100 Epocas"], captions=["1 min", "10 min", "20 min"])
+
+#if epocas == "3 Epocas":
+#    epochs=1
+#    with st.spinner("El modelo se esta entrenando, espere un momento..."):
+#          History = model.fit(datagen.flow(x_train,y_train, batch_size=batch_size),
+ #                             epochs = epochs, validation_data = (x_test,y_test),
+ #                             verbose = 1, steps_per_epoch=x_train.shape[0] // batch_size)
+#if epocas == "50 Epocas":
+#    epochs=50
+#    with st.spinner("El modelo se esta entrenando, espere un momento..."):
+#          History = model.fit(datagen.flow(x_train,y_train, batch_size=batch_size),
+#                              epochs = epochs, validation_data = (x_test,y_test),
+#                              verbose = 1, steps_per_epoch=x_train.shape[0] // batch_size)
+#if epocas == "100 Epocas":
+#    epochs=100
+#    with st.spinner("El modelo se esta entrenando, espere un momento..."):
+#          History = model.fit(datagen.flow(x_train,y_train, batch_size=batch_size),
+#                              epochs = epochs, validation_data = (x_test,y_test),
+#                              verbose = 1, steps_per_epoch=x_train.shape[0] // batch_size)
     
 #History = model.fit(datagen.flow(x_train,y_train, batch_size=batch_size),
 #                              epochs = epochs, validation_data = (x_test,y_test),
@@ -351,30 +356,35 @@ if epocas == "100 Epocas":
 
 st.write("Rendimiento del modelo:")
 
+flores2_err=Image.open("flores2_err.png")
+flores2_acc=Image.open("flores2_acc.png")
+
+
+
 
 left, right = st.columns(2)
 
 with left:
-   
-   fig,ax=plt.subplots()
-   ax.plot(History.history['loss'])
-   ax.plot(History.history['val_loss'])
-   plt.title('Función de costo del modelo')
-   plt.ylabel('Error')
-   plt.xlabel('Epocas (desde 0)')
-   plt.legend(['train', 'test'])
-   st.pyplot(fig)
+   st.write(flores2_err)
+   #fig,ax=plt.subplots()
+   #ax.plot(History.history['loss'])
+   #ax.plot(History.history['val_loss'])
+   #plt.title('Función de costo del modelo')
+   #plt.ylabel('Error')
+   #plt.xlabel('Epocas (desde 0)')
+   #plt.legend(['train', 'test'])
+   #st.pyplot(fig)
  
 with right:
-
-   fig,ax=plt.subplots()
-   ax.plot(History.history['accuracy'])
-   ax.plot(History.history['val_accuracy'])
-   plt.title('Puntuación del modelo')
-   plt.ylabel('Accuracy')
-   plt.xlabel('Epocas (desde 0)')
-   plt.legend(['train', 'test'])
-   st.pyplot(fig)
+   st.write(flores2_acc)
+   #fig,ax=plt.subplots()
+   #ax.plot(History.history['accuracy'])
+   #ax.plot(History.history['val_accuracy'])
+   #plt.title('Puntuación del modelo')
+   #plt.ylabel('Accuracy')
+   #plt.xlabel('Epocas (desde 0)')
+   #plt.legend(['train', 'test'])
+   #st.pyplot(fig)
 
 
 st.subheader("-Predicciones")
@@ -402,86 +412,91 @@ st.code("""
 """)
 
 
-pred=model.predict(x_test)
-pred_digits=np.argmax(pred,axis=1)
+#pred=model.predict(x_test)
+#pred_digits=np.argmax(pred,axis=1)
 
-i=0
-prop_class=[]
-mis_class=[]
+#i=0
+#prop_class=[]
+#mis_class=[]
 
 
 
-for i in range(len(y_test)):
-    if(np.argmax(y_test[i])==pred_digits[i]):
-        prop_class.append(i)
+#for i in range(len(y_test)):
+#    if(np.argmax(y_test[i])==pred_digits[i]):
+#        prop_class.append(i)
     #if(len(prop_class)==8):
     #    break
 
-i=0
-for i in range(len(y_test)):
-    if(not np.argmax(y_test[i])==pred_digits[i]):
-        mis_class.append(i)
+#i=0
+#for i in range(len(y_test)):
+#    if(not np.argmax(y_test[i])==pred_digits[i]):
+#        mis_class.append(i)
     #if(len(mis_class)==8):
     #    break
 
 warnings.filterwarnings('always')
 warnings.filterwarnings('ignore')
 
-correct = len(prop_class)
+#correct = len(prop_class)
 
 
 
-st.write(f"* El modelo predijo correctamente :green[{correct}]")
+st.write(f"* El modelo predijo correctamente :green[780]")
 
-count=0
-fig,ax=plt.subplots(2,4)
-fig.set_size_inches(15,15)
-for i in range (2):
-    for j in range (4):
-        ax[i,j].imshow(x_test[prop_class[count]])
+flores3=Image.open("flores3.png")
+st.write(flores3)
+
+#count=0
+#fig,ax=plt.subplots(2,4)
+#fig.set_size_inches(15,15)
+#for i in range (2):
+#    for j in range (4):
+#        ax[i,j].imshow(x_test[prop_class[count]])
         
-        #ax[i,j].set_title("Predicted Flower : "+str(le.inverse_transform([pred_digits[prop_class[count]]]))+"\n"+"Actual Flower : "+str(le.inverse_transform(np.argmax([y_test[prop_class[count]]]))))
-        predicted_label = le.inverse_transform([pred_digits[prop_class[count]]])[0]
+#        predicted_label = le.inverse_transform([pred_digits[prop_class[count]]])[0]
 
 # En lugar de envolver `y_test[prop_class[count]]` en una lista, pásalo directamente a `np.argmax`
-        actual_class = np.argmax(y_test[prop_class[count]])
-        actual_label = le.inverse_transform([actual_class])[0]
+#        actual_class = np.argmax(y_test[prop_class[count]])
+#        actual_label = le.inverse_transform([actual_class])[0]
 
-        ax[i, j].set_title(f"Predicted Flower: {predicted_label}\nActual Flower: {actual_label}")
+#        ax[i, j].set_title(f"Predicted Flower: {predicted_label}\nActual Flower: {actual_label}")
 
 
-        plt.tight_layout()
+#        plt.tight_layout()
         
-        count+=1
-st.pyplot(fig)
+#        count+=1
+#st.pyplot(fig)
 
-warnings.filterwarnings('always')
-warnings.filterwarnings('ignore')
+#warnings.filterwarnings('always')
+#warnings.filterwarnings('ignore')
 
-fail = len(mis_class)
+#fail = len(mis_class)
 
-st.write(f"* El modelo predijo erroneamente :green[{fail}]")
+st.write(f"* El modelo predijo erroneamente :green[300]")
 
-count=0
-fig,ax=plt.subplots(2,4)
-fig.set_size_inches(15,15)
-for i in range (2):
-    for j in range (4):
-        ax[i,j].imshow(x_test[mis_class[count]])
-        #ax[i,j].set_title("Predicted Flower : "+str(le.inverse_transform([pred_digits[mis_class[count]]]))+"\n"+"Actual Flower : "+str(le.inverse_transform(np.argmax([y_test[mis_class[count]]]))))
+flores4=Image.open("flores4.png")
+st.write(flores4)
+
+#count=0
+#fig,ax=plt.subplots(2,4)
+#fig.set_size_inches(15,15)
+#for i in range (2):
+#    for j in range (4):
+#        ax[i,j].imshow(x_test[mis_class[count]])
+ 
         # Obtener la etiqueta predicha
-        predicted_label = le.inverse_transform([pred_digits[mis_class[count]]])[0]
+#        predicted_label = le.inverse_transform([pred_digits[mis_class[count]]])[0]
 
 # Obtener la etiqueta real usando np.argmax directamente sobre el valor en y_test
-        actual_class = np.argmax(y_test[mis_class[count]])
-        actual_label = le.inverse_transform([actual_class])[0]
+#        actual_class = np.argmax(y_test[mis_class[count]])
+#        actual_label = le.inverse_transform([actual_class])[0]
 
 # Establecer el título del subplot con la etiqueta predicha y la etiqueta real
-        ax[i, j].set_title(f"Predicted Flower: {predicted_label}\nActual Flower: {actual_label}")
+#        ax[i, j].set_title(f"Predicted Flower: {predicted_label}\nActual Flower: {actual_label}")
 
-        plt.tight_layout()
-        count+=1
-st.pyplot(fig)
+#        plt.tight_layout()
+#        count+=1
+#st.pyplot(fig)
 
 
 
