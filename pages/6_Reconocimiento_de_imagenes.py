@@ -145,10 +145,11 @@ def make_train_data(flower_type,DIR):
         label=assign_label(img,flower_type)
         path = os.path.join(DIR,img)
         #img = cv2.imread(path,cv2.IMREAD_COLOR)
-        img = io.imread(path)
+        #img = io.imread(path)
+        img = Image.open(path)
         #img = cv2.resize(img, (IMG_SIZE,IMG_SIZE))
         img = img.resize((IMG_SIZE, IMG_SIZE))
-        img = img.convert('RGB')
+        #img = img.convert('RGB')
         
         X.append(np.array(img))
         Z.append(str(label))
