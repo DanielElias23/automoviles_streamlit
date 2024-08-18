@@ -329,9 +329,9 @@ epocas = st.radio("**Selecciones la cantidad de epocas para el entrenamiento: (3
 if epocas == "3 Epocas":
     epochs=1
     with st.spinner("El modelo se esta entrenando, espere un momento..."):
-         # History = model.fit(datagen.flow(x_train,y_train, batch_size=batch_size),
-         #                     epochs = epochs, validation_data = (x_test,y_test),
-         #                     verbose = 1, steps_per_epoch=x_train.shape[0] // batch_size)
+          History = model.fit(datagen.flow(x_train,y_train, batch_size=batch_size),
+                              epochs = epochs, validation_data = (x_test,y_test),
+                              verbose = 1, steps_per_epoch=x_train.shape[0] // batch_size)
 if epocas == "50 Epocas":
     epochs=50
     with st.spinner("El modelo se esta entrenando, espere un momento..."):
@@ -351,7 +351,7 @@ if epocas == "100 Epocas":
 
 st.write("Rendimiento del modelo:")
 
-"""
+
 left, right = st.columns(2)
 
 with left:
@@ -380,7 +380,7 @@ with right:
 st.subheader("-Predicciones")
 
 st.write("Se obtienen las predicciones y al mismo tiempo, se ordenan en las que fueron predichas correctamente y las que el modelo fallo.")
-"""
+
 
 st.code("""
     pred=model.predict(x_test)
@@ -401,7 +401,7 @@ st.code("""
           break
 """)
 
-"""
+
 pred=model.predict(x_test)
 pred_digits=np.argmax(pred,axis=1)
 
@@ -483,7 +483,7 @@ for i in range (2):
         count+=1
 st.pyplot(fig)
 
-"""
+
 
 
 
