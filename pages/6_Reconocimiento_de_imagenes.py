@@ -23,6 +23,7 @@ import tensorflow as tf
 import random as rn
 #import cv2                  
 from tqdm import tqdm
+from stqdm import stqdm
 import os
 from skimage import io, transform                   
 from random import shuffle  
@@ -142,7 +143,7 @@ def assign_label(img,flower_type):
     return flower_type
 
 def make_train_data(flower_type,DIR):
-    for img in tqdm(os.listdir(DIR)):
+    for img in stqdm(os.listdir(DIR)):
         label=assign_label(img,flower_type)
         path = os.path.join(DIR,img)
         #img = cv2.imread(path,cv2.IMREAD_COLOR)
