@@ -12,6 +12,7 @@ pybase64==1.4.0
 ollama==0.3.1
 opencv-python-headless==4.5.5.64
 opencv-python==4.8.0.76
+random2==1.0.2
 scikeras==0.1.8
 scikit-image==0.23.2
 scikit-learn==1.5.0
@@ -23,6 +24,7 @@ streamlit-webrtc==0.47.7
 tensorflow==2.16.1
 tensorflow-hub==0.16.1
 tensorflow-io-gcs-filesystem==0.37.0
+tqdm==4.66.5
 ultralytics==8.2.78
 
 
