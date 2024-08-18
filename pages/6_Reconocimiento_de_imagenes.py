@@ -21,12 +21,14 @@ from tensorflow.keras.layers import Dropout, Flatten,Activation
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, BatchNormalization
 import tensorflow as tf
 import random as rn
-import cv2                  
+#import cv2                  
 from tqdm import tqdm
 import os                   
 from random import shuffle  
 from PIL import Image
 import base64
+import matplotlib.image as mpimg
+
 
 @st.cache_data
 def get_img_as_base64(file):
@@ -142,8 +144,11 @@ def make_train_data(flower_type,DIR):
     for img in tqdm(os.listdir(DIR)):
         label=assign_label(img,flower_type)
         path = os.path.join(DIR,img)
-        img = cv2.imread(path,cv2.IMREAD_COLOR)
-        img = cv2.resize(img, (IMG_SIZE,IMG_SIZE))
+        #img = cv2.imread(path,cv2.IMREAD_COLOR)
+        img = io.imread(path)
+        #img = cv2.resize(img, (IMG_SIZE,IMG_SIZE))
+        img = img.resize((IMG_SIZE, IMG_SIZE))
+        img = img.convert('RGB')
         
         X.append(np.array(img))
         Z.append(str(label))
