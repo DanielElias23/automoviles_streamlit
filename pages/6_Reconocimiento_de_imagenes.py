@@ -143,7 +143,8 @@ def assign_label(img,flower_type):
     return flower_type
 
 def make_train_data(flower_type,DIR):
-    for img in stqdm(os.listdir(DIR)):
+    #for img in tqdm(os.listdir(DIR)):
+    for img in os.listdir(DIR):
         label=assign_label(img,flower_type)
         path = os.path.join(DIR,img)
         #img = cv2.imread(path,cv2.IMREAD_COLOR)
