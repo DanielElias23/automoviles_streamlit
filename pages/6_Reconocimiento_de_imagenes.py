@@ -23,7 +23,8 @@ import tensorflow as tf
 import random as rn
 #import cv2                  
 from tqdm import tqdm
-import os                   
+import os
+from skimage import io, transform                   
 from random import shuffle  
 from PIL import Image
 import base64
