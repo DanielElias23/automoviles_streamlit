@@ -21,7 +21,7 @@ from tensorflow.keras.layers import Dropout, Flatten,Activation
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, BatchNormalization
 import tensorflow as tf
 import random as rn
-import cv2                  
+#import cv2                  
 from tqdm import tqdm
 
 import os
@@ -143,21 +143,21 @@ def assign_label(img,flower_type):
     return flower_type
 
 def make_train_data(flower_type,DIR):
-    #for img in tqdm(os.listdir(DIR)):
     for img in tqdm(os.listdir(DIR)):
-        label=assign_label(img,flower_type)
-        path = os.path.join(DIR,img)
-        img = cv2.imread(path,cv2.IMREAD_COLOR)
+    #for img in tqdm(os.listdir(DIR)):
+        #label=assign_label(img,flower_type)
+        #path = os.path.join(DIR,img)
+        #img = cv2.imread(path,cv2.IMREAD_COLOR) este
         #img = io.imread(path)
         #img = Image.open(path)
         #img = io.imread(path)
-        img = cv2.resize(img, (IMG_SIZE,IMG_SIZE))
+        #img = cv2.resize(img, (IMG_SIZE,IMG_SIZE))  este
         #img = img.resize((IMG_SIZE, IMG_SIZE))
         #img = img.convert('RGB')
         #img = transform.resize(img, (IMG_SIZE, IMG_SIZE))
         #img = img.convert('RGB')
-        X.append(np.array(img))
-        Z.append(str(label))
+        #X.append(np.array(img))
+        #Z.append(str(label))
 
 st.write("Se agregan las imagenes a una tupla con su respectivo tipo de flor en otra tupla")
 
