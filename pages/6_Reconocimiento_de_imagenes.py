@@ -21,7 +21,7 @@ from tensorflow.keras.layers import Dropout, Flatten,Activation
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, BatchNormalization
 import tensorflow as tf
 import random as rn
-import cv2                  
+from cv2 import imread, resize                  
 from tqdm import tqdm
 import os                   
 from random import shuffle  

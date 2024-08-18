@@ -10,7 +10,8 @@ pandas==1.5.3
 pillow==10.3.0
 pybase64==1.4.0
 ollama==0.3.1
-opencv-python-headless==4.5.5.64
+opencv-python-headless==4.10.0.84
+opencv-python==4.8.0.74
 random2==1.0.2
 scikeras==0.1.8
 scikit-image==0.23.2
