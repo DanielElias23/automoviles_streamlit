@@ -304,7 +304,7 @@ st.code("""
     datagen.fit(x_train)
 """)
 
-from keras.callbacks import ReduceLROnPlateau
+from tensorflow.keras.callbacks import ReduceLROnPlateau
 red_lr= ReduceLROnPlateau(monitor='val_acc',patience=3,verbose=1,factor=0.1)
 
 datagen = ImageDataGenerator(
