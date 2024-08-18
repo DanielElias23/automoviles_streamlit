@@ -321,7 +321,7 @@ datagen = ImageDataGenerator(
         vertical_flip=False)
 
 
-#datagen.fit(x_train)
+datagen.fit(x_train)
 
 
 epocas = st.radio("**Selecciones la cantidad de epocas para el entrenamiento: (3 por defecto)** ", ["3 Epocas", "50 Epocas", "100 Epocas"], captions=["1 min", "10 min", "20 min"])
