@@ -67,7 +67,7 @@ st.title("Predicciones medicas")
 
 st.write(":green[*Modelo ML - ANN - Regresión y Clasificación*]")
 
-pagina1, pagina2=st.tabs(["Keras Regresión", " Keras Clasificación"])
+pagina1, pagina2=st.tabs([" Regresión ", " Clasificación "])
 
 with pagina1:
      
