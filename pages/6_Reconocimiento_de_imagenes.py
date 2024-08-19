@@ -84,23 +84,23 @@ right: 2rem;
 """
 st.markdown(page_bg_img, unsafe_allow_html=True)
 
-st.title("Reconocimiento de imagenes")
+st.title("Reconocimiento de imágenes")
 
 st.write(":green[*Modelo ML - CNN*]")
 
 st.subheader("Exploración y Análisis")
 
-st.write("En este caso los datos son imagenes en formato '.jpg' que corresponden a flores, estas flores se categorizan en cinco diferentes tipos flores. Las imagenes son en su totalidad de las flores vistas desde diferentes angulos, iluminaciones y colores, también puede presentar objetos cercanos.")
+st.write("En este caso los datos son imágenes en formato '.jpg' que corresponden a flores, estas flores se categorizan en cinco diferentes tipos flores. Las imágenes son en su totalidad de las flores vistas desde diferentes ángulos, iluminaciones y colores, también puede presentar objetos cercanos.")
 
-st.write("Estos modelos de reconocimiento son utiles cuando se necesitan identificar objetos de forma rapida y de forma automatica, cuando son demaciados objetos y un humano se demoraria demaciado o cuando se necesita catalogar un objeto y un humano no esta seguro de cual categoria podria ser.")
+st.write("Estos modelos de reconocimiento son útiles cuando se necesitan identificar objetos de forma rápida y de forma automática, cuando son demasiados objetos y un humano se demoraría demasiado o cuando se necesita catalogar un objeto y un humano no está seguro de cual categoría podría ser.")
 
 st.write("Lo que se busca con este modelo, es que el modelo reconozca que tipo de flores se presentan en la imagen.")
 
 st.subheader("Manipulación y limpieza")
 
-st.write("Las imagenes presentan tamaños diferentes por lo que hay que cambiarles el tamaño para que sean exactamente los mismos, en cuanto al tipo de platan, se encuentran ordenadas en diferentes carpetas que las ordenan por tipo.")
+st.write("Las imágenes presentan tamaños diferentes por lo que hay que cambiarles el tamaño para que sean exactamente los mismos, en cuanto al tipo de planta, se encuentran ordenadas en diferentes carpetas que las ordenan por tipo.")
 
-st.write("Lo importante es que tengan el mismo tamaño y saber que tipo son, lo podemos lograr, esto ultimo se puede lograr sabiendo el nombre de la carpeta y la asociamos con el id en otra tupla.")
+st.write("Lo importante es que tengan el mismo tamaño y saber que tipo son, lo podemos lograr, esto último se puede lograr sabiendo el nombre de la carpeta y la asociamos con el id en otra tupla.")
 
 st.code("""
     X=[]
@@ -122,7 +122,7 @@ FLOWER_TULIP_DIR='flowers/tulip'
 FLOWER_DANDI_DIR='flowers/dandelion'
 FLOWER_ROSE_DIR='flowers/rose'
 
-st.write("Es necesario definir funciones para que hagan el nuevo tamaño para las imagenes y registre el tipo de la flores en dos tuplas diferentes.")
+st.write("Es necesario definir funciones para que hagan el nuevo tamaño para las imágenes y registre el tipo de la flores en dos tuplas diferentes.")
 
 st.code("""
     def assign_label(img,flower_type):
@@ -159,7 +159,7 @@ def assign_label(img,flower_type):
         #X.append(np.array(img))
         #Z.append(str(label))
 
-st.write("Se agregan las imagenes a una tupla con su respectivo tipo de flor en otra tupla")
+st.write("Se agregan las imágenes a una tupla con su respectivo tipo de flor en otra tupla.")
 
 st.code("""
    make_train_data('Daisy',FLOWER_DAISY_DIR)
@@ -185,14 +185,14 @@ with st.spinner("Cargando los datos, espere un momento..."):
     #make_train_data('Rose',FLOWER_ROSE_DIR)
     #rose_n = len(X) - dandelion_n - tulip_n - sunflower_n - daisy_n
 
-    st.write("La cantidad de imagenes de cada tipo de flores son: ")
+    st.write("La cantidad de imágenes de cada tipo de flores son: ")
 
     st.write(f"* **Margarita** (Daisy): 764")
     st.write(f"* **Girasol** (Sunflower): 733")
-    st.write(f"* **Tulipan** (Tulip): 984")
+    st.write(f"* **Tulipán** (Tulip): 984")
     st.write(f"* **Diente de león** (Dandelion): 1052")
     st.write(f"* **Rosa** (Rose): 784")
-    st.write("Se pueden ver algunas imagenes con su respectivo tipo en la siguiente gráfica:")
+    st.write("Se pueden ver algunas imágenes con su respectivo tipo en la siguiente gráfica:")
 
 st.code("""
     fig,ax=plt.subplots(3,4)
@@ -221,7 +221,7 @@ st.write(flores1)
 #plt.tight_layout()
 #st.pyplot(fig)
 
-st.write("Para poder ocupar las categorias se deben codificar y separando en datos de entrenamiento y prueba: ")
+st.write("Para poder ocupar las categorías se deben codificar y separando en datos de entrenamiento y prueba: ")
 
 st.code("""
    le=LabelEncoder()
@@ -288,7 +288,7 @@ epochs=50
 model.compile(optimizer=Adam(learning_rate=0.001),loss='categorical_crossentropy',metrics=['accuracy'])
 
 
-st.write("Además se necesita generar datos correctos para que el modelo logre generalizar lo más posibles todos los casos, para ello se hace un ImageDataGenerator, que aplica los siguientes procesos una rotacion aleatorio, zoom aleatorios, desplazamientos verticales y horizontales aleatorios, reflexion horizontal.")
+st.write("Además se necesita generar datos correctos para que el modelo logre generalizar lo más posibles todos los casos, para ello se hace un ImageDataGenerator, que aplica los siguientes procesos una rotación aleatorio, zoom aleatorios, desplazamientos verticales y horizontales aleatorios, reflexión horizontal.")
 
 st.code("""
     from keras.callbacks import ReduceLROnPlateau
@@ -499,7 +499,9 @@ st.write(flores4)
 #st.pyplot(fig)
 
 
+st.subheader("Conclusiones")
 
+st.write("El modelo de CNN hace un buen desempeño, el desempeño obtenido es de 72% de acierto y 27% de fallas, este desempeño es variable dependiendo de las imágenes de entrenamiento y prueba que tome, logrando sacar 80% de  aciertos y 20% de fallas. El tipo de flores entrenados tiene cumplen que tienen morfologías muy reconocibles entre ellas por lo que debería hacer un buen desempeño, pero puede no ser el esperado si fueran más parecidas. El modelo sobre 60 épocas tiene a aumentar el error, por lo que lo más óptimo es cercano a 50 épocas.")
 
 
 
