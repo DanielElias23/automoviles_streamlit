@@ -277,7 +277,7 @@ with pagina1:
      plt.xlabel('Epocas (desde 0)')
      plt.legend(['train', 'test'])
      st.pyplot(fig)
- 
+     
      st.write("El modelo obtiene un buen rendimiento en pocas epocas, el error se reduce considerablemente en las primeras 5 epocas, obteniendo cada vez un mejor rendimiento en cada epoca superior, siendo cada vez la reducción menos notoria, llegando al maximo de reducción en la epoca 150.")
  
      y_pred = model.predict(X_test)                     
@@ -295,12 +295,139 @@ with pagina2:
 
      st.write("nada")
 
+     st.subheader("Exploración y Análisis")
+     
+     st.write("Los datos son de pacientes que fueron dianosticado de cancer de mamas, contienen toda la información de los pacientes, lo que muestra los datos principalmente es si el tumor que presentan en las mamas benigo o maligno, si el tumor benigo significa que no se ramificara en el cuerpo, por lo que el paciente puede ser curado, pero si el paciente tiene un tumor maligno este se puede ramificar y se vuelve muy dificil ser curado.")
+     
+     st.write("Lo que se intenta con este pronostico es saber de una forma alternativa si es que el tumor puede ser benigno o maligno, ocupando inteligencia artificial.")
+     
+     st.code("""
+         print(Cancer_df.head(5))
+         print(Cancer_df.shape)
+         print(pd.DataFrame(Cancer_df.isnull().sum()).T)
+     """)
+          
+     st.write(Cancer_df.head(5))
+     
+     st.write(Cancer_df.shape)
 
+     st.write(pd.DataFrame(Cancer_df.isnull().sum()).T)
+     
+     st.write("Los datos no neccesitan limpieza, solo necesita la eliminación de una columna.")
+     
+     st.code("""
+         Cancer_df=Cancer_df.drop(['Unnamed: 32'], axis=1)
+     """)
+     
+     Cancer_df=Cancer_df.drop(['Unnamed: 32'], axis=1)
+     
+     st.write(Cancer_df.head(5))
 
+     st.subheader("Ingeniería de características")
 
-
-
-
+     st.write("Los datos se separan en 'features' y 'label' como 'X' e 'y', para luego poder codificar la variable categorica en este caso 'y', además escalar los datos en X.")
+     
+     st.code("""
+        X = Cancer_data.drop(["diagnosis"], axis=1)
+        y = Cancer_data["diagnosis"]
+        from sklearn.preprocessing import LabelEncoder
+        from sklearn.model_selection import train_test_split
+        from sklearn.preprocessing import StandardScaler
+        labelencoder_X_1 = LabelEncoder()
+        y = labelencoder_X_1.fit_transform(y)
+        sc = StandardScaler()
+        X = sc.fit_transform(X)
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 123)      
+     """)
+     
+     
+     X = Cancer_df.drop(["diagnosis", "id"], axis=1)
+     y = Cancer_df["diagnosis"]
+     
+     from sklearn.preprocessing import LabelEncoder
+     from sklearn.model_selection import train_test_split
+     from sklearn.preprocessing import StandardScaler
+     labelencoder_X_1 = LabelEncoder()
+     y = labelencoder_X_1.fit_transform(y)
+     sc = StandardScaler()
+     X = sc.fit_transform(X)
+     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.1, random_state = 123)
+   
+     st.write(len(X_train), len(X_test), len(y_train), len(y_test))     
+     
+     st.subheader("Creación del modelo")
+     
+     import keras
+     from keras.models import Sequential
+     from keras.layers import Dense, Dropout
+     
+     st.code("""
+         model = Sequential()
+         model.add(Dense(16, kernel_initializer='uniform', activation='relu', input_dim=30))
+         model.add(Dropout(0.1))
+         model.add(Dense(16, kernel_initializer='uniform', activation='relu'))
+         model.add(Dropout(0.1))
+         model.add(Dense(1, kernel_initializer='uniform', activation='sigmoid'))
+         model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+         model.fit(X_train, y_train, batch_size=100, epochs=150)
+     """)
+     
+     model_c = Sequential()
+     model_c.add(Dense(16, kernel_initializer='uniform', activation='relu', input_dim=30))
+     model_c.add(Dropout(0.1))
+     model_c.add(Dense(16, kernel_initializer='uniform', activation='relu'))
+     model_c.add(Dropout(0.1))
+     model_c.add(Dense(1, kernel_initializer='uniform', activation='sigmoid'))
+     model_c.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+     history2 = model_c.fit(X_train, y_train, batch_size=100, epochs=40, validation_split=0.2)
+     
+     st.write("El modelo muestra que es un modelo de clasificación al ocupar como ultima capa una activación sigmoid, esto lo que proboca que para una etiqueta con categoria binarias entregue las probabilidades de que el tumor sea malgino, siendo un 1 el 100% que es maligno. Si fuesen varias clasificaciones lo correcto es ocupar OneHotencoder que entregaria la probabilidad de cada una.")
+     
+     st.write("Con un rendimiento del modelo de:")
+     
+     left, right = st.columns(2)
+     
+     with left:
+     
+        fig,ax=plt.subplots()
+        ax.plot(history2.history['loss'])
+        ax.plot(history2.history['val_loss'])
+        plt.title('Función de costo del modelo')
+        plt.ylabel('Error')
+        plt.xlabel('Epocas (desde 0)')
+        plt.legend(['train', 'test'])
+        st.pyplot(fig)
+     
+     with right:
+     
+        fig,ax=plt.subplots()
+        ax.plot(history2.history['accuracy'])
+        ax.plot(history2.history['val_accuracy'])
+        plt.title('Puntuación del modelo')
+        plt.ylabel('Accuracy')
+        plt.xlabel('Epocas (desde 0)')
+        plt.legend(['train', 'test'])
+        st.pyplot(fig)
+     
+     st.write("Muestra que tiene un rendimiento bastante bueno, con un error que disminuye a valores muy bajos de error y en cuanto a la puntuación se mantiene muy alta.")
+     
+     y_pred = model_c.predict(X_test)
+     
+     fig, ax = plt.subplots()
+     plt.hist(y_pred)
+     st.pyplot(fig)
+     
+     
+     y_pred = (y_pred > 0.5)
+     
+     from sklearn.metrics import confusion_matrix
+     cm = confusion_matrix(y_test, y_pred)
+     
+     print("Our accuracy is {}%".format(((cm[0][0] + cm[1][1])/57)*100))
+     
+     fig, ax = plt.subplots()     
+     sns.heatmap(cm,annot=True)
+     st.pyplot(fig)
 
 
 
