@@ -63,7 +63,7 @@ Life_df = pd.read_csv('Life_E_Data.csv')
 Cancer_df = pd.read_csv('Cancer_Data.csv')
 
 
-st.title("Predicciones medicas")
+st.title("Predicciones médicas")
 
 st.write(":green[*Modelo ML - ANN - Regresión y Clasificación*]")
 
@@ -73,12 +73,12 @@ with pagina1:
      
      st.subheader("Exploración y Análisis")
      
-     st.write("Los datos presentados son de un estudio de diferentes paises que se realizo entre el 2000 - 2015 por la Observatorio Mundial de la Salud (GHO). El estudio se centra en los paises y su esperanza de vida, estos estudios son realizados cada año para cada pais entre los años mencionados.")
-     st.write("Lo que se busca pronosticar es cual seria la esperanza de vida de un pais solo conociendo sus caracterisiticas y no de la manera tradicional que es con calculos tecnicos sobre las salud.")
+     st.write("Los datos presentados son de un estudio de diferentes países que se realizó entre el 2000 - 2015 por el Observatorio Mundial de la Salud (GHO). El estudio se centra en los países y su esperanza de vida, estos estudios son realizados cada año para cada país entre los años mencionados.")
+     st.write("Lo que se busca pronosticar es cual sería la esperanza de vida de un país solo conociendo sus características y no de la manera tradicional que es con cálculos técnicos sobre la salud.")
      
      st.subheader("Manipulación y Limpieza")
      
-     st.write("Se puede ver los datos explicitamente y sus respectivos datos nulos")
+     st.write("Se puede ver los datos explícitamente y sus respectivos datos nulos")
      
      st.code("""
           print(Life_df.head(5)
@@ -93,7 +93,7 @@ with pagina1:
      st.subheader("Ingeniería de características")
      
      
-     st.write("Existe un gran cantidad de datos nulos en algunas columnas, lo que podria perjudicar a la predicción, por lo que es mejor remplazar esos datos con sus promedios.")
+     st.write("Existe un gran cantidad de datos nulos en algunas columnas, lo que podría perjudicar a la predicción, por lo que es mejor remplazar esos datos con sus promedios.")
      
      st.code("""
          imputer = SimpleImputer(missing_values=np.nan, strategy='mean', fill_value=None)
@@ -130,7 +130,7 @@ with pagina1:
      Life_df['Income composition of resources']=imputer.fit_transform(Life_df[['Income composition of resources']])
      Life_df['Schooling']=imputer.fit_transform(Life_df[['Schooling']])
      
-     st.write("Obteniendo que ya no existen datos nulos")
+     st.write("Obteniendo que ya no existen datos nulos.")
      
      st.write(pd.DataFrame(Life_df.isnull().sum()).T)
      
@@ -176,7 +176,7 @@ with pagina1:
      
      st.write(Life_df.shape)
 
-     st.write("Es necesario codificar las variables categoricas para que puedan ser procesadas por el modelo.")
+     st.write("Es necesario codificar las variables categóricas para que puedan ser procesadas por el modelo.")
      
      st.code("""
          cols_to_encode = ['Country', 'Status']
@@ -191,7 +191,7 @@ with pagina1:
      for col in cols_to_encode:
              Life_df[col] = label_encoder_df.fit_transform(Life_df[col])
      
-     st.write("Por ultimo separar en 'features' y 'labels', para luego codificar los datos separando en datos de entrenamiento y prueba.")
+     st.write("Por último separar en 'features' y 'labels', para luego codificar los datos separando en datos de entrenamiento y prueba.")
      
      st.code("""
          X = Life_df.drop('Life expectancy ', axis=1)
@@ -278,7 +278,7 @@ with pagina1:
      plt.legend(['train', 'test'])
      st.pyplot(fig)
      
-     st.write("El modelo obtiene un buen rendimiento en pocas epocas, el error se reduce considerablemente en las primeras 5 epocas, obteniendo cada vez un mejor rendimiento en cada epoca superior, siendo cada vez la reducción menos notoria, llegando al maximo de reducción en la epoca 150.")
+     st.write("El modelo obtiene un buen rendimiento en pocas épocas, el error se reduce considerablemente en las primeras 5 épocas, obteniendo cada vez un mejor rendimiento en cada época superior, siendo cada vez la reducción menos notoria, llegando al máximo de reducción en la época 150.")
  
      y_pred = model.predict(X_test)                     
 
@@ -289,17 +289,15 @@ with pagina1:
 
      st.subheader("Conclusión")
      
-     st.write("El modelo hace una buena interpretación de los datos llegando a una puntuación R2 superior a 0.9, recordando que muchos de los datos fueron alterados para no perder información importante. El modelo ANN es bastante rapido en entrenarse y puede ocuparse en casos donde se requiere problemas complejos que no necesariamente se tengan relaciones lineales.")
+     st.write("El modelo hace una buena interpretación de los datos llegando a una puntuación R2 superior a 0.9, recordando que muchos de los datos fueron alterados para no perder información importante. El modelo ANN es bastante rápido en entrenarse y puede ocuparse en casos donde se requiere problemas complejos que no necesariamente se tengan relaciones lineales.")
 
 with pagina2:
 
-     st.write("nada")
-
      st.subheader("Exploración y Análisis")
      
-     st.write("Los datos son de pacientes que fueron dianosticado de cancer de mamas, contienen toda la información de los pacientes, lo que muestra los datos principalmente es si el tumor que presentan en las mamas benigo o maligno, si el tumor benigo significa que no se ramificara en el cuerpo, por lo que el paciente puede ser curado, pero si el paciente tiene un tumor maligno este se puede ramificar y se vuelve muy dificil ser curado.")
+     st.write("Los datos son de pacientes que fueron diagnosticado de cáncer de mamas, contienen toda la información de los pacientes, lo que muestra los datos principalmente es si el tumor que presentan en las mamas benigno o maligno, si el tumor benigno significa que no se ramificara en el cuerpo, por lo que el paciente puede ser curado, pero si el paciente tiene un tumor maligno este se puede ramificar y se vuelve muy difícil ser curado.")
      
-     st.write("Lo que se intenta con este pronostico es saber de una forma alternativa si es que el tumor puede ser benigno o maligno, ocupando inteligencia artificial.")
+     st.write("Lo que se intenta con este pronóstico es saber de una forma alternativa si es que el tumor puede ser benigno o maligno, ocupando inteligencia artificial.")
      
      st.code("""
          print(Cancer_df.head(5))
@@ -313,7 +311,7 @@ with pagina2:
 
      st.write(pd.DataFrame(Cancer_df.isnull().sum()).T)
      
-     st.write("Los datos no neccesitan limpieza, solo necesita la eliminación de una columna.")
+     st.write("Los datos no necesitan limpieza, solo necesita la eliminación de una columna.")
      
      st.code("""
          Cancer_df=Cancer_df.drop(['Unnamed: 32'], axis=1)
@@ -325,7 +323,7 @@ with pagina2:
 
      st.subheader("Ingeniería de características")
 
-     st.write("Los datos se separan en 'features' y 'label' como 'X' e 'y', para luego poder codificar la variable categorica en este caso 'y', además escalar los datos en X.")
+     st.write("Los datos se separan en 'features' y 'label' como 'X' e 'y', para luego poder codificar la variable categórica en este caso 'y', además escalar los datos en X.")
      
      st.code("""
         X = Cancer_data.drop(["diagnosis"], axis=1)
@@ -381,7 +379,7 @@ with pagina2:
      model_c.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
      history2 = model_c.fit(X_train, y_train, batch_size=100, epochs=40, validation_split=0.2)
      
-     st.write("El modelo muestra que es un modelo de clasificación al ocupar como ultima capa una activación sigmoid, esto lo que proboca que para una etiqueta con categoria binarias entregue las probabilidades de que el tumor sea malgino, siendo un 1 el 100% que es maligno. Si fuesen varias clasificaciones lo correcto es ocupar OneHotencoder que entregaria la probabilidad de cada una.")
+     st.write("Se puede ver que es un modelo de clasificación, ya que ocupa la última capa con una activación sigmoid, esto lo que provoca que para una etiqueta con categoria binarias entregue las probabilidades de que el tumor sea maligno, siendo 0 significa que es benigno y 1 que es maligno. Si fuesen varias clasificaciones lo correcto es ocupar OneHotencoder para que entregue la probabilidad de cada clasificación.")
      
      st.write("Con un rendimiento del modelo de:")
      
@@ -413,23 +411,31 @@ with pagina2:
      
      y_pred = model_c.predict(X_test)
      
-     fig, ax = plt.subplots()
-     plt.hist(y_pred)
-     st.pyplot(fig)
+     y_pred1 = len(y_pred[y_pred > 0.5])
+     y_pred2 = len(y_pred[y_pred <= 0.5])
      
+     st.write(f"* **Los pacientes con más probabilidad de presentar un tumor benigno son:** :green[{y_pred2}]")
      
-     y_pred = (y_pred > 0.5)
+     st.write(f"* **Los pacientes con más probabilidad de presentar un tumor maligno son:** :green[{y_pred1}]")
      
+     st.write("A continuación se muestra la matriz de confusión por clasificación, en este caso 0 es benigno y 1 maligno, las filas dicen cual fue la predicción siendo del modelo, por ejemplo en este caso si el valor está en la diagonal el modelo acertó correctamente, el modelo solo obtuvo un fallo en una predicción, en la cual indico que era benigno, pero en realidad era maligno.")
+          
+     y_pred1 = y_pred > 0.5
      from sklearn.metrics import confusion_matrix
-     cm = confusion_matrix(y_test, y_pred)
+     cm = confusion_matrix(y_test, y_pred1)
      
      print("Our accuracy is {}%".format(((cm[0][0] + cm[1][1])/57)*100))
      
      fig, ax = plt.subplots()     
      sns.heatmap(cm,annot=True)
      st.pyplot(fig)
-
-
+      
+     st.write("Puntuación del modelo: ")
+     st.write(f"- **Accuracy= 0.98**")
+     
+     st.subheader("Conclusiones")
+     
+     st.write("El modelo obtuvo una cantidad alta de predicciones acertadas considerando que los datos no fueron modificados,  hizo una muy buena interpretación de los datos prediciendo la probabilidad de que un paciente con cáncer pueda tener un tumor maligno. La puntuación fue de 0.98 bastante alta, logrando una interpretación buena con solo 40 épocas. Al aumentar las épocas no presenta mejoras en puntuación, ni disminución del error.")
 
 
 
