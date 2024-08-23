@@ -93,7 +93,7 @@ title_style = """
 .box {
     color: white;
     font-family: 'Trebuchet MS', sans-serif; 
-    font-size: 44px;
+    font-size: 42px;
     font-weight: bold;
     text-align: center;
     background-color: #191b20;
@@ -126,7 +126,7 @@ with left:
         .box1 {
             border: 1px solid #4CAF50;
             padding: 25px;
-            border-radius: 40px;
+            border-radius: 50px;
             background-color: #191b20;
             width: 312px;  /* Ancho de la caja */
             height: 180px;
@@ -174,9 +174,9 @@ with right:
         .box2 {
             border: 1px solid #4CAF50;
             padding: 33px;
-            border-radius: 40px;
+            border-radius: 50px;
             background-color: #191b20;
-            width: 335px;  /* Ancho de la caja */
+            width: 335px;
             height: 550px;
         }
         </style>
