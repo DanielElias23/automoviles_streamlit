@@ -100,8 +100,8 @@ title_style = """
     padding: 1px;
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    margin: 0 auto;
-    width: 690px;  /* Ancho de la caja */
+    margin: 5 auto;
+    width: 673px;  /* Ancho de la caja */
     height: 150px;
     border: 3px solid #333; /* Borde alrededor de la caja */
 }
@@ -125,11 +125,11 @@ with left:
         <style>
         .box1 {
             border: 1px solid #4CAF50;
-            padding: 25px;
-            border-radius: 50px;
+            padding: 20px;
+            border-radius: 40px;
             background-color: #191b20;
             width: 312px;  /* Ancho de la caja */
-            height: 180px;
+            height: 160px;
         }
         </style>
     """, unsafe_allow_html=True)
@@ -173,11 +173,11 @@ with right:
         <style>
         .box2 {
             border: 1px solid #4CAF50; 
-            padding: 33px;
-            border-radius: 50px;
+            padding: 23px;
+            border-radius: 40px;
             background-color: #191b20;
-            width: 335px;
-            height: 550px;
+            width: 312px;
+            height: 530px;
         }
         </style>
     """, unsafe_allow_html=True)
