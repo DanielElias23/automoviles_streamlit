@@ -92,7 +92,7 @@ title_style = """
 <style>
 .box {
     color: white;
-    font-family: 'Trebuchet MS', sans-serif;
+    font-family: 'Trebuchet MS', sans-serif; 
     font-size: 44px;
     font-weight: bold;
     text-align: center;
