@@ -87,20 +87,23 @@ embed_component = {
 
 import streamlit as st
 
-# Define el estilo CSS con subrayado
+# Estilo CSS con una clase .box para envolver el título
 title_style = """
 <style>
-h1 {
+.box {
     color: white;
     font-family: 'Trebuchet MS', sans-serif;
-    font-size: 50px;
+    font-size: 44px;
     font-weight: bold;
     text-align: center;
     background-color: #191b20;
-    padding: 10px;
-    border-radius: 15px;
+    padding: 1px;
+    border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    #text-decoration: underline; /* Subrayado */
+    margin: 0 auto;
+    width: 690px;  /* Ancho de la caja */
+    height: 150px;
+    border: 3px solid #333; /* Borde alrededor de la caja */
 }
 </style>
 """
@@ -108,11 +111,9 @@ h1 {
 # Aplica el estilo
 st.markdown(title_style, unsafe_allow_html=True)
 
-# Muestra el título con subrayado
-st.markdown("<h1>Bienvenido a proyectos de machine learning</h1>", unsafe_allow_html=True)
+# Muestra el título dentro de la caja con la clase .box
+st.markdown('<div class="box">Bienvenido a proyectos de machine learning</div>', unsafe_allow_html=True)
 
-
-#st.title("**Bienvenido a proyectos de machine learning**")
 
 left, right = st.columns(2)
 
