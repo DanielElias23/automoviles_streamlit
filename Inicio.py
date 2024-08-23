@@ -137,7 +137,7 @@ with left:
             <h3>Contacto:</h3>          
             <ul>
                 <li>danielchingasilva@gmail.com</li>
-                <li>+569 31488069</li>
+                <li>+569 3148 8069</li>
             </ul>
         </div>
     """, unsafe_allow_html=True)
