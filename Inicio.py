@@ -22,11 +22,11 @@ def get_img_as_base64(file):
 #"https://images.unsplash.com/photo-1501426026826-31c667bdf23d"
 #data:image/png;base64,{img}
 img = get_img_as_base64("image.jpg")
-
+#https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqZ2lmjdQMNC3cyQ2g0i_wvigb5elGGBIPBg&s
 page_bg_img = f"""
 <style>
 [data-testid="stAppViewContainer"] > .main {{
-background-image: url("https://www.colorhexa.com/191b20.png");
+background-image: url("https://img.freepik.com/fotos-premium/imagen-borrosa-centro-comercial-fondo-luz-bokeh_1157641-5174.jpg");
 background-size: 100%;
 background-position: top left;
 background-repeat: repeat;
@@ -34,7 +34,7 @@ background-attachment: local;
 }}
 
 [data-testid="stSidebar"] > div:first-child {{
-background-image: url("https://wallpapers.com/images/hd/dark-blue-plain-thxhzarho60j4alk.jpg");
+background-image: url("https://www.colorhexa.com/191b20.png");
 background-size: 150%;
 background-position: top left; 
 background-repeat: repeat;
@@ -52,43 +52,156 @@ right: 2rem;
 """
 st.markdown(page_bg_img, unsafe_allow_html=True)
 
+#embed_component = {
+#    'Linkedin': """
+#    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
+#    <div class="badge-base LI-profile-badge" data-locale="es_ES" data-size="large" data-theme="light" data-type="VERTICAL" data-vanity="danielchingasilva" data-version="v1">
+#        <a class="badge-base__link LI-simple-link" href="https://cl.linkedin.com/in/danielchingasilva?trk=profile-badge">Daniel Elías Chinga Silva</a>
+#    </div>
+#    """
+#}
 
-embed_component = {'Linkedin':"""<script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script> <div class="badge-base LI-profile-badge" data-locale="es_ES" data-size="medium" data-theme="light" data-type="VERTICAL" data-vanity="danielchingasilva" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://cl.linkedin.com/in/danielchingasilva?trk=profile-badge">Daniel Elías Chinga Silva</a></div> """}
+
+embed_component = {
+    'Linkedin': """
+    <style>
+        .badge-base {
+            height: 1000px;  /* Ajusta la altura según sea necesario */
+            width: 200%;
+        }
+    </style>
+    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
+    <div class="badge-base LI-profile-badge" data-locale="es_ES" data-size="large" data-theme="light" data-type="VERTICAL" data-vanity="danielchingasilva" data-version="v1">
+        <a class="badge-base__link LI-simple-link" href="https://cl.linkedin.com/in/danielchingasilva?trk=profile-badge">Daniel Elías Chinga Silva</a>
+    </div>
+    """
+}
+
+#embed_component = {'Linkedin':"""<script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script> <div class="badge-base LI-profile-badge" data-locale="es_ES" data-size="medium" data-theme="light" data-type="VERTICAL" data-vanity="danielchingasilva" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://cl.linkedin.com/in/danielchingasilva?trk=profile-badge">Daniel Elías Chinga Silva</a></div> """}
 
 #with st.sidebar:
 
 
-st.subheader(":orange[Bienvenidos] 👋")
+#st.subheader(":orange[Bienvenido]")
 
-st.title("Proyectos de machine learning")
+
+import streamlit as st
+
+# Define el estilo CSS con subrayado
+title_style = """
+<style>
+h1 {
+    color: white;
+    font-family: 'Trebuchet MS', sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    background-color: #191b20;
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    #text-decoration: underline; /* Subrayado */
+}
+</style>
+"""
+
+# Aplica el estilo
+st.markdown(title_style, unsafe_allow_html=True)
+
+# Muestra el título con subrayado
+st.markdown("<h1>Bienvenido a proyectos de machine learning</h1>", unsafe_allow_html=True)
+
+
+#st.title("**Bienvenido a proyectos de machine learning**")
 
 left, right = st.columns(2)
 
 with left:
-    components.html(embed_component["Linkedin"], height=370)
+    #components.html(embed_component["Linkedin"], height=370)
+    components.html(embed_component["Linkedin"], height=344)
+    #st.subheader("  Contacto")
+    st.markdown("""
+        <style>
+        .box1 {
+            border: 1px solid #4CAF50;
+            padding: 25px;
+            border-radius: 40px;
+            background-color: #191b20;
+            width: 312px;  /* Ancho de la caja */
+            height: 180px;
+        }
+        </style>
+    """, unsafe_allow_html=True)
+    st.markdown("""
+        <div class="box1">  
+            <h3>Contacto:</h3>          
+            <ul>
+                <li>danielchingasilva@gmail.com</li>
+                <li>+56923u4324</li>
+            </ul>
+        </div>
+    """, unsafe_allow_html=True)
+    
+    
+    #st.text("danielchingasilva@gmail.com")
+    #st.write("egerg")
+#with right:
 
-with right:
+#    st.subheader("Autor: Daniel C. S.")
+#    st.write("https://github.com/DanielElias23")
 
-    st.subheader("Autor: Daniel C. S.")
-    st.write("https://github.com/DanielElias23")
-
-    st.write("www.linkedin.com/in/danielchingasilva")
+#    st.write("www.linkedin.com/in/danielchingasilva")
      
-    st.subheader("Objetivos")
+#    st.subheader("Objetivos")
 
-    st.write("-Dar a conocer el conocimientos al respecto con machine learning")
+#    st.write("-Dar a conocer el conocimientos al respecto con machine learning")
 
-    st.write("-Demostrar dominio de conocimiento para solucionar problemas a diferentes problemáticas")
+#    st.write("-Demostrar dominio de conocimiento para solucionar problemas a diferentes problemáticas")
 
-    st.write("-Mostrar habilidades de programación enfocado al contexto ciencia de datos en las empresas")
+#    st.write("-Mostrar habilidades de programación enfocado al contexto ciencia de datos en las empresas")
 #mention(label="DanielElias23", icon="github", url="https://github.com/DanielElias23",)
 
+#left, right = st.columns(2)
 
+#with left:
+#    components.html("<iframe src='https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:12345678901234567890' height='370' width='400'></iframe>", height=370)
+
+with right:
+    # Estilo CSS para aplicar un borde
+    st.markdown("""
+        <style>
+        .box2 {
+            border: 1px solid #4CAF50;
+            padding: 33px;
+            border-radius: 40px;
+            background-color: #191b20;
+            width: 335px;  /* Ancho de la caja */
+            height: 550px;
+        }
+        </style>
+    """, unsafe_allow_html=True)
+
+    # Envuelve el contenido en un div con la clase 'box'
+    st.markdown("""
+        <div class="box2">
+            <h3>Autor: Daniel C. S.</h3>
+            <p><a href="https://github.com/DanielElias23" target="_blank">https://github.com/DanielElias23</a></p>
+            <p><a href="https://www.linkedin.com/in/danielchingasilva" target="_blank">www.linkedin.com/in/danielchingasilva</a></p>
+            <h3>Objetivos</h3>
+            <ul>
+                <li>Dar a conocer el conocimiento al respecto con machine learning</li>
+                <li>Demostrar dominio de conocimiento para solucionar problemas a diferentes problemáticas</li>
+                <li>Mostrar habilidades de programación enfocadas al contexto ciencia de datos en las empresas</li>
+            </ul>
+        </div>
+    """, unsafe_allow_html=True)
 
 st.sidebar.header("Barra de proyectos")
 st.sidebar.write("Selecciona un proyecto")
 #st.subhe
 #ader("Problema")
+
+
 
 #st.subheader("Descripción del problema")
 
