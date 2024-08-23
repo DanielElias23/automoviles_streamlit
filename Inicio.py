@@ -101,7 +101,7 @@ title_style = """
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     margin: 5 auto;
-    width: 673px;  /* Ancho de la caja */
+    width: 676px;  /* Ancho de la caja */
     height: 150px;
     border: 3px solid #333; /* Borde alrededor de la caja */
 }
@@ -176,7 +176,7 @@ with right:
             padding: 23px;
             border-radius: 40px;
             background-color: #191b20;
-            width: 312px;
+            width: 315px;
             height: 530px;
         }
         </style>
