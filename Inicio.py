@@ -172,7 +172,7 @@ with right:
     st.markdown("""
         <style>
         .box2 {
-            border: 1px solid #4CAF50;
+            border: 1px solid #4CAF50; 
             padding: 33px;
             border-radius: 50px;
             background-color: #191b20;
