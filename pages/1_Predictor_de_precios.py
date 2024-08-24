@@ -58,7 +58,7 @@ background-attachment: local;
 }}
 
 [data-testid="stSidebar"] > div:first-child {{
-background-image: url("https://wallpapers.com/images/hd/dark-blue-plain-thxhzarho60j4alk.jpg");
+background-image: url("https://www.colorhexa.com/191b20.png");
 background-size: 150%;
 background-position: top left; 
 background-repeat: repeat;
@@ -75,7 +75,40 @@ right: 2rem;
 </style>
 """
 st.markdown(page_bg_img, unsafe_allow_html=True)
+def set_custom_css():
+    st.markdown(
+        """
+        <style>
+        /* Estilos para la barra de desplazamiento en la página */
+        ::-webkit-scrollbar {
+            width: 16px; /* Ajusta el ancho de la barra de desplazamiento */
+            height: 16px; /* Ajusta la altura de la barra de desplazamiento (horizontal) */
+        }
 
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; /* Color del fondo de la pista de desplazamiento */
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #888; /* Color de la parte deslizable de la barra */
+            border-radius: 10px; /* Radio de borde de la parte deslizable */
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555; /* Color de la parte deslizable cuando se pasa el ratón */
+        }
+        </style>
+        """,
+        unsafe_allow_html=True)
+
+def main1():
+    set_custom_css()
+
+    st.write(''*1000)
+
+if __name__ == "__main__":
+    main1()
+st.logo("https://images.emojiterra.com/google/noto-emoji/unicode-15/color/512px/1f4c3.png")
 
 data = pd.read_csv('https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-ML240EN-SkillsNetwork/labs/data/CarPrice_Assignment.csv')
 alfa_romeo=Image.open("alfa-romeo.jpg")
@@ -91,7 +124,45 @@ isuzu=Image.open("isuzu.jpg")
 #with open('googlelogo.png', 'wb') as f: 
 #     f.write(alfa_romeo.content) 
 
-st.title("Predictor de precios")
+
+title_style = """
+<style>
+.box {
+    color: white;
+    font-family: 'Playfair Display', serif;
+    font-size: 46px;
+    font-weight: bold;
+    text-align: center;
+    background-color: #191b20;
+    padding: 5px; /* Ajusta el padding para dar espacio al texto */
+    border: 1px solid #4CAF50;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 5 auto;
+    width: 676px;  /* Ancho de la caja */
+    height: 84px;  /* Ajusta la altura automáticamente */
+}
+.subtext {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px; /* Tamaño del texto secundario */
+    font-weight: normal;
+}
+</style>
+"""
+
+# Aplica el estilo
+st.markdown(title_style, unsafe_allow_html=True)
+
+# Muestra el título y el texto adicional dentro de la misma caja con la clase .box
+st.markdown("""
+<div class="box">
+    Predictor de precios
+    <p class="subtext"></p>
+    <p class="subtext"></p>
+</div>
+""", unsafe_allow_html=True)
+
+#st.title("Predictor de precios")
 st.write(":green[*Modelo ML - Regresión*]")
 pagina1, pagina2 , pagina3=st.tabs(["Home", "Predicción individual","Predicción múltiple"])
 
