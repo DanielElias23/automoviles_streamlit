@@ -51,7 +51,8 @@ right: 2rem;
 </style>
 """
 st.markdown(page_bg_img, unsafe_allow_html=True)
- 
+
+
 def set_custom_css():
     st.markdown(
         """
@@ -76,8 +77,7 @@ def set_custom_css():
         }
         </style>
         """,
-        unsafe_allow_html=True
-    )
+        unsafe_allow_html=True)
 
 def main1():
     set_custom_css()
@@ -96,6 +96,7 @@ if __name__ == "__main__":
 #    </div>
 #    """
 #}
+
 
 
 embed_component = {
@@ -260,8 +261,7 @@ st.sidebar.write("Selecciona un proyecto")
 #st.subhe
 #ader("Problema")
 
-
-
+st.logo("https://images.emojiterra.com/google/noto-emoji/unicode-15/color/512px/1f4c3.png")
 #st.subheader("Descripción del problema")
 
 #st.write("""
