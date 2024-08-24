@@ -1,8 +1,7 @@
 from groq import Groq
 import streamlit as st
-
 import base64
-import streamlit as st
+
 
 
 
@@ -46,7 +45,7 @@ right: 2rem;
 st.markdown(page_bg_img, unsafe_allow_html=True)
 
 
-client = Groq(api_key="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")
+client = Groq(api_key="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")
 
 
 
