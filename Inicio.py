@@ -136,7 +136,7 @@ with left:
             margin-left: auto -1;
             margin-right: auto;
             border-radius: 10px;
-            width: 305px;  /* Ajusta el tamaño aquí */
+            width: 308px;  /* Ajusta el tamaño aquí */
         }}
     </style>
      <a href="https://www.linkedin.com/in/danielchingasilva" target="_blank">
