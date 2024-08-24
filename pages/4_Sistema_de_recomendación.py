@@ -124,7 +124,7 @@ title_style = """
 st.markdown(title_style, unsafe_allow_html=True)
 
 # Muestra el título y el texto adicional dentro de la misma caja con la clase .box
-st.markdown("""
+st.markdown(""" 
 <div class="box">
     Sistema de recomendación
     <p class="subtext"></p>
