@@ -52,6 +52,42 @@ right: 2rem;
 """
 st.markdown(page_bg_img, unsafe_allow_html=True)
 
+def set_custom_css():
+    st.markdown(
+        """
+        <style>
+        /* Estilos para la barra de desplazamiento en la página */
+        ::-webkit-scrollbar {
+            width: 16px; /* Ajusta el ancho de la barra de desplazamiento */
+            height: 16px; /* Ajusta la altura de la barra de desplazamiento (horizontal) */
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; /* Color del fondo de la pista de desplazamiento */
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #888; /* Color de la parte deslizable de la barra */
+            border-radius: 10px; /* Radio de borde de la parte deslizable */
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555; /* Color de la parte deslizable cuando se pasa el ratón */
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+def main1():
+    set_custom_css()
+
+    st.write(''*1000)
+
+if __name__ == "__main__":
+    main1()
+
+
 #embed_component = {
 #    'Linkedin': """
 #    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
