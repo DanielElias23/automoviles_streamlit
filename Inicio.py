@@ -147,7 +147,7 @@ with left:
         <style>
         .box1 {
             border: 1px solid #4CAF50;
-            padding: 20px;
+            padding: 23px;
             border-radius: 40px;
             background-color: #191b20;
             width: 312px;  /* Ancho de la caja */
