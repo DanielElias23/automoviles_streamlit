@@ -144,7 +144,15 @@ st.markdown("""
 
 #st.title("Tendencias Financieras")
 
-st.write(":green[*Modelo ML - RNN - LSTM*]")
+st.write("")
+
+st.write("* Tipo de Modelo: :green[Red Neuronal]")
+  
+st.write("* Modelos utilizados: :green[Recurrent neural networks (RNN) - Long short term memory (LSTM) ]")
+st.write("* Objetivo: :green[Tendencia de valores a futuro]")
+
+
+#st.write(":green[*Modelo ML - RNN - LSTM*]")
 
 st.subheader("Exploración y Análisis")
 

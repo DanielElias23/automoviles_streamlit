@@ -130,11 +130,17 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
+st.write("")
 
+st.write("* Tipo de Modelo: :green[Clustering]")
+  
+st.write("* Modelos utilizados: :green[KMeans]")
+st.write("* Objetivo: :green[Segmentación de clientes]")
 
+st.write("Nota: En general KMeans se comporta mejor que otros modelos porque es ajustable más fácilmente a lo que vemos, para que otros modelos como :green[DBSCAN], :green[Agglomerative clustering] y :green[Gaussian mixture] tengan mejores rendimientos se necesitan que los datos se comporten de manera [particular](%s). Por lo que no se aplicaran en este caso." % "https://medium.com/leukemiaairesearch/dbscan-and-gaussian-mixtures-with-gene-expression-data-87d1c7cddb59")
 
 #st.title("Segmentación de clientes")
-st.write(":green[*Modelo ML - Clustering*]")
+#st.write(":green[*Modelo ML - Clustering*]")
 st.write("Un clustering corresponde a un análisis para llevar a cabo una segmentación, al hacerse un análisis generalmente se da como resultado que una sola segmentación es la más óptima, por lo que no puede ser interactivo al ser solo un resultado, por esta razón esta sección será un análisis para lograr definir las diferentes agrupaciones de clientes.")
 #print(df)
 

@@ -158,7 +158,14 @@ st.markdown("""
 
 #st.title("Reconocimiento de imágenes")
 
-st.write(":green[*Modelo ML - CNN*]")
+st.write("")
+
+st.write("* Tipo de Modelo: :green[Red Neuronal]")
+  
+st.write("* Modelos utilizados: :green[Convolutional neural network (CNN)]")
+st.write("* Objetivo: :green[Reconocimiento de tipo de flores]")
+
+#st.write(":green[*Modelo ML - CNN*]")
 
 st.subheader("Exploración y Análisis")
 

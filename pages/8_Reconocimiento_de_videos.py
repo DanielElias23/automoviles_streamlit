@@ -129,7 +129,14 @@ st.markdown("""
 
 #st.title("Reconocimiento de videos")
 
-st.write(":green[*Modelo ML - YOLO - Tracking*]")
+st.write("")
+
+st.write("* Tipo de Modelo: :green[Red neuronal convolucional supervisada]")
+  
+st.write("* Modelos utilizados: :green[You Only Look Once (YOLO)]")
+st.write("* Etiqueta: :green[Reconocimiento y seguimiento de objetos]")
+
+#st.write(":green[*Modelo ML - YOLO - Tracking*]")
 
 st.subheader("Exploración y Análisis")
 

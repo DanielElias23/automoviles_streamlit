@@ -130,7 +130,16 @@ st.markdown("""
 
 #st.subheader("Clasificación de Posible Abandono de Clientes de Telecomunicaciones")
 #st.title("Perdida de clientes")
-st.write(":green[*Modelo ML - Clasificación*] ")
+#st.write(":green[*Modelo ML - Clasificación*] ")
+
+st.write("")
+
+st.write("* Tipo de Modelo: :green[Clasificación]")
+  
+st.write("* Modelos utilizados: :green[DecisionTreeClassifier, LogisticRegression, KNeighborsClassifier, SVC, RandomForestClassifier, ExtraTreesClassifier, GradientBoostingClassifier, AdaBoostClassifier, BaggingClassifier, StackingClassifier]")
+
+st.write("* Etiqueta: :green[Perdida de cliente]")
+
 pagina1, pagina2, pagina3 =st.tabs(["Home","Predicción individual","Predicción múltiple"])
 
 with pagina1:

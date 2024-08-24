@@ -134,7 +134,14 @@ st.markdown("""
 
 #st.title("Sistema de recomendación")
 
-st.write(":green[*Modelo ML - Vectorización*]")
+st.write("")
+
+st.write("* Tipo de Modelo: :green[Vectorización]")
+  
+st.write("* Algoritmos utilizados: :green[TfidfVectorizer, CountVectorizer, linear_kernel, cosine_similarity]")
+st.write("* Objetivo: :green[Sistema de recomendación]")
+
+#st.write(":green[*Modelo ML - Vectorización*]")
 
 st.subheader("Exploración y Análisis")
 

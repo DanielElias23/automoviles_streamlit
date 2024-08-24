@@ -135,10 +135,16 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
+st.write("")
+
+st.write("* Tipo de Modelo: :green[Red Neuronal]")
+  
+st.write("* Modelos utilizados: :green[Artificial Neural Network (ANN)]")
+st.write("* Etiqueta: :green[Esperanza de vida y Clasificación del cáncer]")
 
 #st.title("Predicciones médicas")
 
-st.write(":green[*Modelo ML - ANN - Regresión y Clasificación*]")
+#st.write(":green[*Modelo ML - ANN - Regresión y Clasificación*]")
 
 pagina1, pagina2=st.tabs([" Regresión ", " Clasificación "])
 

@@ -79,42 +79,7 @@ if __name__ == "__main__":
     main1()
 st.logo("https://images.emojiterra.com/google/noto-emoji/unicode-15/color/512px/1f4c3.png")
 
-title_style = """
-<style>
-.box {
-    color: white;
-    font-family: 'Playfair Display', serif;
-    font-size: 46px;
-    font-weight: bold;
-    text-align: center;
-    background-color: #191b20;
-    padding: 5px; /* Ajusta el padding para dar espacio al texto */
-    border: 1px solid #4CAF50;
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    margin: 0 auto;
-    width: 400px;  /* Ancho de la caja */
-    height: 84px;  /* Ajusta la altura automáticamente */
-}
-.subtext {
-    font-family: 'Inter', sans-serif;
-    font-size: 13px; /* Tamaño del texto secundario */
-    font-weight: normal;
-}
-</style>
-"""
 
-# Aplica el estilo
-st.markdown(title_style, unsafe_allow_html=True)
-
-# Muestra el título y el texto adicional dentro de la misma caja con la clase .box
-st.markdown("""
-<div class="box">
-    Chat con la IA
-    <p class="subtext"></p>
-    <p class="subtext"></p>
-</div>
-""", unsafe_allow_html=True)
 
 client = Groq(api_key="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")
 

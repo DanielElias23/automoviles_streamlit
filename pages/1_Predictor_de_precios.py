@@ -138,7 +138,7 @@ title_style = """
     border: 1px solid #4CAF50;
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    margin: 5 auto;
+    margin: 0 auto;
     width: 676px;  /* Ancho de la caja */
     height: 84px;  /* Ajusta la altura automáticamente */
 }
@@ -162,8 +162,24 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
+st.write("")
+
+st.write("* Tipo de Modelo: :green[Regresión]")
+  
+st.write("* Modelos utilizados: :green[LinearRregression, Lasso, Ridge, ElasticNet]")
+st.write("* Etiqueta: :green[Precios de automóviles]")
+
+#left2, right2 = st.columns(2)
+
+#with left2:
+
+#  st.write("* Features: :green[Caracteristicas de vehiculos]")
+  
+#with right2:
+#  st.write("* Label: :green[Precio de vehiculos]")
+
 #st.title("Predictor de precios")
-st.write(":green[*Modelo ML - Regresión*]")
+#st.write(":green[*Modelo ML - Regresión*]")
 pagina1, pagina2 , pagina3=st.tabs(["Home", "Predicción individual","Predicción múltiple"])
 
 with pagina1:
