@@ -92,18 +92,18 @@ title_style = """
 <style>
 .box {
     color: white;
-    font-family: 'Trebuchet MS', sans-serif; 
-    font-size: 42px;
+    font-family: 'Playfair Display', serif;
+    font-size: 46px;
     font-weight: bold;
     text-align: center;
     background-color: #191b20;
-    padding: 1px;
+    padding: 0px;
+    border: 1px solid #4CAF50;
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     margin: 5 auto;
     width: 676px;  /* Ancho de la caja */
     height: 150px;
-    border: 3px solid #333; /* Borde alrededor de la caja */
 }
 </style>
 """
@@ -114,13 +114,35 @@ st.markdown(title_style, unsafe_allow_html=True)
 # Muestra el título dentro de la caja con la clase .box
 st.markdown('<div class="box">Bienvenido a proyectos de machine learning</div>', unsafe_allow_html=True)
 
-
+#linkedin=Image.open("linkedin.png")
 left, right = st.columns(2)
+imagen1="linkedin2.png"
+
 
 with left:
     #components.html(embed_component["Linkedin"], height=370)
-    components.html(embed_component["Linkedin"], height=344)
+    #components.html(embed_component["Linkedin"], height=344)
     #st.subheader("  Contacto")
+    st.write("")
+    #st.image(linkedin, width=300)  
+    #st.write(linkedin)
+    image_data = open(imagen1, "rb").read()
+    encoded_image = base64.b64encode(image_data).decode()
+    #<a href="www.linkedin.com/in/danielchingasilva" target="_blank">
+    st.write(f'''
+    <style>
+        .resized-image {{
+            display: block;
+            margin-left: auto -1;
+            margin-right: auto;
+            border-radius: 10px;
+            width: 305px;  /* Ajusta el tamaño aquí */
+        }}
+    </style>
+     <a href="https://www.linkedin.com/in/danielchingasilva" target="_blank">
+        <img src="data:image/jpeg;base64,{encoded_image}" class="resized-image"/>
+    </a>
+    ''', unsafe_allow_html=True)
     st.markdown("""
         <style>
         .box1 {
@@ -129,7 +151,7 @@ with left:
             border-radius: 40px;
             background-color: #191b20;
             width: 312px;  /* Ancho de la caja */
-            height: 160px;
+            height: 165px;
         }
         </style>
     """, unsafe_allow_html=True)
