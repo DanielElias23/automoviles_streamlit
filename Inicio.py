@@ -150,7 +150,7 @@ with left:
             padding: 23px;
             border-radius: 40px;
             background-color: #191b20;
-            width: 311px;  /* Ancho de la caja */
+            width: 310px;  /* Ancho de la caja */
             height: 168px;
         }
         </style>
