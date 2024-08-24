@@ -151,7 +151,7 @@ with left:
             border-radius: 40px;
             background-color: #191b20;
             width: 312px;  /* Ancho de la caja */
-            height: 167px;
+            height: 168px;
         }
         </style>
     """, unsafe_allow_html=True)
