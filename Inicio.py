@@ -114,7 +114,7 @@ st.markdown(title_style, unsafe_allow_html=True)
 # Muestra el título dentro de la caja con la clase .box
 st.markdown('<div class="box">Bienvenido a proyectos de machine learning</div>', unsafe_allow_html=True)
 
-#linkedin=Image.open("linkedin.png")
+
 left, right = st.columns(2)
 imagen1="linkedin2.png"
 
