@@ -21,13 +21,13 @@ def get_img_as_base64(file):
 
 #"https://images.unsplash.com/photo-1501426026826-31c667bdf23d"
 #data:image/png;base64,{img}
-img = get_img_as_base64("difu3.jpg")
+img = get_img_as_base64("difu2.jpg")
 #https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqZ2lmjdQMNC3cyQ2g0i_wvigb5elGGBIPBg&s
 #https://img.freepik.com/fotos-premium/imagen-borrosa-centro-comercial-fondo-luz-bokeh_1157641-5174.jpg
 page_bg_img = f"""
 <style>
 [data-testid="stAppViewContainer"] > .main {{
-background-image: url("https://img.ltwebstatic.com/images3_spmp/2023/08/31/f8/1693471228d0ee8b028a98486d4ccce72bab35d6d7_thumbnail_720x.jpg");
+background-image: url("https://img.freepik.com/fotos-premium/espacio-interior-oficina-borrosa_93675-121105.jpg");
 background-size: 100%;
 background-position: top left;
 background-repeat: repeat;
@@ -136,7 +136,7 @@ title_style = """
     text-align: center;
     background-color: #191b20;
     padding: 0px;
-    border: 1px solid #4CAF50;
+    border: 5px solid #4CAF50;
     border-radius: 0px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     margin: 5 auto;
@@ -184,9 +184,9 @@ with left:
     st.markdown("""
         <style>
         .box1 {
-            border: 1px solid #4CAF50; 
+            border: 5px solid #4CAF50; 
             padding: 23px;
-            border-radius: 0px;
+            border-radius: 40px;
             background-color: #191b20;
             width: 310px;  /* Ancho de la caja */
             height: 168px;
@@ -232,9 +232,9 @@ with right:
     st.markdown("""
         <style>
         .box2 {
-            border: 1px solid #4CAF50; 
+            border: 5px solid #4CAF50; 
             padding: 23px;
-            border-radius: 0px;
+            border-radius: 40px;
             background-color: #191b20;
             width: 315px;
             height: 530px;
