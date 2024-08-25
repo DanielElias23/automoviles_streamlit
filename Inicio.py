@@ -186,7 +186,7 @@ with left:
         .box1 {
             border: 1px solid #4CAF50;
             padding: 23px;
-            border-radius: 40px;
+            border-radius: 10px;
             background-color: #191b20;
             width: 310px;  /* Ancho de la caja */
             height: 168px;
@@ -234,7 +234,7 @@ with right:
         .box2 {
             border: 1px solid #4CAF50; 
             padding: 23px;
-            border-radius: 40px;
+            border-radius:10px;
             background-color: #191b20;
             width: 315px;
             height: 530px;
