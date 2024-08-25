@@ -184,7 +184,7 @@ with left:
     st.markdown("""
         <style>
         .box1 {
-            border: 1px solid #4CAF50;
+            border: 1px solid #4CAF50; 
             padding: 23px;
             border-radius: 10px;
             background-color: #191b20;
