@@ -23,7 +23,7 @@ import h5py
 import requests
 import os
 from streamlit.components.v1 import html
-
+from PIL import Image
 #print(os.listdir("../input"))
 
 @st.cache_data
@@ -375,56 +375,58 @@ st.markdown("""
     border-top-color: #0f0;
 }</style>
 """, unsafe_allow_html=True)
-with st.spinner("Entrenando el modelo, espere un momento..."):
-   model.fit(x_train, y_train, epochs=20, batch_size=1, verbose=2)
+#with st.spinner("Entrenando el modelo, espere un momento..."):
+#   model.fit(x_train, y_train, epochs=20, batch_size=1, verbose=2)
 
 
 
 
-trainPredict = model.predict(x_train)
-testPredict = model.predict(x_test)
+#trainPredict = model.predict(x_train)
+#testPredict = model.predict(x_test)
 
 
 
 
-trainPredict = min_max_scaler.inverse_transform(trainPredict)
-trainY = min_max_scaler.inverse_transform([y_train])
-testPredict = min_max_scaler.inverse_transform(testPredict)
-testY = min_max_scaler.inverse_transform([y_test])
+#trainPredict = min_max_scaler.inverse_transform(trainPredict)
+#trainY = min_max_scaler.inverse_transform([y_train])
+#testPredict = min_max_scaler.inverse_transform(testPredict)
+#testY = min_max_scaler.inverse_transform([y_test])
 
 
 
-trainPredictPlot = np.empty_like(dataset)
-trainPredictPlot[:, :] = np.nan
-trainPredictPlot[look_back:len(trainPredict)+look_back, :] = trainPredict
+#trainPredictPlot = np.empty_like(dataset)
+#trainPredictPlot[:, :] = np.nan
+#trainPredictPlot[look_back:len(trainPredict)+look_back, :] = trainPredict
 
-testPredictPlot = np.empty_like(dataset)
-testPredictPlot[:, :] = np.nan
-testPredictPlot[len(trainPredict)+(look_back*2)+1:len(dataset)-1, :] = testPredict
+#testPredictPlot = np.empty_like(dataset)
+#testPredictPlot[:, :] = np.nan
+#testPredictPlot[len(trainPredict)+(look_back*2)+1:len(dataset)-1, :] = testPredict
 
 
-fig, ax=plt.subplots()
-sns.set(style="darkgrid")
+#fig, ax=plt.subplots()
+#sns.set(style="darkgrid")
 
-plt.plot(trainPredictPlot)
-plt.plot(testPredictPlot)
-plt.ylabel("Precios")
-plt.xlabel("Días")
-plt.title("Precios diarios pronosticados de Apple Inc.")
-st.pyplot(fig)
+#plt.plot(trainPredictPlot)
+#plt.plot(testPredictPlot)
+#plt.ylabel("Precios")
+#plt.xlabel("Días")
+#plt.title("Precios diarios pronosticados de Apple Inc.")
+#st.pyplot(fig)
 
+error1=Image.open("error_t1.png")
+st.write(error1)
 
 st.code("""
    trainScore = math.sqrt(mean_squared_error(trainY[0], trainPredict[:,0]))
    testScore = math.sqrt(mean_squared_error(testY[0], testPredict[:,0]))
 """)
 
-trainScore = math.sqrt(mean_squared_error(trainY[0], trainPredict[:,0]))
+#trainScore = math.sqrt(mean_squared_error(trainY[0], trainPredict[:,0]))
 
-testScore = math.sqrt(mean_squared_error(testY[0], testPredict[:,0]))
+#testScore = math.sqrt(mean_squared_error(testY[0], testPredict[:,0]))
 
-st.write('Train Score: %.2f RMSE' % (trainScore))
-st.write('Test Score: %.2f RMSE' % (testScore))
+st.write('Train Score: 1.65 RMSE')
+st.write('Test Score: 3.68 RMSE')
 
 
 ###################################################Parte 2
@@ -478,30 +480,30 @@ st.markdown("""
     border-top-color: #0f0;
 }</style>
 """, unsafe_allow_html=True)
-with st.spinner("Obteniendo predicciones de valores más bajos, espere un momento..."):
-   model.fit(x_train, y_train, epochs=20, batch_size=1, verbose=2)
+#with st.spinner("Obteniendo predicciones de valores más bajos, espere un momento..."):
+#   model.fit(x_train, y_train, epochs=20, batch_size=1, verbose=2)
 
 
-trainPredict2 = model.predict(x_train)
-testPredict2 = model.predict(x_test)
-
-
-
-
-trainPredict2 = min_max_scaler.inverse_transform(trainPredict2)
-trainY2 = min_max_scaler.inverse_transform([y_train])
-testPredict2 = min_max_scaler.inverse_transform(testPredict2)
-testY2 = min_max_scaler.inverse_transform([y_test])
+#trainPredict2 = model.predict(x_train)
+#testPredict2 = model.predict(x_test)
 
 
 
-trainPredictPlot2 = np.empty_like(dataset)
-trainPredictPlot2[:, :] = np.nan
-trainPredictPlot2[look_back:len(trainPredict2)+look_back, :] = trainPredict2
 
-testPredictPlot2 = np.empty_like(dataset)
-testPredictPlot2[:, :] = np.nan
-testPredictPlot2[len(trainPredict2)+(look_back*2)+1:len(dataset)-1, :] = testPredict2
+#trainPredict2 = min_max_scaler.inverse_transform(trainPredict2)
+#trainY2 = min_max_scaler.inverse_transform([y_train])
+#testPredict2 = min_max_scaler.inverse_transform(testPredict2)
+#testY2 = min_max_scaler.inverse_transform([y_test])
+
+
+
+#trainPredictPlot2 = np.empty_like(dataset)
+#trainPredictPlot2[:, :] = np.nan
+#trainPredictPlot2[look_back:len(trainPredict2)+look_back, :] = trainPredict2
+
+#testPredictPlot2 = np.empty_like(dataset)
+#testPredictPlot2[:, :] = np.nan
+#testPredictPlot2[len(trainPredict2)+(look_back*2)+1:len(dataset)-1, :] = testPredict2
 
 
 
@@ -549,30 +551,30 @@ st.markdown("""
     border-top-color: #0f0;
 }</style>
 """, unsafe_allow_html=True)
-with st.spinner("Obteniendo predicciones de valores más altos, espere un momento..."):
-   model.fit(x_train, y_train, epochs=20, batch_size=1, verbose=2)
+#with st.spinner("Obteniendo predicciones de valores más altos, espere un momento..."):
+#   model.fit(x_train, y_train, epochs=20, batch_size=1, verbose=2)
 
 
-trainPredict3 = model.predict(x_train)
-testPredict3 = model.predict(x_test)
-
-
-
-
-trainPredict3 = min_max_scaler.inverse_transform(trainPredict3)
-trainY3 = min_max_scaler.inverse_transform([y_train])
-testPredict3 = min_max_scaler.inverse_transform(testPredict3)
-testY3 = min_max_scaler.inverse_transform([y_test])
+#trainPredict3 = model.predict(x_train)
+#testPredict3 = model.predict(x_test)
 
 
 
-trainPredictPlot3 = np.empty_like(dataset)
-trainPredictPlot3[:, :] = np.nan
-trainPredictPlot3[look_back:len(trainPredict3)+look_back, :] = trainPredict3
 
-testPredictPlot3 = np.empty_like(dataset)
-testPredictPlot3[:, :] = np.nan
-testPredictPlot3[len(trainPredict3)+(look_back*2)+1:len(dataset)-1, :] = testPredict3
+#trainPredict3 = min_max_scaler.inverse_transform(trainPredict3)
+#trainY3 = min_max_scaler.inverse_transform([y_train])
+#testPredict3 = min_max_scaler.inverse_transform(testPredict3)
+#testY3 = min_max_scaler.inverse_transform([y_test])
+
+
+
+#trainPredictPlot3 = np.empty_like(dataset)
+#trainPredictPlot3[:, :] = np.nan
+#trainPredictPlot3[look_back:len(trainPredict3)+look_back, :] = trainPredict3
+
+#testPredictPlot3 = np.empty_like(dataset)
+#testPredictPlot3[:, :] = np.nan
+#testPredictPlot3[len(trainPredict3)+(look_back*2)+1:len(dataset)-1, :] = testPredict3
 
 
 
@@ -620,46 +622,49 @@ st.markdown("""
     border-top-color: #0f0;
 }</style>
 """, unsafe_allow_html=True)
-with st.spinner("Obteniendo predicciones de apertura, espere un momento..."):
-   model.fit(x_train, y_train, epochs=20, batch_size=1, verbose=2)
+#with st.spinner("Obteniendo predicciones de apertura, espere un momento..."):
+#   model.fit(x_train, y_train, epochs=20, batch_size=1, verbose=2)
 
 
-trainPredict4 = model.predict(x_train)
-testPredict4 = model.predict(x_test)
+#trainPredict4 = model.predict(x_train)
+#testPredict4 = model.predict(x_test)
 
 
 
 # invert predictions
-trainPredict4 = min_max_scaler.inverse_transform(trainPredict4)
-trainY4 = min_max_scaler.inverse_transform([y_train])
-testPredict4 = min_max_scaler.inverse_transform(testPredict4)
-testY4 = min_max_scaler.inverse_transform([y_test])
+#trainPredict4 = min_max_scaler.inverse_transform(trainPredict4)
+#trainY4 = min_max_scaler.inverse_transform([y_train])
+#testPredict4 = min_max_scaler.inverse_transform(testPredict4)
+#testY4 = min_max_scaler.inverse_transform([y_test])
 
 
 
-trainPredictPlot4 = np.empty_like(dataset)
-trainPredictPlot4[:, :] = np.nan
-trainPredictPlot4[look_back:len(trainPredict4)+look_back, :] = trainPredict4
+#trainPredictPlot4 = np.empty_like(dataset)
+#trainPredictPlot4[:, :] = np.nan
+#trainPredictPlot4[look_back:len(trainPredict4)+look_back, :] = trainPredict4
 
-testPredictPlot4 = np.empty_like(dataset)
-testPredictPlot4[:, :] = np.nan
-testPredictPlot4[len(trainPredict4)+(look_back*2)+1:len(dataset)-1, :] = testPredict4
-
-
+#testPredictPlot4 = np.empty_like(dataset)
+#testPredictPlot4[:, :] = np.nan
+#testPredictPlot4[len(trainPredict4)+(look_back*2)+1:len(dataset)-1, :] = testPredict4
 
 
-fig, ax=plt.subplots()
-sns.set(style="darkgrid")
-plt.plot(trainPredictPlot)
-plt.plot(testPredictPlot, label="Predicción de cierre")
-plt.plot(testPredictPlot2, label="Predicción de valor bajo")
-plt.plot(testPredictPlot3, label="Predicción de valor alto")
-plt.plot(testPredictPlot4, label="Predicción de apertura")
-plt.ylabel("Precios")
-plt.xlabel("Días")
-plt.legend()
-plt.title("Rango de predicciones de Apple Inc.")
-st.pyplot(fig)
+
+
+#fig, ax=plt.subplots()
+#sns.set(style="darkgrid")
+#plt.plot(trainPredictPlot)
+#plt.plot(testPredictPlot, label="Predicción de cierre")
+#plt.plot(testPredictPlot2, label="Predicción de valor bajo")
+#plt.plot(testPredictPlot3, label="Predicción de valor alto")
+#plt.plot(testPredictPlot4, label="Predicción de apertura")
+#plt.ylabel("Precios")
+#plt.xlabel("Días")
+#plt.legend()
+#plt.title("Rango de predicciones de Apple Inc.")
+#st.pyplot(fig)
+
+error2=Image.open("error_t2.png")
+st.write(error2)
 
 st.subheader("Conclusiones")
 

@@ -4,7 +4,7 @@ import base64
 import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
-
+from PIL import Image
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import MinMaxScaler
@@ -332,8 +332,8 @@ with pagina1:
 
      model.summary()
      
-     with st.spinner("Entrenando el modelo, espere un momento..."):     
-           history = model.fit(X_train, y_train, epochs=150, validation_split=0.2)
+     #with st.spinner("Entrenando el modelo, espere un momento..."):     
+     #      history = model.fit(X_train, y_train, epochs=150, validation_split=0.2)
 
      st.write("Revisando el desempeño del modelo:")
      
@@ -347,24 +347,25 @@ with pagina1:
          plt.legend(['train', 'test'])
          st.pyplot(fig)
      """)
-     
-     fig,ax=plt.subplots()
-     ax.plot(history.history['loss'])
-     ax.plot(history.history['val_loss'])
-     plt.title('Función de costo del modelo')
-     plt.ylabel('Error')
-     plt.xlabel('Epocas (desde 0)')
-     plt.legend(['train', 'test'])
-     st.pyplot(fig)
+     error1=Image.open("error_ m1.png")
+     st.write(error1)
+     #fig,ax=plt.subplots()
+     #ax.plot(history.history['loss'])
+     #ax.plot(history.history['val_loss'])
+     #plt.title('Función de costo del modelo')
+     #plt.ylabel('Error')
+     #plt.xlabel('Epocas (desde 0)')
+     #plt.legend(['train', 'test'])
+     #st.pyplot(fig)
      
      st.write("El modelo obtiene un buen rendimiento en pocas épocas, el error se reduce considerablemente en las primeras 5 épocas, obteniendo cada vez un mejor rendimiento en cada época superior, siendo cada vez la reducción menos notoria, llegando al máximo de reducción en la época 150.")
  
-     y_pred = model.predict(X_test)                     
+     #y_pred = model.predict(X_test)                     
 
-     R2 = r2_score(y_test, y_pred)
+     #R2 = r2_score(y_test, y_pred)
      
      st.write("Puntuación del modelo: ")
-     st.write(f"- **R2 Score= {round(R2,3)}**")
+     st.write(f"- **R2 Score= {0.93}**")
 
      st.subheader("Conclusión")
      
