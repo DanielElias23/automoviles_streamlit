@@ -242,7 +242,7 @@ st.write("El modelo hizo un buen trabajo logrando identificar la mayoría de los
 
 st.subheader("Conclusión")
 
-st.write("El modelo hizo un gran trabajo identificando objetos, a pesar de que fue entrenado con pocos datos, los pequeño movimientos repentinos de los girasoles no pueden impedir que el modelo reconozca los girasoles en todo momento. El modelo es capaz de identificar patrones difíciles sin importar el tamaño que posean.")
+st.write("El modelo hizo un gran trabajo identificando objetos, a pesar de que fue entrenado con pocos datos, los pequeño movimientos repentinos de los girasoles no pueden impedir que el modelo reconozca los girasoles en todo momento. El modelo es capaz de identificar patrones difíciles sin importar el tamaño que posean. ")
 
 
 
