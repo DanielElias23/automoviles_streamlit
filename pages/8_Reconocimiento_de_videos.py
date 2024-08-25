@@ -162,7 +162,7 @@ st.write("En este caso se ocupará el siguiente video que ya ha sido visto por e
 
 st.video("girasoles.mp4")
 
-st.write("Para entrenar el modelo se ocupará los mismos datos de girasoles que se ocupo en reconocimiento de imagenes")
+st.write("Para entrenar el modelo se ocupará los mismos datos de girasoles que se ocupó en reconocimiento de imágenes")
 
 st.subheader("Entrenamiento del modelo")
 
@@ -170,17 +170,17 @@ st.write("Para entrenar el modelo se requieren datos compilados de una forma esp
 
 st.write("https://www.cvat.ai/")
 
-st.write("En la pagina web se debe crear una cuenta, al crear una cuenta se mostrara un panel y se debe poner 'Crear dataset', nos preguntará nombre del dataset y los labels que queremos ocupar para la recolección de objetos, además mostrará un espacio para cargar todo los archivos que queremos ocupar como entrenamiento, en este caso se ocupara imagenes de girasoles.")
+st.write("En la página web se debe crear una cuenta, al crear una cuenta se mostrará un panel y se debe poner 'Crear dataset', nos preguntará nombre del dataset y los labels que queremos ocupar para la recolección de objetos, además mostrará un espacio para cargar todo los archivos que queremos ocupar como entrenamiento, en este caso se ocupara imágenes de girasoles.")
 
-st.write("El siguiente paso es muy importante porque no es solo cargar las imagenes de entrenamiento, sino que hay que señalar objeto por objeto que queremos que reconosca, ocupando diferentes labels imagen por imagen de nuestro entrenamiento. Esto hara que el modelo se ajuste a nuestras necesidades y tenga un mejor resultado puesto que podemos decidir los objetos que usará.")
+st.write("El siguiente paso es muy importante porque no es solo cargar las imágenes de entrenamiento, sino que hay que señalar objeto por objeto que queremos que reconozca, ocupando diferentes labels imagen por imagen de nuestro entrenamiento. Esto hará que el modelo se ajuste a nuestras necesidades y tenga un mejor resultado, puesto que podemos decidir los objetos que usará.")
 
 ejemplo=Image.open("ejemplo1.png")
 
-st.write("Ajustando imagenes de entrenamiento:")
+st.write("Ajustando imágenes de entrenamiento:")
 
 st.write(ejemplo)
 
-st.write("Al ajustar todas las imagenes se debe guardar los ajustes en la página, luego seleccionar el dataset creado en la parte de acciones, en ese lugar se debe seleccionar 'exportar', luego colocar el nombre del nombre del dataset y con el formato 'YOLO 0.1' que es el ultimo en la lista.")
+st.write("Al ajustar todas las imágenes se debe guardar los ajustes en la página, luego seleccionar el dataset creado en la parte de acciones, en ese lugar se debe seleccionar 'exportar', luego colocar el nombre del dataset y con el formato 'YOLO 0.1' que es el último en la lista.")
 
 st.write("Adicionalmente se debe crear un archivo llamado 'config.yaml', este archivo debe estar configurado de la siguiente forma: ")
 
@@ -192,9 +192,9 @@ st.code("""
       0: Girasol
 """)
 
-st.write("Donde path es la ubicación de los datos de entrenamiento, donde debe estar una carpeta con las imagenes y otra carpeta dentro con los labels descargados, train y val es una segunda ubicación dentro de esas carpetas, esas ubicaciones que pueden ubicar a las mismas imagenes para entrenar 'trian' y validar 'val', names muestra las etiquetas que mostrará las imagenes, el valor de las etiquetas de cada imagen esta dentro del archivo de labels, es el primer valor.")
+st.write("Donde path es la ubicación de los datos de entrenamiento, donde debe estar una carpeta con las imágenes y otra carpeta dentro con los labels descargados, train y val es una segunda ubicación dentro de esas carpetas, esas ubicaciones que pueden ubicar a las mismas imágenes para entrenar 'trian' y validar 'val', names muestra las etiquetas que mostrará las imagenes, el valor de las etiquetas de cada imagen está dentro del archivo de labels, es el primer valor.")
 
-st.write("Ahora bien que esta todo los datos listos, se debe crear un codigo donde el video se descomponga en frames y luego se codifique nuevvamente, cada frame sera una imagen que se analizará.")
+st.write("Ahora bien que está todo los datos listos, se debe crear un código donde el video se descomponga en frames y luego se codifique nuevamente, cada frame será una imagen que se analizará.")
 
 st.code("""
    video_path_out = "{}_out.mp4".format("girasoles.mp4")
@@ -204,9 +204,9 @@ st.code("""
    out = cv2.VideoWriter(video_path_out, cv2.VideoWriter_fourcc(*"MP4V"), int(cap.get(cv2.CAP_PROP_FPS)), (W, H))
 """)
 
-st.write("Esto tiene que ver con la decomposición del video")
+st.write("Esto tiene que ver con la descomposición del video")
 
-st.write("En este nuevo codigo se aplican rectagulos de reconocimiento de objetos, tambien se entrena el modelo con las configuraciones deseadas, luego el video se codifica.")
+st.write("En este nuevo código se aplican rectángulos de reconocimiento de objetos, también se entrena el modelo con las configuraciones deseadas, luego el video se codifica.")
 
 st.code("""
     model = YOLO("yolov8s.pt", "v8")
@@ -232,17 +232,17 @@ st.code("""
     cv2.destroyAllWindows()
 """)
 
-st.write("Algo importante es threshold que es el umbral de calidad del objeto si es que supera ese umbral reconocera el objeto, por lo tanto entre mas alto, menos objetos reconocera y si el umbral es mas bajo, mas objeto reconocera, esto debe ser ocupado con discreción puesto que entre mas bajo más, probabilidad de equivocarse en el reconociemiento de objetos.")
+st.write("Algo importante es threshold que es el umbral de calidad del objeto si es que supera ese umbral reconocerá el objeto, por lo tanto entre más alto, menos objetos reconocerá y si el umbral es más bajo, más objeto reconocerá, esto debe ser ocupado con discreción, puesto que entre más bajo más, probabilidad de equivocarse en el reconocimiento de objetos.")
 
-st.write("Al realizar el entrenamiento y aplicarlo al video se obtiene el siguiente resuldado:")
+st.write("Al realizar el entrenamiento y aplicarlo al video se obtiene el siguiente resultado:")
 
 st.video("girasoles2.webm") 
 
-st.write("El modelo hizo un buen trabajo logrando identificar la mayoria de los girasoles con mucha precisión. En cuanto a los girasoles que estan atras se necesitan mucho mas datos de entrenamiento para lograr identificarlas. Aparcen algunos errores muy pocas veces interpreta por muy poco tiempo que hay objetos cuando enrealidad no la hay, esto es producto que algunas imagenes de entrenamiento estaban de reversa, la flor por atras tiene un gran tallo verde, esto confunde al modelo identificando algunos tallos como girasoles por muy poco tiempo y alguna nubes por error.")
+st.write("El modelo hizo un buen trabajo logrando identificar la mayoría de los girasoles con mucha precisión. En cuanto a los girasoles que están atrás se necesitan mucho más datos de entrenamiento para lograr identificarlas. Aparecen algunos errores muy pocas veces interpreta por muy poco tiempo que hay objetos cuando en realidad no la hay, esto es producto que algunas imágenes de entrenamiento estaban de reversa, la flor por atrás tiene un gran tallo verde, esto confunde al modelo identificando algunos tallos como girasoles por muy poco tiempo y alguna nubes por error.")
 
 st.subheader("Conclusión")
 
-st.write("El modelo hizo un gran trabajo identificando objetos, a pesar de que fue entrenado con pocos datos, los pequeño movimientos repentinos de los girasoles no pueden impedir que el modelo recnocesca los girasoles en todo momento. El modelo es capaz de identificar patrones difificiles sin importar el tamaño que posean.")
+st.write("El modelo hizo un gran trabajo identificando objetos, a pesar de que fue entrenado con pocos datos, los pequeño movimientos repentinos de los girasoles no pueden impedir que el modelo reconozca los girasoles en todo momento. El modelo es capaz de identificar patrones difíciles sin importar el tamaño que posean.")
 
 
 
