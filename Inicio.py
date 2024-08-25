@@ -27,7 +27,7 @@ img = get_img_as_base64("difu3.jpg")
 page_bg_img = f"""
 <style>
 [data-testid="stAppViewContainer"] > .main {{
-background-image: url("data:image/jpeg;base64,{img}");
+background-image: url("https://img.ltwebstatic.com/images3_spmp/2023/08/31/f8/1693471228d0ee8b028a98486d4ccce72bab35d6d7_thumbnail_720x.jpg");
 background-size: 100%;
 background-position: top left;
 background-repeat: repeat;
