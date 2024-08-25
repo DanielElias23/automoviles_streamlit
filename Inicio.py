@@ -21,7 +21,7 @@ def get_img_as_base64(file):
 
 #"https://images.unsplash.com/photo-1501426026826-31c667bdf23d"
 #data:image/png;base64,{img}
-img = get_img_as_base64("difu3.jpg")
+img = get_img_as_base64("difu2.jpg")
 #https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqZ2lmjdQMNC3cyQ2g0i_wvigb5elGGBIPBg&s
 #https://img.freepik.com/fotos-premium/imagen-borrosa-centro-comercial-fondo-luz-bokeh_1157641-5174.jpg
 page_bg_img = f"""
