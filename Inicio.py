@@ -27,8 +27,8 @@ img = get_img_as_base64("difu6.jpg")
 page_bg_img = f"""
 <style>
 [data-testid="stAppViewContainer"] > .main {{
-background-image: url("data:image/png;base64,{img}");
-background-size: 110%;
+background-image: url("https://www.colorhexa.com/191b20.png");
+background-size: 100%;
 background-position: top left;
 background-repeat: repeat;
 background-attachment: local;
@@ -67,7 +67,7 @@ st.markdown(
         top: 0;
         left: 0;
         width: 100%;
-        height: 70px;
+        height: 20px;
         z-index: 9999;
         text-align: center;
     }
@@ -185,10 +185,10 @@ title_style = """
     text-align: center;
     background-color: #191b20;
     padding: 0px;
-    border: 4px solid #009999;
-    border-radius: 10px;
+    border: 2px solid #009999;
+    border-radius: 0px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    margin: 5 auto;
+    margin: -120px -1px auto;
     width: 676px;  /* Ancho de la caja */
     height: 124px;
 }
@@ -210,7 +210,7 @@ st.markdown(title_style, unsafe_allow_html=True)
 st.markdown("""
 <div class="box">
     Daniel Elías Chinga Silva
-    <p class="subtext">(Profesional con formación científica, orientado en gestión en datos)</p>
+    <p class="subtext">Profesional con formación científica, orientado en gestión en datos</p>
     <p class="subtext"></p>
 </div>
 """, unsafe_allow_html=True)
@@ -368,6 +368,25 @@ st.markdown("""
         <img src="https://img.shields.io/badge/NoSQL-Intermedio-yellowgreen.svg" alt="NoSQL">
     </div>
     """, unsafe_allow_html=True)         
+
+
+st.subheader("Certificaciones")
+
+st.write("* Certificación de Machine Learning en IBM:")
+
+st.write("https://www.coursera.org/account/accomplishments/specialization/certificate/XSSQ7BGT9L9F")
+
+st.write("* Certificación de NoSQL, Spark, Hadoop y BigData:")
+
+st.write("https://www.coursera.org/account/accomplishments/specialization/certificate/CYGFU8S3XQGG")
+
+st.write("* Certificación de Google Cloud:")
+
+st.write("https://www.coursera.org/account/accomplishments/specialization/certificate/KPFYJEJFLPSR")
+
+st.write("* Cerificación de Amazon Web Services:")
+
+st.write("https://www.coursera.org/account/accomplishments/specialization/certificate/LPA8Z6WNCUGG")
 
 
 
