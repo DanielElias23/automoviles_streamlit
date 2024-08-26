@@ -180,7 +180,7 @@ title_style = """
 .box {
     color: white;
     font-family: Helvetica, Arial, sans-serif;
-    font-size: 42px;
+    font-size: 48px;
     font-weight: bold;
     text-align: center;
     background-color: #191b20;
@@ -190,7 +190,7 @@ title_style = """
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     margin: 5 auto;
     width: 676px;  /* Ancho de la caja */
-    height: 118px;
+    height: 124px;
 }
 .subtext {
     font-family: 'Inter', sans-serif;
@@ -210,7 +210,7 @@ st.markdown(title_style, unsafe_allow_html=True)
 st.markdown("""
 <div class="box">
     Daniel Elías Chinga Silva
-    <p class="subtext">(Profesional con formación científica, orientado en gestión de datos)</p>
+    <p class="subtext">(Profesional con formación científica, orientado en gestión en datos)</p>
     <p class="subtext"></p>
 </div>
 """, unsafe_allow_html=True)
