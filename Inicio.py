@@ -186,11 +186,16 @@ title_style = """
     background-color: #191b20;
     padding: 0px;
     border: 4px solid #009999;
-    border-radius: 0px;
+    border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     margin: 5 auto;
     width: 676px;  /* Ancho de la caja */
-    height: 146px;
+    height: 118px;
+}
+.subtext {
+    font-family: 'Inter', sans-serif;
+    font-size: 19px; /* Tamaño del texto secundario */
+    font-weight: normal;
 }
 </style>
 """
@@ -199,7 +204,16 @@ title_style = """
 st.markdown(title_style, unsafe_allow_html=True)
 
 # Muestra el título dentro de la caja con la clase .box
-st.markdown('<div class="box">Bienvenido a proyectos de machine learning</div>', unsafe_allow_html=True)
+#Bienvenido a proyectos de machine learning
+#st.markdown('<div class="box">Daniel Elías Chinga Silva</div>', unsafe_allow_html=True)
+
+st.markdown("""
+<div class="box">
+    Daniel Elías Chinga Silva
+    <p class="subtext">(Profesional con formación científica, orientado en gestión de datos)</p>
+    <p class="subtext"></p>
+</div>
+""", unsafe_allow_html=True)
 
 import streamlit as st
 
