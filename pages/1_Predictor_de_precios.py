@@ -75,7 +75,46 @@ right: 2rem;
 </style>
 """
 st.markdown(page_bg_img, unsafe_allow_html=True)
+st.markdown(
+    """
+    <style>
+    .top-bar {
+        background-color: #009999;
+        color: white;
+        padding: 0px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 20px;
+        z-index: 9999;
+        text-align: center;
+    }
+    .top-bar a {
+            color: white;
+            margin-right: 0px;
+            text-decoration: none;
+            font-size: 25px; /* Tamaño de fuente de los enlaces */
+        }
 
+    .main-content {
+        padding-top: 60px;  /* Espacio para que no tape el contenido */
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+st.markdown(
+    """
+    <div class="top-bar">
+        <h1></h1>
+        <div>
+        <a href="https://proyectdaniel.streamlit.app/" style="color:white; margin-right:100px;"></a>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
 def set_custom_css():
     st.markdown(
@@ -164,18 +203,13 @@ title_style = """
     font-weight: bold;
     text-align: center;
     background-color: #191b20;
-    padding: 4px; /* Ajusta el padding para dar espacio al texto */
+    padding: 4px; 
     border: 1px solid #009999;
     border-radius: 0px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    margin: 0 auto;
-    width: 676px;  /* Ancho de la caja */
-    height: 84px;  /* Ajusta la altura automáticamente */
-}
-.subtext {
-    font-family: 'Inter', sans-serif;
-    font-size: 13px; /* Tamaño del texto secundario */
-    font-weight: normal;
+    margin: -85px -1px 0px 0px;
+    width: 676px;  
+    height: 84px;  
 }
 </style>
 """
@@ -187,17 +221,17 @@ st.markdown(title_style, unsafe_allow_html=True)
 st.markdown("""
 <div class="box">
     Predictor de precios
-    <p class="subtext"></p>
-    <p class="subtext"></p>
 </div>
 """, unsafe_allow_html=True)
 
-st.write("")
+import streamlit as st
 
-st.write("* Tipo de Modelo: :green[Regresión]")
-  
-st.write("* Modelos utilizados: :green[LinearRregression, Lasso, Ridge, ElasticNet]")
-st.write("* Etiqueta: :green[Precios de automóviles]")
+
+
+st.write("* Tipo de Modelo: :blue[Regresión]")
+st.write("* Tipo de Aprendizaje: :blue[Supervisado]")
+st.write("* Modelos utilizados: :blue[LinearRregression, Lasso, Ridge, ElasticNet]")
+st.write("* Etiqueta: :blue[Precios de automóviles]")
 
 #left2, right2 = st.columns(2)
 
