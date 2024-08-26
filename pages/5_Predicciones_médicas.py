@@ -108,8 +108,8 @@ title_style = """
     text-align: center;
     background-color: #191b20;
     padding: 5px; /* Ajusta el padding para dar espacio al texto */
-    border: 1px solid #4CAF50;
-    border-radius: 10px;
+    border: 1px solid #009999;
+    border-radius: 0px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     margin: 5 auto;
     width: 676px;  /* Ancho de la caja */

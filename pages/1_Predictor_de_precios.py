@@ -75,6 +75,8 @@ right: 2rem;
 </style>
 """
 st.markdown(page_bg_img, unsafe_allow_html=True)
+
+
 def set_custom_css():
     st.markdown(
         """
@@ -93,13 +95,14 @@ def set_custom_css():
             background: #888; /* Color de la parte deslizable de la barra */
             border-radius: 10px; /* Radio de borde de la parte deslizable */
         }
-
         ::-webkit-scrollbar-thumb:hover {
             background: #555; /* Color de la parte deslizable cuando se pasa el ratón */
         }
+
         </style>
         """,
         unsafe_allow_html=True)
+
 
 def main1():
     set_custom_css()
@@ -109,6 +112,8 @@ def main1():
 if __name__ == "__main__":
     main1()
 st.logo("https://images.emojiterra.com/google/noto-emoji/unicode-15/color/512px/1f4c3.png")
+
+
 
 data = pd.read_csv('https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-ML240EN-SkillsNetwork/labs/data/CarPrice_Assignment.csv')
 alfa_romeo=Image.open("alfa-romeo.jpg")
@@ -124,7 +129,32 @@ isuzu=Image.open("isuzu.jpg")
 #with open('googlelogo.png', 'wb') as f: 
 #     f.write(alfa_romeo.content) 
 
+st.markdown("""
+    <style>
+    table {
+        background-color: white !important;
+        color: black !important;
+    }
+    thead th {
+        background-color: #f0f0f0 !important;
+        color: black !important;
+    }
+    tbody td {
+        color: black !important;
+    }
+    </style>
+""", unsafe_allow_html=True)
 
+st.markdown("""
+    <style>
+    .dataframe, .tablem .write {
+        background-color: white !important;
+        color: black !important;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+#191b20
 title_style = """
 <style>
 .box {
@@ -134,9 +164,9 @@ title_style = """
     font-weight: bold;
     text-align: center;
     background-color: #191b20;
-    padding: 5px; /* Ajusta el padding para dar espacio al texto */
-    border: 1px solid #4CAF50;
-    border-radius: 10px;
+    padding: 4px; /* Ajusta el padding para dar espacio al texto */
+    border: 1px solid #009999;
+    border-radius: 0px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     margin: 0 auto;
     width: 676px;  /* Ancho de la caja */
@@ -183,11 +213,12 @@ st.write("* Etiqueta: :green[Precios de automóviles]")
 pagina1, pagina2 , pagina3=st.tabs(["Home", "Predicción individual","Predicción múltiple"])
 
 with pagina1:
-
-   #st.write(":blue[Rellene el formulario y haga su predicción]")
+    
+    
    st.subheader("Exploración y Análisis")
-   st.write("La predicción de precios se puede hacer a través de una modelo de machine learning con sus respectivos datos, en el cual según las características de cierto producto puede predecir cual sería su precio.")
-   st.write("En este caso los datos pertenecen a una empresa automotriz que quiere predecir el precio de los automóviles, en el caso de formar una empresa nueva se puede utilizar para saber si puede entrar a un nuevo mercado, ya que conocerá el valor en el cual podrá vender esos vehículos. En el caso de ya contar con una empresa automotriz se puede utilizar para saber a cuanto se podría ofrecer un nuevo modelo de vehículo según sus características. Esto dado que los datos utilizados por el modelo de machine learning contiene los modelos de vehículos que ofrece el mercado y sus respectivos precios.")
+   st.write('Se trata de predecir el precio de los vehículos de una empresa, solo con los datos obtenidos de vehículos de otras empresas en el mercado automotriz.')
+   #st.write(":blue[Rellene el formulario y haga su predicción]")
+   st.write("Se puede utilizar para saber si una empresa puede entrar a un nuevo mercado, ya que conocerá el valor en el cual podrá vender esos vehículos. En el caso de ya contar con una empresa automotriz se puede utilizar para saber a cuanto se podría ofrecer un nuevo modelo de vehículo según sus características. Esto dado que los datos utilizados contienen las características de modelos de vehículos que ofrece el mercado y sus respectivos precios.")
 
    st.subheader("-Manipulación y Limpieza")
    

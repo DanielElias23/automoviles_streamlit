@@ -21,13 +21,13 @@ def get_img_as_base64(file):
 
 #"https://images.unsplash.com/photo-1501426026826-31c667bdf23d"
 #data:image/png;base64,{img}
-img = get_img_as_base64("difu2.jpg")
+img = get_img_as_base64("difu6.jpg")
 #https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqZ2lmjdQMNC3cyQ2g0i_wvigb5elGGBIPBg&s
 #https://img.freepik.com/fotos-premium/imagen-borrosa-centro-comercial-fondo-luz-bokeh_1157641-5174.jpg
 page_bg_img = f"""
 <style>
 [data-testid="stAppViewContainer"] > .main {{
-background-image: url("https://img.freepik.com/fotos-premium/espacio-interior-oficina-borrosa_93675-121105.jpg");
+background-image: url("data:image/png;base64,{img}");
 background-size: 100%;
 background-position: top left;
 background-repeat: repeat;
@@ -52,6 +52,53 @@ right: 2rem;
 </style>
 """
 st.markdown(page_bg_img, unsafe_allow_html=True)
+
+import streamlit as st
+
+
+st.markdown(
+    """
+    <style>
+    .top-bar {
+        background-color: #009999;
+        color: white;
+        padding: 0px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 70px;
+        z-index: 9999;
+        text-align: center;
+    }
+    .top-bar a {
+            color: white;
+            margin-right: 0px;
+            text-decoration: none;
+            font-size: 25px; /* Tamaño de fuente de los enlaces */
+        }
+
+    .main-content {
+        padding-top: 60px;  /* Espacio para que no tape el contenido */
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+st.markdown(
+    """
+    <div class="top-bar">
+        <h1></h1>
+        <div>
+        <a href="https://proyectdaniel.streamlit.app/" style="color:white; margin-right:100px;"></a>
+        <a href="oculto" style="color:white; margin-right:20px;"></a>
+        <a href="?section=Lenguajes" style="color:white; margin-right:20px;"></a>
+        <a href="?section=Sobre" style="color:white; margin-right:20px;"></a>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
 
 def set_custom_css():
@@ -115,6 +162,8 @@ embed_component = {
     """
 }
 
+
+
 #embed_component = {'Linkedin':"""<script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script> <div class="badge-base LI-profile-badge" data-locale="es_ES" data-size="medium" data-theme="light" data-type="VERTICAL" data-vanity="danielchingasilva" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://cl.linkedin.com/in/danielchingasilva?trk=profile-badge">Daniel Elías Chinga Silva</a></div> """}
 
 #with st.sidebar:
@@ -136,7 +185,7 @@ title_style = """
     text-align: center;
     background-color: #191b20;
     padding: 0px;
-    border: 5px solid #4CAF50;
+    border: 4px solid #009999;
     border-radius: 0px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     margin: 5 auto;
@@ -184,9 +233,9 @@ with left:
     st.markdown("""
         <style>
         .box1 {
-            border: 5px solid #4CAF50; 
+            border: 1px solid #009999; 
             padding: 23px;
-            border-radius: 40px;
+            border-radius: 0px;
             background-color: #191b20;
             width: 310px;  /* Ancho de la caja */
             height: 168px;
@@ -226,15 +275,15 @@ with left:
 
 #with left:
 #    components.html("<iframe src='https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:12345678901234567890' height='370' width='400'></iframe>", height=370)
-
+#4CAF50
 with right:
     # Estilo CSS para aplicar un borde
     st.markdown("""
         <style>
         .box2 {
-            border: 5px solid #4CAF50; 
+            border: 1px solid #009999; 
             padding: 23px;
-            border-radius: 40px;
+            border-radius: 0px;
             background-color: #191b20;
             width: 315px;
             height: 530px;
@@ -251,12 +300,12 @@ with right:
             <h3>Objetivos</h3>
             <ul>
                 <li>Dar a conocer el conocimiento al respecto con machine learning</li>
-                <li>Demostrar dominio de conocimiento para solucionar problemas a diferentes problemáticas</li>
+                <li>Demostrar dominio de diferentes tipos de modelos de machine learning en un aspecto más general posible</li>
                 <li>Mostrar habilidades de programación enfocadas al contexto ciencia de datos en las empresas</li>
             </ul>
         </div>
     """, unsafe_allow_html=True)
-
+#<li>Demostrar dominio de conocimiento para solucionar problemas a diferentes problemáticas</li>
 st.sidebar.header("Barra de proyectos")
 st.sidebar.write("Selecciona un proyecto")
 #st.subhe
