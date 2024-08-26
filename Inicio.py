@@ -334,7 +334,7 @@ css = """
         margin-left: -39px;
     }
     .badge-container img {
-        transform: scale(1.5);  /* Escala las imágenes al 150% de su tamaño original */
+        transform: scale(1.6);  /* Escala las imágenes al 150% de su tamaño original */
         transform-origin: 0 0; /* Ajusta el origen de la transformación */
         margin: 35px;   /* Espacio entre los badges */
     }
