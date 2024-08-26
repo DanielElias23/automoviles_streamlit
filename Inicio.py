@@ -180,7 +180,7 @@ title_style = """
 .box {
     color: white;
     font-family: Helvetica, Arial, sans-serif;
-    font-size: 40px;
+    font-size: 42px;
     font-weight: bold;
     text-align: center;
     background-color: #191b20;
@@ -190,7 +190,7 @@ title_style = """
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     margin: 5 auto;
     width: 676px;  /* Ancho de la caja */
-    height: 140px;
+    height: 146px;
 }
 </style>
 """
@@ -334,7 +334,7 @@ css = """
         margin-left: -39px;
     }
     .badge-container img {
-        transform: scale(1.6);  /* Escala las imágenes al 150% de su tamaño original */
+        transform: scale(1.5);  /* Escala las imágenes al 150% de su tamaño original */
         transform-origin: 0 0; /* Ajusta el origen de la transformación */
         margin: 35px;   /* Espacio entre los badges */
     }
