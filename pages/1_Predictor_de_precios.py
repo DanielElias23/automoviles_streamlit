@@ -216,7 +216,7 @@ with pagina1:
     
     
    st.subheader("Exploración y Análisis")
-   st.write('Se trata de predecir el precio de los vehículos de una empresa, solo con los datos obtenidos de vehículos de otras empresas en el mercado automotriz.')
+   st.write('"Se trata de predecir el precio de los vehículos de una empresa, solo con los datos obtenidos de vehículos de otras empresas en el mercado automotriz."')
    #st.write(":blue[Rellene el formulario y haga su predicción]")
    st.write("Se puede utilizar para saber si una empresa puede entrar a un nuevo mercado, ya que conocerá el valor en el cual podrá vender esos vehículos. En el caso de ya contar con una empresa automotriz se puede utilizar para saber a cuanto se podría ofrecer un nuevo modelo de vehículo según sus características. Esto dado que los datos utilizados contienen las características de modelos de vehículos que ofrece el mercado y sus respectivos precios.")
 

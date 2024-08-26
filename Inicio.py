@@ -28,7 +28,7 @@ page_bg_img = f"""
 <style>
 [data-testid="stAppViewContainer"] > .main {{
 background-image: url("data:image/png;base64,{img}");
-background-size: 100%;
+background-size: 110%;
 background-position: top left;
 background-repeat: repeat;
 background-attachment: local;
@@ -179,8 +179,8 @@ title_style = """
 <style>
 .box {
     color: white;
-    font-family: 'Playfair Display', serif;
-    font-size: 46px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 40px;
     font-weight: bold;
     text-align: center;
     background-color: #191b20;
@@ -190,7 +190,7 @@ title_style = """
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     margin: 5 auto;
     width: 676px;  /* Ancho de la caja */
-    height: 150px;
+    height: 140px;
 }
 </style>
 """
@@ -200,6 +200,10 @@ st.markdown(title_style, unsafe_allow_html=True)
 
 # Muestra el título dentro de la caja con la clase .box
 st.markdown('<div class="box">Bienvenido a proyectos de machine learning</div>', unsafe_allow_html=True)
+
+import streamlit as st
+
+
 
 
 left, right = st.columns(2)
@@ -319,7 +323,37 @@ st.logo("https://images.emojiterra.com/google/noto-emoji/unicode-15/color/512px/
 #         """)
 
 
-         
+# Definir el estilo CSS
+css = """
+    <style>
+    body {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    .badge-container {
+        text-align: left;
+        margin-left: -39px;
+    }
+    .badge-container img {
+        transform: scale(1.6);  /* Escala las imágenes al 150% de su tamaño original */
+        transform-origin: 0 0; /* Ajusta el origen de la transformación */
+        margin: 35px;   /* Espacio entre los badges */
+    }
+    </style>
+"""
+
+
+st.markdown(css, unsafe_allow_html=True)
+
+st.markdown("""
+    <div class="badge-container">
+        <img src="https://img.shields.io/badge/Python-Avanzado-orange.svg" alt="Python">
+        <img src="https://img.shields.io/badge/SQL-Avanzado-orange.svg" alt="SQL">
+        <img src="https://img.shields.io/badge/R-Intermedio-yellowgreen.svg" alt="R">
+        <img src="https://img.shields.io/badge/CSS-Intermedio-yellowgreen.svg" alt="CSS">
+        <img src="https://img.shields.io/badge/HTML-Intermedio-yellowgreen.svg" alt="HTML">
+        <img src="https://img.shields.io/badge/NoSQL-Intermedio-yellowgreen.svg" alt="NoSQL">
+    </div>
+    """, unsafe_allow_html=True)         
 
 
 
