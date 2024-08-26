@@ -228,7 +228,7 @@ import streamlit as st
 
 
 
-st.write("* Tipo de Modelo: :blue[Regresión]")
+st.write("* Tipo de Modelo: :blue[Regresión] ")
 st.write("* Tipo de Aprendizaje: :blue[Supervisado]")
 st.write("* Modelos utilizados: :blue[LinearRregression, Lasso, Ridge, ElasticNet]")
 st.write("* Etiqueta: :blue[Precios de automóviles]")
