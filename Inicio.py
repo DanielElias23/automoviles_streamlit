@@ -180,7 +180,7 @@ title_style = """
 .box {
     color: white;
     font-family: Helvetica, Arial, sans-serif;
-    font-size: 47px;
+    font-size: 48px;
     font-weight: bold;
     text-align: center;
     background-color: #191b20;
