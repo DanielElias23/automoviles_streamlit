@@ -257,7 +257,7 @@ with left:
         .box1 {
             border: 1px solid #009999; 
             padding: 23px;
-            border-radius: 0px;
+            border-radius: 10px;
             background-color: ;
             background-image: url("https://www.colorhexa.com/191b20.png");
             box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.6);
@@ -307,7 +307,7 @@ with right:
         .box2 {
             border: 1px solid #009999; 
             padding: 23px;
-            border-radius: 0px;
+            border-radius: 10px;
             background-color: ;
             background-image: url("https://www.colorhexa.com/191b20.png");
             box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.6);
