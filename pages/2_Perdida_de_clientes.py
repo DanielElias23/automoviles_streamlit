@@ -26,8 +26,8 @@ page_bg_img = f"""
 <style>
 [data-testid="stAppViewContainer"] > .main {{
 background-image: url("data:image/png;base64,{img}");
-background-size: auto 155%;
-background-position: top right;
+background-size: 100%;
+background-position: center;
 background-repeat: repeat;
 background-attachment: local;
 background-attachment: scroll;
@@ -170,7 +170,7 @@ title_style = """
     font-size: 46px;
     font-weight: bold;
     text-align: center;
-    background-color: #420a6a;
+    background-color: #148f77;
     padding: 5px; /* Ajusta el padding para dar espacio al texto */
     border: 1px solid #009999;
     border-radius: 0px;
