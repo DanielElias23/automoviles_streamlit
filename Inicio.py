@@ -193,7 +193,7 @@ title_style = """
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.6);
     margin: -50px -1px auto;
     width: 676px;  /* Ancho de la caja */
-    height: 124px;
+    height: 118px;
 }
 .subtext {
     font-family: 'Inter', sans-serif;
