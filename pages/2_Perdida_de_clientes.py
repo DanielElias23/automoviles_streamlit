@@ -171,13 +171,13 @@ title_style = """
     font-weight: bold;
     text-align: center;
     background-color: #148f77;
-    padding: 5px; /* Ajusta el padding para dar espacio al texto */
+    padding: 5px; 
     border: 1px solid #009999;
     border-radius: 0px;
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
     margin: -68px -1px 0px 0px;
-    width: 676px;  /* Ancho de la caja */
-    height: 84px;  /* Ajusta la altura automáticamente */
+    width: 676px;  
+    height: 84px;  
 }
 .subtext {
     font-family: 'Inter', sans-serif;
@@ -194,8 +194,6 @@ st.markdown(title_style, unsafe_allow_html=True)
 st.markdown("""
 <div class="box">
     Perdida de clientes
-    <p class="subtext"></p>
-    <p class="subtext"></p>
 </div>
 """, unsafe_allow_html=True)
 
