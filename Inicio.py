@@ -185,8 +185,8 @@ title_style = """
     font-size: 47px;
     font-weight: bold;
     text-align: center;
-    background-color: ;
-    background-image: url("https://www.colorhexa.com/191b20.png");
+    background-color: #148f77;
+    background-image: ;
     padding: 0px;
     border: 2px solid #009999;
     border-radius: 0px;
