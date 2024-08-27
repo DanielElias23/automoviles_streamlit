@@ -320,9 +320,9 @@ import streamlit as st
 import requests
 from io import BytesIO
 
-url="https://quizizz.com/media/resource/gs/quizizz-media/quizzes/19054833-c0be-4019-abdb-897933e1157f"
-response = requests.get(url)
-img = Image.open(BytesIO(response.content))
+url2="https://quizizz.com/media/resource/gs/quizizz-media/quizzes/19054833-c0be-4019-abdb-897933e1157f"
+response2 = requests.get(url2)
+img2 = Image.open(BytesIO(response2.content))
 #st.title("Predictor de precios")
 #st.write(":green[*Modelo ML - Regresión*]")
 pagina1, pagina2 , pagina3=st.tabs(["Documentación", "Predicción individual","Predicción múltiple"])
@@ -332,7 +332,7 @@ with pagina1:
    st.subheader("Introducción")
    leftl, rightr = st.columns(2)
    with rightr:
-        st.write(img)
+        st.write(img2)
    with leftl:
         st.write("Para una empresa es importante conocer como están funcionando y lo que están ofreciendo las demás empresas en el mismo rubro. Esto puede dar cierta ventaja en el mercado y sobre todo si es que es posible predecir o anticipar ciertas decisiones. Una de esas ventajas es conocer el posible precio en el mercado de productos nuevos.")
    
