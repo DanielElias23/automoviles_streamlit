@@ -185,7 +185,7 @@ title_style = """
     font-size: 47px;
     font-weight: bold;
     text-align: center;
-    background-color: #145a32;
+    background-color: #148f77;
     background-image: ;
     padding: 0px;
     border: 2px solid #009999;
