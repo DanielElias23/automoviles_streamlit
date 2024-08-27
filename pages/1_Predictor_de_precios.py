@@ -193,6 +193,8 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
+   
+
 #191b20
 title_style = """
 <style>
@@ -207,7 +209,7 @@ title_style = """
     border: 1px solid #009999;
     border-radius: 0px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    margin: -85px -1px 0px 0px;
+    margin: -68px -1px 0px 0px;
     width: 676px;  
     height: 84px;  
 }
@@ -224,14 +226,108 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
+css = """
+    <style>
+    body {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    .badge-container {
+        text-align: left;
+        margin: -109px;
+        margin-left: -50px
+    }
+    .badge-container img {
+        transform: scale(1.6);  /* Escala las imágenes al 150% de su tamaño original */
+        transform-origin: 0 0; /* Ajusta el origen de la transformación */
+        margin: 35px;   /* Espacio entre los badges */
+    }
+    </style>
+"""
+
+
+st.markdown(css, unsafe_allow_html=True)
+
+#st.markdown("""
+#    <div class="badge-container">
+#        <img src="https://img.shields.io/badge/Tipo de modelo-Regresión-orange.svg" alt="Python">
+#        <img src="https://img.shields.io/badge/Aprendizaje-Supervisado-orange.svg" alt="SQL">
+#        <img src="https://img.shields.io/badge/Etiqueta-Intermedio-yellowgreen.svg" alt="R">
+#        <img src="https://img.shields.io/badge/CSS-Intermedio-yellowgreen.svg" alt="CSS">
+#        <img src="https://img.shields.io/badge/HTML-Intermedio-yellowgreen.svg" alt="HTML">
+#        <img src="https://img.shields.io/badge/NoSQL-Intermedio-yellowgreen.svg" alt="NoSQL">
+#    </div>
+#    """, unsafe_allow_html=True)  
+
 import streamlit as st
 
 
+# Define el estilo CSS personalizado para los badges
+custom_css = """
+<style>
+.badge {
+    display: inline-block;
+    padding: 0.5em 1em;
+    font-size: 0.9em;
+    font-weight: 700;
+    text-align: center;
+    white-space: nowrap;
+    border-radius: 0.25em;
+    color: white;
+    margin: 1px;
+    transform: translateY(0px) translateX(7px);
+}
 
-st.write("* Tipo de Modelo: :blue[Regresión] ")
-st.write("* Tipo de Aprendizaje: :blue[Supervisado]")
-st.write("* Modelos utilizados: :blue[LinearRregression, Lasso, Ridge, ElasticNet]")
-st.write("* Etiqueta: :blue[Precios de automóviles]")
+.badge-primary1 {
+    background-color: #6c757d;
+}
+
+.badge-secondary {
+    background-color: #6c757d;
+}
+
+.badge-success {
+    background-color: #6c757d;
+}
+
+.badge-danger {
+    background-color: #6c757d;
+}
+
+.badge-warning {
+    background-color: #6c757d;
+}
+
+.badge-info {
+    background-color: #17a2b8;
+}
+
+.badge-light {
+    background-color: #f8f9fa;
+    color: #212529;
+}
+</style>
+"""
+
+# Aplica el estilo CSS
+st.markdown(custom_css, unsafe_allow_html=True)
+
+# Muestra los badges usando HTML
+st.markdown('''
+<span class="badge badge-primary1">1. Exploración y Análisis</span>
+<span class="badge badge-secondary">2. Creación de modelo</span>
+<span class="badge badge-success">3. Entrenamiento</span>
+<span class="badge badge-danger">4. Conclusiones</span>
+''', unsafe_allow_html=True)
+
+
+import streamlit as st
+
+st.write("* Tipos de Modelos: **:blue[Regresión - Supervisado]** ")
+#st.write("* Tipo de Aprendizaje: **:blue[Supervisado]**")
+st.write("* Modelos utilizados: **:blue[LinearRregression, Lasso, Ridge, ElasticNet]**")
+st.write("* Etiqueta: **:blue[Precios de automóviles]**")
+
+
 
 #left2, right2 = st.columns(2)
 
@@ -250,9 +346,12 @@ with pagina1:
     
     
    st.subheader("Exploración y Análisis")
-   st.write("Se trata de predecir el precio de los vehículos de una empresa, solo con los datos obtenidos de vehículos de otras empresas en el mercado automotriz.")
+
+   st.write("**Datos:** Son modelos de vehiculos ofrecidos en el mercado con sus caracteristicas y precios correspondientes.")
+   st.write("**Objetivo:** Se trata de predecir el precio de los vehículos de una empresa, solo con los datos obtenidos de vehículos de otras empresas en el mercado automotriz.")
    #st.write(":blue[Rellene el formulario y haga su predicción]")
-   st.write("Se puede utilizar para saber si una empresa puede entrar a un nuevo mercado, ya que conocerá el valor en el cual podrá vender esos vehículos. En el caso de ya contar con una empresa automotriz se puede utilizar para saber a cuanto se podría ofrecer un nuevo modelo de vehículo según sus características. Esto dado que los datos utilizados contienen las características de modelos de vehículos que ofrece el mercado y sus respectivos precios.")
+   st.write("**Importancia:** Se puede utilizar para saber si una empresa puede entrar a un nuevo mercado, ya que conocerá el valor en el cual podrá vender esos vehículos. En el caso de ya contar con una empresa automotriz se puede utilizar para saber a cuanto se podría ofrecer un nuevo modelo de vehículo según sus características.")
+   st.write("**Inteligencia de negocio:** Esto se puede aplicar a cualquier producto en general, sirve para saber si es que vender un nuevo producto puede ser rentable desde antes de adquirirlo.")
 
    st.subheader("-Manipulación y Limpieza")
    
@@ -545,8 +644,9 @@ with pagina2:
 
 #st.write("La data es limpiada y las variables categoricas se codifican a numeros para no causar malas interpretaciones del modelo")
 
-   st.sidebar.write(":blue[Selecciona un vehículo con sus respectivas especificaciones]")
-
+   #st.sidebar.write(":blue[Selecciona un vehículo con sus respectivas especificaciones]")
+   st.sidebar.subheader("Barra de proyectos")
+   st.sidebar.write("Seleccione un proyecto")
    data = pd.DataFrame(data)
 
    data2 = data.drop(["car_ID", "symboling"], axis=1)
