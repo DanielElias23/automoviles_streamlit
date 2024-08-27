@@ -209,7 +209,7 @@ title_style = """
     padding: 5px; 
     border: 1px solid #009999;
     border-radius: 10px;
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.6);
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
     margin: -68px -1px 0px 0px;
     width: 676px;  
     height: 84px;  
