@@ -205,7 +205,8 @@ title_style = """
     font-size: 46px;
     font-weight: bold;
     text-align: center;
-    background-color: #420a6a;
+    background-color: ;
+    background-image: url("https://www.colorhexa.com/191b20.png");
     padding: 5px; 
     border: 1px solid #009999;
     border-radius: 0px;
