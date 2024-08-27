@@ -188,7 +188,7 @@ title_style = """
     background-color: #148f77;
     background-image: ;
     padding: 0px;
-    border: 2px solid #009999;
+    border: 1px solid #009999;
     border-radius: 0px;
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.6);
     margin: -50px -1px auto;
