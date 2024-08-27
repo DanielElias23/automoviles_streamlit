@@ -320,7 +320,7 @@ import streamlit as st
 import requests
 from io import BytesIO
 
-url="https://quizizz.com/media/resource/gs/quizizz-media/quizzes/19054833-c0be-4019-abdb-897933e1157f?w=200&h=200"
+url="https://miro.medium.com/v2/resize:fit:5476/1*jBr63iiz6VqoK58Z0_P8UQ.jpeg"
 response = requests.get(url)
 img = Image.open(BytesIO(response.content))
 #st.title("Predictor de precios")
