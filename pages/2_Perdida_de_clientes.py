@@ -175,7 +175,7 @@ title_style = """
     border: 1px solid #009999;
     border-radius: 0px;
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
-    margin: -75px -1px 0px 0px;
+    margin: -80px -1px 0px 0px;
     width: 676px;  
     height: 84px;  
 }
