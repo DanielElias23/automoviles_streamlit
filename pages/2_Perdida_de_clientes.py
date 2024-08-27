@@ -20,16 +20,17 @@ def get_img_as_base64(file):
 
 #"https://images.unsplash.com/photo-1501426026826-31c667bdf23d"
 #data:image/png;base64,{img}
-img = get_img_as_base64("de_chat.png")
-
+#img = get_img_as_base64("de_chat.png")
+img = get_img_as_base64("fondo1.jpg")
 page_bg_img = f"""
 <style>
 [data-testid="stAppViewContainer"] > .main {{
-background-image: url("https://www.colorhexa.com/191b20.png");
-background-size: 100%;
+background-image: url("data:image/png;base64,{img}");
+background-size: auto 155%;
 background-position: top right;
 background-repeat: repeat;
 background-attachment: local;
+background-attachment: scroll;
 }}
 
 [data-testid="stSidebar"] > div:first-child {{
@@ -50,6 +51,72 @@ right: 2rem;
 </style>
 """
 st.markdown(page_bg_img, unsafe_allow_html=True)
+
+st.markdown(
+    """
+    <style>
+    .top-bar {
+        background-color: #424949;
+        color: white;
+        padding: 0px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 20px;
+        z-index: 9999;
+        text-align: center;
+    }
+    .top-bar a {
+            color: white;
+            margin-right: 0px;
+            text-decoration: none;
+            font-size: 25px; /* Tamaño de fuente de los enlaces */
+        }
+
+    .main-content {
+        padding-top: 60px;  /* Espacio para que no tape el contenido */
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+st.markdown(
+    """
+    <div class="top-bar">
+        <h1></h1>
+        <div>
+        <a href="https://proyectdaniel.streamlit.app/" style="color:white; margin-right:100px;"></a>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+st.markdown("""
+    <style>
+    table {
+        background-color: white !important;
+        color: black !important;
+    }
+    thead th {
+        background-color: #f0f0f0 !important;
+        color: black !important;
+    }
+    tbody td {
+        color: black !important;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+st.markdown("""
+    <style>
+    .dataframe, .tablem .write {
+        background-color: white !important;
+        color: black !important;
+    }
+    </style>
+""", unsafe_allow_html=True)
 
 st.markdown(page_bg_img, unsafe_allow_html=True)
 def set_custom_css():
@@ -87,9 +154,13 @@ if __name__ == "__main__":
     main1()
 st.logo("https://images.emojiterra.com/google/noto-emoji/unicode-15/color/512px/1f4c3.png")
 
-churn_df = pd.read_csv("https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-ML0101EN-SkillsNetwork/labs/Module%203/data/ChurnData.csv")
-f1_knn=Image.open("f1_knn.png")
-error_knn=Image.open("error_knn.png")
+
+with st.spinner("Espere un momento..."):
+   churn_df = pd.read_csv("https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-ML0101EN-SkillsNetwork/labs/Module%203/data/ChurnData.csv")
+   f1_knn=Image.open("f1_knn.png")
+   error_knn=Image.open("error_knn.png")
+
+
 
 title_style = """
 <style>
@@ -99,12 +170,12 @@ title_style = """
     font-size: 46px;
     font-weight: bold;
     text-align: center;
-    background-color: #191b20;
+    background-color: #420a6a;
     padding: 5px; /* Ajusta el padding para dar espacio al texto */
     border: 1px solid #009999;
     border-radius: 0px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    margin: 5 auto;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
+    margin: -68px -1px 0px 0px;
     width: 676px;  /* Ancho de la caja */
     height: 84px;  /* Ajusta la altura automáticamente */
 }
@@ -128,21 +199,107 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
+custom_css = """
+<style>
+.badge {
+    display: inline-block;
+    padding: 0.5em 1em;
+    font-size: 0.9em;
+    font-weight: 700;
+    text-align: center;
+    white-space: nowrap;
+    border-radius: 0.25em;
+    color: white;
+    margin: 1px;
+    transform: translateY(0px) translateX(7px);
+}
+
+.badge-primary1 {
+    background-color: #17a2b8;
+}
+
+.badge-secondary {
+    background-color: #6c757d;
+}
+
+.badge-success {
+    background-color: #2ecc71
+}
+
+.badge-danger {
+    background-color: #6c757d;
+}
+
+.badge-warning {
+    background-color: #6c757d;
+}
+
+.badge-info {
+    background-color: #17a2b8;
+}
+
+.badge-light {
+    background-color: #f8f9fa;
+    color: #212529;
+}
+</style>
+"""
+
+# Aplica el estilo CSS
+st.markdown(custom_css, unsafe_allow_html=True)
+
+# Muestra los badges usando HTML
+st.markdown('''
+<span class="badge badge-primary1">Tipo Clasificación</span>
+<span class="badge badge-secondary">Aprendizaje Supervisado</span>
+''', unsafe_allow_html=True)
+
+st.markdown('''
+<span class="badge badge-success">1. DecisionTreeClassifier</span>
+<span class="badge badge-success">2. LogisticRegression</span>
+<span class="badge badge-success">3. KNeighborsClassifier</span>
+<span class="badge badge-success">4. SVC</span>
+<span class="badge badge-success">5. RandomForestClassifier</span>
+<span class="badge badge-success">6. ExtraTreesClassifier</span>
+<span class="badge badge-success">7. GradientBoostingClassifier</span>
+<span class="badge badge-success">8. AdaBoostClassifier</span>
+<span class="badge badge-success">9. BaggingClassifier</span>
+<span class="badge badge-success">10. StackingClassifier</span>
+''', unsafe_allow_html=True)
 #st.subheader("Clasificación de Posible Abandono de Clientes de Telecomunicaciones")
 #st.title("Perdida de clientes")
 #st.write(":green[*Modelo ML - Clasificación*] ")
 
-st.write("")
+#st.write("")
 
-st.write("* Tipo de Modelo: :green[Clasificación]")
+#st.write("* Tipo de Modelo: :green[Clasificación]")
   
-st.write("* Modelos utilizados: :green[DecisionTreeClassifier, LogisticRegression, KNeighborsClassifier, SVC, RandomForestClassifier, ExtraTreesClassifier, GradientBoostingClassifier, AdaBoostClassifier, BaggingClassifier, StackingClassifier]")
+#st.write("* Modelos utilizados: :green[DecisionTreeClassifier, LogisticRegression, KNeighborsClassifier, SVC, RandomForestClassifier, ExtraTreesClassifier, GradientBoostingClassifier, AdaBoostClassifier, BaggingClassifier, StackingClassifier]")
 
-st.write("* Etiqueta: :green[Perdida de cliente]")
+#st.write("* Etiqueta: :green[Perdida de cliente]")
+import requests
+from io import BytesIO
 
-pagina1, pagina2, pagina3 =st.tabs(["Home","Predicción individual","Predicción múltiple"])
+url="https://miro.medium.com/v2/resize:fit:5476/1*jBr63iiz6VqoK58Z0_P8UQ.jpeg"
+response = requests.get(url)
+img = Image.open(BytesIO(response.content))
+#st.write("* Tipos de Modelos: **:blue[Clasificación - Supervisado]** ")
+#st.write("* Tipo de Aprendizaje: **:blue[Supervisado]**")
+#st.write("* Modelos utilizados: **:blue[DecisionTreeClassifier, LogisticRegression, KNeighborsClassifier, SVC, RandomForestClassifier, ExtraTreesClassifier, GradientBoostingClassifier, AdaBoostClassifier, BaggingClassifier, StackingClassifier]**")
+#st.write("* Etiqueta: **:blue[Perdida de cliente]**")
+
+
+
+pagina1, pagina2, pagina3 =st.tabs(["Documentación","Predicción individual","Predicción múltiple"])
 
 with pagina1:
+
+     st.subheader("Introducción")
+     leftl, rightr = st.columns(2)
+     with rightr:
+          st.write(img)
+     with leftl:
+          st.write("Un problema común en las empresas es la perdida de clientes, este puede ser producto de muchos factores, entre ellos pueden ser problemas personales de cada cliente, su nivel socioeconómico o simplemente un mal desempeño de la empresa, por ello es importante poder predecir cuando esto sucede para crear estrategias que ayuden a lograr el mejor desempeño económico a la empresa.")
 
      st.subheader("Exploración y Análisis")
 

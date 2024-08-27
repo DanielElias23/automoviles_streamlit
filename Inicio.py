@@ -21,17 +21,18 @@ def get_img_as_base64(file):
 
 #"https://images.unsplash.com/photo-1501426026826-31c667bdf23d"
 #data:image/png;base64,{img}
-img = get_img_as_base64("difu6.jpg")
+img = get_img_as_base64("fondo1.jpg")
 #https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqZ2lmjdQMNC3cyQ2g0i_wvigb5elGGBIPBg&s
 #https://img.freepik.com/fotos-premium/imagen-borrosa-centro-comercial-fondo-luz-bokeh_1157641-5174.jpg
 page_bg_img = f"""
 <style>
 [data-testid="stAppViewContainer"] > .main {{
-background-image: url("https://www.colorhexa.com/191b20.png");
-background-size: 100%;
+background-image: url("data:image/png;base64,{img}");
+background-size: auto 155%;
 background-position: top left;
 background-repeat: repeat;
 background-attachment: local;
+background-attachment: scroll;
 }}
 
 [data-testid="stSidebar"] > div:first-child {{
@@ -55,19 +56,19 @@ st.markdown(page_bg_img, unsafe_allow_html=True)
 
 import streamlit as st
 
-
+#009999
 st.markdown(
     """
     <style>
     .top-bar {
-        background-color: #009999;
+        background-color: #424949;
         color: white;
         padding: 0px;
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
-        height: 20px;
+        height: 23px;
         z-index: 9999;
         text-align: center;
     }
@@ -173,7 +174,8 @@ embed_component = {
 
 
 import streamlit as st
-
+#191b20;
+#424949;
 # Estilo CSS con una clase .box para envolver el título
 title_style = """
 <style>
@@ -183,12 +185,13 @@ title_style = """
     font-size: 47px;
     font-weight: bold;
     text-align: center;
-    background-color: #191b20;
+    background-color: ;
+    background-image: url("https://www.colorhexa.com/191b20.png");
     padding: 0px;
     border: 2px solid #009999;
     border-radius: 0px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    margin: -120px -1px auto;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.6);
+    margin: -50px -1px auto;
     width: 676px;  /* Ancho de la caja */
     height: 124px;
 }
@@ -242,6 +245,7 @@ with left:
             margin-right: auto;
             border-radius: 10px;
             width: 306px;  /* Ajusta el tamaño aquí */
+            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.6);
         }}
     </style>
      <a href="https://www.linkedin.com/in/danielchingasilva" target="_blank">
@@ -254,7 +258,9 @@ with left:
             border: 1px solid #009999; 
             padding: 23px;
             border-radius: 0px;
-            background-color: #191b20;
+            background-color: ;
+            background-image: url("https://www.colorhexa.com/191b20.png");
+            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.6);
             width: 310px;  /* Ancho de la caja */
             height: 168px;
         }
@@ -302,7 +308,9 @@ with right:
             border: 1px solid #009999; 
             padding: 23px;
             border-radius: 0px;
-            background-color: #191b20;
+            background-color: ;
+            background-image: url("https://www.colorhexa.com/191b20.png");
+            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.6);
             width: 315px;
             height: 530px;
         }
@@ -341,6 +349,14 @@ css = """
         text-align: left;
         margin-left: -39px;
     }
+    .badge-container img {
+    transform: scale(1.6); 
+    transform-origin: 0 0; 
+    margin: 35px;  
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.5), -4px -4px 12px rgba(255, 255, 255, 0.3); /* Sombra para efecto 3D */
+    border-radius: 8px; /* Bordes redondeados para un efecto más suave */
+    transition: transform 0.3s, box-shadow 0.3s; /* Transiciones suaves al interactuar */
+}
     .badge-container img {
         transform: scale(1.6);  /* Escala las imágenes al 150% de su tamaño original */
         transform-origin: 0 0; /* Ajusta el origen de la transformación */
@@ -382,7 +398,9 @@ st.write("* Cerificación de Amazon Web Services:")
 
 st.write("https://www.coursera.org/account/accomplishments/specialization/certificate/LPA8Z6WNCUGG")
 
+st.subheader("Proyectos: ")
 
+st.write("Regresión lineales - Aprendizaje supervisado")
 
 
 

@@ -45,16 +45,17 @@ img = get_img_as_base64("de_chat.png")
 
 #Colores
 #https://wallpapers.com/images/hd/dark-blue-plain-thxhzarho60j4alk.jpg
-
+img = get_img_as_base64("fondo1.jpg")
 #https://e0.pxfuel.com/wallpapers/967/154/desktop-wallpaper-solid-black-1920%C3%971080-black-solid-color-background-top.jpg
 page_bg_img = f"""
 <style>
 [data-testid="stAppViewContainer"] > .main {{
-background-image: url("https://www.colorhexa.com/191b20.png");
-background-size: 100%;
+background-image: url("data:image/png;base64,{img}");
+background-size: auto 155%;
 background-position: top right;
 background-repeat: repeat;
 background-attachment: local;
+background-attachment: scroll;
 }}
 
 [data-testid="stSidebar"] > div:first-child {{
@@ -79,7 +80,7 @@ st.markdown(
     """
     <style>
     .top-bar {
-        background-color: #009999;
+        background-color: #424949;
         color: white;
         padding: 0px;
         position: fixed;
@@ -153,8 +154,8 @@ if __name__ == "__main__":
 st.logo("https://images.emojiterra.com/google/noto-emoji/unicode-15/color/512px/1f4c3.png")
 
 
-
-data = pd.read_csv('https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-ML240EN-SkillsNetwork/labs/data/CarPrice_Assignment.csv')
+with st.spinner("Espere un momento... "):
+    data = pd.read_csv('https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-ML240EN-SkillsNetwork/labs/data/CarPrice_Assignment.csv')
 alfa_romeo=Image.open("alfa-romeo.jpg")
 audi=Image.open("audi.jpg")
 bmw=Image.open("bmw.jpg")
@@ -195,7 +196,7 @@ st.markdown("""
 
    
 
-#191b20
+#191b20;
 title_style = """
 <style>
 .box {
@@ -204,14 +205,19 @@ title_style = """
     font-size: 46px;
     font-weight: bold;
     text-align: center;
-    background-color: #191b20;
-    padding: 4px; 
+    background-color: #420a6a;
+    padding: 5px; 
     border: 1px solid #009999;
     border-radius: 0px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
     margin: -68px -1px 0px 0px;
     width: 676px;  
     height: 84px;  
+}
+.subtext {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px; /* Tamaño del texto secundario */
+    font-weight: normal;
 }
 </style>
 """
@@ -226,42 +232,11 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-css = """
-    <style>
-    body {
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    }
-    .badge-container {
-        text-align: left;
-        margin: -109px;
-        margin-left: -50px
-    }
-    .badge-container img {
-        transform: scale(1.6);  /* Escala las imágenes al 150% de su tamaño original */
-        transform-origin: 0 0; /* Ajusta el origen de la transformación */
-        margin: 35px;   /* Espacio entre los badges */
-    }
-    </style>
-"""
 
-
-st.markdown(css, unsafe_allow_html=True)
-
-#st.markdown("""
-#    <div class="badge-container">
-#        <img src="https://img.shields.io/badge/Tipo de modelo-Regresión-orange.svg" alt="Python">
-#        <img src="https://img.shields.io/badge/Aprendizaje-Supervisado-orange.svg" alt="SQL">
-#        <img src="https://img.shields.io/badge/Etiqueta-Intermedio-yellowgreen.svg" alt="R">
-#        <img src="https://img.shields.io/badge/CSS-Intermedio-yellowgreen.svg" alt="CSS">
-#        <img src="https://img.shields.io/badge/HTML-Intermedio-yellowgreen.svg" alt="HTML">
-#        <img src="https://img.shields.io/badge/NoSQL-Intermedio-yellowgreen.svg" alt="NoSQL">
-#    </div>
-#    """, unsafe_allow_html=True)  
 
 import streamlit as st
 
 
-# Define el estilo CSS personalizado para los badges
 custom_css = """
 <style>
 .badge {
@@ -278,7 +253,7 @@ custom_css = """
 }
 
 .badge-primary1 {
-    background-color: #6c757d;
+    background-color: #17a2b8;
 }
 
 .badge-secondary {
@@ -286,7 +261,7 @@ custom_css = """
 }
 
 .badge-success {
-    background-color: #6c757d;
+    background-color: #2ecc71
 }
 
 .badge-danger {
@@ -313,19 +288,24 @@ st.markdown(custom_css, unsafe_allow_html=True)
 
 # Muestra los badges usando HTML
 st.markdown('''
-<span class="badge badge-primary1">1. Exploración y Análisis</span>
-<span class="badge badge-secondary">2. Creación de modelo</span>
-<span class="badge badge-success">3. Entrenamiento</span>
-<span class="badge badge-danger">4. Conclusiones</span>
+<span class="badge badge-primary1">Tipo Regresión</span>
+<span class="badge badge-secondary">Aprendizaje supervisado</span>
+''', unsafe_allow_html=True)
+
+st.markdown('''
+<span class="badge badge-success">1. LinearRregression</span>
+<span class="badge badge-success">2. Lasso</span>
+<span class="badge badge-success">3. Ridge</span>
+<span class="badge badge-success">4. ElasticNet</span>
 ''', unsafe_allow_html=True)
 
 
 import streamlit as st
 
-st.write("* Tipos de Modelos: **:blue[Regresión - Supervisado]** ")
+#st.write("* Tipos de Modelos: **:blue[Regresión - Supervisado]** ")
 #st.write("* Tipo de Aprendizaje: **:blue[Supervisado]**")
-st.write("* Modelos utilizados: **:blue[LinearRregression, Lasso, Ridge, ElasticNet]**")
-st.write("* Etiqueta: **:blue[Precios de automóviles]**")
+#st.write("* Modelos utilizados: **:blue[LinearRregression, Lasso, Ridge, ElasticNet]**")
+#st.write("* Etiqueta: **:blue[Precios de automóviles]**")
 
 
 
@@ -337,21 +317,33 @@ st.write("* Etiqueta: **:blue[Precios de automóviles]**")
   
 #with right2:
 #  st.write("* Label: :green[Precio de vehiculos]")
+import requests
+from io import BytesIO
 
+url="https://quizizz.com/media/resource/gs/quizizz-media/quizzes/19054833-c0be-4019-abdb-897933e1157f"
+response = requests.get(url)
+img = Image.open(BytesIO(response.content))
 #st.title("Predictor de precios")
 #st.write(":green[*Modelo ML - Regresión*]")
-pagina1, pagina2 , pagina3=st.tabs(["Home", "Predicción individual","Predicción múltiple"])
+pagina1, pagina2 , pagina3=st.tabs(["Documentación", "Predicción individual","Predicción múltiple"])
 
 with pagina1:
     
-    
+   st.subheader("Introducción")
+   leftl, rightr = st.columns(2)
+   with rightr:
+        st.write(img)
+   with leftl:
+        st.write("Para una empresa es importante conocer como están funcionando y lo que están ofreciendo las demás empresas en el mismo rubro. Esto puede dar cierta ventaja en el mercado y sobre todo si es que es posible predecir o anticipar ciertas decisiones. Una de esas ventajas es conocer el posible precio en el mercado de productos nuevos.")
+   
+   
    st.subheader("Exploración y Análisis")
 
-   st.write("**Datos:** Son modelos de vehiculos ofrecidos en el mercado con sus caracteristicas y precios correspondientes.")
-   st.write("**Objetivo:** Se trata de predecir el precio de los vehículos de una empresa, solo con los datos obtenidos de vehículos de otras empresas en el mercado automotriz.")
+   st.write("* **Datos utilizados:** Son modelos de vehiculos ofrecidos en el mercado con sus caracteristicas y precios correspondientes.")
+   st.write("* **Objetivo:** Se trata de predecir el precio de los vehículos de una empresa, solo con los datos obtenidos de vehículos de otras empresas en el mercado automotriz.")
    #st.write(":blue[Rellene el formulario y haga su predicción]")
-   st.write("**Importancia:** Se puede utilizar para saber si una empresa puede entrar a un nuevo mercado, ya que conocerá el valor en el cual podrá vender esos vehículos. En el caso de ya contar con una empresa automotriz se puede utilizar para saber a cuanto se podría ofrecer un nuevo modelo de vehículo según sus características.")
-   st.write("**Inteligencia de negocio:** Esto se puede aplicar a cualquier producto en general, sirve para saber si es que vender un nuevo producto puede ser rentable desde antes de adquirirlo.")
+   st.write("* **Importancia:** Se puede utilizar para saber si una empresa puede entrar a un nuevo mercado, ya que conocerá el valor en el cual podrá vender esos vehículos. En el caso de ya contar con una empresa automotriz se puede utilizar para saber a cuanto se podría ofrecer un nuevo modelo de vehículo según sus características.")
+   st.write("* **Inteligencia de negocio:** Esto se puede aplicar a cualquier producto en general, sirve para saber si un nuevo producto puede ser rentable desde antes de adquirirlo.")
 
    st.subheader("-Manipulación y Limpieza")
    
