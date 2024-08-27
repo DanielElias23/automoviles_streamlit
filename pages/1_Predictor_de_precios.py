@@ -337,7 +337,7 @@ with pagina1:
         st.write("Para una empresa es importante conocer como están funcionando y lo que están ofreciendo las demás empresas en el mismo rubro. Esto puede dar cierta ventaja en el mercado y sobre todo si es que es posible predecir o anticipar ciertas decisiones. Una de esas ventajas es conocer el posible precio en el mercado de productos nuevos.")
    
    
-   st.subheader("Exploración y Análisis")
+   st.subheader("Exploración y Análisis ")
 
    st.write("* **Datos utilizados:** Son modelos de vehiculos ofrecidos en el mercado con sus caracteristicas y precios correspondientes.")
    st.write("* **Objetivo:** Se trata de predecir el precio de los vehículos de una empresa, solo con los datos obtenidos de vehículos de otras empresas en el mercado automotriz.")
