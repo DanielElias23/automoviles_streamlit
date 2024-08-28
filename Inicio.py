@@ -255,10 +255,10 @@ with left:
     st.markdown("""
         <style>
         .box1 {
-            border: 1px solid #000000; 
+            border: 1px solid #009999; 
             padding: 23px;
             border-radius: 10px;
-            background-color: #6c757d;
+            background-color: #d0d3d4;
             background-image: ;
             box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.6);
             width: 310px;  /* Ancho de la caja */
@@ -305,10 +305,10 @@ with right:
     st.markdown("""
         <style>
         .box2 {
-            border: 1px solid #000000; 
+            border: 1px solid #009999; 
             padding: 23px;
             border-radius: 10px;
-            background-color: #6c757d;
+            background-color: #d0d3d4;
             background-image: ;
             box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.6);
             width: 315px;
