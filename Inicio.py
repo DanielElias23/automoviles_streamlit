@@ -284,10 +284,10 @@ with right:
         <style>
         .box1 {
             border: 1px solid #009999; 
-            padding: 23px;
+            padding: 26px;
             border-radius: 10px;
-            background-color: ;
-            background-image: url("https://www.colorhexa.com/191b20.png");
+            background-color: #DCDCDC;
+            background-image: ;
             box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.6);
             width: 315px;  /* Ancho de la caja */
             height: 345px;
@@ -296,17 +296,21 @@ with right:
     """, unsafe_allow_html=True)
     st.markdown("""
         <div class="box1">  
-            <h3>Contacto:</h3>          
+            <h3>Aptitudes:</h3>          
             <ul>
-                <li>danielchingasilva@gmail.com</li>
-                <li>+569 3148 8069</li>
-                <li>GitHub</li>
-                <p><a href="https://github.com/DanielElias23" target="_blank">https://github.com/DanielElias23</a></p>
-                <li>Linkedin</li>
-                <p><a href="https://www.linkedin.com/in/danielchingasilva" target="_blank">www.linkedin.com/in/danielchingasilva</a></p>
+                <li>Tecnicas de seguimiento</li>
+                <li>Interpretación de datos</li>
+                <li>Conocimiento de programas estadisticos</li>
+                <li>Generación de informes</li>  
+                <li>Modelos predictivos</li> 
+                <li>Recopilación de datos</li> 
+                <li>Pensamiento de investigación</li>                
             </ul>
         </div>
     """, unsafe_allow_html=True)
+
+
+
     # Estilo CSS para aplicar un borde
 #    st.markdown("""
 #        <style>
@@ -385,7 +389,8 @@ st.markdown("""
     </div>
     """, unsafe_allow_html=True)         
 
-
+#st.write("")
+#st.subheader("Contacto:")
 st.subheader("Certificaciones")
 
 st.write("* Certificación de Machine Learning en IBM:")
@@ -406,7 +411,26 @@ st.write("https://www.coursera.org/account/accomplishments/specialization/certif
 
 st.subheader("Proyectos: ")
 
-st.write("Regresión lineales - Aprendizaje supervisado")
+st.subheader("- Machine Learning")
+
+st.write("* Regresiones - Aprendizaje supervisado - [Predictor de precios](%s)" % "https://proyectdaniel.streamlit.app/Predictor_de_precios")
+
+st.write("* Clasificaciones - Aprendizaje supervisado - [Pedida de clientes](%s)" % "https://proyectdaniel.streamlit.app/Perdida_de_clientes")
+
+st.write("* Clustering - Aprendizaje No supervisado - [Segmentación de clientes](%s)" % "https://proyectdaniel.streamlit.app/Segmentaci%C3%B3n_de_clientes")
+
+st.write("* Vetorización - Algoritmo - [Sistema de recomendación](%s)" % "https://proyectdaniel.streamlit.app/Sistema_de_recomendaci%C3%B3n")
+
+st.write("* Red neuronal - ANN - Aprendizaje No supervisado - [Predicciones medicas](%s)" % "https://proyectdaniel.streamlit.app/Predicciones_m%C3%A9dicas")
+
+st.write("* Red neuronal - RNN - LSTM - Aprendizaje No supervisado - [Tendencias financieras](%s)" % "https://proyectdaniel.streamlit.app/Tendencias_financieras")
+
+st.write("* Red neuronal - CNN - Aprendizaje No supervisado - [Reconocimiento de imagenes](%s)" % "https://proyectdaniel.streamlit.app/Reconocimiento_de_im%C3%A1genes")
+
+st.write("* Red neuronal - YOLO - Apredizaje supervisado - [Reconocimiento de videos](%s)" % "https://proyectdaniel.streamlit.app/Reconocimiento_de_videos")
+
+st.write("* Chatbots - Remotos - [Chatbots](%s)" % "https://proyectdaniel.streamlit.app/Chatbots")
+
 
 
 
