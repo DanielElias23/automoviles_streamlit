@@ -252,29 +252,6 @@ with left:
         <img src="data:image/jpeg;base64,{encoded_image}" class="resized-image"/>
     </a>
     ''', unsafe_allow_html=True)
-    st.markdown("""
-        <style>
-        .box1 {
-            border: 1px solid #009999; 
-            padding: 23px;
-            border-radius: 10px;
-            background-color: ;
-            background-image: url("https://www.colorhexa.com/191b20.png");
-            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.6);
-            width: 310px;  /* Ancho de la caja */
-            height: 168px;
-        }
-        </style>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-        <div class="box1">  
-            <h3>Contacto:</h3>          
-            <ul>
-                <li>danielchingasilva@gmail.com</li>
-                <li>+569 3148 8069</li>
-            </ul>
-        </div>
-    """, unsafe_allow_html=True)
     
     
     #st.text("danielchingasilva@gmail.com")
@@ -301,36 +278,65 @@ with left:
 #    components.html("<iframe src='https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:12345678901234567890' height='370' width='400'></iframe>", height=370)
 #4CAF50
 with right:
-    # Estilo CSS para aplicar un borde
+
+    
     st.markdown("""
         <style>
-        .box2 {
+        .box1 {
             border: 1px solid #009999; 
             padding: 23px;
             border-radius: 10px;
             background-color: ;
             background-image: url("https://www.colorhexa.com/191b20.png");
             box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.6);
-            width: 315px;
-            height: 530px;
+            width: 315px;  /* Ancho de la caja */
+            height: 345px;
         }
         </style>
     """, unsafe_allow_html=True)
-
-    # Envuelve el contenido en un div con la clase 'box'
     st.markdown("""
-        <div class="box2">
-            <h3>Autor: Daniel C. S.</h3>
-            <p><a href="https://github.com/DanielElias23" target="_blank">https://github.com/DanielElias23</a></p>
-            <p><a href="https://www.linkedin.com/in/danielchingasilva" target="_blank">www.linkedin.com/in/danielchingasilva</a></p>
-            <h3>Objetivos</h3>
+        <div class="box1">  
+            <h3>Contacto:</h3>          
             <ul>
-                <li>Dar a conocer el conocimiento al respecto con machine learning</li>
-                <li>Demostrar dominio de diferentes tipos de modelos de machine learning en un aspecto más general posible</li>
-                <li>Mostrar habilidades de programación enfocadas al contexto ciencia de datos en las empresas</li>
+                <li>danielchingasilva@gmail.com</li>
+                <li>+569 3148 8069</li>
+                <li>GitHub</li>
+                <p><a href="https://github.com/DanielElias23" target="_blank">https://github.com/DanielElias23</a></p>
+                <li>Linkedin</li>
+                <p><a href="https://www.linkedin.com/in/danielchingasilva" target="_blank">www.linkedin.com/in/danielchingasilva</a></p>
             </ul>
         </div>
     """, unsafe_allow_html=True)
+    # Estilo CSS para aplicar un borde
+#    st.markdown("""
+#        <style>
+#        .box2 {
+#            border: 1px solid #009999; 
+#            padding: 23px;
+#            border-radius: 10px;
+#            background-color: ;
+#            background-image: url("https://www.colorhexa.com/191b20.png");
+#            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.6);
+#            width: 315px;
+#            height: 530px;
+#        }
+#        </style>
+#    """, unsafe_allow_html=True)
+
+    # Envuelve el contenido en un div con la clase 'box'
+#    st.markdown("""
+#        <div class="box2">
+#            <h3>Autor: Daniel C. S.</h3>
+#            <p><a href="https://github.com/DanielElias23" target="_blank">https://github.com/DanielElias23</a></p>
+#            <p><a href="https://www.linkedin.com/in/danielchingasilva" target="_blank">www.linkedin.com/in/danielchingasilva</a></p>
+#            <h3>Objetivos</h3>
+#            <ul>
+#                <li>Dar a conocer el conocimiento al respecto con machine learning</li>
+#                <li>Demostrar dominio de diferentes tipos de modelos de machine learning en un aspecto más general posible</li>
+#                <li>Mostrar habilidades de programación enfocadas al contexto ciencia de datos en las empresas</li>
+#            </ul>
+#        </div>
+#    """, unsafe_allow_html=True)
 #<li>Demostrar dominio de conocimiento para solucionar problemas a diferentes problemáticas</li>
 st.sidebar.header("Barra de proyectos")
 st.sidebar.write("Selecciona un proyecto")
