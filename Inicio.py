@@ -191,7 +191,7 @@ title_style = """
     border: 1px solid #009999;
     border-radius: 10px;
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.6);
-    margin: -110px -1px auto;
+    margin: -50px -1px auto;
     width: 676px;  /* Ancho de la caja */
     height: 118px;
 }
