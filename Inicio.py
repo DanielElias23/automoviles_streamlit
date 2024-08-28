@@ -286,8 +286,8 @@ with right:
             border: 1px solid #009999; 
             padding: 26px;
             border-radius: 10px;
-            background-color: #DCDCDC;
-            background-image: ;
+            background-color: ;
+            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIPIi63t7jMR390yGS1D5XXC5T6_cFeaOFKQ&s");
             box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.6);
             width: 315px;  /* Ancho de la caja */
             height: 345px;
@@ -298,9 +298,9 @@ with right:
         <div class="box1">  
             <h3>Aptitudes:</h3>          
             <ul>
-                <li>Tecnicas de seguimiento</li>
+                <li>Técnicas de seguimiento</li>
                 <li>Interpretación de datos</li>
-                <li>Conocimiento de programas estadisticos</li>
+                <li>Conocimiento de programas estadísticos</li>
                 <li>Generación de informes</li>  
                 <li>Modelos predictivos</li> 
                 <li>Recopilación de datos</li> 
