@@ -14,7 +14,6 @@ def get_img_as_base64(file):
 #"https://images.unsplash.com/photo-1501426026826-31c667bdf23d"
 #data:image/png;base64,{img}
 img = get_img_as_base64("de_chat.png")
-
 page_bg_img = f"""
 <style>
 [data-testid="stAppViewContainer"] > .main {{
@@ -43,6 +42,7 @@ right: 2rem;
 </style>
 """
 st.markdown(page_bg_img, unsafe_allow_html=True)
+
 
 def set_custom_css():
     st.markdown(

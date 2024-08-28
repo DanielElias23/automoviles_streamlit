@@ -34,16 +34,17 @@ def get_img_as_base64(file):
 
 #"https://images.unsplash.com/photo-1501426026826-31c667bdf23d"
 #data:image/png;base64,{img}
-img = get_img_as_base64("de_chat.png")
+img = get_img_as_base64("fondo1.jpg")
 
 page_bg_img = f"""
 <style>
 [data-testid="stAppViewContainer"] > .main {{
-background-image: url("https://www.colorhexa.com/191b20.png");
+background-image: url("data:image/png;base64,{img}");
 background-size: 100%;
-background-position: top right;
+background-position: center;
 background-repeat: repeat;
 background-attachment: local;
+background-attachment: scroll;
 }}
 
 [data-testid="stSidebar"] > div:first-child {{
@@ -64,6 +65,72 @@ right: 2rem;
 </style>
 """
 st.markdown(page_bg_img, unsafe_allow_html=True)
+
+st.markdown(
+    """
+    <style>
+    .top-bar {
+        background-color: #424949;
+        color: white;
+        padding: 0px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 20px;
+        z-index: 9999;
+        text-align: center;
+    }
+    .top-bar a {
+            color: white;
+            margin-right: 0px;
+            text-decoration: none;
+            font-size: 25px; /* Tamaño de fuente de los enlaces */
+        }
+
+    .main-content {
+        padding-top: 60px;  /* Espacio para que no tape el contenido */
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+st.markdown(
+    """
+    <div class="top-bar">
+        <h1></h1>
+        <div>
+        <a href="https://proyectdaniel.streamlit.app/" style="color:white; margin-right:100px;"></a>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+st.markdown("""
+    <style>
+    table {
+        background-color: white !important;
+        color: black !important;
+    }
+    thead th {
+        background-color: #f0f0f0 !important;
+        color: black !important;
+    }
+    tbody td {
+        color: black !important;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+st.markdown("""
+    <style>
+    .dataframe, .tablem .write {
+        background-color: white !important;
+        color: black !important;
+    }
+    </style>
+""", unsafe_allow_html=True)
 
 def set_custom_css():
     st.markdown(
@@ -100,10 +167,11 @@ if __name__ == "__main__":
     main1()
 st.logo("https://images.emojiterra.com/google/noto-emoji/unicode-15/color/512px/1f4c3.png")
 
-data_price =  pd.read_csv("prices.csv")
-data_fundament = pd.read_csv("fundamentals.csv")
-data_security = pd.read_csv("securities.csv")
-data_price_split = pd.read_csv("prices-split-adjusted.csv", index_col='date', parse_dates=['date'])
+with st.spinner("Espere un momento..."):
+   data_price =  pd.read_csv("prices.csv")
+   data_fundament = pd.read_csv("fundamentals.csv")
+   data_security = pd.read_csv("securities.csv")
+   data_price_split = pd.read_csv("prices-split-adjusted.csv", index_col='date', parse_dates=['date'])
 
 title_style = """
 <style>
@@ -113,12 +181,12 @@ title_style = """
     font-size: 46px;
     font-weight: bold;
     text-align: center;
-    background-color: #191b20;
+    background-color: #148f77;
     padding: 5px; /* Ajusta el padding para dar espacio al texto */
     border: 1px solid #009999;
     border-radius: 0px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    margin: 5 auto;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.6);
+    margin: -80px -1px 0px 0px;
     width: 676px;  /* Ancho de la caja */
     height: 84px;  /* Ajusta la altura automáticamente */
 }
@@ -144,12 +212,71 @@ st.markdown("""
 
 #st.title("Tendencias Financieras")
 
-st.write("")
+custom_css = """
+<style>
+.badge {
+    display: inline-block;
+    padding: 0.5em 1em;
+    font-size: 0.9em;
+    font-weight: 700;
+    text-align: center;
+    white-space: nowrap;
+    border-radius: 0.25em;
+    color: white;
+    margin: 1px;
+    transform: translateY(0px) translateX(7px);
+}
 
-st.write("* Tipo de Modelo: :green[Red Neuronal]")
+.badge-primary1 {
+    background-color: #17a2b8;
+}
+
+.badge-secondary {
+    background-color: #6c757d;
+}
+
+.badge-success {
+    background-color: #2ecc71
+}
+
+.badge-danger {
+    background-color: #6c757d;
+}
+
+.badge-warning {
+    background-color: #6c757d;
+}
+
+.badge-info {
+    background-color: #17a2b8;
+}
+
+.badge-light {
+    background-color: #f8f9fa;
+    color: #212529;
+}
+</style>
+"""
+
+# Aplica el estilo CSS
+st.markdown(custom_css, unsafe_allow_html=True)
+
+# Muestra los badges usando HTML
+st.markdown('''
+<span class="badge badge-primary1">Tipo Red Neuronal</span>
+<span class="badge badge-secondary">Aprendizaje No-Supervisado</span>
+''', unsafe_allow_html=True)
+
+st.markdown('''
+<span class="badge badge-success">1. Recurrent neural networks (RNN) - Long short term memory (LSTM)</span>
+''', unsafe_allow_html=True)
+
+#st.write("")
+
+#st.write("* Tipo de Modelo: :green[Red Neuronal]")
   
-st.write("* Modelos utilizados: :green[Recurrent neural networks (RNN) - Long short term memory (LSTM) ]")
-st.write("* Objetivo: :green[Tendencia de valores a futuro]")
+#st.write("* Modelos utilizados: :green[Recurrent neural networks (RNN) - Long short term memory (LSTM) ]")
+#st.write("* Objetivo: :green[Tendencia de valores a futuro]")
 
 
 #st.write(":green[*Modelo ML - RNN - LSTM*]")
