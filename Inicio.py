@@ -258,8 +258,8 @@ with left:
             border: 1px solid #009999; 
             padding: 23px;
             border-radius: 10px;
-            background-color: #d0d3d4;
-            background-image: ;
+            background-color: ;
+            background-image: url("https://www.colorhexa.com/191b20.png");
             box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.6);
             width: 310px;  /* Ancho de la caja */
             height: 168px;
@@ -308,8 +308,8 @@ with right:
             border: 1px solid #009999; 
             padding: 23px;
             border-radius: 10px;
-            background-color: #d0d3d4;
-            background-image: ;
+            background-color: ;
+            background-image: url("https://www.colorhexa.com/191b20.png");
             box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.6);
             width: 315px;
             height: 530px;
