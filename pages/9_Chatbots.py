@@ -81,7 +81,7 @@ st.logo("https://images.emojiterra.com/google/noto-emoji/unicode-15/color/512px/
 
 
 
-client = Groq(api_key="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")
+client = Groq(api_key="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")
 
 
 
