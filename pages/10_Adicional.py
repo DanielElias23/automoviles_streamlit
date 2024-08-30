@@ -165,7 +165,7 @@ st.markdown("""
 st.write("")
 st.subheader("Introducción")
 
-st.write("Esta sección está dedicada a profesionales de otras áreas que desean saber por qué un astrónomo puede ser científico de datos o analista de datos. La respuesta tiene muchas aristas, es por eso que en esta sección se responderán esas preguntas, además de entender todo lo que sabe un astrónomo. Estoy consciente que los astrónomos son pocos por lo tanto mucha gente desconoce lo que hacen.")
+st.write("Esta sección está dedicada a profesionales de otras áreas que desean saber por qué un astrónomo puede ser científico de datos o analista de datos. La respuesta tiene muchas aristas, es por eso que en esta sección se responderán esas preguntas, además de entender todo lo que sabe un astrónomo. Estoy consciente que los astrónomos son pocos por lo tanto mucha gente desconoce lo que hacen. ")
 
 
 
