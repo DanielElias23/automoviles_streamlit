@@ -165,7 +165,7 @@ st.markdown("""
 st.write("")
 st.subheader("Introducción")
 
-st.write("Esta sección está dedicada a profesionales de otras áreas que desean saber por qué un astrónomo puede ser científico de datos o analista de datos. La respuesta tiene muchas aristas, es por eso que en esta sección se responderán esas preguntas, además de entender todo lo que sabe un astrónomo. Estoy consciente que los astrónomos son pocos por lo tanto mucha gente desconoce lo que hacen. ")
+st.write("Esta sección está dedicada a profesionales de otras áreas que desean saber por qué un astrónomo puede ser científico de datos o analista de datos. La respuesta tiene muchas aristas, es por eso que en esta sección se responderán esas preguntas, además de entender todo lo que sabe un astrónomo. Estoy consciente que los astrónomos son pocos por lo tanto mucha gente desconoce lo que hacen.")
 
 
 
@@ -335,7 +335,7 @@ st.markdown("""
 st.subheader("Fin de las respuestas")
 
 
-st.write("Agradezco la lectura de esta información, es especial para personas que desean entender por qué un profesional de la astronomía puede trabajar con datos. En general las empresas tienen desafíos diferentes, pero para lo que maneja un astrónomo es fácil adaptarse. Puede trabajar en otras áreas como economía, programación, ingeniería, minería que tengan que ver con manejo de datos por el alto nivel de entendimiento de la física y matemática que tienen.")
+st.write("Agradezco la lectura de esta información, es especial para personas que desean entender por qué un profesional de la astronomía puede trabajar con datos. En general las empresas tienen desafíos diferentes, pero para lo que maneja un astrónomo es fácil adaptarse. Puede trabajar en otras áreas como economía, programación, ingeniería, minería que tengan que ver con manejo de datos por el alto nivel de entendimiento de la física y matemática que tienen los astrónomos.")
 
 
 #st.write("")
