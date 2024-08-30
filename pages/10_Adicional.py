@@ -165,112 +165,190 @@ st.markdown("""
 st.write("")
 st.subheader("Introducción")
 
-st.write("Esta sección está dedicada a profesionales de otras áreas que no logran entender porque un astrónomo puede ser científico de datos o analista de datos. La respuesta tiene muchas aristas, es por eso que en esta sección se responderán esas preguntas, además de entender bien todo lo que sabe un astrónomo considerando que los profesionales que se dedican a la astronomía son pocos en general.")
+st.write("Esta sección está dedicada a profesionales de otras áreas que desean saber por qué un astrónomo puede ser científico de datos o analista de datos. La respuesta tiene muchas aristas, es por eso que en esta sección se responderán esas preguntas, además de entender todo lo que sabe un astrónomo. Estoy consciente que los astrónomos son pocos por lo tanto mucha gente desconoce lo que hacen.")
 
-st.subheader("¿Qué es lo que realmente sabe un Astrónomo?")
 
-st.write("La astronomía es una ciencia física tan compleja que requiere una especialización, los astrónomos son 100% dedicados a la investigación, la astronomía es una ciencia que requiere alto nivel de :red[matemática, física y programación].")
 
-st.write('Estan enfocados en las :blue[investigaciones "papers"], un astronomo de pregrado puede entender en gran medida la lectura de investigaciones, pero para realizaras se requiere un doctorado, puesto que se necesita alto nivel tecnico y tener grupos de investigacion en las diferentes areas.')
 
-st.write("Al hacer una investigación un astronomo no puede equivocarse en ningun paso tanto a nivel de calculos como a nivel teorico, se debe tener concordancia con otras investigaciones, cualquier error podria anular la investigación.")
+import streamlit as st
 
-st.subheader("¿Cual es la diferencia de astronomía con otras carreras?")
+# Estilo CSS personalizado para un acordeón simulado
+st.markdown("""
+    <style>
+    .accordion {
+        background-color: #008CBA;
+        color: white;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 18px;
+        border-radius: 10px;
+        transition: 0.4s;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
 
-st.write("La astronomía es una ciencia exacta del :blue[más alto nivel teórico], es por ello que un astrónomo se puede desenvolver bien en areas que estan relacionadas con las disciplinas que ocupa como lo es fisica, matematica y programación.") 
+    .accordion:hover {
+        background-color: #005f73;
+    }
 
-st.write("Hablando como una persona que conoce tanto la matemática como la física, te puedo explicar porque muchas carreras tienen los primeros años materias de física sin necesitarlo realmente. Esto sucede porque la matemática es una ciencia que es difícil de entender por si sola, es difícil entender el contexto o los reales resultados de la aplicación de sus diferentes áreas. Esto se complementa muy bien con la física, una persona que sabe de física puede entender muy bien estos resultados, puesto que la estadística puede aplicarse a la física y lograr resultados notorios. La mecánica cuántica es completamente estadística y ha logrado resultados sorprendentes, solo con buena interpretación de la matemática.")
+    .panel {
+        padding: 0 18px;
+        background-color: #2c3e50;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+        border-radius: 0 0 10px 10px;
+        margin-bottom: 10px;
+        color: #4a4a4a; /* Color del texto */
+        border: none; /* Sin borde inicialmente */
+    }
 
-st.write("Esto resultados se pueden conseguir incluso si los objetos a analizar están a cientos de miles de millones de años luz de distancia. La especialidad de la ciencia física que puede obtener esto es la astronomía. Es por ello que un astrónomo es un buen conocedor de técnicas estadística.")
+    input[type="checkbox"] {
+        display: none;
+    }
 
-st.subheader("¿Cuál es la diferencia entre ciencias aplicadas y ciencias teóricas?")
+    input[type="checkbox"]:checked ~ .panel {
+        max-height: 600px;
+        padding: 18px;
+        border: 2px solid #008CBA; /* Borde cuando el panel está desplegado */
+    }
 
-st.write("La diferencia de una ciencia teórica es que no tiene la posibilidad de realizar intentos de prueba y error como lo hace una ciencia aplicada, es por ello que la analítica sea un papel muy importante en la astronomía, esto debe estar acompañado de muchas investigaciones que la apoyen, puesto que toda la investigación se basará en este análisis, eso logra que sea un profesional que tenga mucho mayor nivel teórico y de interpretación de datos, más exigente en estos aspectos.")
+    </style>
+""", unsafe_allow_html=True)
 
-st.write("El beneficio de realizar estas ciencias teóricas es que no gastan recursos económicos como lo hace una ciencia aplicada. :blue[La inversión se hace cuando los científicos teóricos están seguros] de que la inversión tendrá resultados.")
+# HTML con el truco de checkbox para controlar la visibilidad
+st.markdown("""
+<div>
+    <label class="accordion" for="accordion-1">1. ¿Qué es lo que realmente sabe un Astrónomo?</label>
+    <input type="checkbox" id="accordion-1">
+    <div class="panel">
+        <p>Un astrónomo es un profesional con un alto nivel en matemática, física y programación. Están 100% dedicados a la investigación, logrando un nivel alto en estas disciplinas.</p>
+        <p>Un astrónomo debe tener manejo de ingles deseablemente hablado y uno de los sellos de la carrera es que tiene un nivel teórico de los más altos estándares, logrando obtener un gran desempeño en las disciplinas antes mencionadas. Los investigadores deben exhibir sus trabajos mundialmente.</p>
+        <p>Una investigación con machine learning como la que muestro a continuación puede tardar años, incluso trabajando con grupos de investigación, en <a href="https://iopscience.iop.org/article/10.3847/1538-4365/ad5c66/pdf" target="_blank">este sitio web.</a></p>
+</div>""", unsafe_allow_html=True)
 
-st.subheader("¿Por que un astronomo es un buen analitico?")
+st.markdown("""
+<div>
+    <label class="accordion" for="accordion-2">2. ¿Cuál es la diferencia de astronomía con otras carreras?</label>
+    <input type="checkbox" id="accordion-2">
+    <div class="panel">
+        <p>La diferencia es que las astronomía se enfoca en la investigación siendo su principal resultado la resolución de problemas o respuestas de carácter teórico. Como el nivel teórico es tan alto no necesita supervisión, ni limitaciones, se exigen resultados. Eso lo hace un profesional muy adaptable a grupos de trabajo con enfoque en resultados, como podría ser la toma de decisiones. Un profesional de otra área se limita a hacer exclusivamente su trabajo.</p>
+</div>""", unsafe_allow_html=True)
 
-st.write("La razon es porque un astronomo debe basara TODA su investigación en sus :red[analisis previo], logrando concordancia matematica, fisica y la relación con otras investigaciones. Ademas es por no tiene la posibilidad de experimentar de forma practica, esto eleva demaciado los estandares teoricos.")
+st.markdown("""
+<div>
+    <label class="accordion" for="accordion-3">3. ¿Cuál es la diferencia entre ciencias aplicadas y ciencias teóricas?</label>
+    <input type="checkbox" id="accordion-3">
+    <div class="panel">
+        <p>La diferencia de una ciencia teórica es que no tiene la posibilidad de realizar intentos de prueba y error como lo hace una ciencia aplicada, es por ello que la analítica sea un papel muy importante en la astronomía, esto debe estar acompañado de muchas investigaciones que la apoyen, puesto que toda la investigación se basará en este análisis, eso logra que sea un profesional que tenga mucho mayor nivel teórico y de interpretación de datos, más exigente en estos aspectos.</p>
+        <p>El beneficio de realizar estas ciencias teóricas es que no gastan recursos económicos como lo hace una ciencia aplicada. La inversión se hace cuando los científicos teóricos están seguros de que la inversión tendrá resultados.</p>
+</div>""", unsafe_allow_html=True)
 
-st.subheader("¿Con que trabajan los astronomos?")
+st.markdown("""
+<div>
+    <label class="accordion" for="accordion-4">4. ¿Por qué un astrónomo es un buen analítico?</label>
+    <input type="checkbox" id="accordion-4">
+    <div class="panel">
+        <p>Esto se da porque un astrónomo basara TODO su trabajo en el análisis, toda la investigación posterior dependerá de ello, por lo tanto debe lograr concordancia matemática, física y la relación con otras investigaciones. Además es por no tiene la posibilidad de experimentar de forma práctica, esto eleva demasiado los estándares teóricos.</p>
+</div>""", unsafe_allow_html=True)
 
-st.write("Actualmente los Astronomos estan trabajando con programación, para llevar a cabo esta ciencia se necesita mucho calculo y entendimiento de muchas investigaciones. Esto hace que la Astronomía sea una ciencia altamente efectiva en sus analisis ya que puede otorgar soluciones sin necesidad de gastar recursos.")
+st.markdown("""
+<div>
+    <label class="accordion" for="accordion-5">5. ¿Con qué trabajan los astrónomos?</label>
+    <input type="checkbox" id="accordion-5">
+    <div class="panel">
+        <p>Actualmente un astrónomo trabaja con programación en lenguajes lógicos como python, ocupando librerías que sirvan para hacer cálculos como numpy, pandas, matplotlib, scipy, sckit-learn, tensorflow, AstroPy y software exclusivos de astronomía. Eso es solo el nivel básico, en la práctica un astrónomo con años en el rubro tiene un alto nivel de aprendizaje, trabajando con infinidades de lenguajes como C++ o Java y software exclusivos ya sea de astronomía o estadísticas.</p>
+        <p>Algunas organizaciones astronómicas trabajan con lenguajes que son privados como S-Lang, IDL, Shell Scripting también algunas astrónomos trabajan con simulaciones matemáticas de alto nivel teórico mundial que requieren especializaciones como SAM (Semi-Analytical Models).</p>
+</div>""", unsafe_allow_html=True)
 
-st.write("Un astronomo trabaja con lenguajes logicos como :blue[python], ocupando librerias que sirvan para hacer calculos como :blue[numpy, pandas, matplotlib, scipy, sckit-learn, tensorflow y software esclusivos de astronomía]. En la practica un astronomo profesional tiene un alto nivel de aprendizaje, trabajando con infinidades de lenguajes y software exclusivos ya sea de astronomia o estadisictas, en ocaciones algunos astronomos tienen conocimientos de programacion que conocen muy pocas personas en el mundo.")
+st.markdown("""
+<div>
+    <label class="accordion" for="accordion-6">6. ¿Los Astrónomos trabajan con machine learning?</label>
+    <input type="checkbox" id="accordion-6">
+    <div class="panel">
+        <p>Sí, hay muchos astrónomos que trabajan con machine learning, en general en astronomía se prefiere los cálculos exactos y que entreguen certezas. Machine learning se ocupa cuando no es posible obtener esa respuesta de ninguna otra forma que no sea con una predicción.</p>
+        <p>Por ejemplo en la investigación que muestro a continuación podría tomar mucho tiempo definir galaxias por galaxia como AGN (Es un tipo de galaxias), en la investigación clasifica a 14.245 galaxias como AGN gracias a un modelo CNN en <a href="https://iopscience.iop.org/article/10.3847/1538-4365/aaf9a2/pdf" target="_blank">este sitio web.</a></p>
+</div>""", unsafe_allow_html=True)
 
-st.write("Algunas organizaciones trabajan con lenguajes que son privados, tambien algunas astronomos trabajan con simulaciones matematicas de alto nivel teorico mundial que requieren especializaciones.")
+st.markdown("""
+<div>
+    <label class="accordion" for="accordion-7">7. ¿Los datos en astronomía son más complejos?</label>
+    <input type="checkbox" id="accordion-7">
+    <div class="panel">
+        <p>Sí, para realizar una investigación de carácter científico se debe entender que los datos dependerán fuertemente de la herramienta tecnológica que se ocupen, estos entregaran la calidad de los datos y su posible interpretación. En el caso de Astronomía estos procesos pueden ser muy complejos y desafíos mundiales, llega a tratarse de apoyos internacionales. Un astrónomo debe conocer las especificaciones de estas tecnologías.</p>
+        <p>Recordando que los datos tienen unidades de medida y rangos de medición, además deben ser trasformador porque son solo fotones y señales.</p>
+        <p>Usualmente se describen estos aparatos en documentaciones o páginas web, aunque solo lo puede entender un astrónomo como por ejemplo el observatorio ALMA en <a href="https://www.eso.org/public/teles-instr/alma/" target="_blank">este sitio web.</a></p>
+</div>""", unsafe_allow_html=True)
 
-st.subheader("¿Los Astronomos trabajan con machine learning?")
+st.markdown("""
+<div>
+    <label class="accordion" for="accordion-8">8. ¿Qué complejidades tiene ocupar un dataset de astronomía?</label>
+    <input type="checkbox" id="accordion-8">
+    <div class="panel">
+        <p>Los datos de astronomía pueden ser imágenes, señales o tablas, pero en este caso me voy a referir a las tablas de datos. Las tablas de datos son muy diferentes, están generadas por otros astrónomos que se dedican a especificar cada elemento de esas tablas.</p>
+        <p>Lo primero que se debe entender que los datos tienen rangos de medición, por lo que tienen un valor como tal, se divide en 3 valores, el valor estimado de la medición, el valor mínimo y el máximo del rango de medición, por lo que al hacer cualquier operación con una sola columna se deben ocupar estos 3 valores en conjunto, Los datos no pueden estar sin su error de medición no se considera válido.</p>
+        <p>Además se debe considerar que los datos tienen unidades de medida por lo que no es posible combinar con otras columnas que tenga unidades de medida diferentes.</p>
+        <p>Por otro lado cada columna en astronomía de una tabla son líneas investigativas, incluso cada fila puede tener su línea investigativa, esto hace muy complejo trabajarlas.</p>
+        <p>Por ejemplo en mi investigación me referí a esta investigación <a href="https://iopscience.iop.org/article/10.1088/0067-0049/203/2/24/pdf" target="_blank">este sitio web</a>, porque en esta investigación se definió un radio para las galaxias que estaba ocupando, es muy importante porque en esa investigación se definió como se cálculo.</p>
+        
+</div>""", unsafe_allow_html=True)
 
-st.write("Si, hay muchos Astronomos que trabajan con machine learning, pero es mas importante hacer calculos exactos y explicitos. Por esto se ocupa machine learning cuando no es posible obtener esa respuesta de ninguna otra forma que no sea con una predicción. Esto tiene muchas mas complejidades para la interpretación de resultados.")
+st.markdown("""
+<div>
+    <label class="accordion" for="accordion-9">9. ¿Qué profesionales pueden hacer investigaciones astronómicas?</label>
+    <input type="checkbox" id="accordion-9">
+    <div class="panel">
+        <p>Solo profesionales que hayan obtenido algún grado académico de astronomía. La astronomía es una ciencia compleja que requiere especialización. Algunos profesionales del área de la biología, química que deseen trabajar en astronomía deben sacar algún grado académico en astronomía, ellos usualmente trabajan la astrobiología o generación de teorías de formación química. Algunos geólogos se pueden especializar en astronomía, puesto que existe la astronomía planetaria, aportan mucho conocimiento de la formación de planetas.</p>
+</div>""", unsafe_allow_html=True)
 
-st.subheader("¿Que diferencia hay entre los datos de las empresas y astronomia?")
+st.markdown("""
+<div>
+    <label class="accordion" for="accordion-10">10. ¿La Astronomía tiene muchas especialidades?</label>
+    <input type="checkbox" id="accordion-10">
+    <div class="panel">
+        <p>Si, dado la complejidad de astronomía tiene muchas especialidades con muchas temáticas que son complemente diferentes entre objetos astronómicos, incluso gente que se limita a solo hacer investigaciones de creación de software, modelos, mediciones, simulaciones, teorías matemáticas exclusivas para astronomía.</p>
+        <p>Acá te muestro las principales especialidades de astronomía con investigaciones de ejemplos:</p>
+        <p>* Astronomía estelar, por ejemplo en <a href="https://arxiv.org/pdf/2408.12765" target="_blank">este sitio web.</a></p>
+        <p>* Astronomía galáctica, por ejemplo en <a href="https://arxiv.org/pdf/2402.12443" target="_blank">este sitio web.</a></p>
+        <p>* Astronomía extragalácitca cercana, por ejemplo en <a href="https://arxiv.org/pdf/2408.08026" target="_blank">este sitio web.</a></p>
+        <p>* Astronomía extragaláctica lejana, por ejemplo en <a href="https://arxiv.org/pdf/1510.05647" target="_blank">este sitio web.</a></p>
+        <p>* Astronomía planetaria, por ejemplo en <a href="https://arxiv.org/pdf/2403.12512" target="_blank">este sitio web.</a></p>
+        <p>* Astronomía cosmológica, por ejemplo en <a href="https://arxiv.org/pdf/1412.4872" target="_blank">este sitio web.</a></p>
+</div>""", unsafe_allow_html=True)
 
-st.write("Para realizar una investigación se caracter cientifico se debe entender que los datos dependeran fuertemente de la herramienta tecnologica que se ocupen, estos entregaran la calidad de los datos y su posible interpretación. En el caso de Astronomía estos procesos pueden ser muy complejos y desafios mundiales, llega a tratarse de apoyos internacionales. Los datos de una mala herramienta pueden entregar resultados erroneos, el cientifico a cargo puede entender cuando los resultados pueden ser erroneos, puesto que no se condicen con otras investigaciones o con leyes fisicas fundamentales.")
+st.markdown("""
+<div>
+    <label class="accordion" for="accordion-11">11. ¿Por qué un astrónomo puede querer trabajar con empresas?</label>
+    <input type="checkbox" id="accordion-11">
+    <div class="panel">
+        <p>Es una pregunta común que se repite constantemente, acá te respondo algunas de las razones más importantes:</p>
+        <p>* Algunos astrónomos les gusta trabajar con empresas, ya que se dan cuenta de que el trabajo es muy similar y tienen habilidades de sobra para demostrar en ambientes empresariales</p>
+        <p>* Astronomía es muy exigente teóricamente requiere estudio continuo diario y el estudio no termina nunca, la ciencia de alto nivel teórico, es por ello que los ingenieros sufren tanto con los ramos de física, no se puede enseñar de forma facil. Un astronomo puede cansarse de tanta exigencia teorica y querer buscar otros horizontes.</p>
+        <p>* Los astrónomo tienen pocas ofertas laborales y no pueden elegir en gran medida donde pueden trabajar, por lo que requieren emigrar a otras comunas, regiones o países. Trabajar con empresas les da esa garantía de poder elegir una localidad.</p>
+</div>""", unsafe_allow_html=True)
 
-st.write("Un astronomo debe conocer las partes de los observatorios, sus capacidad, limites y especificaciones, estos estan descritos en las paginas web oficiales de cada observatorio.")
-
-st.write("Usualmente los datos mas importantes para los astronomos tiene mas elementos adicionales a considerar, los del aparato tecnologicos que obtuvieron los datos deben considerar el dia, el clima, calidad del aire, entre otros factores importantes, que debe conocer al realizar el analisis.")
-
-st.subheader("¿Que complejidades tiene ocupar un dataset de astronomia?")
-
-st.write("Los datos en astronomía son mas complejos de tratar que los de las empresas, por lo que no es comparable el nivel de complejidad en la 'cantidad de datos', algunas personas creen erronemanete que los datos de astronomía son comparables con los que se ocuparan en otros rubros. Esto es incorrecto, los datos en astronomía tienen comportamientos especiales.")
-
-st.write("Los datos en Astronomía tanto cada fila y cada columna pueden ser investigaciones o lineas de investaciones historicas complejas que incluso van cambiando con el tiempo, esto vuelve muy complejo de tratar un dataset, puesto que tomar una simple decision de eliminar un dato puede ser crucial. Un dataset por ejemplo de 10 columnas puede implicar que debes saber que se descubrio en 10 investigaciones diferentes. En algunos casos puede conocerse el significado de los datos, pero como mencione anteriormente siempre se debe considerar la forma como se obtuvieron esos datos, esto usualmente tienen una investigación de respaldo que debes conocer.")
-
-st.write("Otra complicación adicional, es que los datos en astronomía no son puntuales, esto dado que vienen desde mediciones, las mediciones tienen errores de medicion asociado como todo en astronomia, es decir el llamado dato en si tiene asociado un rango, por lo que al procesar ese dato se debe procesar con el error que es un rango. Un proceso simple como sumar una valor a la columna tiene una complejidad adicional que se debe sumar a los errores de medicion en algunos casos con funciones particulares. Usualmente los errores estan representados como columnas adicionales.")
-
-st.write("Los datos tienen unidades de medidas por lo que al hacer cualquier tipo de operación con esas columnas se debe considerar la unidad de medida, es decir puede darse el caso que las columnas no correspondan las unidades de medidas y necesitan calculos adicionales.")
-
-st.write("Se debe entender que en algunos casos los datos tienen valores incoherentes, esto solo puede entender un cientifico, ya que los datos muestras numeros totalmente anormales o que no consideren con las leyes fisicas.")
-
-st.subheader("¿Se puede llegar y hacer una investigación astronomica?")
-
-st.write("La astronomía es una ciencia que tiene alrededor de 100 años aproximadamente por lo tanto hay muchas investigaciones que ya se hicieron y que obtuvieron resultados, no es posible repetir una de investigacines se considera no valida o sera rechazada y tampoco mostrar algo que no esta cientificamente sustentado con investigaciones adicionales. Por ello tambien un cientifico debe estar al dia en las investigaciones para saber que investigacion es validad o cuales ya fueron hechas. Tambien conocer nuevos descubrimientos.")
-
-st.subheader("¿Cualquier profesional puede hacer una investigación?")
-
-st.write("Las teorias fisicas y astronomicas fueron demostradas matematicamente, es por ello que las investigaciones solo las puede hacer un astronomo, ya que cualquier inconsistencias con otras investigaciones anulara completamente la investigacion. Muchas de las investigaciones son de alto nivel teorico y tiene conceptos muy complejos.")
-
-st.subheader("¿La Astronomía tiene muchas especialidades?")
-
-st.write("Si, dado la complejidad de astronomia hace que la Astronomía tenga muchas especialidades, tiene muchas tematicas que son complemente diferentes entre objetos astronomicos, incluso gente que se limita a solo hacer investigaciones de creacion de software, modelos, mediciones, simulaciones, teorias matematicas exclusivas para astronomia.")
-
-st.write("Aca te muestro las principales especialidad de astronomia:")
-
-st.write("* Astronomía estelar")
-
-st.write("* Astronmía galactica")
-
-st.write("* Astronomía extragalacitca cercana")
-
-st.write("* Astronomía extragalactica lejana")
-
-st.write("* Astronomia planetaria")
-
-st.write("* Astronomía cosmologica")
-
-st.subheader("¿Por que un astronomo puede querer trabajar con empresas?")
-
-st.write("Es una pregunta comun que se repite constantemente, aca te respondo algunas de las razones mas importantes:")
-
-st.write("* Algunos astronomos les gusta trabajar con empresas, ya que se dan cuenta que el trabajo es muy similar y tienen habilidades de sobra para demostrar en ambientes empresariales")
-
-st.write("* Astronomía es muy exigente teoricamente requiere estudio continuo diario y el estudio no termina nunca, la cienica es una sola y de alto nivel teorico es por ello que los ingenieros sufren tanto con los ramos de fisica, no se puede enseñar desde poco.")
-
-st.write("* Los astronomo tienen pocas ofertas laborales y no pueden elegir en gran medida donde pueden trabajar, por lo que requieren emigrar a otras comunas, regiones o paises. Trabajar con empresas les da esa garantia de porder elegir una localidad.")
 
 st.subheader("Fin de las respuestas")
 
 
-st.write("Agradezco la lectura de esta información es espacial para personas que desean entender porque un profesional de la astronomía puede trabajar con datos. En general las empresas tienen desafios diferentes, pero para lo que maneja un astronomo es facil adaptarse. Ademas posee capacidad de entender investigaciones de otros ambitos ya sea de economicos como de programación, incluso fisicos de otras areas.")
+st.write("Agradezco la lectura de esta información, es especial para personas que desean entender por qué un profesional de la astronomía puede trabajar con datos. En general las empresas tienen desafíos diferentes, pero para lo que maneja un astrónomo es fácil adaptarse. Puede trabajar en otras áreas como economía, programación, ingeniería, minería que tengan que ver con manejo de datos por el alto nivel de entendimiento de la física y matemática que tienen.")
 
 
+#st.write("")
 
+#st.subheader("Regalo")
 
+#st.write("Como regalo dejo la imagen de lo que se conoce del universo, tiene que ver un aspecto mas teorico, pertenece al area de la cosmologia. La cosmologia es mucho mas teorica, intenta juntar todo lo que se conoce en astronomia, juntando todo el conocimiento de las especialidades de una forma general.")
 
+#st.write("PD: El sol no esta en el centro del universo es simplemente una representación de todo lo que se conoce en astronomía.")
 
+#st.write("https://upload.wikimedia.org/wikipedia/commons/0/09/Observable_universe_logarithmic_illustration_with_legends.png")
+
+#st.write("El borde que se muestra es la luz que sigue escapando desde el BigBang por la explosión, es por eso que es el limite.")
 
 
 
