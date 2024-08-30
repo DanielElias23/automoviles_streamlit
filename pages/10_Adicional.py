@@ -335,7 +335,7 @@ st.markdown("""
 st.subheader("Fin de las respuestas")
 
 
-st.write("Agradezco la lectura de esta información, es especial para personas que desean entender por qué un profesional de la astronomía puede trabajar con datos. En general las empresas tienen desafíos diferentes, pero para lo que maneja un astrónomo es fácil adaptarse. Puede trabajar en otras áreas como economía, programación, ingeniería, minería que tengan que ver con manejo de datos por el alto nivel de entendimiento de la física y matemática que tienen los astrónomos.")
+st.write("Agradezco la lectura de esta información, es especial para personas que desean entender por qué un profesional de la astronomía puede trabajar con datos. En general las empresas tienen desafíos diferentes, pero para lo que maneja un astrónomo es fácil adaptarse, ya que maneja un nivel teórico más exigente que lo que ocupan el común de las empresas. Puede trabajar en otras áreas como economía, programación, ingeniería, minería que tengan que ver con manejo de datos debido a su perfil investigativo de aprendizaje continuo.")
 
 
 #st.write("")
