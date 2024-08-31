@@ -185,7 +185,7 @@ st.markdown(title_style, unsafe_allow_html=True)
 # Muestra el título y el texto adicional dentro de la misma caja con la clase .box
 st.markdown("""
 <div class="box">
-    Mi investigación
+    Investigación astronómica
 </div>
 """, unsafe_allow_html=True)
 
@@ -242,8 +242,8 @@ st.markdown(custom_css, unsafe_allow_html=True)
 
 # Muestra los badges usando HTML
 st.markdown('''
-<span class="badge badge-primary1">Ciencia astronomia</span>
-<span class="badge badge-secondary">Area extragalactica</span>
+<span class="badge badge-primary1">Ciencia astronomía</span>
+<span class="badge badge-secondary">Area extragaláctica</span>
 <span class="badge badge-info">Enfoque Conglomerados</span>
 ''', unsafe_allow_html=True)
 
@@ -253,18 +253,19 @@ st.markdown('''
 st.subheader("Introducción a mi investigación")
 
 
-st.write("La investigación trata de galaxias lejanas que sufren aglomeraciones (sobredensidades), estas aglomeraciones son importantes ya que según investigaciones, la evolución de esas galaxias depende de su conglomerado y esos conglomerados lejanos se transforman en los cúmulos de galaxias como en el que vivimos. Esto tiene un desafio importante ya que a esa distancia es dificil determinar cuales son los conglomerados, por lo que se sigue una linea investigativa donde esos conglomerados se definieron. En particular me dedico a investigar el conglomerado z=2.80.")
+st.write("La investigación se centra en galaxias distantes que experimentan sobredensidades o aglomeraciones. Estas son de gran relevancia, ya que según estudios, la evolución de dichas galaxias está estrechamente ligada a su conglomerado. A lo largo del tiempo, esos conglomerados lejanos se convierten en cúmulos galácticos, como el que habitamos.")
+st.write("Un reto significativo de este campo radica en que, dada la distancia, es complicado identificar con precisión los conglomerados. Por ello, se ha seguido una línea investigativa para definirlos. Mi trabajo en particular se enfoca en el estudio del conglomerado z=2.80.")
 
 
 conglo=Image.open("conglo1.png")
 
 st.write(conglo)
 
-st.subheader("Formación estelar y evolución de sobredensidad de galaxias a redshift 2.8")
+st.subheader('Investigación: "Formación estelar y evolución de una sobredensidad de galaxias a redshift 2.8".')
 
-st.write("En esta investigación se analiza y se describe todas las caracterisitcas del conglomerado z=2.80, descubriendo parametros como masa, edad, tamaño, nivel de formación estelar que da información sobre su posible evolución, ademas se analiza su interacción con otros conglomerados y sus posibles efectos.")
+st.write("En esta investigación se analizan y describen todas las características del conglomerado z=2.80, incluyendo parámetros como su masa, edad, tamaño y tasa de formación estelar, los cuales proporcionan información clave sobre su posible evolución. Además, se estudia la interacción del conglomerado con otros, así como los efectos que estas interacciones podrían tener.")
 
-st.write('Un dato importante a destacar es el significado de la palabra "redshift" denotado con la letra "z", a grandes rasgos tiene que ver con la distancia en la cual estan las galaxias, pero toma en cuenta datos importantes sobre la onda que nos llega, toma en cuenta la expanción del universo, efectos doppler, efectos gravitatorios y cuanticos que tiene que ver con la interacción de fotones.')
+st.write('Un aspecto relevante es el significado de "redshift", representado por la letra "z". En términos generales, está relacionado con la distancia de las galaxias, pero también considera factores cruciales como la expansión del universo, el efecto Doppler, y los efectos gravitatorios y cuánticos relacionados con la interacción de los fotones.')
 
 
 # Declarar variable de estado
@@ -305,25 +306,25 @@ if ss.pdf_ref:
     )
     pdf_viewer(input=binary_data, width=705, height=900)
 
-#st.subheader("Resultados")
+st.subheader("Contribución a la ciencia")
 
-#st.write("El conglomerado tiene una formación estelar activa que contrasta con otros conglomerados investigados que mostraban formación estelar pasiva. Podria tener una masa entre 2.88 * 10^(12) a 3.85 * 10^(12) masas solares y teniendo un tamaño entre 48.51 a 52.81 cMpc³. Las galaxias pertenecientes a este conglomerado presentan comportamientos especiales, presentan un efecto entre masa y su tamaño que podria estar siendo afectado por el ambiente. No se encontro efectos directos de las sobredensidad de lyman alfa descritas en el paper de zheng. El conglomerado podría transformarse en un cúmulo de galaxias tipo Fornax y analizando otros parametros podría ser un gran aporte en formación estelar para el universo.")
+st.write("El conglomerado muestra una formación estelar activa, en contraste con otros que han revelado una formación más pasiva. Se estima que su masa podría estar entre 2.88 y 3.85 billones de masas solares, con un tamaño aproximado de 48.51 a 52.81 cMpc³. Las galaxias de este conglomerado exhiben comportamientos particulares, con una relación entre masa y tamaño que parece estar influenciada por el entorno. No se observaron efectos directos de las sobredensidades de Lyman-alfa mencionadas en el estudio de Zheng.")
 
-st.subheader("Referencias")
+st.write("Este conglomerado tiene el potencial de convertirse en un cúmulo galáctico similar al de Fornax, y su estudio podría ofrecer un gran aporte en la comprensión de la formación estelar en el universo.")
 
-st.write("La investigación se base principalmente en cuatro investigaciones que te las describo a continuación:")
+st.subheader("Referencias principales")
+
+st.write("La investigación se basa principalmente en cinco investigaciones que te las describo a continuación:")
+
+st.write("* Creación de base de datos y definición de parámetros, [en este sitio web.](%s)." % "https://arxiv.org/pdf/1510.02106")
 
 st.write("* Descubrimiento de los conglomerados, [en este sitio web.](%s)." % "https://arxiv.org/pdf/2007.12314")
 
-st.write("* Definición de evolución y sus parametros, [en este sitio web.](%s)." % "https://arxiv.org/pdf/1310.2938")
+st.write("* Definición de evolución y sus parámetros, [en este sitio web.](%s)." % "https://arxiv.org/pdf/1310.2938")
 
-st.write("* Definición de evolución morfologica, [en este sito web.](%s)." % "https://arxiv.org/pdf/1705.01634")
+st.write("* Definición de evolución morfológica, [en este sito web.](%s)." % "https://arxiv.org/pdf/1705.01634")
 
 st.write("* Conglomerados cercanos, [en este sitio web.](%s)." % "https://arxiv.org/pdf/1606.07073")
-
-st.write("Mientras que las demas investigaciones que aparecen en las referencias tienen que ver con contextos astronomicos, formulas utilizadas o calculo de parametros de las galaxias.")
-
-
 
 
 

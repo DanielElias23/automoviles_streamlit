@@ -165,7 +165,7 @@ st.markdown("""
 st.write("")
 st.subheader("Introducción")
 
-st.write("Esta sección está dedicada a profesionales de otras áreas que desean saber por qué un astrónomo puede ser científico de datos o analista de datos. La respuesta tiene muchas aristas, es por eso que en esta sección se responderán esas preguntas, además de entender todo lo que sabe un astrónomo. Estoy consciente que los astrónomos son pocos por lo tanto mucha gente desconoce lo que hacen.")
+st.write("Esta sección está pensada para profesionales de otras disciplinas que se preguntan por qué un astrónomo puede desempeñarse como científico o analista de datos. La respuesta abarca muchos aspectos, y aquí se explicarán esas razones, además de ofrecer una visión sobre el conocimiento que posee un astrónomo. Reconozco que no son muchos los astrónomos, por lo que es común que mucha gente no esté familiarizada con el trabajo que realizan.")
 
 
 
@@ -226,9 +226,9 @@ st.markdown("""
     <label class="accordion" for="accordion-1">1. ¿Qué es lo que realmente sabe un Astrónomo?</label>
     <input type="checkbox" id="accordion-1">
     <div class="panel">
-        <p>Un astrónomo es un profesional con un alto nivel en matemática, física y programación. Están 100% dedicados a la investigación, logrando un nivel alto en estas disciplinas.</p>
-        <p>Un astrónomo debe tener manejo de ingles deseablemente hablado y uno de los sellos de la carrera es que tiene un nivel teórico de los más altos estándares, logrando obtener un gran desempeño en las disciplinas antes mencionadas. Los investigadores deben exhibir sus trabajos mundialmente.</p>
-        <p>Una investigación con machine learning como la que muestro a continuación puede tardar años, incluso trabajando con grupos de investigación, en <a href="https://iopscience.iop.org/article/10.3847/1538-4365/ad5c66/pdf" target="_blank">este sitio web.</a></p>
+        <p>Un astrónomo es un profesional con una sólida formación en matemáticas, física y programación, dedicándose por completo a la investigación y alcanzando un alto nivel en estas áreas.</p>
+        <p>Es fundamental que un astrónomo domine el inglés, idealmente tanto en su forma escrita como hablada, ya que uno de los distintivos de la carrera es su exigente nivel teórico, lo que garantiza un desempeño sobresaliente en dichas disciplinas. Además, los investigadores deben presentar sus trabajos a nivel global.</p>
+        <p>Una investigación con machine learning como la que muestro a continuación puede tardar años, incluso trabajando con grupos de investigación. Es la principal labor de un astrónomo realizar estas investigaciones en <a href="https://iopscience.iop.org/article/10.3847/1538-4365/ad5c66/pdf" target="_blank">este sitio web.</a></p>
 </div>""", unsafe_allow_html=True)
 
 st.markdown("""
@@ -253,7 +253,7 @@ st.markdown("""
     <label class="accordion" for="accordion-4">4. ¿Por qué un astrónomo es un buen analítico?</label>
     <input type="checkbox" id="accordion-4">
     <div class="panel">
-        <p>Esto se da porque un astrónomo basara TODO su trabajo en el análisis, toda la investigación posterior dependerá de ello, por lo tanto debe lograr concordancia matemática, física y la relación con otras investigaciones. Además es por no tiene la posibilidad de experimentar de forma práctica, esto eleva demasiado los estándares teóricos.</p>
+        <p>Esto ocurre porque todo el trabajo de un astrónomo se basa en el análisis, siendo esencial para que el resto de la investigación pueda desarrollarse correctamente. Por ello, debe lograr una coherencia rigurosa entre las matemáticas, la física y su relación con otras investigaciones. Además, al no poder realizar experimentos prácticos de manera directa, los estándares teóricos se elevan considerablemente, lo que hace que la precisión y el análisis sean de alto nivel.</p>
 </div>""", unsafe_allow_html=True)
 
 st.markdown("""
@@ -325,19 +325,19 @@ st.markdown("""
     <label class="accordion" for="accordion-11">11. ¿Por qué un astrónomo puede querer trabajar con empresas?</label>
     <input type="checkbox" id="accordion-11">
     <div class="panel">
-        <p>Es una pregunta común que se repite constantemente, acá te respondo algunas de las razones más importantes:</p>
-        <p>* Algunos astrónomos les gusta trabajar con empresas, ya que se dan cuenta de que el trabajo es muy similar y tienen habilidades de sobra para demostrar en ambientes empresariales</p>
-        <p>* Astronomía es muy exigente teóricamente requiere estudio continuo diario y el estudio no termina nunca, la ciencia de alto nivel teórico, es por ello que los ingenieros sufren tanto con los ramos de física, no se puede enseñar de forma facil. Un astronomo puede cansarse de tanta exigencia teorica y querer buscar otros horizontes.</p>
-        <p>* Los astrónomo tienen pocas ofertas laborales y no pueden elegir en gran medida donde pueden trabajar, por lo que requieren emigrar a otras comunas, regiones o países. Trabajar con empresas les da esa garantía de poder elegir una localidad.</p>
+        <p>Es una pregunta frecuente y aquí te explico algunas de las razones más relevantes:</p>
+        <p>- Muchos astrónomos encuentran atractiva la oportunidad de trabajar en empresas porque el trabajo es bastante similar al que realizan en su campo, y poseen habilidades valiosas que pueden aplicar en entornos empresariales</p>
+        <p>- La astronomía es una disciplina muy exigente teóricamente, que requiere un estudio continuo y diario. La ciencia a este nivel es compleja y difícil de enseñar. Un astrónomo, cansado de esta alta demanda teórica, puede buscar nuevas oportunidades en otros campos</p>
+        <p>- Los astrónomos enfrentan una oferta laboral limitada y, a menudo, deben mudarse a diferentes comunas, regiones o países para encontrar trabajo. Colaborar con empresas les ofrece más flexibilidad para elegir una localidad para trabajar.</p>
 </div>""", unsafe_allow_html=True)
 
 
 st.subheader("Fin de las respuestas")
 
 
-st.write("Agradezco la lectura de esta información, es especial para personas que desean entender por qué un profesional de la astronomía puede trabajar con datos. En general las empresas tienen desafíos diferentes, pero para lo que maneja un astrónomo es fácil adaptarse, ya que maneja un nivel teórico más exigente que lo que ocupan el común de las empresas. Puede trabajar en otras áreas como economía, programación, ingeniería, minería que tengan que ver con manejo de datos debido a su perfil investigativo de aprendizaje continuo.")
+st.write("Agradezco la lectura de esta información, dirigida a quienes buscan entender por qué un profesional de la astronomía puede trabajar con datos. Aunque las empresas enfrentan desafíos variados, un astrónomo se adapta con facilidad, ya que su formación teórica suele ser más rigurosa que la requerida en la mayoría de las compañías. Además, su perfil investigativo y enfoque en el aprendizaje continuo le permite trabajar en áreas como economía, programación, ingeniería o minería, siempre que impliquen el manejo de datos.")
 
-
+st.write("Sin duda, un astrónomo puede realizar análisis excepcionales que otros profesionales tal vez no podrían descifrar con la misma profundidad. Su enfoque único, proveniente del mundo de la investigación, aporta un sello distintivo que enriquece cada análisis que realiza.")
 
 
 

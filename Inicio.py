@@ -445,7 +445,7 @@ st.write("")
 
 st.subheader("-Investigación")
 
-st.write("* Investigación realizada - Resumen - ")
+st.write("* Investigación realizada - Resumen - [Investigación](%s)" % "https://proyectdaniel.streamlit.app/Mi_investigaci%C3%B3n")
 
-st.write("* Preguntas frecuetes de astronomía -")
+st.write("* Preguntas frecuetes de astronomía - [Preguntas frecuentes](%s)" % "https://proyectdaniel.streamlit.app/Preguntas_frecuentes")
 
