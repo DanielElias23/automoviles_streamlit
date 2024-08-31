@@ -305,9 +305,9 @@ if ss.pdf_ref:
     )
     pdf_viewer(input=binary_data, width=705, height=900)
 
-st.subheader("Resultados")
+#st.subheader("Resultados")
 
-st.write("El conglomerado tiene una formación estelar activa que contrasta con otros conglomerados investigados que mostraban formación estelar pasiva. Podria tener una masa entre 2.88 * 10^(12) a 3.85 * 10^(12) masas solares y teniendo un tamaño entre 48.51 a 52.81 cMpc³. Las galaxias pertenecientes a este conglomerado presentan comportamientos especiales, presentan un efecto entre masa y su tamaño que podria estar siendo afectado por el ambiente. No se encontro efectos directos de las sobredensidad de lyman alfa descritas en el paper de zheng. El conglomerado podría transformarse en un cúmulo de galaxias tipo Fornax y analizando otros parametros podría ser un gran aporte en formación estelar para el universo.")
+#st.write("El conglomerado tiene una formación estelar activa que contrasta con otros conglomerados investigados que mostraban formación estelar pasiva. Podria tener una masa entre 2.88 * 10^(12) a 3.85 * 10^(12) masas solares y teniendo un tamaño entre 48.51 a 52.81 cMpc³. Las galaxias pertenecientes a este conglomerado presentan comportamientos especiales, presentan un efecto entre masa y su tamaño que podria estar siendo afectado por el ambiente. No se encontro efectos directos de las sobredensidad de lyman alfa descritas en el paper de zheng. El conglomerado podría transformarse en un cúmulo de galaxias tipo Fornax y analizando otros parametros podría ser un gran aporte en formación estelar para el universo.")
 
 st.subheader("Referencias")
 
