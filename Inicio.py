@@ -445,7 +445,7 @@ st.write("")
 
 st.subheader("-Investigación")
 
-st.write("* Investigación realizada - Resumen -")
+st.write("* Investigación realizada - Resumen - ")
 
 st.write("* Preguntas frecuetes de astronomía -")
 
