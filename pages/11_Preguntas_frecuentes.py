@@ -338,17 +338,8 @@ st.subheader("Fin de las respuestas")
 st.write("Agradezco la lectura de esta información, es especial para personas que desean entender por qué un profesional de la astronomía puede trabajar con datos. En general las empresas tienen desafíos diferentes, pero para lo que maneja un astrónomo es fácil adaptarse, ya que maneja un nivel teórico más exigente que lo que ocupan el común de las empresas. Puede trabajar en otras áreas como economía, programación, ingeniería, minería que tengan que ver con manejo de datos debido a su perfil investigativo de aprendizaje continuo.")
 
 
-#st.write("")
 
-#st.subheader("Regalo")
 
-#st.write("Como regalo dejo la imagen de lo que se conoce del universo, tiene que ver un aspecto mas teorico, pertenece al area de la cosmologia. La cosmologia es mucho mas teorica, intenta juntar todo lo que se conoce en astronomia, juntando todo el conocimiento de las especialidades de una forma general.")
-
-#st.write("PD: El sol no esta en el centro del universo es simplemente una representación de todo lo que se conoce en astronomía.")
-
-#st.write("https://upload.wikimedia.org/wikipedia/commons/0/09/Observable_universe_logarithmic_illustration_with_legends.png")
-
-#st.write("El borde que se muestra es la luz que sigue escapando desde el BigBang por la explosión, es por eso que es el limite.")
 
 
 

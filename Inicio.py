@@ -409,6 +409,8 @@ st.write("* Cerificación de Amazon Web Services:")
 
 st.write("https://www.coursera.org/account/accomplishments/specialization/certificate/LPA8Z6WNCUGG")
 
+st.write("")
+
 st.subheader("Proyectos: ")
 
 st.subheader("- Machine Learning")
@@ -431,7 +433,19 @@ st.write("* Red neuronal - YOLO - Apredizaje supervisado - [Reconocimiento de vi
 
 st.write("* Chatbots - Remotos - [Chatbots](%s)" % "https://proyectdaniel.streamlit.app/Chatbots")
 
+st.write("")
 
+#st.subheader("-Analitica de empresas")
 
+#st.write("* Dashboard")
 
+#st.subheader("-Finanzas")
+
+#st.write("* Redondeo de cuentas")
+
+st.subheader("-Investigación")
+
+st.write("* Investigación realizada - Resumen -")
+
+st.write("* Preguntas frecuetes de astronomía -")
 
