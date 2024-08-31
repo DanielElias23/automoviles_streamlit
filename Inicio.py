@@ -433,7 +433,7 @@ st.write("* Investigación realizada - Resumen - [Investigación](%s)" % "https:
 
 st.write("* Preguntas frecuetes de astronomía - [Preguntas frecuentes](%s)" % "https://proyectdaniel.streamlit.app/Preguntas_frecuentes")
 
-st.subheader("Certificaciones")
+st.subheader("Certificaciones:")
 
 st.write("* Certificación de Machine Learning en IBM:")
 
