@@ -391,23 +391,7 @@ st.markdown("""
 
 #st.write("")
 #st.subheader("Contacto:")
-st.subheader("Certificaciones")
 
-st.write("* Certificación de Machine Learning en IBM:")
-
-st.write("https://www.coursera.org/account/accomplishments/specialization/certificate/XSSQ7BGT9L9F")
-
-st.write("* Certificación de NoSQL, Spark, Hadoop y BigData:")
-
-st.write("https://www.coursera.org/account/accomplishments/specialization/certificate/CYGFU8S3XQGG")
-
-st.write("* Certificación de Google Cloud:")
-
-st.write("https://www.coursera.org/account/accomplishments/specialization/certificate/KPFYJEJFLPSR")
-
-st.write("* Cerificación de Amazon Web Services:")
-
-st.write("https://www.coursera.org/account/accomplishments/specialization/certificate/LPA8Z6WNCUGG")
 
 st.write("")
 
@@ -448,4 +432,22 @@ st.subheader("-Investigación")
 st.write("* Investigación realizada - Resumen - [Investigación](%s)" % "https://proyectdaniel.streamlit.app/Mi_investigaci%C3%B3n")
 
 st.write("* Preguntas frecuetes de astronomía - [Preguntas frecuentes](%s)" % "https://proyectdaniel.streamlit.app/Preguntas_frecuentes")
+
+st.subheader("Certificaciones")
+
+st.write("* Certificación de Machine Learning en IBM:")
+
+st.write("https://www.coursera.org/account/accomplishments/specialization/certificate/XSSQ7BGT9L9F")
+
+st.write("* Certificación de NoSQL, Spark, Hadoop y BigData:")
+
+st.write("https://www.coursera.org/account/accomplishments/specialization/certificate/CYGFU8S3XQGG")
+
+st.write("* Certificación de Google Cloud:")
+
+st.write("https://www.coursera.org/account/accomplishments/specialization/certificate/KPFYJEJFLPSR")
+
+st.write("* Cerificación de Amazon Web Services:")
+
+st.write("https://www.coursera.org/account/accomplishments/specialization/certificate/LPA8Z6WNCUGG")
 
