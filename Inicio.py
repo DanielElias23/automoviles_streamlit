@@ -137,7 +137,7 @@ if __name__ == "__main__":
     main1()
 
 
-#embed_component = {
+#3embed_component = {
 #    'Linkedin': """
 #    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
 #    <div class="badge-base LI-profile-badge" data-locale="es_ES" data-size="large" data-theme="light" data-type="VERTICAL" data-vanity="danielchingasilva" data-version="v1">
@@ -191,7 +191,7 @@ title_style = """
     border: 1px solid #009999;
     border-radius: 10px;
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.6);
-    margin: -50px -1px auto;
+    margin: -110px -1px auto;
     width: 676px;  /* Ancho de la caja */
     height: 118px;
 }
