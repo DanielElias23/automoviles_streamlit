@@ -26,6 +26,7 @@ streamlit-lottie==0.0.5
 streamlit-extras==0.4.3
 streamlit-option-menu==0.3.13
 streamlit-webrtc==0.47.7
+streamlit-pdf-viewer==0.0.17
 tensorflow==2.16.1
 tensorflow-hub==0.16.1
 tensorflow-io-gcs-filesystem==0.37.0

@@ -203,7 +203,7 @@ st.markdown("""
         transition: max-height 0.2s ease-out;
         border-radius: 0 0 10px 10px;
         margin-bottom: 10px;
-        color: #4a4a4a; /* Color del texto */
+        color: white; /* Color del texto */
         border: none; /* Sin borde inicialmente */
     }
 
